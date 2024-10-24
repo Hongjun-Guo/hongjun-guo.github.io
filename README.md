@@ -35,7 +35,7 @@ E-mail:	guohj29@tongji.edu.cn
 
 - (with H. Bao) Asymptotic speeds of spreading for the Lotka-Volterra system with strong competition in R^N, submitted.
 - (with K. Wang) Some new bistable transition fronts with changing shape, [arXiv](https://arxiv.org/abs/2404.09237).
-- (with Y. Lyu and Z.C. Wang) On Traveling Fronts of Combustion Equations in Spatially Periodic Media, _J. Dyn. Diff. Equations_, to appear.
+- (with Y. Lyu and Z.C. Wang) On Traveling Fronts of Combustion Equations in Spatially Periodic Media, _J. Dyn. Diff. Equations_, to appear. ([link](https://link.springer.com/article/10.1007/s10884-024-10388-1))
 - Pushed fronts of monostable reaction-diffusion-advection equations, _J. Diff. Equations_, 365 (2023), 127-162. ([link](https://doi.org/10.1016/j.jde.2023.01.042))
 - (with W.T. Li, R. Liu and Z.C. Wang) Curved fronts of bistable reaction-diffusion equations in spatially periodic media, _Arch. Ration. Mech. Anal._ 242 (2021), 1571–1627. ([link](https://link.springer.com/article/10.1007/s00205-021-01711-x)).
 - (with J. Forbey and R. Liu) Front propagation and blocking of reaction-diffusion systems in cylinders, _Nonlinearity_, 34 (2021), 6750-6722.([link](https://iopscience.iop.org/article/10.1088/1361-6544/abd529))
