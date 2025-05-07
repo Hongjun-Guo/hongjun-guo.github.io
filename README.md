@@ -35,7 +35,7 @@ E-mail:	guohj29@tongji.edu.cn
 
 - (with H. Wang) Curved fronts of bistable reaction-diffusion equations in spatially periodic media: N≥2, [arXiv](http://arxiv.org/abs/2501.03815). 
 - (with H. Bao) Asymptotic speeds of spreading for the Lotka-Volterra system with strong competition in R^N, [arXiv](https://arxiv.org/abs/2411.13781).
-- (with K. Wang) Some new bistable transition fronts with changing shape, [arXiv](https://arxiv.org/abs/2404.09237).
+- (with K. Wang) Some new bistable transition fronts with changing shape, _Math. Ann._ accepted [arXiv](https://arxiv.org/abs/2404.09237).
 - (with Y. Lyu and Z.C. Wang) On traveling fronts of combustion equations in spatially periodic media, _J. Dyn. Diff. Equations_, to appear. ([link](https://link.springer.com/article/10.1007/s10884-024-10388-1))
 - Pushed fronts of monostable reaction-diffusion-advection equations, _J. Diff. Equations_, 365 (2023), 127-162. ([link](https://doi.org/10.1016/j.jde.2023.01.042))
 - (with W.T. Li, R. Liu and Z.C. Wang) Curved fronts of bistable reaction-diffusion equations in spatially periodic media, _Arch. Ration. Mech. Anal._ 242 (2021), 1571–1627. ([link](https://link.springer.com/article/10.1007/s00205-021-01711-x)).
