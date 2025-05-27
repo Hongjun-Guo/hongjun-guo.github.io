@@ -33,6 +33,7 @@ E-mail:	guohj29@tongji.edu.cn
 
 ## Publications
 
+- (with F. Hamel and L. Rossi) Reaction-diffusion equations in periodic media: convergence to pulsating fronts, [arXiv](https://arxiv.org/abs/2505.19726). 
 - (with H. Wang) Curved fronts of bistable reaction-diffusion equations in spatially periodic media: N≥2, [arXiv](http://arxiv.org/abs/2501.03815). 
 - (with H. Bao) Asymptotic speeds of spreading for the Lotka-Volterra system with strong competition in R^N, [arXiv](https://arxiv.org/abs/2411.13781).
 - (with K. Wang) Some new bistable transition fronts with changing shape, _Math. Ann._ to appear. ([link](https://link.springer.com/article/10.1007/s00208-025-03188-5))
