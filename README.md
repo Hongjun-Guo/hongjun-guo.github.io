@@ -37,7 +37,7 @@ E-mail:	guohj29@tongji.edu.cn
 - (with H. Wang) Curved fronts of bistable reaction-diffusion equations in spatially periodic media: N≥2, [arXiv](http://arxiv.org/abs/2501.03815). 
 - (with H. Bao) Asymptotic speeds of spreading for the Lotka-Volterra system with strong competition in R^N, **_Disc. Cont. Dyn. Systems B_**, to appear. ([link](https://www.aimsciences.org/article/doi/10.3934/dcdsb.2025144)).
 - (with K. Wang) Some new bistable transition fronts with changing shape, **_Math. Ann._** 392 (2025), 3797–3850. ([link](https://link.springer.com/article/10.1007/s00208-025-03188-5#Ack1))
-- (with Y. Lyu and Z.C. Wang) On traveling fronts of combustion equations in spatially periodic media, **_J. Dyn. Diff. Equations_**, to appear. ([link](https://link.springer.com/article/10.1007/s10884-024-10388-1))
+- (with Y. Lyu and Z.C. Wang) On traveling fronts of combustion equations in spatially periodic media, **_J. Dyn. Diff. Equations_**, 37 (2025), 2869–2929. ([link](https://link.springer.com/article/10.1007/s10884-024-10388-1))
 - Pushed fronts of monostable reaction-diffusion-advection equations, **_J. Diff. Equations_**, 365 (2023), 127-162. ([link](https://doi.org/10.1016/j.jde.2023.01.042))
 - (with W.T. Li, R. Liu and Z.C. Wang) Curved fronts of bistable reaction-diffusion equations in spatially periodic media, **_Arch. Ration. Mech. Anal._** 242 (2021), 1571–1627. ([link](https://link.springer.com/article/10.1007/s00205-021-01711-x)).
 - (with J. Forbey and R. Liu) Front propagation and blocking of reaction-diffusion systems in cylinders, **_Nonlinearity_**, 34 (2021), 6750-6722.([link](https://iopscience.iop.org/article/10.1088/1361-6544/abd529))
