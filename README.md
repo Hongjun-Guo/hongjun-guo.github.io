@@ -34,8 +34,8 @@ E-mail:	guohj29@tongji.edu.cn
 ## Publications
 
 - Spreading dynamics for the Lotka-Volterra system with general initial supports: the strong competition, [arXiv](https://arxiv.org/abs/2602.21537).
-- (with F. Hamel and L. Rossi) Reaction-diffusion equations in periodic media: convergence to pulsating fronts, [arXiv](https://arxiv.org/abs/2505.19726). 
-- (with H. Wang) Curved fronts of bistable reaction-diffusion equations in spatially periodic media: N≥2, [arXiv](http://arxiv.org/abs/2501.03815). 
+- (with H. Wang) Curved fronts of bistable reaction-diffusion equations in spatially periodic media: N≥2, [arXiv](http://arxiv.org/abs/2501.03815).
+- (with F. Hamel and L. Rossi) Reaction-diffusion equations in periodic media: convergence to pulsating fronts, Trans. Amer. Math. Soc. [arXiv](https://arxiv.org/abs/2505.19726). 
 - (with H. Bao) Asymptotic speeds of spreading for the Lotka-Volterra system with strong competition in R^N, **_Disc. Cont. Dyn. Systems B_**, to appear. ([link](https://www.aimsciences.org/article/doi/10.3934/dcdsb.2025144)).
 - (with K. Wang) Some new bistable transition fronts with changing shape, **_Math. Ann._** 392 (2025), 3797–3850. ([link](https://link.springer.com/article/10.1007/s00208-025-03188-5#Ack1))
 - (with Y. Lyu and Z.C. Wang) On traveling fronts of combustion equations in spatially periodic media, **_J. Dyn. Diff. Equations_**, 37 (2025), 2869–2929. ([link](https://link.springer.com/article/10.1007/s10884-024-10388-1))
