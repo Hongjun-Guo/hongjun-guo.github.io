@@ -33,7 +33,7 @@ E-mail:	guohj29@tongji.edu.cn
 
 ## Publications
 
-- (with W.T. Li, B. Liu) Propagation dynamics for multidimensional nonlocal diffusion equations: a general Freidlin-Gärtner formula, [arXiv](https://arxiv.org/abs/2606.13050).
+- (with W.T. Li and B. Liu) Propagation dynamics for multidimensional nonlocal diffusion equations: a general Freidlin-Gärtner formula, [arXiv](https://arxiv.org/abs/2606.13050).
 - Spreading dynamics for the Lotka-Volterra system with general initial supports: the strong competition, [arXiv](https://arxiv.org/abs/2602.21537).
 - (with H. Wang) Curved fronts of bistable reaction-diffusion equations in spatially periodic media: N≥2, [arXiv](http://arxiv.org/abs/2501.03815).
 - (with F. Hamel and L. Rossi) Reaction-diffusion equations in periodic media: convergence to pulsating fronts, **_Trans. Amer. Math. Soc._** to appear. [arXiv](https://arxiv.org/abs/2505.19726)
