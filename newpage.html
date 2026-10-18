@@ -17,9 +17,249 @@
     .paper { margin: 1rem 0 1.3rem; padding: .1rem 0 .1rem 1rem; border-left: 2px solid #d8dee4; }
     .meta { color: #57606a; margin-top: -.2rem; }
     .tag { display: inline-block; border: 1px solid #d0d7de; border-radius: 1rem; padding: .05rem .55rem; font-size: .82rem; color: #57606a; }
+    .equation { overflow-x: auto; padding: .85rem 1rem; margin: 1rem 0; background: #f6f8fa; border-radius: 6px; text-align: center; }
+    .assumption { margin: .8rem 0; }
     li { margin: .3rem 0; }
     @media (max-width: 600px) { body { margin-top: 1.2rem; } }
   </style>
+  <script>
+    window.MathJax = { tex: { inlineMath: [['\\\\(', '\\\\)'], ['
+<body>
+  <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
+  <h1>Spatially Periodic Reaction-Diffusion Equations</h1>
+  <p class="lead">A problem-oriented guide to propagation, pulsating traveling fronts, and spreading speeds in spatially periodic media.</p>
+  <p>This page collects results on spatially periodic reaction-diffusion equations and organizes the literature by mathematical questions. Before treating individual topics, we fix a common equation, notation, and baseline assumptions. Specific results may require stronger hypotheses, which will be stated in the corresponding sections.</p>
+
+  <h2>General Framework and Basic Assumptions</h2>
+  <p>Unless a topic states otherwise, we consider a scalar reaction-diffusion equation in the whole space \(\mathbb{R}^N\):</p>
+  <div class="equation">\[
+    \partial_t u(t,x)
+    = \nabla\!\cdot\!\big(A(x)\nabla u(t,x)\big)
+      + b(x)\cdot\nabla u(t,x)
+      + f(x,u(t,x)),
+    \qquad (t,x)\in I\times\mathbb{R}^N.
+  \]</div>
+  <p>Here \(t\) is time, \(x\in\mathbb{R}^N\) is the space variable, and \(u(t,x)\in\mathbb{R}\) is the unknown scalar state. The time interval \(I\) depends on the problem: it may be \((0,\infty)\) for an initial-value problem, a finite interval for a local-in-time problem, or all of \(\mathbb{R}\) for an entire solution such as a traveling or transition front.</p>
+
+  <div class="assumption">
+    <h3>Spatial periodicity</h3>
+    <p>There is a lattice \(\mathcal{L}\subset\mathbb{R}^N\) such that, for every lattice vector \(k\in\mathcal{L}\),</p>
+    <div class="equation">\[
+      A(x+k)=A(x),\qquad b(x+k)=b(x),\qquad
+      f(x+k,s)=f(x,s).
+    \]</div>
+    <p>The periodicity cell and lattice are fixed for a given equation. Time-periodic media, nonperiodic heterogeneous media, and bounded spatial domains are extensions that require separate notation or assumptions.</p>
+  </div>
+
+  <div class="assumption">
+    <h3>Diffusion matrix</h3>
+    <p>For the baseline uniformly parabolic framework, assume that \(A(x)\) is a measurable, bounded, symmetric matrix and that there are constants \(0<\lambda\leq\Lambda<\infty\) such that, for almost every \(x\) and every \(\xi\in\mathbb{R}^N\),</p>
+    <div class="equation">\[
+      \lambda |\xi|^2\leq \xi\cdot A(x)\xi
+      \leq \Lambda |\xi|^2.
+    \]</div>
+    <p>This is uniform ellipticity. It is a useful weak baseline for divergence-form equations; classical front results often impose additional smoothness on \(A\), while degenerate or nonuniformly elliptic diffusion lies outside this baseline.</p>
+  </div>
+
+  <div class="assumption">
+    <h3>Advection field</h3>
+    <p>Assume initially that \(b(x)\) is measurable and bounded. Periodicity is imposed as above. Depending on the theorem, one may need Hölder or smoother coefficients. The sign convention for the drift varies in the literature; here the term is written as \(+b(x)\cdot\nabla u\).</p>
+  </div>
+
+  <div class="assumption">
+    <h3>Reaction term</h3>
+    <p>Assume that \(f(x,s)\) is measurable in \(x\), continuous in \(s\), and locally Lipschitz in \(s\), uniformly in \(x\) on bounded ranges; for classical results, continuity or Hölder regularity in \(x\) is commonly added. A standard baseline equilibrium condition is \(f(x,0)=0\). Additional equilibria, sign conditions, or monostable/KPP, ignition, and bistable assumptions are topic-specific and will be stated when used.</p>
+  </div>
+
+  <h3>Solutions, existence, and regularity</h3>
+  <ul>
+    <li><strong>Initial-value problem:</strong> prescribe \(u(0,x)=u_0(x)\) and study the solution for later times. Well-posedness assumptions depend on the chosen solution class and the growth of \(f\).</li>
+    <li><strong>Entire solutions:</strong> solve the equation for every \(t\in\mathbb{R}\). Pulsating traveling fronts and transition fronts are examples; they are not, in general, specified by data at one initial time.</li>
+    <li><strong>Weak versus classical solutions:</strong> measurable uniformly elliptic coefficients can support weak-solution theories under suitable hypotheses. To obtain classical derivatives and apply pointwise front arguments, stronger coefficient regularity is generally needed. Local parabolic regularity gives smoothness only to the extent allowed by the coefficients and nonlinearity.</li>
+    <li><strong>Bounds:</strong> many front problems seek solutions between two equilibria, often normalized as \(0\) and \(1\). The bound \(0\leq u\leq1\) and the equilibrium condition \(f(x,1)=0\) are common in particular models, but are not universal assumptions for every problem on this page.</li>
+  </ul>
+  <p class="note">These are common baseline assumptions, not a claim that one set of hypotheses is minimal for every theorem. Each topic below must specify any additional assumptions needed for existence, uniqueness, speed formulas, stability, or asymptotic spreading.</p>
+
+  <h2>1. Existence of Pulsating Traveling Fronts</h2>
+  <p><span class="tag">Main question</span> In a medium whose coefficients vary periodically in space, when does a solution exist that connects two stable or unstable states and propagates in a prescribed direction?</p>
+  <p>In a homogeneous medium, a traveling front often has the form <em>u(t,x)=U(x\cdot e-ct)</em>. In a periodic medium, the profile also reflects the spatial oscillations of the environment. This leads to the notion of a <em>pulsating traveling front</em>. Existence results depend strongly on the reaction type (for example, combustion, KPP/monostable, or bistable) and on the assumptions on the periodic diffusion and advection.</p>
+
+  <div class="paper">
+    <h3>Berestycki &amp; Hamel (2002) — a general PDE framework</h3>
+    <p class="meta"><em>Front propagation in periodic excitable media.</em> Communications on Pure and Applied Mathematics, 55(8), 949–1032.</p>
+    <p>The paper develops a systematic theory of pulsating traveling fronts for reaction-diffusion-advection equations in periodic domains and media. For combustion-type nonlinearities it establishes existence and uniqueness of the propagation speed; for a class of monostable nonlinearities it characterizes the set of admissible speeds as a closed half-line bounded below. It also proves monotonicity properties and uniqueness up to translation in the combustion setting.</p>
+    <p><a href="https://doi.org/10.1002/cpa.3022">Publisher / DOI: 10.1002/cpa.3022</a></p>
+  </div>
+
+  <div class="paper">
+    <h3>Xin (1993) — existence, propagation, and blocking</h3>
+    <p class="meta"><em>Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media.</em> Journal of Statistical Physics, 73, 893–926.</p>
+    <p>This work studies reaction-diffusion equations with periodic diffusion or convection coefficients and combustion or bistable nonlinearities. It connects the existence of traveling waves to the effective propagation speed of solutions from front-like or localized initial data. It also gives a one-dimensional bistable example where a traveling wave does not exist and propagation can be quenched when the medium's heterogeneity is sufficiently strong.</p>
+    <p><a href="https://doi.org/10.1007/BF01052815">Publisher / DOI: 10.1007/BF01052815</a></p>
+  </div>
+
+  <div class="paper">
+    <h3>Berestycki, Hamel &amp; Roques (2005) — biological invasion in periodic habitats</h3>
+    <p class="meta"><em>Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts.</em> Journal de Mathématiques Pures et Appliquées, 84(8), 1101–1146.</p>
+    <p>For a reaction-diffusion model with periodic diffusion matrix and spatially periodic reaction term, the authors prove the existence of pulsating fronts describing biological invasion of the zero state by a positive heterogeneous state. The paper links the front problem to persistence and invasion in periodically fragmented environments and gives a variational characterization of the minimal speed under its hypotheses.</p>
+    <p><a href="https://doi.org/10.1016/j.matpur.2004.10.006">Publisher / DOI: 10.1016/j.matpur.2004.10.006</a></p>
+  </div>
+
+  <div class="paper">
+    <h3>Shigesada, Kawasaki &amp; Teramoto (1986) — an early ecological model</h3>
+    <p class="meta"><em>Traveling periodic waves in heterogeneous environments.</em> Theoretical Population Biology, 30(1), 143–160.</p>
+    <p>This influential ecological model considers a one-dimensional habitat made of alternating patches with different diffusivities and intrinsic growth rates. It studies when a population can invade and how the speed of a traveling periodic wave depends on patch sizes and biological parameters. It is an important early model of periodic invasion waves, although it should be distinguished from the later general PDE theory of pulsating fronts.</p>
+    <p><a href="https://doi.org/10.1016/0040-5809(86)90029-8">Publisher / DOI: 10.1016/0040-5809(86)90029-8</a></p>
+  </div>
+
+  <h3>How these papers fit together</h3>
+  <ul>
+    <li>Shigesada–Kawasaki–Teramoto provide an early ecological model for periodic invasion waves.</li>
+    <li>Xin emphasizes the relationship between wave existence, effective propagation, and possible blocking in periodic media.</li>
+    <li>Berestycki–Hamel develop a broad mathematical framework for pulsating fronts in periodic domains.</li>
+    <li>Berestycki–Hamel–Roques apply and extend the theory to biological invasion in periodically fragmented habitats.</li>
+  </ul>
+
+  <h2>2. Spreading Speeds and Minimal Speeds</h2>
+  <p><span class="tag">Main question</span> How fast does an invading solution spread, and can the minimal speed of a pulsating front be computed from a linear eigenvalue problem?</p>
+  <p>For KPP-type reactions, the leading edge of the invasion is governed by the equation linearized near the unstable state. In periodic media, the relevant linear operator has periodic coefficients. Its principal eigenvalue leads to a variational formula for the minimal front speed. This is a central distinction between KPP-type problems and general monostable or bistable equations, where linear determinacy need not hold in the same way.</p>
+
+  <div class="paper">
+    <h3>Berestycki, Hamel &amp; Nadirashvili (2005) — the periodic KPP speed formula</h3>
+    <p class="meta"><em>The speed of propagation for KPP type problems. I: Periodic framework.</em> Journal of the European Mathematical Society, 7(2), 173–213.</p>
+    <p>This paper proves that the minimal speed of pulsating fronts for KPP-type equations in periodic media is given by a variational formula involving principal eigenvalues of suitable linear operators. It also studies how the speed depends on the geometry of the domain and on reaction, advection, and diffusion coefficients, and connects front speeds with asymptotic spreading speeds for the Cauchy problem.</p>
+    <p><a href="https://doi.org/10.4171/JEMS/26">Publisher / DOI: 10.4171/JEMS/26</a></p>
+  </div>
+
+  <div class="paper">
+    <h3>Berestycki, Hamel &amp; Roques (2005) — minimal speed in biological invasion</h3>
+    <p class="meta"><em>Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts.</em> Journal de Mathématiques Pures et Appliquées, 84(8), 1101–1146.</p>
+    <p>This paper also belongs here: besides proving existence of pulsating invasion fronts, it characterizes the minimal speed for the periodic biological model. It is a useful bridge between the abstract spectral formula and an applied invasion model.</p>
+    <p><a href="https://doi.org/10.1016/j.matpur.2004.10.006">Publisher / DOI: 10.1016/j.matpur.2004.10.006</a></p>
+  </div>
+
+  <div class="paper">
+    <h3>Xin (1993) — effective speeds and propagation blocking</h3>
+    <p class="meta"><em>Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media.</em> Journal of Statistical Physics, 73, 893–926.</p>
+    <p>Xin's paper is relevant to the broader propagation question: when a traveling wave exists, its effective speed describes the propagation of suitable initial data. For bistable reactions, sufficiently strong heterogeneity can instead lead to the failure of wave propagation. Thus, the minimal-speed picture for KPP fronts should not be assumed to apply unchanged to all reaction types.</p>
+    <p><a href="https://doi.org/10.1007/BF01052815">Publisher / DOI: 10.1007/BF01052815</a></p>
+  </div>
+
+  <h3>Key distinction</h3>
+  <ul>
+    <li><strong>Minimal front speed:</strong> the smallest speed for which a pulsating traveling front exists in a given direction.</li>
+    <li><strong>Asymptotic spreading speed:</strong> the speed describing the large-time expansion of solutions from suitable initial data.</li>
+    <li>In periodic KPP settings these quantities are closely linked and can be characterized spectrally; in other reaction regimes, the relationship requires separate hypotheses and results.</li>
+  </ul>
+
+  <h2>References cited on this page</h2>
+  <ol>
+    <li>Shigesada, N., Kawasaki, K. &amp; Teramoto, E. (1986). Traveling periodic waves in heterogeneous environments. <em>Theoretical Population Biology</em>, 30(1), 143–160. <a href="https://doi.org/10.1016/0040-5809(86)90029-8">doi:10.1016/0040-5809(86)90029-8</a>.</li>
+    <li>Xin, J. X. (1993). Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media. <em>Journal of Statistical Physics</em>, 73, 893–926. <a href="https://doi.org/10.1007/BF01052815">doi:10.1007/BF01052815</a>.</li>
+    <li>Berestycki, H. &amp; Hamel, F. (2002). Front propagation in periodic excitable media. <em>Communications on Pure and Applied Mathematics</em>, 55(8), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">doi:10.1002/cpa.3022</a>.</li>
+    <li>Berestycki, H., Hamel, F. &amp; Nadirashvili, N. (2005). The speed of propagation for KPP type problems. I: Periodic framework. <em>Journal of the European Mathematical Society</em>, 7(2), 173–213. <a href="https://doi.org/10.4171/JEMS/26">doi:10.4171/JEMS/26</a>.</li>
+    <li>Berestycki, H., Hamel, F. &amp; Roques, L. (2005). Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts. <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8), 1101–1146. <a href="https://doi.org/10.1016/j.matpur.2004.10.006">doi:10.1016/j.matpur.2004.10.006</a>.</li>
+  </ol>
+
+  <p class="note">Scope note: this is a curated starting bibliography, not yet an exhaustive survey of every paper on spatially periodic waves. The next stage is to trace references and citing papers, verify theorem assumptions in the original articles, and add further modules on uniqueness and stability, bistable fronts, multidimensional propagation, and space-time periodic media.</p>
+  <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
+</body>
+</html>
+, '
+<body>
+  <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
+  <h1>Spatially Periodic Reaction-Diffusion Equations</h1>
+  <p class="lead">A problem-oriented guide to research on propagation, pulsating traveling fronts, and spreading speeds in spatially periodic media.</p>
+  <p>This page organizes the literature by mathematical questions rather than by publication date. The aim is to explain what each group of papers establishes, how the results fit together, and where the main assumptions enter. The current version starts with two foundational questions; other topics will be added progressively.</p>
+
+  <h2>1. Existence of Pulsating Traveling Fronts</h2>
+  <p><span class="tag">Main question</span> In a medium whose coefficients vary periodically in space, when does a solution exist that connects two stable or unstable states and propagates in a prescribed direction?</p>
+  <p>In a homogeneous medium, a traveling front often has the form <em>u(t,x)=U(x\cdot e-ct)</em>. In a periodic medium, the profile also reflects the spatial oscillations of the environment. This leads to the notion of a <em>pulsating traveling front</em>. Existence results depend strongly on the reaction type (for example, combustion, KPP/monostable, or bistable) and on the assumptions on the periodic diffusion and advection.</p>
+
+  <div class="paper">
+    <h3>Berestycki &amp; Hamel (2002) — a general PDE framework</h3>
+    <p class="meta"><em>Front propagation in periodic excitable media.</em> Communications on Pure and Applied Mathematics, 55(8), 949–1032.</p>
+    <p>The paper develops a systematic theory of pulsating traveling fronts for reaction-diffusion-advection equations in periodic domains and media. For combustion-type nonlinearities it establishes existence and uniqueness of the propagation speed; for a class of monostable nonlinearities it characterizes the set of admissible speeds as a closed half-line bounded below. It also proves monotonicity properties and uniqueness up to translation in the combustion setting.</p>
+    <p><a href="https://doi.org/10.1002/cpa.3022">Publisher / DOI: 10.1002/cpa.3022</a></p>
+  </div>
+
+  <div class="paper">
+    <h3>Xin (1993) — existence, propagation, and blocking</h3>
+    <p class="meta"><em>Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media.</em> Journal of Statistical Physics, 73, 893–926.</p>
+    <p>This work studies reaction-diffusion equations with periodic diffusion or convection coefficients and combustion or bistable nonlinearities. It connects the existence of traveling waves to the effective propagation speed of solutions from front-like or localized initial data. It also gives a one-dimensional bistable example where a traveling wave does not exist and propagation can be quenched when the medium's heterogeneity is sufficiently strong.</p>
+    <p><a href="https://doi.org/10.1007/BF01052815">Publisher / DOI: 10.1007/BF01052815</a></p>
+  </div>
+
+  <div class="paper">
+    <h3>Berestycki, Hamel &amp; Roques (2005) — biological invasion in periodic habitats</h3>
+    <p class="meta"><em>Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts.</em> Journal de Mathématiques Pures et Appliquées, 84(8), 1101–1146.</p>
+    <p>For a reaction-diffusion model with periodic diffusion matrix and spatially periodic reaction term, the authors prove the existence of pulsating fronts describing biological invasion of the zero state by a positive heterogeneous state. The paper links the front problem to persistence and invasion in periodically fragmented environments and gives a variational characterization of the minimal speed under its hypotheses.</p>
+    <p><a href="https://doi.org/10.1016/j.matpur.2004.10.006">Publisher / DOI: 10.1016/j.matpur.2004.10.006</a></p>
+  </div>
+
+  <div class="paper">
+    <h3>Shigesada, Kawasaki &amp; Teramoto (1986) — an early ecological model</h3>
+    <p class="meta"><em>Traveling periodic waves in heterogeneous environments.</em> Theoretical Population Biology, 30(1), 143–160.</p>
+    <p>This influential ecological model considers a one-dimensional habitat made of alternating patches with different diffusivities and intrinsic growth rates. It studies when a population can invade and how the speed of a traveling periodic wave depends on patch sizes and biological parameters. It is an important early model of periodic invasion waves, although it should be distinguished from the later general PDE theory of pulsating fronts.</p>
+    <p><a href="https://doi.org/10.1016/0040-5809(86)90029-8">Publisher / DOI: 10.1016/0040-5809(86)90029-8</a></p>
+  </div>
+
+  <h3>How these papers fit together</h3>
+  <ul>
+    <li>Shigesada–Kawasaki–Teramoto provide an early ecological model for periodic invasion waves.</li>
+    <li>Xin emphasizes the relationship between wave existence, effective propagation, and possible blocking in periodic media.</li>
+    <li>Berestycki–Hamel develop a broad mathematical framework for pulsating fronts in periodic domains.</li>
+    <li>Berestycki–Hamel–Roques apply and extend the theory to biological invasion in periodically fragmented habitats.</li>
+  </ul>
+
+  <h2>2. Spreading Speeds and Minimal Speeds</h2>
+  <p><span class="tag">Main question</span> How fast does an invading solution spread, and can the minimal speed of a pulsating front be computed from a linear eigenvalue problem?</p>
+  <p>For KPP-type reactions, the leading edge of the invasion is governed by the equation linearized near the unstable state. In periodic media, the relevant linear operator has periodic coefficients. Its principal eigenvalue leads to a variational formula for the minimal front speed. This is a central distinction between KPP-type problems and general monostable or bistable equations, where linear determinacy need not hold in the same way.</p>
+
+  <div class="paper">
+    <h3>Berestycki, Hamel &amp; Nadirashvili (2005) — the periodic KPP speed formula</h3>
+    <p class="meta"><em>The speed of propagation for KPP type problems. I: Periodic framework.</em> Journal of the European Mathematical Society, 7(2), 173–213.</p>
+    <p>This paper proves that the minimal speed of pulsating fronts for KPP-type equations in periodic media is given by a variational formula involving principal eigenvalues of suitable linear operators. It also studies how the speed depends on the geometry of the domain and on reaction, advection, and diffusion coefficients, and connects front speeds with asymptotic spreading speeds for the Cauchy problem.</p>
+    <p><a href="https://doi.org/10.4171/JEMS/26">Publisher / DOI: 10.4171/JEMS/26</a></p>
+  </div>
+
+  <div class="paper">
+    <h3>Berestycki, Hamel &amp; Roques (2005) — minimal speed in biological invasion</h3>
+    <p class="meta"><em>Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts.</em> Journal de Mathématiques Pures et Appliquées, 84(8), 1101–1146.</p>
+    <p>This paper also belongs here: besides proving existence of pulsating invasion fronts, it characterizes the minimal speed for the periodic biological model. It is a useful bridge between the abstract spectral formula and an applied invasion model.</p>
+    <p><a href="https://doi.org/10.1016/j.matpur.2004.10.006">Publisher / DOI: 10.1016/j.matpur.2004.10.006</a></p>
+  </div>
+
+  <div class="paper">
+    <h3>Xin (1993) — effective speeds and propagation blocking</h3>
+    <p class="meta"><em>Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media.</em> Journal of Statistical Physics, 73, 893–926.</p>
+    <p>Xin's paper is relevant to the broader propagation question: when a traveling wave exists, its effective speed describes the propagation of suitable initial data. For bistable reactions, sufficiently strong heterogeneity can instead lead to the failure of wave propagation. Thus, the minimal-speed picture for KPP fronts should not be assumed to apply unchanged to all reaction types.</p>
+    <p><a href="https://doi.org/10.1007/BF01052815">Publisher / DOI: 10.1007/BF01052815</a></p>
+  </div>
+
+  <h3>Key distinction</h3>
+  <ul>
+    <li><strong>Minimal front speed:</strong> the smallest speed for which a pulsating traveling front exists in a given direction.</li>
+    <li><strong>Asymptotic spreading speed:</strong> the speed describing the large-time expansion of solutions from suitable initial data.</li>
+    <li>In periodic KPP settings these quantities are closely linked and can be characterized spectrally; in other reaction regimes, the relationship requires separate hypotheses and results.</li>
+  </ul>
+
+  <h2>References cited on this page</h2>
+  <ol>
+    <li>Shigesada, N., Kawasaki, K. &amp; Teramoto, E. (1986). Traveling periodic waves in heterogeneous environments. <em>Theoretical Population Biology</em>, 30(1), 143–160. <a href="https://doi.org/10.1016/0040-5809(86)90029-8">doi:10.1016/0040-5809(86)90029-8</a>.</li>
+    <li>Xin, J. X. (1993). Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media. <em>Journal of Statistical Physics</em>, 73, 893–926. <a href="https://doi.org/10.1007/BF01052815">doi:10.1007/BF01052815</a>.</li>
+    <li>Berestycki, H. &amp; Hamel, F. (2002). Front propagation in periodic excitable media. <em>Communications on Pure and Applied Mathematics</em>, 55(8), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">doi:10.1002/cpa.3022</a>.</li>
+    <li>Berestycki, H., Hamel, F. &amp; Nadirashvili, N. (2005). The speed of propagation for KPP type problems. I: Periodic framework. <em>Journal of the European Mathematical Society</em>, 7(2), 173–213. <a href="https://doi.org/10.4171/JEMS/26">doi:10.4171/JEMS/26</a>.</li>
+    <li>Berestycki, H., Hamel, F. &amp; Roques, L. (2005). Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts. <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8), 1101–1146. <a href="https://doi.org/10.1016/j.matpur.2004.10.006">doi:10.1016/j.matpur.2004.10.006</a>.</li>
+  </ol>
+
+  <p class="note">Scope note: this is a curated starting bibliography, not yet an exhaustive survey of every paper on spatially periodic waves. The next stage is to trace references and citing papers, verify theorem assumptions in the original articles, and add further modules on uniqueness and stability, bistable fronts, multidimensional propagation, and space-time periodic media.</p>
+  <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
+</body>
+</html>
+]], displayMath: [['\\\\[', '\\\\]']] }, options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
