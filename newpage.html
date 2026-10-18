@@ -12,7 +12,10 @@
     .sidebar-title { margin: 0 0 .75rem; padding: 0 .55rem .65rem; border-bottom: 1px solid #d6e7e8; color: #155e63; font-size: .95rem; font-weight: 700; }
     .sidebar a { display: block; padding: .5rem .6rem; border-radius: 6px; color: #315f78; font-size: .92rem; line-height: 1.4; }
     .sidebar a:hover { background: #e7f3f3; color: #155e63; text-decoration: none; }
+    .sidebar a.active { background: #dcefee; color: #104f55; font-weight: 700; box-shadow: inset 4px 0 0 #16818a, 0 1px 5px rgba(21,94,99,.12); }
+    .sidebar a.active::after { content: "You are here"; display: block; margin-top: .12rem; color: #39757a; font-size: .72rem; font-weight: 500; }
     .sidebar .sub-link { padding-left: 1.2rem; font-size: .85rem; color: #57606a; }
+    .sidebar .sub-link.active { padding-left: 1.2rem; }
     .main-content { min-width: 0; }
     html { scroll-behavior: smooth; }
     h2[id], h3[id] { scroll-margin-top: 1.2rem; }
@@ -361,5 +364,36 @@
   <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
     </main>
   </div>
+
+<script>
+  (function () {
+    const links = Array.from(document.querySelectorAll('.sidebar nav a[href^="#"]'));
+    const targets = links
+      .map(link => ({ link, target: document.getElementById(link.getAttribute('href').slice(1)) }))
+      .filter(item => item.target);
+    if (!('IntersectionObserver' in window) || targets.length === 0) return;
+
+    const activate = (id) => {
+      links.forEach(link => {
+        const active = link.getAttribute('href') === '#' + id;
+        link.classList.toggle('active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (visible.length) activate(visible[0].target.id);
+    }, { rootMargin: '-12% 0px -72% 0px', threshold: 0 });
+
+    targets.forEach(item => observer.observe(item.target));
+    if (location.hash) activate(location.hash.slice(1));
+    else if (targets.length) activate(targets[0].target.id);
+  })();
+</script>
+
 </body>
 </html>
