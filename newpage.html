@@ -46,7 +46,7 @@
     = \nabla\!\cdot\!\big(A(x)\nabla u(t,x)\big)
       + b(x)\cdot\nabla u(t,x)
       + f(x,u(t,x)),
-    \qquad (t,x)\in I\times\mathbb{R}^N.
+    \qquad (t,x)\in I\times\mathbb{R}^N. \tag{1}
   \]</div>
   <p>Here \(t\) is time, \(x\in\mathbb{R}^N\) is the space variable, and \(u(t,x)\in\mathbb{R}\) is the unknown scalar state. The time interval \(I\) depends on the problem: it may be \((0,\infty)\) for an initial-value problem, a finite interval for a local-in-time problem, or all of \(\mathbb{R}\) for an entire solution such as a traveling or transition front.</p>
 
@@ -90,43 +90,42 @@
   <p class="note">These are common baseline assumptions, not a claim that one set of hypotheses is minimal for every theorem. Each topic below must specify any additional assumptions needed for existence, uniqueness, speed formulas, stability, or asymptotic spreading.</p>
 
   <h2>1. Existence of Pulsating Traveling Fronts</h2>
-  <p><span class="tag">Main question</span> In a medium whose coefficients vary periodically in space, when does a solution exist that connects two stable or unstable states and propagates in a prescribed direction?</p>
-  <p>In a homogeneous medium, a traveling front often has the form <em>u(t,x)=U(x\cdot e-ct)</em>. In a periodic medium, the profile also reflects the spatial oscillations of the environment. This leads to the notion of a <em>pulsating traveling front</em>. Existence results depend strongly on the reaction type (for example, combustion, KPP/monostable, or bistable) and on the assumptions on the periodic diffusion and advection.</p>
-
-  <div class="paper">
-    <h3>Berestycki &amp; Hamel (2002) — a general PDE framework</h3>
-    <p class="meta"><em>Front propagation in periodic excitable media.</em> Communications on Pure and Applied Mathematics, 55(8), 949–1032.</p>
-    <p>The paper develops a systematic theory of pulsating traveling fronts for reaction-diffusion-advection equations in periodic domains and media. For combustion-type nonlinearities it establishes existence and uniqueness of the propagation speed; for a class of monostable nonlinearities it characterizes the set of admissible speeds as a closed half-line bounded below. It also proves monotonicity properties and uniqueness up to translation in the combustion setting.</p>
-    <p><a href="https://doi.org/10.1002/cpa.3022">Publisher / DOI: 10.1002/cpa.3022</a></p>
-  </div>
-
-  <div class="paper">
-    <h3>Xin (1993) — existence, propagation, and blocking</h3>
-    <p class="meta"><em>Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media.</em> Journal of Statistical Physics, 73, 893–926.</p>
-    <p>This work studies reaction-diffusion equations with periodic diffusion or convection coefficients and combustion or bistable nonlinearities. It connects the existence of traveling waves to the effective propagation speed of solutions from front-like or localized initial data. It also gives a one-dimensional bistable example where a traveling wave does not exist and propagation can be quenched when the medium's heterogeneity is sufficiently strong.</p>
-    <p><a href="https://doi.org/10.1007/BF01052815">Publisher / DOI: 10.1007/BF01052815</a></p>
-  </div>
-
-  <div class="paper">
-    <h3>Berestycki, Hamel &amp; Roques (2005) — biological invasion in periodic habitats</h3>
-    <p class="meta"><em>Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts.</em> Journal de Mathématiques Pures et Appliquées, 84(8), 1101–1146.</p>
-    <p>For a reaction-diffusion model with periodic diffusion matrix and spatially periodic reaction term, the authors prove the existence of pulsating fronts describing biological invasion of the zero state by a positive heterogeneous state. The paper links the front problem to persistence and invasion in periodically fragmented environments and gives a variational characterization of the minimal speed under its hypotheses.</p>
-    <p><a href="https://doi.org/10.1016/j.matpur.2004.10.006">Publisher / DOI: 10.1016/j.matpur.2004.10.006</a></p>
-  </div>
-
-  <div class="paper">
-    <h3>Shigesada, Kawasaki &amp; Teramoto (1986) — an early ecological model</h3>
-    <p class="meta"><em>Traveling periodic waves in heterogeneous environments.</em> Theoretical Population Biology, 30(1), 143–160.</p>
-    <p>This influential ecological model considers a one-dimensional habitat made of alternating patches with different diffusivities and intrinsic growth rates. It studies when a population can invade and how the speed of a traveling periodic wave depends on patch sizes and biological parameters. It is an important early model of periodic invasion waves, although it should be distinguished from the later general PDE theory of pulsating fronts.</p>
-    <p><a href="https://doi.org/10.1016/0040-5809(86)90029-8">Publisher / DOI: 10.1016/0040-5809(86)90029-8</a></p>
-  </div>
-
-  <h3>How these papers fit together</h3>
+  <h3>1.1. Problem and assumptions</h3>
+  <p>We study equation (1) in the whole space \(\mathbb{R}^N\), with the spatial periodicity and baseline ellipticity/regularity assumptions stated in the preceding section. To state a representative existence result, we make the following additional assumptions. They are sufficient hypotheses for the classical front theory described below; they are not claimed to be the weakest possible assumptions.</p>
   <ul>
-    <li>Shigesada–Kawasaki–Teramoto provide an early ecological model for periodic invasion waves.</li>
-    <li>Xin emphasizes the relationship between wave existence, effective propagation, and possible blocking in periodic media.</li>
-    <li>Berestycki–Hamel develop a broad mathematical framework for pulsating fronts in periodic domains.</li>
-    <li>Berestycki–Hamel–Roques apply and extend the theory to biological invasion in periodically fragmented habitats.</li>
+    <li><strong>(F1) Periodic coefficients.</strong> The matrix \(A\), drift \(b\), and reaction \(f\) are periodic with respect to the same lattice. For the classical formulation, assume the coefficients are sufficiently regular (for example, \(A\in C^{1,\alpha}\), \(b\in C^{0,\alpha}\), and \(f\) is Hölder continuous in \(x\) and locally \(C^1\) in \(u\)), with the corresponding norms bounded on a periodicity cell.</li>
+    <li><strong>(F2) Uniformly elliptic diffusion.</strong> The matrix \(A(x)\) is symmetric and there are constants \(0<\lambda\leq\Lambda\) such that \(\lambda|\xi|^2\leq \xi\cdot A(x)\xi\leq\Lambda|\xi|^2\) for all \(\xi\in\mathbb{R}^N\) and all \(x\).</li>
+    <li><strong>(F3) Two equilibria.</strong> \(f(x,0)=f(x,1)=0\) for every \(x\).</li>
+    <li><strong>(F4) Combustion (ignition) reaction.</strong> There is an ignition threshold \(\theta\in(0,1)\) such that \(f(x,s)=0\) for \(s\leq\theta\) and for \(s\geq1\), while \(f(x,s)>0\) for \(\theta<s<1\). The reaction is locally Lipschitz in \(s\), uniformly in \(x\), and satisfies the usual regularity assumptions required for a classical solution.</li>
+  </ul>
+  <p>The hypotheses above describe one standard setting in which a clean existence-and-uniqueness theorem is available. The monostable/KPP and bistable cases require different reaction assumptions and are discussed separately in the literature; one should not infer their conclusions from the combustion case without checking those hypotheses.</p>
+
+  <h3>1.2. Definition of a pulsating traveling front</h3>
+  <p>Fix a unit direction \(e\in\mathbb{S}^{N-1}\) and a speed \(c>0\). A function \(u:\mathbb{R}\times\mathbb{R}^N\to[0,1]\) is called a <em>pulsating traveling front</em> of equation (1), propagating in direction \(e\) with speed \(c\), if there exists a profile \(\Phi:\mathbb{R}^N\times\mathbb{R}\to[0,1]\) such that</p>
+  <div class="equation">\[
+    u(t,x)=\Phi\big(x,x\cdot e-ct\big),
+    \qquad
+    \Phi(x+k,s)=\Phi(x,s)\quad(k\in\mathcal{L}),
+    \tag{2}
+  \]</div>
+  <p>and the profile is nonincreasing in its second variable and connects the two equilibria uniformly in the periodic variable:</p>
+  <div class="equation">\[
+    \lim_{s\to-\infty}\Phi(x,s)=1,\qquad
+    \lim_{s\to+\infty}\Phi(x,s)=0,
+    \quad\text{uniformly in }x\in\mathbb{R}^N.
+    \tag{3}
+  \]</div>
+  <p>In addition, \(u\) must solve equation (1) in the classical (or theorem-appropriate weak) sense. The representation (2) describes a front whose level sets move in direction \(e\) with effective speed \(c\), while the profile oscillates according to the periodic medium. Reversing the orientation of the profile gives an equivalent convention with the limits \(0\) and \(1\) interchanged.</p>
+
+  <h3>1.3. A representative existence theorem</h3>
+  <p><strong>Theorem 1 (Berestycki–Hamel, 2002; combustion case).</strong> Assume the periodic whole-space setting above and the standard smoothness, uniform ellipticity, and combustion-reaction hypotheses (F1)–(F4). Then for every prescribed direction \(e\in\mathbb{S}^{N-1}\), there exists a pulsating traveling front solving (1)–(3). In the combustion setting treated in the paper, the propagation speed is unique, the front is monotone in time, and the profile is unique up to translation in time (equivalently, a shift of the traveling coordinate), under the hypotheses of the theorem.</p>
+  <p><strong>Reference:</strong> H. Berestycki and F. Hamel, “Front propagation in periodic excitable media,” <em>Communications on Pure and Applied Mathematics</em>, 55(8) (2002), 949–1032, <a href="https://doi.org/10.1002/cpa.3022">doi:10.1002/cpa.3022</a> [3]. Their paper treats a broader class of periodic domains and coefficients. For biological invasion models in periodically fragmented habitats, see H. Berestycki, F. Hamel and L. Roques, “Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts,” <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8) (2005), 1101–1146 [5].</p>
+
+  <h3>1.4. Scope and distinctions</h3>
+  <ul>
+    <li><strong>KPP/monostable reactions:</strong> fronts can exist for a range of speeds, typically \(c\geq c^*(e)\); the minimal speed is characterized by a spectral variational formula under KPP hypotheses. See Berestycki–Hamel–Nadirashvili (2005), Section 2 below [4].</li>
+    <li><strong>Bistable reactions:</strong> existence and speed selection depend on different sign and stability assumptions. The combustion theorem above does not automatically apply.</li>
+    <li><strong>Initial-value versus entire solutions:</strong> a pulsating front is an entire solution, defined for all \(t\in\mathbb{R}\). It is not itself an initial-value problem, although its profile can describe the large-time behavior of solutions to suitable initial data.</li>
   </ul>
 
   <h2>2. Spreading Speeds and Minimal Speeds</h2>
