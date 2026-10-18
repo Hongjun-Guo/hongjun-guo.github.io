@@ -361,9 +361,27 @@
   <p class="source-location">Thus (B10)–(B11) turn the habitat parameters into a computable candidate for the invasion speed. The nonlinear simulations in <a href="#ref-1">[1]</a> approach this minimum; the paper does not prove this speed-selection result analytically.</p>
 
   <div class="open-problem-box" id="historical-tpw-question">
-    <span class="open-label">Historical question · Not proved in the 1986 paper</span>
-    <p><strong>Stability of the TPW and selection of \(c_{\min}\) by localized initial data.</strong> The authors explicitly state that they did not prove TPW stability mathematically <a href="#ref-1">[1]</a>; their computations support the selection of the minimum speed <a href="#ref-1">[1]</a>.</p>
-
+    <span class="open-label">Mathematical question · Spreading speed and front convergence</span>
+    <p>Consider (B1)–(B3) <a href="#ref-1">[1]</a> in the invasion regime \(r_1>0>r_2\) and \(L_1>L_{1,\mathrm{crit}}\). Let \(p(x)>0\) be the periodic stationary state, and let \(u(t,x)\) start from any continuous, compactly supported initial population \(u_0\geq0\), \(u_0\not\equiv0\).</p>
+    <p><strong>1. Does the nonlinear invasion select the speed \(c_{\min}\) computed in (B10)–(B11)?</strong> More precisely, do the following limits hold?</p>
+    <div class="equation">\[
+      \begin{aligned}
+        \lim_{t\to\infty}\ \sup_{|x|\leq ct}|u(t,x)-p(x)|&=0,
+          &&0&lt;c&lt;c_{\min},\\[1mm]
+        \lim_{t\to\infty}\ \sup_{|x|\geq ct}u(t,x)&=0,
+          &&c>c_{\min}.
+      \end{aligned}
+    \]</div>
+    <p>The first limit means that the population settles to \(p(x)\) throughout every region expanding slower than \(c_{\min}\). The second means that the density tends to zero beyond every region expanding faster than \(c_{\min}\).</p>
+    <p><strong>2. Does the spreading front approach a traveling periodic wave?</strong> Is there a right-moving TPW \(U_*\) of (B1)–(B3), with periodic profile \(\Phi_*(x+L,z)=\Phi_*(x,z)\), connecting \(p(x)\) behind the front to \(0\) ahead, and a front position \(m(t)=c_{\min}t+o(t)\), such that for every fixed \(R>0\),</p>
+    <div class="equation">\[
+      \begin{gathered}
+        U_*(t,x)=\Phi_*(x,x-c_{\min}t),\\[1mm]
+        \lim_{t\to\infty}\ \sup_{|z|\leq R}
+        \left|u(t,m(t)+z)-\Phi_*(m(t)+z,z)\right|=0?
+      \end{gathered}
+    \]</div>
+    <p>This asks whether the solution near the moving front approaches the TPW profile. The correction \(m(t)-c_{\min}t=o(t)\) allows a possible delay while keeping the asymptotic speed equal to \(c_{\min}\). The corresponding convergence question is also posed for the left-moving front.</p>
   </div>
   <p><strong>Connection with the later sections.</strong> The patch model separates three questions: the linear invasion threshold, the construction and speed of a periodic front, and the long-time behavior of an initially localized population. These distinctions organize the discussion of <a href="#fronts">pulsating fronts</a>, <a href="#speeds">front speeds</a>, and the <a href="#cauchy">Cauchy problem</a> below.</p>
 
