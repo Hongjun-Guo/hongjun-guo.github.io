@@ -123,8 +123,8 @@
     \qquad t>0,\quad x\in\mathbb R,\quad \mu>0.
     \tag{B1}
   \]</div>
-  <p class="source-location">Notation: throughout this page, \(D(x)\), \(r(x)\), and \(L_i\) denote the dimensional quantities written as \(d(x)\), \(\varepsilon(x)\), and \(l_i\) in <a href="#ref-1">[1]</a>. The competition coefficient \(\mu\) is a positive constant. The formulas below are rewritten in this notation; they do not use the paper's dimensionless \(D_b,E_b,L_i\).</p>
-  <p>Let \(D_1,D_2>0\), \(r_1\geq r_2\), \(r_1>0\), and let \(L_1,L_2>0\) be the widths of the two patch types. One habitat period has length \(L=L_1+L_2\). The coefficients are</p>
+
+  <p>The competition coefficient \(\mu>0\) is constant. Let \(D_1,D_2>0\), \(r_1\geq r_2\), \(r_1>0\), and let \(L_1,L_2>0\) be the widths of the two patch types. One habitat period has length \(L=L_1+L_2\). The coefficients are</p>
   <div class="equation" id="eq-patch-coefficients">\[
     (D(x),r(x))=
     \begin{cases}
@@ -164,7 +164,7 @@
       <p>A density-dependent loss in both patch types, independent of the sign of \(r_i\).</p>
     </div>
   </div>
-  <p>The reaction in (B1) is \(r(x)u-\mu u^2\), <strong>not</strong> \(r(x)u(1-u)\). In particular, no common carrying-capacity state \(u=1\) is imposed in this model <a href="#ref-1">[1, pp. 144–147]</a>.</p>
+
 
   <div class="question-box">
     <span class="question-label">The central question · Shigesada–Kawasaki–Teramoto (1986) <a href="#ref-1">[1]</a></span>
@@ -199,7 +199,7 @@
       <text x="380" y="25" font-size="15" font-weight="600" text-anchor="middle" fill="#24292f">A periodic environment</text>
       <text x="380" y="194" font-size="13" text-anchor="middle" fill="#57606a">Each patch may have its own diffusivity D(x) and growth rate r(x)</text>
     </svg>
-    <figcaption class="figcaption"><strong>Figure 1.</strong> Schematic of the one-dimensional periodic habitat in (B2), motivated by <a href="#ref-1">[1]</a>. The widths of the two patch types are \(L_1\) and \(L_2\). This illustration is not a reproduction of a figure from the article; the drawing does not fix the numerical patch widths.</figcaption>
+    <figcaption class="figcaption"><strong>Figure 1.</strong> Schematic of the one-dimensional periodic habitat in (B2), motivated by <a href="#ref-1">[1]</a>. The widths of the two patch types are \(L_1\) and \(L_2\).</figcaption>
   </figure>
 
   <div class="source-result" id="invasion-threshold">
@@ -224,12 +224,12 @@
       \end{aligned}
       \tag{B6}
     \]</div>
-    <p class="source-location">Source: <a href="#ref-1">[1, Eqs. (14a)–(14b), p. 148]</a>. Formula (B5) restores dimensions using the scaling in their Eqs. (5) and (8). The inequalities are strict; \(L_1=L_{1,\mathrm{crit}}\) is the critical boundary and is not assigned to either alternative here.</p>
+    <p class="source-location">Source: <a href="#ref-1">[1, Eqs. (14a)–(14b), p. 148]</a>. The equality \(L_1=L_{1,\mathrm{crit}}\) defines the critical boundary.</p>
     <p>The authors interpret the stable side as invasion failure and the unstable side as invasion when rare. They explicitly distinguish this linear analysis from the nonlinear long-time behavior <a href="#ref-1">[1, pp. 148–149]</a>.</p>
   </div>
 
   <h4 id="tpw-description">Periodic invaded state and traveling periodic wave</h4>
-  <p>The positive stationary state considered in <a href="#ref-1">[1, Eq. (10), p. 147]</a>, when it exists, is a periodic function \(p\), not a prescribed constant:</p>
+  <p>The positive stationary state considered in <a href="#ref-1">[1, Eq. (10), p. 147]</a>, when it exists, is a periodic function \(p\):</p>
   <div class="equation">\[
     \begin{cases}
       (D(x)p')'+\bigl(r(x)-\mu p\bigr)p=0
@@ -249,12 +249,12 @@
     \end{gathered}
     \tag{B8}
   \]</div>
-  <p>Here \(u_{\mathrm{TPW}}\) denotes the wave itself. The shift identity in (B8) is not imposed on an arbitrary Cauchy solution with localized initial data.</p>
+
 
   <div class="numerical-observation">
     <span class="question-label">Numerical observations in the 1986 paper</span>
     <p>For the localized initial distributions studied in <a href="#ref-1">[1, pp. 149–151, Fig. 3]</a>, the computations report extinction on the linearly stable side and outward spreading in both directions on the unstable side. In the spreading case, the profiles approach the TPW pattern, while the population near the introduction site approaches a periodic stationary distribution.</p>
-    <p>These are the reported nonlinear numerical observations, not a theorem of convergence to a TPW proved in <a href="#ref-1">[1]</a>.</p>
+
   </div>
 
   <h4 id="patch-dispersion">Leading-edge dispersion relation</h4>
@@ -265,7 +265,7 @@
     \qquad [g]_{x_j}=[D(g'-\sigma g)]_{x_j}=0.
     \tag{B9}
   \]</div>
-  <p>The dispersion relation in <a href="#ref-1">[1, Eqs. (30)–(31), p. 154]</a>, rewritten in the dimensional notation of (B1)–(B2), is</p>
+  <p>The dispersion relation in <a href="#ref-1">[1, Eqs. (30)–(31), p. 154]</a> is</p>
   <div class="equation">\[
     \begin{aligned}
       \cosh(\sigma L)
@@ -286,12 +286,12 @@
   <div class="open-problem-box" id="historical-tpw-question">
     <span class="open-label">Historical question · Not proved in the 1986 paper</span>
     <p><strong>Stability of the TPW and selection of \(c_{\min}\) by localized initial data.</strong> The authors explicitly state that they did not prove TPW stability mathematically <a href="#ref-1">[1, pp. 151 and 159]</a>; their computations support the selection of the minimum speed <a href="#ref-1">[1, p. 155]</a>.</p>
-    <p class="open-status">This records the scope of the 1986 article. It does not assert that the question remains open today; later results must be checked for the precise model and interface assumptions.</p>
+
   </div>
-  <p><strong>Connection with the later sections.</strong> The patch model separates three questions: the linear invasion threshold, the construction and speed of a periodic front, and the long-time behavior of an initially localized population. These distinctions organize the discussion of <a href="#fronts">pulsating fronts</a>, <a href="#speeds">front speeds</a>, and the <a href="#cauchy">Cauchy problem</a> below. No proofs are included here.</p>
+  <p><strong>Connection with the later sections.</strong> The patch model separates three questions: the linear invasion threshold, the construction and speed of a periodic front, and the long-time behavior of an initially localized population. These distinctions organize the discussion of <a href="#fronts">pulsating fronts</a>, <a href="#speeds">front speeds</a>, and the <a href="#cauchy">Cauchy problem</a> below.</p>
 
   <h3 id="anisotropic">1.2. From One Dimension to Two: Anisotropic Spreading</h3>
-  <p>Kinezaki, Kawasaki, Takasu and Shigesada <a href="#ref-6">[6]</a> studied two-dimensional periodic striped habitats. To connect that geometry with the notation of (B1), the following equation is an illustrative two-dimensional extension of the same Fickian logistic model, rather than a transcription of the exact model in <a href="#ref-6">[6]</a>:</p>
+  <p>Kinezaki, Kawasaki, Takasu and Shigesada <a href="#ref-6">[6]</a> studied two-dimensional periodic striped habitats. An illustrative two-dimensional extension of (B1) in this geometry is</p>
   <div class="equation">\[
     \partial_t u(t,x,y)
       = \nabla_{x,y}\!\cdot\!\left(D(x)\nabla_{x,y}u(t,x,y)\right)
@@ -308,7 +308,7 @@
     \tag{B13}
   \]</div>
   <p>For line-supported initial data, the spreading pattern approaches a traveling periodic wave (TPW), with a front speed that can be determined analytically in the model. For a localized introduction, the invaded region expands in different directions with direction-dependent ray speeds. Their analysis shows that the asymptotic envelope can be nearly circular, oval-like, or spindle-like, depending on the parameters; in the striped configurations considered, the envelope is elongated along the stripes. Enlarging the fragmentation scale while keeping the relative patch proportions fixed increases the ray speed in every direction [<a href="#ref-6">6</a>].</p>
-  <p>The one-dimensional model of Shigesada, Kawasaki and Teramoto was later extended to two-dimensional striped habitats by Kinezaki, Kawasaki, Takasu and Shigesada (2003) [<a href="#ref-6">6</a>]. In this setting, favorable and unfavorable belts alternate in space. The authors studied both line-supported initial populations and populations introduced near a single point. For line-supported initial data, the invasion develops into a traveling periodic wave; for a localized introduction, the expansion is described by direction-dependent ray speeds.</p>
+
   <p>This distinction is important for the Cauchy problem. In a heterogeneous periodic environment, the population need not spread equally fast in every direction. The geometry of the habitat can produce <span class="highlight">anisotropic spreading</span>: the large-time invaded region depends on the direction in which it is observed. Thus, the one-dimensional wave speed is only part of the picture; in higher dimensions, one must also understand the shape of the spreading set and the dependence of propagation speed on direction.</p>
 
   <figure class="figure">
@@ -340,9 +340,9 @@
         <text x="586" y="218">Longer spread</text>
         <text x="437" y="279" fill="#57606a">Elongated parallel to habitat stripes</text>
       </g>
-      <text x="380" y="296" text-anchor="middle" font-size="11.5" fill="#57606a">Conceptual illustration only; the precise shape and ray speeds depend on model parameters.</text>
+      <text x="380" y="296" text-anchor="middle" font-size="11.5" fill="#57606a">The shape and directional speeds depend on model parameters.</text>
     </svg>
-    <figcaption class="figcaption"><strong>Figure 2.</strong> Anisotropic spreading in a periodically striped habitat. The schematic reflects the qualitative result in Kinezaki et al. (2003): the asymptotic invaded region can be nearly circular, oval-like, or spindle-like, and the patterns considered are elongated along the stripes. The drawing is illustrative, not a reproduction of their computed profile.</figcaption>
+    <figcaption class="figcaption"><strong>Figure 2.</strong> Anisotropic spreading in a periodically striped habitat. The schematic reflects the qualitative result in Kinezaki et al. (2003): the asymptotic invaded region can be nearly circular, oval-like, or spindle-like, and the patterns considered are elongated along the stripes.</figcaption>
   </figure>
 
   <div class="question-box">
