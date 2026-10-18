@@ -135,12 +135,12 @@
     </div>
     <div class="term">
       <strong>Growth</strong>
-      <div>\(r(x)n\)</div>
+      <div>\(r(x)u\)</div>
       <p>Low-density reproduction or decline. Positive growth supports invasion, while negative growth suppresses it.</p>
     </div>
     <div class="term">
       <strong>Density regulation</strong>
-      <div>\(-r(x)n^2/K\)</div>
+      <div>\(-r(x)u^2\)</div>
       <p>Logistic saturation prevents indefinite growth and models competition for limited resources.</p>
     </div>
   </div>
@@ -182,7 +182,7 @@
   <div class="equation">\[
     \partial_t u(t,x,y)
       = \nabla_{x,y}\!\cdot\!\left(D(x)\nabla_{x,y}u(t,x,y)\right)
-        + r(x)u(t,x,y)\left(1-\frac{u(t,x,y)}{K}\right),
+        + r(x)u(t,x,y)\big(1-u(t,x,y)\big),
     \quad (x,y)\in\mathbb R^2,\ t>0,
     \tag{B3}
   \]</div>
