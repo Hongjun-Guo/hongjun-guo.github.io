@@ -90,43 +90,65 @@
   <p class="note">These are common baseline assumptions, not a claim that one set of hypotheses is minimal for every theorem. Each topic below must specify any additional assumptions needed for existence, uniqueness, speed formulas, stability, or asymptotic spreading.</p>
 
   <h2>1. Existence of Pulsating Traveling Fronts</h2>
-  <h3>1.1. Problem and assumptions</h3>
-  <p>We study equation (1) in the whole space \(\mathbb{R}^N\), with the spatial periodicity and baseline ellipticity/regularity assumptions stated in the preceding section. To state a representative existence result, we make the following additional assumptions. They are sufficient hypotheses for the classical front theory described below; they are not claimed to be the weakest possible assumptions.</p>
-  <ul>
-    <li><strong>(F1) Periodic coefficients.</strong> The matrix \(A\), drift \(b\), and reaction \(f\) are periodic with respect to the same lattice. For the classical formulation, assume the coefficients are sufficiently regular (for example, \(A\in C^{1,\alpha}\), \(b\in C^{0,\alpha}\), and \(f\) is Hölder continuous in \(x\) and locally \(C^1\) in \(u\)), with the corresponding norms bounded on a periodicity cell.</li>
-    <li><strong>(F2) Uniformly elliptic diffusion.</strong> The matrix \(A(x)\) is symmetric and there are constants \(0<\lambda\leq\Lambda\) such that \(\lambda|\xi|^2\leq \xi\cdot A(x)\xi\leq\Lambda|\xi|^2\) for all \(\xi\in\mathbb{R}^N\) and all \(x\).</li>
-    <li><strong>(F3) Two equilibria.</strong> \(f(x,0)=f(x,1)=0\) for every \(x\).</li>
-    <li><strong>(F4) Combustion (ignition) reaction.</strong> There is an ignition threshold \(\theta\in(0,1)\) such that \(f(x,s)=0\) for \(s\leq\theta\) and for \(s\geq1\), while \(f(x,s)>0\) for \(\theta<s<1\). The reaction is locally Lipschitz in \(s\), uniformly in \(x\), and satisfies the usual regularity assumptions required for a classical solution.</li>
-  </ul>
-  <p>The hypotheses above describe one standard setting in which a clean existence-and-uniqueness theorem is available. The monostable/KPP and bistable cases require different reaction assumptions and are discussed separately in the literature; one should not infer their conclusions from the combustion case without checking those hypotheses.</p>
-
-  <h3>1.2. Definition of a pulsating traveling front</h3>
-  <p>Fix a unit direction \(e\in\mathbb{S}^{N-1}\) and a speed \(c>0\). A function \(u:\mathbb{R}\times\mathbb{R}^N\to[0,1]\) is called a <em>pulsating traveling front</em> of equation (1), propagating in direction \(e\) with speed \(c\), if there exists a profile \(\Phi:\mathbb{R}^N\times\mathbb{R}\to[0,1]\) such that</p>
+  <h3>1.1. Hypotheses</h3>
+  <p>We consider equation (1) in \(\mathbb{R}^N\), with the periodicity assumptions and notation of the general framework. For the representative combustion result below, impose the following additional hypotheses.</p>
+  <p><strong>(H1) Periodicity and regularity.</strong> The coefficients \(A,b,f\) are periodic with respect to a common lattice \(\mathcal L\). For some \(\alpha\in(0,1)\), assume, for example, \(A\in C^{1,\alpha}(\mathbb R^N)\), \(b\in C^{0,\alpha}(\mathbb R^N;\mathbb R^N)\), and \(f\) is Hölder continuous in \(x\) and locally \(C^1\) in \(s\), uniformly on bounded \(s\)-intervals.</p>
+  <p><strong>(H2) Uniform ellipticity.</strong> There exist \(0<\lambda\leq\Lambda\) such that</p>
   <div class="equation">\[
-    u(t,x)=\Phi\big(x,x\cdot e-ct\big),
-    \qquad
-    \Phi(x+k,s)=\Phi(x,s)\quad(k\in\mathcal{L}),
+    \lambda|\xi|^2\leq \xi\cdot A(x)\xi\leq\Lambda|\xi|^2,
+    \qquad x,\xi\in\mathbb R^N.
+  \]</div>
+  <p><strong>(H3) Equilibria.</strong> For every \(x\in\mathbb R^N\),</p>
+  <div class="equation">\[
+    f(x,0)=f(x,1)=0.
+  \]</div>
+  <p><strong>(H4) Combustion nonlinearity.</strong> There is \(\theta\in(0,1)\) such that, for all \(x\in\mathbb R^N\),</p>
+  <div class="equation">\[
+    \begin{aligned}
+      f(x,s)&=0 &&\text{if }s\leq\theta\text{ or }s\geq1,\\
+      f(x,s)&>0 &&\text{if }\theta<s<1.
+    \end{aligned}
+  \]</div>
+  <p>These are a convenient classical set of sufficient assumptions for the stated result, not a claim of optimal minimality. KPP/monostable and bistable reactions require different hypotheses.</p>
+
+  <h3>1.2. Definition</h3>
+  <p>Let \(e\in\mathbb S^{N-1}\) and \(c>0\). A <em>pulsating traveling front</em> of (1) in direction \(e\), with speed \(c\), is an entire solution \(u\in C^{1,2}(\mathbb R\times\mathbb R^N)\), \(0<u<1\), for which there exists a profile \(\Phi\) satisfying</p>
+  <div class="equation">\[
+    u(t,x)=\Phi(x,x\cdot e-ct),\qquad
+    \Phi(x+k,z)=\Phi(x,z)
+    \quad(k\in\mathcal L),
     \tag{2}
   \]</div>
-  <p>and the profile is nonincreasing in its second variable and connects the two equilibria uniformly in the periodic variable:</p>
+  <p>with \(\Phi\) nonincreasing in \(z\) and</p>
   <div class="equation">\[
-    \lim_{s\to-\infty}\Phi(x,s)=1,\qquad
-    \lim_{s\to+\infty}\Phi(x,s)=0,
-    \quad\text{uniformly in }x\in\mathbb{R}^N.
+    \lim_{z\to-\infty}\Phi(x,z)=1,\qquad
+    \lim_{z\to+\infty}\Phi(x,z)=0
+    \quad\text{uniformly in }x\in\mathbb R^N.
     \tag{3}
   \]</div>
-  <p>In addition, \(u\) must solve equation (1) in the classical (or theorem-appropriate weak) sense. The representation (2) describes a front whose level sets move in direction \(e\) with effective speed \(c\), while the profile oscillates according to the periodic medium. Reversing the orientation of the profile gives an equivalent convention with the limits \(0\) and \(1\) interchanged.</p>
+  <p>Equivalently, \(\Phi\) is periodic in its first variable and connects the state \(1\) behind the front to the state \(0\) ahead of it. The function \(u\) is defined for every \(t\in\mathbb R\), so a pulsating front is an entire solution, not merely a solution of an initial-value problem.</p>
 
-  <h3>1.3. A representative existence theorem</h3>
-  <p><strong>Theorem 1 (Berestycki–Hamel, 2002; combustion case).</strong> Assume the periodic whole-space setting above and the standard smoothness, uniform ellipticity, and combustion-reaction hypotheses (F1)–(F4). Then for every prescribed direction \(e\in\mathbb{S}^{N-1}\), there exists a pulsating traveling front solving (1)–(3). In the combustion setting treated in the paper, the propagation speed is unique, the front is monotone in time, and the profile is unique up to translation in time (equivalently, a shift of the traveling coordinate), under the hypotheses of the theorem.</p>
-  <p><strong>Reference:</strong> H. Berestycki and F. Hamel, “Front propagation in periodic excitable media,” <em>Communications on Pure and Applied Mathematics</em>, 55(8) (2002), 949–1032, <a href="https://doi.org/10.1002/cpa.3022">doi:10.1002/cpa.3022</a> [3]. Their paper treats a broader class of periodic domains and coefficients. For biological invasion models in periodically fragmented habitats, see H. Berestycki, F. Hamel and L. Roques, “Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts,” <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8) (2005), 1101–1146 [5].</p>
+  <h3>1.3. Existence theorem</h3>
+  <p><strong>Theorem 1 (Berestycki–Hamel [3], combustion case).</strong> Assume (H1)–(H4) in the periodic whole-space setting above. For each \(e\in\mathbb S^{N-1}\), there exist a speed \(c_e>0\) and a profile \(\Phi_e\) such that</p>
+  <div class="equation">\[
+    \begin{cases}
+      u_t=\nabla\cdot(A(x)\nabla u)+b(x)\cdot\nabla u+f(x,u),
+          &(t,x)\in\mathbb R\times\mathbb R^N,\\
+      u(t,x)=\Phi_e(x,x\cdot e-c_et),\\
+      \Phi_e(x+k,z)=\Phi_e(x,z),&k\in\mathcal L,\\
+      \partial_z\Phi_e(x,z)\leq0,\\
+      \displaystyle\lim_{z\to-\infty}\Phi_e(x,z)=1,\quad
+      \displaystyle\lim_{z\to+\infty}\Phi_e(x,z)=0
+          &\text{uniformly in }x.
+    \end{cases}
+    \tag{4}
+  \]</div>
+  <p>For the combustion problem covered by [3], the propagation speed is unique; the front profile is unique up to translation under the theorem's hypotheses.</p>
+  <p><strong>Reference [3].</strong> H. Berestycki and F. Hamel, “Front propagation in periodic excitable media,” <em>Communications on Pure and Applied Mathematics</em>, 55(8) (2002), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">https://doi.org/10.1002/cpa.3022</a>.</p>
+  <p>For a periodic biological-invasion model, see also H. Berestycki, F. Hamel and L. Roques, “Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts,” <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8) (2005), 1101–1146 [5].</p>
 
-  <h3>1.4. Scope and distinctions</h3>
-  <ul>
-    <li><strong>KPP/monostable reactions:</strong> fronts can exist for a range of speeds, typically \(c\geq c^*(e)\); the minimal speed is characterized by a spectral variational formula under KPP hypotheses. See Berestycki–Hamel–Nadirashvili (2005), Section 2 below [4].</li>
-    <li><strong>Bistable reactions:</strong> existence and speed selection depend on different sign and stability assumptions. The combustion theorem above does not automatically apply.</li>
-    <li><strong>Initial-value versus entire solutions:</strong> a pulsating front is an entire solution, defined for all \(t\in\mathbb{R}\). It is not itself an initial-value problem, although its profile can describe the large-time behavior of solutions to suitable initial data.</li>
-  </ul>
+  <h3>1.4. Other reaction types</h3>
+  <p>Theorem 1 is specifically a combustion-type result. For KPP reactions, fronts are typically associated with speeds \(c\geq c^*(e)\), where \(c^*(e)\) is determined by a spectral variational formula; see [4]. Bistable reactions require their own sign, stability, and speed-selection hypotheses. These cases are not covered by (H4).</p>
 
   <h2>2. Spreading Speeds and Minimal Speeds</h2>
   <p><span class="tag">Main question</span> How fast does an invading solution spread, and can the minimal speed of a pulsating front be computed from a linear eigenvalue problem?</p>
