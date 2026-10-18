@@ -84,6 +84,37 @@
     <figcaption class="figcaption"><strong>Figure 1.</strong> Schematic habitat with alternating patches. The drawing is illustrative: the original ecological model specifies the patch parameters mathematically.</figcaption>
   </figure>
 
+  <h3>From one dimension to two: anisotropic spreading</h3>
+  <p>The one-dimensional model of Shigesada, Kawasaki and Teramoto was later extended to two-dimensional striped habitats by Kinezaki, Kawasaki, Takasu and Shigesada (2003) [<a href="#ref-6">6</a>]. In this setting, favorable and unfavorable belts alternate in space. The authors studied both line-supported initial populations and populations introduced near a single point. For line-supported initial data, the invasion develops into a traveling periodic wave; for a localized introduction, the expansion is described by direction-dependent ray speeds.</p>
+  <p>This distinction is important for the Cauchy problem. In a heterogeneous periodic environment, the population need not spread equally fast in every direction. The geometry of the habitat can produce <span class="highlight">anisotropic spreading</span>: the large-time invaded region depends on the direction in which it is observed. Thus, the one-dimensional wave speed is only part of the picture; in higher dimensions, one must also understand the shape of the spreading set and the dependence of propagation speed on direction.</p>
+
+  <figure class="figure">
+    <svg viewBox="0 0 760 280" role="img" aria-labelledby="anis-title anis-desc">
+      <title id="anis-title">Schematic of direction-dependent spreading</title>
+      <desc id="anis-desc">Two-dimensional periodic habitat belts and a non-circular invaded region illustrating different spreading distances in different directions.</desc>
+      <defs><clipPath id="spread-clip"><rect x="22" y="20" width="310" height="226" rx="6"/></clipPath></defs>
+      <rect x="22" y="20" width="310" height="226" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+      <g clip-path="url(#spread-clip)">
+        <rect x="22" y="20" width="52" height="226" fill="#d8f0dc"/><rect x="74" y="20" width="52" height="226" fill="#fff0c2"/>
+        <rect x="126" y="20" width="52" height="226" fill="#d8f0dc"/><rect x="178" y="20" width="52" height="226" fill="#fff0c2"/>
+        <rect x="230" y="20" width="52" height="226" fill="#d8f0dc"/><rect x="282" y="20" width="52" height="226" fill="#fff0c2"/>
+        <path d="M48 133 H310 M179 35 V232" stroke="#8b949e" stroke-width="1" stroke-dasharray="4 5"/>
+        <ellipse cx="179" cy="133" rx="119" ry="73" fill="#a8d8dc" fill-opacity=".7" stroke="#16818a" stroke-width="2.5"/>
+        <circle cx="179" cy="133" r="5" fill="#155e63"/>
+      </g>
+      <text x="177" y="12" text-anchor="middle" font-size="13" fill="#57606a">Periodic striped habitat</text>
+      <path d="M357 133 H404 M395 126 L404 133 L395 140" stroke="#0969da" stroke-width="2" fill="none"/>
+      <rect x="423" y="20" width="315" height="226" rx="6" fill="#fff" stroke="#d0d7de"/>
+      <path d="M446 133 H715 M580 36 V232" stroke="#8b949e" stroke-width="1" stroke-dasharray="4 5"/>
+      <path d="M580 133 C580 82 624 69 661 93 C690 111 697 145 669 174 C638 207 591 194 566 179 C529 156 530 111 551 91 C561 80 570 78 580 78 Z" fill="#a8d8dc" fill-opacity=".6" stroke="#16818a" stroke-width="2.5"/>
+      <circle cx="580" cy="133" r="5" fill="#155e63"/>
+      <path d="M580 133 L678 133 M580 133 L580 79" stroke="#155e63" stroke-width="1.5"/>
+      <text x="580" y="12" text-anchor="middle" font-size="13" fill="#57606a">Direction-dependent invaded region</text>
+      <text x="380" y="270" text-anchor="middle" font-size="13" fill="#57606a">Schematic only: actual spreading sets depend on the equation and habitat.</text>
+    </svg>
+    <figcaption class="figcaption"><strong>Figure 2.</strong> Conceptual illustration of anisotropic spreading in two dimensions. The invaded region is not required to be circular; the propagation distance may vary with direction.</figcaption>
+  </figure>
+
   <div class="question-box">
     <span class="question-label">Guiding mathematical question</span>
     <p>How do spatial periodicity and environmental heterogeneity affect <strong>invasion, propagation speed, and the shape of a spreading front</strong>?</p>
@@ -284,6 +315,7 @@
     <li id="ref-3">Berestycki, H. &amp; Hamel, F. (2002). Front propagation in periodic excitable media. <em>Communications on Pure and Applied Mathematics</em>, 55(8), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">doi:10.1002/cpa.3022</a>.</li>
     <li id="ref-4">Berestycki, H., Hamel, F. &amp; Nadirashvili, N. (2005). The speed of propagation for KPP type problems. I: Periodic framework. <em>Journal of the European Mathematical Society</em>, 7(2), 173–213. <a href="https://doi.org/10.4171/JEMS/26">doi:10.4171/JEMS/26</a>.</li>
     <li id="ref-5">Berestycki, H., Hamel, F. &amp; Roques, L. (2005). Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts. <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8), 1101–1146. <a href="https://doi.org/10.1016/j.matpur.2004.10.006">doi:10.1016/j.matpur.2004.10.006</a>.</li>
+    <li id="ref-6">Kinezaki, N., Kawasaki, K., Takasu, F. &amp; Shigesada, N. (2003). Modeling biological invasions into periodically fragmented environments. <em>Theoretical Population Biology</em>, 64(3), 291–302. <a href="https://doi.org/10.1016/S0040-5809(03)00091-1">doi:10.1016/S0040-5809(03)00091-1</a>.</li>
   </ol>
 
   <h2>Known Results, Limitations, and Open Problems</h2>
