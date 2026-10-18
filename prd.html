@@ -174,7 +174,8 @@
         <a href="#fronts">3. Pulsating traveling fronts</a>
         <a href="#speeds">4. Minimal speeds and spectra</a>
         <a href="#cauchy">5. Cauchy problem and spreading sets</a>
-        <a href="#open-problems">6. Mathematical questions</a>
+        <a href="#convergence">6. Convergence to pulsating fronts</a>
+        <a href="#open-problems">7. Mathematical questions</a>
         <a href="#references">References</a>
       </nav>
     </aside>
@@ -394,23 +395,18 @@
   <h3 id="anisotropic">1.2. Two-Dimensional Stripes and Anisotropic Spreading</h3>
   <p>Striped habitat model, motivated by Kinezaki et al. <a href="#ref-6">[6]</a>:</p>
   <div class="equation">\[
-    \begin{gathered}
-      u_t=\nabla_{x,y}\cdot\!\left(D(x)\nabla_{x,y}u\right)+(r(x)-\mu u)u,\\
-      (x,y)\in\mathbb R^2,\qquad t>0.
-    \end{gathered} \tag{B12}
+    u_t=\nabla_{x,y}\cdot\!\left(D(x)\nabla_{x,y}u\right)+(r(x)-\mu u)u,
+    \quad (x,y)\in\mathbb R^2,\quad t>0. \tag{B12}
   \]</div>
   <div class="equation">\[
-    \begin{gathered}
-      D(x+L)=D(x)>0,\qquad r(x+L)=r(x),\\
-      \mu>0,\qquad e_\vartheta=(\cos\vartheta,\sin\vartheta).
-    \end{gathered}
+    D(x+L)=D(x)>0,\quad r(x+L)=r(x),\quad\mu>0,
+    \qquad e_\vartheta=(\cos\vartheta,\sin\vartheta).
   \]</div>
   <p>Two initial-data geometries:</p>
   <div class="equation">\[
     \begin{gathered}
       \text{Strip introduction:}\\
-      u_0(x,y)=g((x,y)\cdot e),\\
-      0\leq g\in C_c(\mathbb R),\qquad g\not\equiv0;\\
+      u_0(x,y)=g((x,y)\cdot e),\quad 0\leq g\in C_c(\mathbb R),\quad g\not\equiv0;\\
       \text{Localized introduction:}\\
       0\leq u_0\in C_c(\mathbb R^2),\qquad u_0\not\equiv0.
     \end{gathered} \tag{B13}
@@ -503,10 +499,9 @@
   <h2 id="framework">2. Equation, Assumptions, and Reaction Classes</h2>
   <h3>2.1. Periodic equation</h3>
   <div class="equation" id="eq-general">\[
-    \begin{gathered}
-      u_t=\mathcal A u+f(x,u),\qquad(t,x)\in I\times\mathbb R^N,\\
-      \mathcal A u:=\nabla\cdot(A(x)\nabla u)+b(x)\cdot\nabla u.
-    \end{gathered} \tag{1}
+    u_t=\mathcal A u+f(x,u),\qquad
+    \mathcal A u:=\nabla\cdot(A(x)\nabla u)+b(x)\cdot\nabla u,
+    \quad (t,x)\in I\times\mathbb R^N. \tag{1}
   \]</div>
   <p>\(I=(0,\infty)\) for the Cauchy problem; \(I=\mathbb R\) for an entire front.</p>
 
@@ -518,8 +513,8 @@
         \mathcal L=\ell_1\mathbb Z\times\cdots\times\ell_N\mathbb Z,\\
         A\in C^{2,\alpha},\quad b\in C^{1,\alpha},\quad
         f,\ f_s\in C^{0,\alpha}(\mathbb R^N\times[0,1]),\\
-        A(x+k)=A(x),\qquad b(x+k)=b(x),\\
-        f(x+k,s)=f(x,s)\qquad(k\in\mathcal L).
+        A(x+k)=A(x),\quad b(x+k)=b(x),\quad
+        f(x+k,s)=f(x,s)\quad(k\in\mathcal L).
       \end{gathered}
     \]</div>
     <p><strong>(H2) Uniform ellipticity.</strong></p>
@@ -544,15 +539,13 @@
   <div class="statement" id="reaction-classes">
     <p><strong>(K) Fisher–KPP.</strong></p>
     <div class="equation">\[
-      \begin{gathered}
-        a(x):=f_s(x,0)>0,\\
-        0&lt;f(x,s)\leq a(x)s\quad(0&lt;s&lt;1).
-      \end{gathered} \tag{K}
+      a(x):=f_s(x,0)>0,\qquad
+      0&lt;f(x,s)\leq a(x)s\quad(0&lt;s&lt;1). \tag{K}
     \]</div>
     <p><strong>(I) Ignition.</strong> For some \(\theta\in(0,1)\), \(\delta\in(0,1-\theta)\),</p>
     <div class="equation">\[
       \begin{gathered}
-        f(x,s)=0\quad(0\leq s\leq\theta),\\
+        f(x,s)=0\quad(0\leq s\leq\theta),\qquad
         f(x,s)>0\quad(\theta&lt;s&lt;1),\\
         f_s(x,s)\leq0\quad(1-\delta\leq s\leq1).
       \end{gathered} \tag{I}
@@ -628,13 +621,11 @@
     <p><strong>Theorem 1 · Berestycki–Hamel <a href="#ref-3">[3]</a>.</strong> Assume (H1)–(H4) and (I). Then, for every \(e\in\mathbb S^{N-1}\),</p>
     <div class="equation">\[
       \begin{gathered}
-        \exists\,c_I(e)>0:\quad \mathscr C(e)=\{c_I(e)\},\\
-        \Phi_z&lt;0.
+        \exists\,c_I(e)>0:\qquad \mathscr C(e)=\{c_I(e)\},\qquad \Phi_z&lt;0,\\
+        \Phi_1,\Phi_2\text{ front profiles in direction }e
+        \ \Longrightarrow\
+        \exists\tau\in\mathbb R:\ \Phi_2(x,z)=\Phi_1(x,z+\tau).
       \end{gathered} \tag{4}
-    \]</div>
-    <p>For any two front profiles \(\Phi_1,\Phi_2\) in direction \(e\),</p>
-    <div class="equation">\[
-      \exists\tau\in\mathbb R:\quad\Phi_2(x,z)=\Phi_1(x,z+\tau).
     \]</div>
   </div>
 
@@ -652,10 +643,9 @@
     <span class="question-label">Monostable extension <a href="#ref-3">[3]</a></span>
     <p>Under (H1)–(H4), assume \(f_s(x,s)\leq0\) near \(s=1\). Then</p>
     <div class="equation">\[
-      \begin{gathered}
-        f(x,s)>0\quad(0&lt;s&lt;1)\\
-        \Longrightarrow\quad\mathscr C(e)=[c_M^*(e),\infty),\quad c_M^*(e)>0.
-      \end{gathered}
+      f(x,s)>0\quad(0&lt;s&lt;1)
+      \quad\Longrightarrow\quad
+      \mathscr C(e)=[c_M^*(e),\infty),\quad c_M^*(e)>0.
     \]</div>
     <p>The KPP bound \(f(x,s)\leq f_s(x,0)s\) is the additional hypothesis for the linear speed formula.</p>
   </div>
@@ -672,17 +662,15 @@
   <div class="statement theorem" id="bistable-theorem">
     <p><strong>Theorem 3 · Ding–Hamel–Zhao <a href="#ref-7">[7]</a>.</strong> Suppose the homogenized equation has a unique front up to translation:</p>
     <div class="equation">\[
-      \begin{gathered}
-        a_H\phi_0''+c_0\phi_0'+\bar f(\phi_0)=0,\\
-        \phi_0(-\infty)=1,\quad\phi_0(+\infty)=0,\quad c_0\neq0.
-      \end{gathered}
+      a_H\phi_0''+c_0\phi_0'+\bar f(\phi_0)=0,\qquad
+      \phi_0(-\infty)=1,\quad\phi_0(+\infty)=0,\quad c_0\neq0.
     \]</div>
     <p>Then, for some \(L_*>0\),</p>
     <div class="equation">\[
       \begin{gathered}
-        0&lt;L&lt;L_*\ \Longrightarrow\ \exists\,(c_L,\Phi_L),\quad c_L\neq0,\\
-        u_L(t,x)=\Phi_L(x/L,x-c_Lt),\\
-        \Phi_L(y+1,z)=\Phi_L(y,z),\\
+        0&lt;L&lt;L_*\ \Longrightarrow\
+        \exists\,u_L(t,x)=\Phi_L(x/L,x-c_Lt),\qquad c_L\neq0,\\
+        \Phi_L(y+1,z)=\Phi_L(y,z),\qquad
         \Phi_L(y,-\infty)=1,\quad\Phi_L(y,+\infty)=0,\\
         \lim_{L\to0^+}c_L=c_0.
       \end{gathered}
@@ -691,8 +679,7 @@
     <div class="equation">\[
       \begin{gathered}
         \int_0^1 f(y,s)\,ds>0,\quad f_s(y,\theta(y))>0\quad\forall y\\
-        \Longrightarrow\quad\exists L^*>0:\\
-        L>L^*\ \Rightarrow\ \exists\text{ a front with }c_L>0.
+        \Longrightarrow\quad\exists L^*>0:\qquad L>L^*\ \Rightarrow\ \exists\text{ a front with }c_L>0.
       \end{gathered}
     \]</div>
   </div>
@@ -704,10 +691,8 @@
     \]</div>
     <p>Given \((a,f)\), characterize \(\mathcal E(a,f)\) and its boundary. For which \(L\) does a stationary connection exist?</p>
     <div class="equation">\[
-      \begin{gathered}
-        \partial_x\!\left(a(x/L)p'\right)+f(x/L,p)=0,\\
-        0&lt;p&lt;1,\quad p(-\infty)=1,\quad p(+\infty)=0.
-      \end{gathered}
+      \partial_x\!\left(a(x/L)p'\right)+f(x/L,p)=0,\quad
+      0&lt;p&lt;1,\quad p(-\infty)=1,\quad p(+\infty)=0.
     \]</div>
   </div>
 
@@ -757,11 +742,9 @@
   <div class="source-result" id="homogeneous-speed">
     <p>For \(A=D I_N\), \(b=0\), \(a(x)=r>0\),</p>
     <div class="equation">\[
-      \begin{gathered}
-        \lambda(e,\sigma)=D\sigma^2+r,\\
-        c^*=\min_{\sigma>0}\left(D\sigma+\frac r\sigma\right)=2\sqrt{Dr},\\
-        \sigma_* =\sqrt{r/D}.
-      \end{gathered}
+      \lambda(e,\sigma)=D\sigma^2+r,\qquad
+      c^*=\min_{\sigma>0}\left(D\sigma+\frac r\sigma\right)
+        =2\sqrt{Dr},\qquad \sigma_* =\sqrt{r/D}.
     \]</div>
   </div>
   <h3>4.3. Periodic invaded states</h3>
@@ -769,10 +752,8 @@
     <span class="question-label">Biological invasion model <a href="#ref-5">[5]</a></span>
     <p>For periodic KPP models with a positive periodic invaded state \(p\), the front connects \(p(x)\) to \(0\):</p>
     <div class="equation">\[
-      \begin{gathered}
-        \mathcal A p+f(x,p)=0,\qquad p(x+k)=p(x)>0,\\
-        \Phi(x,-\infty)=p(x),\qquad\Phi(x,+\infty)=0.
-      \end{gathered}
+      \mathcal A p+f(x,p)=0,\quad p(x+k)=p(x)>0,\qquad
+      \Phi(x,-\infty)=p(x),\quad \Phi(x,+\infty)=0.
     \]</div>
     <p>The linear operator at \(0\) remains \(\mathcal A+f_s(x,0)\).</p>
   </div>
@@ -780,11 +761,10 @@
   <h2 id="cauchy">5. Cauchy Problems and Spreading Geometry</h2>
   <h3>5.1. Compact initial populations</h3>
   <div class="equation">\[
-    \begin{gathered}
-      u_t=\mathcal A u+f(x,u),\qquad t>0,\quad x\in\mathbb R^N,\\
-      u(0,x)=u_0(x),\qquad 0\leq u_0\leq1,\\
-      u_0\not\equiv0,\qquad u_0\in C_c(\mathbb R^N).
-    \end{gathered} \tag{9}
+    \begin{cases}
+      u_t=\mathcal A u+f(x,u),&t>0,\quad x\in\mathbb R^N,\\
+      u(0,x)=u_0(x),&0\leq u_0\leq1,\quad u_0\not\equiv0,\quad u_0\in C_c(\mathbb R^N).
+    \end{cases} \tag{9}
   \]</div>
   <div class="question-box" id="spreading-question">
     <span class="question-label">Mathematical question · Speed along a ray</span>
@@ -902,12 +882,10 @@
     \]</div>
     <p>Choose an invasion radius \(\rho>0\): a ball \(B_\rho(x_0)\) initially filled at density 1 invades from every centre \(x_0\). Let \(U_\rho\neq\varnothing\), and let \(d_H\) denote Hausdorff distance. Then</p>
     <div class="equation">\[
-      \begin{gathered}
-        d_H(U,U_\rho)&lt;\infty\\
-        \Longrightarrow\quad
-        \lim_{t\to\infty}\frac{d_H(E_\beta(t),\,U+tW_0)}{t}=0,\\
-        0&lt;\beta&lt;1.
-      \end{gathered} \tag{13}
+      d_H(U,U_\rho)&lt;\infty
+      \ \Longrightarrow\
+      \lim_{t\to\infty}\frac{d_H(E_\beta(t),\,U+tW_0)}{t}=0
+      \quad(0&lt;\beta&lt;1). \tag{13}
     \]</div>
     <p>If also \(\mathcal B(U)\cup\mathcal U(U_\rho)=\mathbb S^{N-1}\), the spreading set is</p>
     <div class="equation">\[
@@ -997,7 +975,139 @@
     \]</div>
   </div>
 
-  <h2 id="open-problems">6. Mathematical Questions at a Glance</h2>
+  <h2 id="convergence">6. Convergence to Pulsating Fronts</h2>
+  <h3>6.1. Local limits near an invading front</h3>
+  <div class="statement definition" id="local-limit-set">
+    <p><strong>Translated limit profiles.</strong> For a solution \(0\leq u\leq1\), define</p>
+    <div class="equation">\[
+      \Omega(u):=\left\{\psi:\ \begin{array}{l}
+        \exists\,t_n\to\infty,\quad x_n\in\mathbb R^N,\\
+        u(t_n,x_n+\cdot)\longrightarrow\psi\ \text{in }C_{\mathrm{loc}}(\mathbb R^N)
+      \end{array}\right\}.
+      \tag{15}
+    \]</div>
+    <p>\(C_{\mathrm{loc}}\)-convergence means uniform convergence on every fixed ball. The directional limit set \(\Omega_e(u)\) uses sequences satisfying \(x_n\neq0\) and \(x_n/|x_n|\to e\).</p>
+  </div>
+  <div class="question-box" id="front-convergence-question">
+    <span class="question-label">Mathematical question · Which profiles survive at large time?</span>
+    <p>For invading solutions, characterize the nonconstant elements of \(\Omega(u)\). For which directions \(\nu\) can one find sequences such that, for every \(R>0\),</p>
+    <div class="equation">\[
+      \lim_{n\to\infty}\sup_{|x|\leq R}
+      \left|u(t_n,x_n+x)-\Phi_\nu(x+y,(x+y)\cdot\nu-c_\nu s)\right|=0,
+      \qquad t_n\to\infty?
+      \tag{16}
+    \]</div>
+    <p>Here \(\Phi_\nu\) is a pulsating-front profile, \(s\in\mathbb R\) is a time phase, and \(y\in\mathbb R^N\) is a spatial phase.</p>
+  </div>
+
+  <figure class="figure" id="fig-local-front-profile">
+    <svg viewBox="0 0 760 285" role="img" aria-labelledby="local-front-title local-front-desc">
+      <title id="local-front-title">Observe an expanding front in a translated local window</title>
+      <desc id="local-front-desc">A window centered at a point on a curved invasion boundary is translated to the origin. The enlarged window displays nearly parallel level sets and an outward normal. A density profile then changes from one behind the front to zero ahead.</desc>
+      <defs><marker id="local-front-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7" fill="#315f78"/></marker></defs>
+      <ellipse cx="119" cy="134" rx="87" ry="88" fill="#d8eeee" stroke="#16818a" stroke-width="2.5"/>
+      <rect x="173" y="96" width="57" height="76" rx="3" fill="#fff" fill-opacity=".5" stroke="#b16c46" stroke-width="2"/>
+      <circle cx="206" cy="134" r="4" fill="#b16c46"/>
+      <path d="M241 134H291" stroke="#315f78" stroke-width="1.8" marker-end="url(#local-front-arrow)"/>
+      <rect x="310" y="62" width="157" height="145" rx="6" fill="#f7fbfb" stroke="#d0d7de"/>
+      <path d="M321 63H366V206H321Z" fill="#d8eeee"/>
+      <path d="M350 63Q362 133 350 206 M380 63Q391 133 380 206 M410 63Q421 133 410 206" fill="none" stroke="#16818a" stroke-width="2"/>
+      <path d="M359 135H447" stroke="#315f78" stroke-width="1.8" marker-end="url(#local-front-arrow)"/>
+      <path d="M485 134H532" stroke="#315f78" stroke-width="1.8" marker-end="url(#local-front-arrow)"/>
+      <path d="M552 66V213H735" fill="none" stroke="#8b949e" stroke-width="1.3"/>
+      <path d="M554 89C596 89 603 91 623 122C642 152 656 192 733 197" fill="none" stroke="#16818a" stroke-width="3"/>
+      <g font-family="Arial, sans-serif" font-size="14" fill="#315f78" text-anchor="middle">
+        <text x="119" y="29" font-weight="700">Expanding interface</text><text x="389" y="29" font-weight="700">Translated window</text><text x="642" y="29" font-weight="700">Limiting profile</text>
+        <text x="217" y="190" fill="#b16c46">xₙ</text><text x="426" y="123">ν</text>
+        <text x="119" y="253">Observe near xₙ at time tₙ</text><text x="389" y="253">u(tₙ, xₙ + x)</text><text x="642" y="253">Normal coordinate x · ν</text>
+      </g>
+      <g font-family="Arial, sans-serif" font-size="13" fill="#57606a"><text x="537" y="94">1</text><text x="537" y="216">0</text></g>
+    </svg>
+    <figcaption class="figcaption">The observation window stays bounded while \(t_n\to\infty\). The theorems below specify when the local limit is one-dimensional or contains a pulsating-front profile. Schematic.</figcaption>
+  </figure>
+
+  <h3>6.2. Fisher–KPP: asymptotic one-dimensional symmetry</h3>
+  <div class="statement theorem" id="hamel-rossi-symmetry">
+    <p><strong>Theorem 7 · Hamel–Rossi <a href="#ref-10">[10]</a>.</strong> Let \(N\geq2\) and</p>
+    <div class="equation">\[
+      u_t=\Delta u+f(u),\qquad u(0,\cdot)=\mathbf1_U,\qquad f\in C^1([0,1]),
+    \]</div>
+    <div class="equation">\[
+      f(0)=f(1)=0,\qquad f>0\ \text{on }(0,1),\qquad
+      s\longmapsto\frac{f(s)}s\ \text{is nonincreasing}.
+    \]</div>
+    <p>Assume, for some \(\delta>0\) and some nonempty convex set \(K\),</p>
+    <div class="equation">\[
+      U_\delta\neq\varnothing,\qquad d_H(U,U_\delta)&lt;\infty,\qquad d_H(U,K)&lt;\infty.
+    \]</div>
+    <p>Then every \(\psi\in\Omega(u)\) has the form</p>
+    <div class="equation">\[
+      \psi(x)=g(x\cdot e),\qquad e\in\mathbb S^{N-1},\qquad
+      g\text{ constant or strictly decreasing}.
+      \tag{17}
+    \]</div>
+    <p>Thus translated spatial limits are locally planar. The initial support may be bounded or unbounded.</p>
+  </div>
+
+  <h3>6.3. Periodic media: pulsating fronts among local limits</h3>
+  <div class="statement assumption" id="front-limit-assumptions">
+    <p><strong>Additional hypotheses.</strong> In (1), assume (H1)–(H4). For some \(\delta\in(0,1/2)\),</p>
+    <div class="equation">\[
+      s\longmapsto f(x,s)\quad
+      \begin{cases}
+        \text{is nonincreasing on }[0,\delta],\\
+        \text{is strictly decreasing on }[1-\delta,1],
+      \end{cases}
+      \qquad\forall x.
+    \]</div>
+    <p>In every direction \(\nu\in\mathbb S^{N-1}\), suppose there is a front connecting \(1\) to \(0\):</p>
+    <div class="equation">\[
+      \phi_\nu(t,x)=\Phi_\nu(x,x\cdot\nu-c_\nu t),\qquad c_\nu>0.
+    \]</div>
+    <p>Its translated profiles form the family</p>
+    <div class="equation">\[
+      \mathscr F_\nu:=\{\phi_\nu(s,\cdot+y):s\in\mathbb R,\ y\in\mathbb R^N\}.
+    \]</div>
+  </div>
+  <div class="statement theorem" id="guo-hamel-rossi-convergence">
+    <p><strong>Theorem 8 · Guo–Hamel–Rossi <a href="#ref-11">[11]</a>.</strong> Under these hypotheses, let \(u\) be invading:</p>
+    <div class="equation">\[
+      u(t,\cdot)\longrightarrow1\quad\text{in }C_{\mathrm{loc}}(\mathbb R^N)
+      \quad(t\to\infty).
+    \]</div>
+    <p>For compactly supported \(u_0\),</p>
+    <div class="equation">\[
+      \forall e\in\mathbb S^{N-1},\quad\exists\nu\in\mathbb S^{N-1}:\qquad
+      \mathscr F_\nu\cup\{0,1\}\subset\Omega_e(u).
+      \tag{18}
+    \]</div>
+    <p>For bounded or unbounded supports, suppose \(u\) has a spreading set \(W\) with interior and exterior tangent balls at \(z\in\partial W\). With exterior unit normal \(\nu\),</p>
+    <div class="equation">\[
+      z\cdot\nu=c_\nu,\qquad
+      \mathscr F_\nu\cup\{0,1\}\subset\Omega_{z/|z|}(u).
+      \tag{19}
+    \]</div>
+    <p>The inclusions mean that pulsating-front profiles occur along suitable sequences of observation times and points.</p>
+  </div>
+
+  <h3>6.4. Front-like data: convergence to a single shifted front</h3>
+  <div class="statement theorem" id="bistable-front-convergence">
+    <p><strong>Theorem 9 · Ding–Hamel–Zhao <a href="#ref-7">[7]</a>.</strong> For the smooth bistable equation (6), suppose a front \(U_L(t,x)\) exists with \(c_L\neq0\). If</p>
+    <div class="equation">\[
+      0\leq u_0\leq1,\qquad
+      \lim_{x\to-\infty}u_0(x)=1,\qquad
+      \lim_{x\to+\infty}u_0(x)=0,
+    \]</div>
+    <p>then there exist \(\tau\in\mathbb R\), \(C,\omega>0\) such that</p>
+    <div class="equation">\[
+      \left\|u(t,\cdot)-U_L(t+\tau,\cdot)\right\|_{L^\infty(\mathbb R)}
+        \leq Ce^{-\omega t}\qquad(t\geq0).
+      \tag{20}
+    \]</div>
+    <p>This is uniform convergence on the whole line, with a fixed time shift and an exponential rate.</p>
+  </div>
+
+  <h2 id="open-problems">7. Mathematical Questions at a Glance</h2>
   <div class="statement" id="question-index">
     <p><strong>Invasion and selection.</strong> <a href="#historical-tpw-question">§1.1</a></p>
     <div class="equation">\[
@@ -1013,6 +1123,12 @@
     <div class="equation">\[
       (A,b,f,U)\longmapsto\lambda(e,\sigma),\ c^*(e),\ w_U(\xi),\ W_U.
     \]</div>
+    <p><strong>Convergence and asymptotic profiles.</strong> <a href="#convergence">§6</a></p>
+    <div class="equation">\[
+      u_0\longmapsto\Omega(u),\qquad
+      \mathscr F_\nu\subset\Omega_e(u),\qquad
+      \|u(t,\cdot)-U(t+\tau,\cdot)\|_\infty\longrightarrow0.
+    \]</div>
   </div>
   <h2 id="references">References cited on this page</h2>
   <ol>
@@ -1025,6 +1141,8 @@
     <li id="ref-7">Ding, W., Hamel, F. &amp; Zhao, X.-Q. (2017). Bistable pulsating fronts for reaction-diffusion equations in a periodic habitat. <em>Indiana University Mathematics Journal</em>, 66(4), 1189–1265. <a href="https://doi.org/10.1512/iumj.2017.66.6070">doi:10.1512/iumj.2017.66.6070</a>.</li>
     <li id="ref-8">Hamel, F. &amp; Rossi, L. (2021). Spreading speeds and spreading sets of reaction-diffusion equations. <a href="https://arxiv.org/abs/2105.08344">arXiv:2105.08344</a>.</li>
     <li id="ref-9">Guo, H., Hamel, F. &amp; Rossi, L. Reaction-diffusion equations in periodic media: spreading speeds and spreading sets. <a href="https://arxiv.org/abs/2609.18795">arXiv:2609.18795</a>.</li>
+    <li id="ref-10">Hamel, F. &amp; Rossi, L. Asymptotic one-dimensional symmetry for the Fisher–KPP equation. <em>Journal of the European Mathematical Society</em>. <a href="https://doi.org/10.4171/JEMS/1593">doi:10.4171/JEMS/1593</a>. <a href="https://arxiv.org/abs/2207.05147">arXiv:2207.05147</a>.</li>
+    <li id="ref-11">Guo, H., Hamel, F. &amp; Rossi, L. Reaction-diffusion equations in periodic media: convergence to pulsating fronts. <a href="https://arxiv.org/abs/2505.19726">arXiv:2505.19726</a>.</li>
   </ol>
 
   <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
