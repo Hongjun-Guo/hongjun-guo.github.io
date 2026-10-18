@@ -9,11 +9,15 @@
     body { max-width: 920px; margin: 2.5rem auto; padding: 0 1.25rem 3rem; font: 16px/1.75 Arial, Helvetica, sans-serif; color: #24292f; }
     a { color: #0969da; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    h1 { line-height: 1.25; margin-top: 1.5rem; text-align: center; }
-    h2 { margin-top: 2.4rem; padding-bottom: .35rem; border-bottom: 1px solid #d8dee4; }
-    h3 { margin-bottom: .35rem; }
+    h1 { line-height: 1.25; margin-top: 1.5rem; text-align: center; color: #17324d; letter-spacing: .01em; }
+    h2 { margin-top: 2.4rem; padding-bottom: .35rem; border-bottom: 2px solid #d6e7e8; color: #155e63; }
+    h3 { margin-bottom: .35rem; color: #315f78; }
     .lead { color: #57606a; font-size: 1.05rem; }
-    .note { border-left: 3px solid #d0d7de; padding: .5rem 1rem; color: #57606a; background: #f6f8fa; }
+    .note { border-left: 3px solid #3f7c85; padding: .5rem 1rem; color: #465b64; background: #f0f7f7; }
+    .question-box { margin: 1.2rem 0 1.4rem; padding: 1rem 1.15rem; border-left: 4px solid #16818a; border-radius: 0 8px 8px 0; background: #edf7f6; color: #193f46; }
+    .question-label { display: block; margin-bottom: .35rem; color: #147078; font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
+    .question-box p { margin: 0; font-size: 1.04rem; }
+    .highlight { color: #155e63; font-weight: 600; }
     .paper { margin: 1rem 0 1.3rem; padding: .1rem 0 .1rem 1rem; border-left: 2px solid #d8dee4; }
     .meta { color: #57606a; margin-top: -.2rem; }
     .tag { display: inline-block; border: 1px solid #d0d7de; border-radius: 1rem; padding: .05rem .55rem; font-size: .82rem; color: #57606a; }
@@ -45,7 +49,7 @@
   <h1>Spatially Periodic Reaction-Diffusion Equations</h1>
 
   <h2>Background and Biological Motivation</h2>
-  <p>Reaction-diffusion equations are used to describe how a quantity evolves through the combination of local dynamics and spatial movement. In mathematical biology, a standard example is the invasion of a habitat by a population: \(u(t,x)\) denotes population density at time \(t\) and position \(x\). Individuals disperse, reproduce, and die; meanwhile, the habitat may contain regions with different resources, mortality rates, or movement conditions.</p>
+  <p>Reaction-diffusion equations describe the combined effects of local dynamics and spatial movement. In mathematical biology, (u(t,x)) can represent population density at time (t) and position (x). Individuals disperse, reproduce, and die, while the habitat may contain regions with different resources, mortality rates, or movement conditions.</p>
 
   <h3>A patchy habitat and periodic invasion waves</h3>
   <p>A classical model is due to Shigesada, Kawasaki and Teramoto (1986). They considered a single species in a one-dimensional heterogeneous environment formed by alternating patches with different diffusivities and intrinsic growth rates. Their analysis related successful invasion to patch sizes and biological parameters: when an invasion condition holds, a population initially localized in a bounded region can develop into a traveling periodic wave with constant speed; otherwise, invasion fails and the population tends to extinction <a href="#ref-1">[1]</a>.</p>
@@ -80,7 +84,11 @@
     <figcaption class="figcaption"><strong>Figure 1.</strong> Schematic habitat with alternating patches. The drawing is illustrative: the original ecological model specifies the patch parameters mathematically.</figcaption>
   </figure>
 
-  <p>The ecological model motivates a broader mathematical question: how does a population spread when its environment varies periodically in space? The unknown \(u\) records the population density, while spatially dependent coefficients encode the habitat. In a continuous model, the same idea leads to an equation with periodic diffusion, drift, and reaction terms.</p>
+  <div class="question-box">
+    <span class="question-label">Guiding mathematical question</span>
+    <p>How do spatial periodicity and environmental heterogeneity affect <strong>invasion, propagation speed, and the shape of a spreading front</strong>?</p>
+  </div>
+  <p>The unknown \(u\) records population density, while spatially dependent coefficients encode the habitat. In a continuous model, this leads to an equation with periodic diffusion, drift, and reaction terms.</p>
 
   <h3>From biological mechanisms to the equation</h3>
   <div class="three-terms">
