@@ -104,10 +104,10 @@
       </nav>
     </aside>
     <main class="main-content">
-  <h2 id="background">Background and Biological Motivation</h2>
+  <h2 id="background">1. Background and Biological Motivation</h2>
   <p>Reaction-diffusion equations describe the combined effects of local population dynamics and spatial dispersal. Let \(u(t,x)\) denote the density of a single species at time \(t\) and location \(x\). A classical starting point is Fisher's equation, in which diffusion models random movement and a logistic reaction models reproduction with density-dependent saturation. Shigesada, Kawasaki and Teramoto [<a href="#ref-1">1</a>] studied how this picture changes when the habitat is spatially heterogeneous.</p>
 
-  <h3 id="patch-model">A one-dimensional patch model</h3>
+  <h3 id="patch-model">1.1. A One-Dimensional Patch Model</h3>
   <p>In their 1986 model [<a href="#ref-1">1</a>], the habitat consists of two types of patches arranged alternately along the real line. The patches have different widths, diffusion coefficients, and intrinsic growth rates. A representative extended Fisher equation illustrating this model class is</p>
   <div class="equation">\[
     \partial_t u(t,x)
@@ -199,7 +199,7 @@
     <figcaption class="figcaption"><strong>Figure 1.</strong> Schematic of the one-dimensional periodic habitat studied in the patch-model literature [<a href="#ref-1">1</a>]. Favorable and less favorable patches alternate, with different diffusion coefficients and intrinsic growth rates.</figcaption>
   </figure>
 
-  <h3 id="anisotropic">From one dimension to two: anisotropic spreading</h3>
+  <h3 id="anisotropic">1.2. From One Dimension to Two: Anisotropic Spreading</h3>
   <p>Kinezaki, Kawasaki, Takasu and Shigesada [<a href="#ref-6">6</a>] extended the periodic-habitat model to a two-dimensional environment made of alternating vertical habitat stripes. A representative equation for this geometry is</p>
   <div class="equation">\[
     \partial_t u(t,x,y)
@@ -260,7 +260,7 @@
   </div>
   <p>The unknown \(u\) records population density, while spatially dependent coefficients encode the habitat. In a continuous model, this leads to an equation with periodic diffusion, drift, and reaction terms.</p>
 
-  <h3>From biological mechanisms to the equation</h3>
+  <h3>1.3. From Biological Mechanisms to the Equation</h3>
   <div class="three-terms">
     <div class="term">
       <strong>Diffusion</strong>
@@ -304,7 +304,7 @@
 
   <p>These mechanisms lead to the general reaction-diffusion-advection equation introduced below. The purpose of this page is to present known mathematical results for such models in a structured way, compare their hypotheses and conclusions, and use the resulting picture to identify well-founded open problems.</p>
 
-  <h2 id="framework">General Framework and Basic Assumptions</h2>
+  <h2 id="framework">2. General Framework and Basic Assumptions</h2>
   <p>Unless a topic states otherwise, we consider a scalar reaction-diffusion equation in the whole space \(\mathbb{R}^N\):</p>
   <div class="equation">\[
     \partial_t u(t,x)
@@ -354,8 +354,8 @@
   </ul>
   <p class="note">These are common baseline assumptions, not a claim that one set of hypotheses is minimal for every theorem. Each topic below must specify any additional assumptions needed for existence, uniqueness, speed formulas, stability, or asymptotic spreading.</p>
 
-  <h2 id="fronts">1. Existence of Pulsating Traveling Fronts</h2>
-  <h3>1.1. Hypotheses</h3>
+  <h2 id="fronts">3. Existence of Pulsating Traveling Fronts</h2>
+  <h3>3.1. Hypotheses</h3>
   <p>We consider equation (1) in \(\mathbb{R}^N\), with the periodicity assumptions and notation of the general framework. For the representative combustion result below, impose the following additional hypotheses.</p>
   <p><strong>(H1) Periodicity and regularity.</strong> The coefficients \(A,b,f\) are periodic with respect to a common lattice \(\mathcal L\). For some \(\alpha\in(0,1)\), assume, for example, \(A\in C^{1,\alpha}(\mathbb R^N)\), \(b\in C^{0,\alpha}(\mathbb R^N;\mathbb R^N)\), and \(f\) is Hölder continuous in \(x\) and locally \(C^1\) in \(s\), uniformly on bounded \(s\)-intervals.</p>
   <p><strong>(H2) Uniform ellipticity.</strong> There exist \(0<\lambda\leq\Lambda\) such that</p>
@@ -376,7 +376,7 @@
   \]</div>
   <p>These are a convenient classical set of sufficient assumptions for the stated result, not a claim of optimal minimality. KPP/monostable and bistable reactions require different hypotheses.</p>
 
-  <h3>1.2. Definition</h3>
+  <h3>3.2. Definition</h3>
   <p>Let \(e\in\mathbb S^{N-1}\) and \(c>0\). A <em>pulsating traveling front</em> of (1) in direction \(e\), with speed \(c\), is an entire solution \(u\in C^{1,2}(\mathbb R\times\mathbb R^N)\), \(0<u<1\), for which there exists a profile \(\Phi\) satisfying</p>
   <div class="equation">\[
     u(t,x)=\Phi(x,x\cdot e-ct),\qquad
@@ -393,7 +393,7 @@
   \]</div>
   <p>Equivalently, \(\Phi\) is periodic in its first variable and connects the state \(1\) behind the front to the state \(0\) ahead of it. The function \(u\) is defined for every \(t\in\mathbb R\), so a pulsating front is an entire solution, not merely a solution of an initial-value problem.</p>
 
-  <h3>1.3. Existence theorem</h3>
+  <h3>3.3. Existence Theorem</h3>
   <p><strong>Theorem 1 (Berestycki–Hamel <a href="#ref-3">[3]</a>, combustion case).</strong> Assume (H1)–(H4) in the periodic whole-space setting above. For each \(e\in\mathbb S^{N-1}\), there exist a speed \(c_e>0\) and a profile \(\Phi_e\) such that</p>
   <div class="equation">\[
     \begin{cases}
@@ -412,7 +412,7 @@
   <p><strong>Reference <a href="#ref-3">[3]</a>.</strong> H. Berestycki and F. Hamel, “Front propagation in periodic excitable media,” <em>Communications on Pure and Applied Mathematics</em>, 55(8) (2002), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">https://doi.org/10.1002/cpa.3022</a>.</p>
   <p>For a periodic biological-invasion model, see also H. Berestycki, F. Hamel and L. Roques, “Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts,” <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8) (2005), 1101–1146 <a href="#ref-5">[5]</a>.</p>
 
-  <h3>1.4. KPP / monostable reactions</h3>
+  <h3>3.4. KPP / Monostable Reactions</h3>
   <p>For a KPP-type nonlinearity, the unstable state \(u=0\) determines the leading-edge growth. A standard set of assumptions is</p>
   <div class="equation">\[
     f(x,0)=f(x,1)=0,\quad
@@ -424,7 +424,7 @@
   <p><strong>Theorem 2 (KPP-type fronts [3, 4]).</strong> Under the hypotheses of the periodic KPP theory, for each direction \(e\in\mathbb S^{N-1}\), there is a minimal speed \(c^*(e)>0\) such that pulsating fronts exist for \(c\geq c^*(e)\), and no such front exists for \(0<c<c^*(e)\). The minimal speed admits a spectral variational characterization; see Section 2.</p>
   <p>For the broader monostable class, Berestycki–Hamel [3] prove, under their hypotheses, that the admissible speeds form a closed half-line bounded from below. The precise assumptions are important: the KPP spectral formula cannot be automatically transferred to every monostable nonlinearity.</p>
 
-  <h3>1.5. Bistable reactions: existence depends on the medium</h3>
+  <h3>3.5. Bistable Reactions: Existence Depends on the Medium</h3>
   <p>A typical bistable reaction has two stable equilibria \(0\) and \(1\), separated by an unstable intermediate state. In a spatially periodic medium, a representative assumption is</p>
   <div class="equation">\[
     f(x,0)=f(x,1)=0,\qquad
@@ -441,39 +441,39 @@
     <p class="open-status">Status note: this is a literature-motivated open direction, not a claim that every special case is unresolved. Ding–Hamel–Zhao <a href="#ref-7">[7]</a> establish substantial period-dependent existence results and explicitly discuss the difficulty of a general existence/nonexistence criterion.</p>
   </div>
 
-  <h2 id="speeds">2. Spreading Speeds and Minimal Speeds</h2>
+  <h2 id="speeds">4. Spreading Speeds and Minimal Speeds</h2>
   <p><span class="tag">Main question</span> How fast does an invading solution spread, and can the minimal speed of a pulsating front be computed from a linear eigenvalue problem?</p>
   <p>For KPP-type reactions, the leading edge of the invasion is governed by the equation linearized near the unstable state. In periodic media, the relevant linear operator has periodic coefficients. Its principal eigenvalue leads to a variational formula for the minimal front speed. This is a central distinction between KPP-type problems and general monostable or bistable equations, where linear determinacy need not hold in the same way.</p>
 
   <div class="paper">
-    <h3>Berestycki, Hamel &amp; Nadirashvili (2005) — the periodic KPP speed formula</h3>
+    <h3>4.1. Berestycki, Hamel &amp; Nadirashvili (2005) — The Periodic KPP Speed Formula</h3>
     <p class="meta"><em>The speed of propagation for KPP type problems. I: Periodic framework.</em> Journal of the European Mathematical Society, 7(2), 173–213.</p>
     <p>This paper proves that the minimal speed of pulsating fronts for KPP-type equations in periodic media is given by a variational formula involving principal eigenvalues of suitable linear operators. It also studies how the speed depends on the geometry of the domain and on reaction, advection, and diffusion coefficients, and connects front speeds with asymptotic spreading speeds for the Cauchy problem.</p>
     <p><a href="https://doi.org/10.4171/JEMS/26">Publisher / DOI: 10.4171/JEMS/26</a></p>
   </div>
 
   <div class="paper">
-    <h3>Berestycki, Hamel &amp; Roques (2005) — minimal speed in biological invasion</h3>
+    <h3>4.2. Berestycki, Hamel &amp; Roques (2005) — Minimal Speed in Biological Invasion</h3>
     <p class="meta"><em>Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts.</em> Journal de Mathématiques Pures et Appliquées, 84(8), 1101–1146.</p>
     <p>This paper also belongs here: besides proving existence of pulsating invasion fronts, it characterizes the minimal speed for the periodic biological model. It is a useful bridge between the abstract spectral formula and an applied invasion model.</p>
     <p><a href="https://doi.org/10.1016/j.matpur.2004.10.006">Publisher / DOI: 10.1016/j.matpur.2004.10.006</a></p>
   </div>
 
   <div class="paper">
-    <h3>Xin (1993) — effective speeds and propagation blocking</h3>
+    <h3>4.3. Xin (1993) — Effective Speeds and Propagation Blocking</h3>
     <p class="meta"><em>Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media.</em> Journal of Statistical Physics, 73, 893–926.</p>
     <p>Xin's paper is relevant to the broader propagation question: when a traveling wave exists, its effective speed describes the propagation of suitable initial data. For bistable reactions, sufficiently strong heterogeneity can instead lead to the failure of wave propagation. Thus, the minimal-speed picture for KPP fronts should not be assumed to apply unchanged to all reaction types.</p>
     <p><a href="https://doi.org/10.1007/BF01052815">Publisher / DOI: 10.1007/BF01052815</a></p>
   </div>
 
-  <h3>Key distinction</h3>
+  <h3>4.4. Key Distinction</h3>
   <ul>
     <li><strong>Minimal front speed:</strong> the smallest speed for which a pulsating traveling front exists in a given direction.</li>
     <li><strong>Asymptotic spreading speed:</strong> the speed describing the large-time expansion of solutions from suitable initial data.</li>
     <li>In periodic KPP settings these quantities are closely linked and can be characterized spectrally; in other reaction regimes, the relationship requires separate hypotheses and results.</li>
   </ul>
 
-  <h2 id="cauchy">3. Cauchy Problems, Directional Speeds, and Spreading Sets</h2>
+  <h2 id="cauchy">5. Cauchy Problems, Directional Speeds, and Spreading Sets</h2>
   <p>This section concerns solutions of the initial-value problem</p>
   <div class="equation">\[
     \begin{cases}
@@ -485,7 +485,7 @@
   \]</div>
   <p>For compactly supported, nontrivial initial data, a central question is how rapidly the invaded region expands. Under suitable monostable/KPP hypotheses, one can define a directional spreading speed \(w(e)\) by the asymptotic behavior along rays \(x\sim cte\): behind the speed the solution approaches the invaded state, while ahead of it the solution approaches \(0\).</p>
 
-  <h3>3.1. KPP: minimal front speed and spreading speed</h3>
+  <h3>5.1. KPP: Minimal Front Speed and Spreading Speed</h3>
   <p>For a periodic KPP equation, let \(\lambda(e,\mu)\) denote the principal eigenvalue associated with the exponentially tilted linearized periodic operator in direction \(e\), with \(\mu>0\). The minimal pulsating-front speed is given by</p>
   <div class="equation">\[
     c^*(e)=\inf_{\mu>0}\frac{\lambda(e,\mu)}{\mu}.
@@ -493,7 +493,7 @@
   \]</div>
   <p>Under the KPP hypotheses, the minimal front speed agrees with the asymptotic spreading speed in the same direction. This is the linear-determinacy property proved in the periodic framework of Berestycki–Hamel–Nadirashvili [4]. The exact definition of \(\lambda(e,\mu)\) depends on the convention for the drift term and the tilted operator; it should be taken from the corresponding paper when using the formula for a specific equation.</p>
 
-  <h3>3.2. From directional speeds to a spreading set</h3>
+  <h3>5.2. From Directional Speeds to a Spreading Set</h3>
   <p>Directional speeds describe one ray at a time. The full large-time geometry is encoded by the asymptotic spreading set \(W\). In a standard convex spreading regime, it can be represented as the intersection of half-spaces</p>
   <div class="equation">\[
     W=\bigcap_{e\in\mathbb S^{N-1}}
@@ -509,14 +509,14 @@
   <p>These formulas make the geometric role of anisotropy explicit: the spreading set need not be a ball, and the speed of expansion depends on direction. Formula (10) is stated here for the classical periodic KPP framework; more general reactions and initial supports require additional hypotheses and may involve a different formula.</p>
 
   <div class="paper">
-    <h3>Hamel &amp; Rossi (2021) — spreading speeds for general initial supports</h3>
+    <h3>5.3. Hamel &amp; Rossi (2021) — Spreading Speeds for General Initial Supports</h3>
     <p class="meta"><em>Spreading speeds and spreading sets of reaction-diffusion equations.</em> Preprint, arXiv:2105.08344.</p>
     <p>This work studies large-time dynamics for bounded solutions with possibly unbounded initial support. It introduces notions describing bounded and unbounded directions of the initial support, derives directional spreading-speed formulas, and describes asymptotic level-set geometry. It also gives counterexamples showing that assumptions on the initial support and reaction cannot be omitted indiscriminately <a href="#ref-8">[8]</a>.</p>
     <p><a href="https://arxiv.org/abs/2105.08344">arXiv:2105.08344</a></p>
   </div>
 
   <div class="paper">
-    <h3>Guo, Hamel &amp; Rossi — spreading speeds and spreading sets</h3>
+    <h3>5.4. Guo, Hamel &amp; Rossi — Spreading Speeds and Spreading Sets</h3>
     <p class="meta"><em>Reaction-diffusion equations in periodic media: spreading speeds and spreading sets.</em></p>
     <p>This work studies directional speeds and asymptotic invasion geometry in periodic media for a broad class of reaction terms and general initial supports. It connects the geometry of the initial support to the directions in which invasion can occur <a href="#ref-9">[9]</a>.</p>
     <p><a href="https://arxiv.org/abs/2609.18795">arXiv link</a></p>
