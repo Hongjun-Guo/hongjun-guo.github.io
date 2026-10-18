@@ -57,7 +57,8 @@
     .equation { overflow: visible; padding: .85rem 1rem; margin: 1rem 0; background: transparent; text-align: center; }
     .assumption { margin: .8rem 0; }
     .figure { margin: 1.4rem 0; padding: 1rem; border: 1px solid #d8dee4; border-radius: 8px; background: #fff; }
-    .figure svg { display: block; width: 100%; height: auto; }
+    .figure svg, .figure img { display: block; width: 100%; height: auto; }
+    .figure.source-figure { max-width: 34rem; }
     .figcaption { color: #57606a; font-size: .92rem; margin-top: .7rem; }
     .three-terms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1rem 0; }
     .term { border: 1px solid #d8dee4; border-radius: 8px; padding: .85rem; background: #f6f8fa; }
@@ -315,6 +316,13 @@
     <p>For the localized initial distributions studied in <a href="#ref-1">[1, pp. 149–151, Fig. 3]</a>, the computations report extinction on the linearly stable side and outward spreading in both directions on the unstable side. In the spreading case, the profiles approach the TPW pattern, while the population near the introduction site approaches a periodic stationary distribution.</p>
 
   </div>
+
+  <figure class="figure source-figure" id="fig-skt-numerics">
+    <a href="assets/images/shigesada1986-figure3.png" target="_blank" rel="noopener">
+      <img src="assets/images/shigesada1986-figure3.png" width="883" height="754" loading="lazy" decoding="async" alt="Original numerical simulations: (a) population profiles decay to extinction; (b) a traveling periodic wave on the positive half-axis at times T, T+T*, and T+2T*.">
+    </a>
+    <figcaption class="figcaption"><strong>Numerical simulations.</strong> (a) Extinction from a localized initial population. (b) A traveling periodic wave at successive times. Source: <a href="#ref-1">[1, original Fig. 3, p. 150]</a>.</figcaption>
+  </figure>
 
   <h4 id="patch-dispersion">Leading-edge dispersion relation</h4>
   <p>For the linearized equation, take the positive periodic leading-edge ansatz</p>
