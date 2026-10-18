@@ -79,6 +79,29 @@
     @media (max-width: 640px) { .three-terms { grid-template-columns: 1fr; } }
     li { margin: .3rem 0; }
     @media (max-width: 600px) { body { margin-top: 1.2rem; } }
+    .question-box, .open-problem-box {
+      box-sizing: border-box; width: 86%; max-width: 58rem; margin-left: auto; margin-right: auto;
+    }
+    .source-result, .numerical-observation, .statement, .assumption {
+      box-sizing: border-box; width: 90%; max-width: 62rem; margin-left: auto; margin-right: auto;
+    }
+    .figure { box-sizing: border-box; width: 78%; max-width: 48rem; margin-left: auto; margin-right: auto; }
+    .main-content > .equation {
+      box-sizing: border-box; width: 92%; max-width: 64rem; margin-left: auto; margin-right: auto;
+    }
+    .statement {
+      margin-top: 1.4rem; margin-bottom: 1.4rem; padding: 1rem 1.3rem;
+      border-left: 3px solid #b6cfd1; border-radius: 0 8px 8px 0; background: #f8fbfb;
+    }
+    .statement > p:first-child { margin-top: 0; }
+    .statement > p:last-child { margin-bottom: 0; }
+    .statement .equation { box-sizing: border-box; width: 100%; }
+    @media (max-width: 820px) {
+      .question-box, .open-problem-box, .source-result, .numerical-observation,
+      .statement, .assumption, .main-content > .equation { width: 100%; }
+      .figure { width: 94%; }
+      .statement { padding: .9rem 1rem; }
+    }
   </style>
   <script>
     window.MathJax = {
@@ -198,7 +221,7 @@
   </div>
 
 
-  <div class="question-box">
+  <div class="question-box" id="central-question">
     <span class="question-label">The central question · Shigesada–Kawasaki–Teramoto (1986) <a href="#ref-1">[1]</a></span>
     <p><strong>When does a species invade a periodically fragmented habitat, and when does it become extinct?</strong></p>
     <p>How are the outcome and propagation speed determined by \(L_1,L_2,D_1,D_2,r_1,r_2\)? The alternating habitat is illustrated in <a href="#fig-patches">Figure 1</a>.</p>
@@ -501,6 +524,7 @@
   <p>These are a convenient classical set of sufficient assumptions for the stated result, not a claim of optimal minimality. KPP/monostable and bistable reactions require different hypotheses.</p>
 
   <h3>3.2. Definition</h3>
+  <div class="statement definition" id="front-definition">
   <p>Let \(e\in\mathbb S^{N-1}\) and \(c>0\). A <em>pulsating traveling front</em> of (1) in direction \(e\), with speed \(c\), is an entire solution \(u\in C^{1,2}(\mathbb R\times\mathbb R^N)\), \(0&lt;u&lt;1\), for which there exists a profile \(\Phi\) satisfying</p>
   <div class="equation">\[
     u(t,x)=\Phi(x,x\cdot e-ct),\qquad
@@ -517,7 +541,10 @@
   \]</div>
   <p>Equivalently, \(\Phi\) is periodic in its first variable and connects the state \(1\) behind the front to the state \(0\) ahead of it. The function \(u\) is defined for every \(t\in\mathbb R\), so a pulsating front is an entire solution, not merely a solution of an initial-value problem.</p>
 
+  </div>
+
   <h3>3.3. Existence Theorem</h3>
+  <div class="statement theorem" id="combustion-theorem">
   <p><strong>Theorem 1 (Berestycki–Hamel <a href="#ref-3">[3]</a>, combustion case).</strong> Assume (H1)–(H4) in the periodic whole-space setting above. For each \(e\in\mathbb S^{N-1}\), there exist a speed \(c_e>0\) and a profile \(\Phi_e\) such that</p>
   <div class="equation">\[
     \begin{cases}
@@ -533,6 +560,7 @@
     \tag{4}
   \]</div>
   <p>For the combustion problem covered by <a href="#ref-3">[3]</a>, the propagation speed is unique; the front profile is unique up to translation under the theorem's hypotheses.</p>
+  </div>
   <p><strong>Reference <a href="#ref-3">[3]</a>.</strong> H. Berestycki and F. Hamel, “Front propagation in periodic excitable media,” <em>Communications on Pure and Applied Mathematics</em>, 55(8) (2002), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">https://doi.org/10.1002/cpa.3022</a>.</p>
   <p>For a periodic biological-invasion model, see also H. Berestycki, F. Hamel and L. Roques, “Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts,” <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8) (2005), 1101–1146 <a href="#ref-5">[5]</a>.</p>
 
@@ -545,7 +573,9 @@
     \tag{5}
   \]</div>
   <p>together with the periodicity and regularity hypotheses from the general framework. More general monostable nonlinearities require \(f(x,s)>0\) for \(0&lt;s&lt;1\), but need not satisfy the KPP upper bound in (5).</p>
+  <div class="statement theorem" id="kpp-theorem">
   <p><strong>Theorem 2 (KPP-type fronts [3, 4]).</strong> Under the hypotheses of the periodic KPP theory, for each direction \(e\in\mathbb S^{N-1}\), there is a minimal speed \(c^*(e)>0\) such that pulsating fronts exist for \(c\geq c^*(e)\), and no such front exists for \(0&lt;c&lt;c^*(e)\). The minimal speed admits a spectral variational characterization; see Section 2.</p>
+  </div>
   <p>For the broader monostable class, Berestycki–Hamel [3] prove, under their hypotheses, that the admissible speeds form a closed half-line bounded from below. The precise assumptions are important: the KPP spectral formula cannot be automatically transferred to every monostable nonlinearity.</p>
 
   <h3>3.5. Bistable Reactions: Existence Depends on the Medium</h3>
@@ -556,7 +586,9 @@
     \tag{6}
   \]</div>
   <p>with a bistable sign change in \(s\in(0,1)\), uniformly in \(x\) in the specific model under consideration. The sign-change condition, coefficient regularity, and dependence on the spatial period must be stated precisely for each theorem.</p>
+  <div class="statement theorem" id="bistable-theorem">
   <p><strong>Theorem 3 (Ding–Hamel–Zhao <a href="#ref-7">[7]</a>, representative results).</strong> For classes of spatially periodic bistable equations satisfying the assumptions in <a href="#ref-7">[7]</a>, pulsating fronts are proved to exist in several regimes, in particular for sufficiently small or sufficiently large spatial periods under the corresponding additional hypotheses. The paper also studies the set of periods admitting non-stationary fronts and proves the existence of stationary fronts or non-stationary partial fronts at boundary periods. These results do <em>not</em> assert existence for every periodic bistable equation at every period.</p>
+  </div>
   <p>In contrast, Xin [2] gives a one-dimensional bistable example with periodic coefficients for which a traveling front does not exist and propagation is quenched. Thus, unlike the KPP setting, there is no universal minimal-speed formula that by itself classifies all bistable cases.</p>
 
   <div class="open-problem-box">
