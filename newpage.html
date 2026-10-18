@@ -148,13 +148,22 @@
 
   <div class="question-box">
     <span class="question-label">The central question · Shigesada–Kawasaki–Teramoto (1986) [<a href="#ref-1">1</a>]</span>
-    <p><strong>Under what conditions can a population invade a spatially periodic habitat, and when will the invasion fail?</strong></p>
-    <p>How do the patch widths \(L_1,L_2\), dispersal rates \(D_1,D_2\), and intrinsic growth rates \(r_1,r_2\) determine the outcome?</p>
+    <p><strong>When does a species invade a periodically fragmented habitat, and when does it become extinct?</strong></p>
+    <p>How are the outcome and propagation speed determined by the patch widths \(L_1,L_2\), diffusion coefficients \(D_1,D_2\), and growth rates \(r_1,r_2\)? (See Figure <a href="#fig-patches">1</a>.)</p>
   </div>
-  <p>In their model, Shigesada, Kawasaki and Teramoto derived an invasion criterion involving the sizes of the patches and their biological parameters. When the criterion is satisfied, a population initially confined to a bounded region spreads and approaches a traveling periodic wave with a constant speed; when it is not satisfied, invasion fails and the population tends to extinction [<a href="#ref-1">1</a>].</p>
-  <p><strong>Why this question matters mathematically.</strong> This ecological problem suggests a broader program: identify conditions for invasion, construct the corresponding traveling or pulsating fronts, characterize their speeds, and understand how the large-time behavior of solutions to the Cauchy problem reflects the geometry of the periodic medium. The later theory of pulsating fronts, directional spreading speeds, and spreading sets can be viewed as mathematical developments of these questions, under progressively more general assumptions.</p>
+  <div class="question-box" style="border-left-color:#155e63;background:#f2f8f5;color:#214b3b;">
+    <span class="question-label" style="color:#26734d;">Main result of [1]</span>
+    <p>Shigesada, Kawasaki and Teramoto derived an invasion criterion in terms of the patch widths, diffusion coefficients, and intrinsic growth rates. Their conclusions can be summarized as follows:</p>
+    <ul>
+      <li><strong>Invasion regime:</strong> if the invasion criterion is satisfied, a population initially localized in a bounded region evolves into a traveling periodic wave (TPW) with a constant propagation speed.</li>
+      <li><strong>Extinction regime:</strong> if the criterion is not satisfied, invasion fails and the population tends to extinction.</li>
+      <li><strong>Speed selection:</strong> the TPW speed is calculated from a dispersion relation, allowing the authors to analyze how environmental heterogeneity affects the rate of spread.</li>
+    </ul>
+    <p>The exact invasion threshold is model-dependent; it should be quoted from the original paper rather than replaced by a universal condition.</p>
+  </div>
+  <p><strong>Mathematical legacy.</strong> This work connects a biological invasion question to three general problems: (i) finding conditions for propagation or extinction, (ii) constructing traveling or pulsating fronts and determining their speeds, and (iii) relating these fronts to the large-time behavior of solutions to the Cauchy problem. Later theories develop these questions for more general periodic reaction-diffusion equations.</p>
 
-  <figure class="figure">
+  <figure class="figure" id="fig-patches">
     <svg viewBox="0 0 760 210" role="img" aria-labelledby="patch-title patch-desc">
       <title id="patch-title">Schematic of a periodically patchy habitat</title>
       <desc id="patch-desc">Alternating favorable and less favorable habitat patches, each with different diffusion and growth parameters.</desc>
@@ -181,7 +190,7 @@
       <text x="380" y="25" font-size="15" font-weight="600" text-anchor="middle" fill="#24292f">A periodic environment</text>
       <text x="380" y="194" font-size="13" text-anchor="middle" fill="#57606a">Each patch may have its own diffusivity D(x) and growth rate r(x)</text>
     </svg>
-    <figcaption class="figcaption"><strong>Figure 1.</strong> Schematic habitat with alternating patches. The drawing is illustrative: the original ecological model specifies the patch parameters mathematically.</figcaption>
+    <figcaption class="figcaption"><strong>Figure 1.</strong> Schematic of the one-dimensional periodic habitat studied in the patch-model literature [<a href="#ref-1">1</a>]. Favorable and less favorable patches alternate, with different diffusion coefficients and intrinsic growth rates.</figcaption>
   </figure>
 
   <h3 id="anisotropic">From one dimension to two: anisotropic spreading</h3>
