@@ -175,7 +175,7 @@
   <p>Let \(u(t,x)\) denote population density. The model of Shigesada, Kawasaki and Teramoto <a href="#ref-1">[1]</a> combines Fickian dispersal, spatially varying low-density growth, and intraspecific competition in a periodically fragmented habitat.</p>
 
   <h3 id="patch-model">1.1. A One-Dimensional Patch Model</h3>
-  <p>In the 1986 model <a href="#ref-1">[1, Eq. (1), p. 144]</a>, the population satisfies</p>
+  <p>In the 1986 model <a href="#ref-1">[1]</a>, the population satisfies</p>
   <div class="equation" id="eq-patch-model">\[
     \partial_t u(t,x)
       = \partial_x\!\left(D(x)\partial_x u(t,x)\right)
@@ -218,7 +218,7 @@
     \qquad [h]_{x_j}:=h(x_j^+)-h(x_j^-).
     \tag{B3}
   \]</div>
-  <p>These are the transmission conditions in <a href="#ref-1">[1, Eqs. (4) and (9), pp. 146–147]</a>. In the interiors of the patches, (B1) reads \(u_t=D_i u_{xx}+r_i u-\mu u^2\). The initial population in <a href="#ref-1">[1, Eq. (3), p. 145]</a> is continuous, nonnegative, single-peaked, and confined to a bounded interval:</p>
+  <p>These are the transmission conditions in <a href="#ref-1">[1]</a>. In the interiors of the patches, (B1) reads \(u_t=D_i u_{xx}+r_i u-\mu u^2\). The initial population in <a href="#ref-1">[1]</a> is continuous, nonnegative, single-peaked, and confined to a bounded interval:</p>
   <div class="equation">\[
     u(0,x)=u_0(x)\geq0,\qquad u_0\not\equiv0,
     \qquad \operatorname{supp}u_0\subset[-R,R],\quad R>0.
@@ -283,12 +283,12 @@
       \end{aligned}
       \tag{B6}
     \]</div>
-    <p class="source-location">Source: <a href="#ref-1">[1, Eqs. (14a)–(14b), p. 148]</a>. The equality \(L_1=L_{1,\mathrm{crit}}\) defines the critical boundary.</p>
-    <p>The authors interpret the stable side as invasion failure and the unstable side as invasion when rare. They explicitly distinguish this linear analysis from the nonlinear long-time behavior <a href="#ref-1">[1, pp. 148–149]</a>.</p>
+    <p class="source-location">Source: <a href="#ref-1">[1]</a>. The equality \(L_1=L_{1,\mathrm{crit}}\) defines the critical boundary.</p>
+    <p>The authors interpret the stable side as invasion failure and the unstable side as invasion when rare. They explicitly distinguish this linear analysis from the nonlinear long-time behavior <a href="#ref-1">[1]</a>.</p>
   </div>
 
   <h4 id="tpw-description">Periodic invaded state and traveling periodic wave</h4>
-  <p>The positive stationary state considered in <a href="#ref-1">[1, Eq. (10), p. 147]</a>, when it exists, is a periodic function \(p\):</p>
+  <p>The positive stationary state considered in <a href="#ref-1">[1]</a>, when it exists, is a periodic function \(p\):</p>
   <div class="equation">\[
     \begin{cases}
       (D(x)p')'+\bigl(r(x)-\mu p\bigr)p=0
@@ -298,7 +298,7 @@
     \end{cases}
     \tag{B7}
   \]</div>
-  <p>For a right-moving <em>traveling periodic wave</em> (TPW), the formulation in <a href="#ref-1">[1, Eq. (17), p. 151]</a> becomes</p>
+  <p>For a right-moving <em>traveling periodic wave</em> (TPW), the formulation in <a href="#ref-1">[1]</a> becomes</p>
   <div class="equation">\[
     \begin{gathered}
       u_{\mathrm{TPW}}(t+T,x+L)=u_{\mathrm{TPW}}(t,x),
@@ -312,7 +312,7 @@
 
   <div class="numerical-observation">
     <span class="question-label">Numerical observations in the 1986 paper</span>
-    <p>For the localized initial distributions studied in <a href="#ref-1">[1, pp. 149–151, Fig. 3]</a>, the computations report extinction on the linearly stable side and outward spreading in both directions on the unstable side. In the spreading case, the profiles approach the TPW pattern, while the population near the introduction site approaches a periodic stationary distribution.</p>
+    <p>For the localized initial distributions studied in <a href="#ref-1">[1]</a>, the computations report extinction on the linearly stable side and outward spreading in both directions on the unstable side. In the spreading case, the profiles approach the TPW pattern, while the population near the introduction site approaches a periodic stationary distribution.</p>
 
   </div>
 
@@ -320,7 +320,7 @@
     <a href="assets/images/shigesada1986-figure3.png" target="_blank" rel="noopener">
       <img src="assets/images/shigesada1986-figure3.png" width="883" height="754" loading="lazy" decoding="async" alt="Original numerical simulations: (a) population profiles decay to extinction; (b) a traveling periodic wave on the positive half-axis at times T, T+T*, and T+2T*.">
     </a>
-    <figcaption class="figcaption"><strong>Numerical simulations.</strong> (a) Extinction from a localized initial population. (b) A traveling periodic wave at successive times. Source: <a href="#ref-1">[1, original Fig. 3, p. 150]</a>.</figcaption>
+    <figcaption class="figcaption"><strong>Numerical simulations.</strong> (a) Extinction from a localized initial population. (b) A traveling periodic wave at successive times. Source: <a href="#ref-1">[1]</a>.</figcaption>
   </figure>
 
   <h4 id="patch-dispersion">Leading-edge dispersion relation</h4>
@@ -331,7 +331,7 @@
     \qquad [g]_{x_j}=[D(g'-\sigma g)]_{x_j}=0.
     \tag{B9}
   \]</div>
-  <p>The dispersion relation in <a href="#ref-1">[1, Eqs. (30)–(31), p. 154]</a> is</p>
+  <p>The dispersion relation in <a href="#ref-1">[1]</a> is</p>
   <div class="equation">\[
     \begin{aligned}
       \cosh(\sigma L)
@@ -347,11 +347,11 @@
     c_{\min}=\min_{\sigma>0}c(\sigma).
     \tag{B11}
   \]</div>
-  <p class="source-location">The paper computes this minimum from the dispersion relation <a href="#ref-1">[1, pp. 154–155]</a>. Selection of \(c_{\min}\) by the nonlinear Cauchy problem is reported from numerical calculations, not established by the dispersion relation alone.</p>
+  <p class="source-location">The paper computes this minimum from the dispersion relation <a href="#ref-1">[1]</a>. Selection of \(c_{\min}\) by the nonlinear Cauchy problem is reported from numerical calculations, not established by the dispersion relation alone.</p>
 
   <div class="open-problem-box" id="historical-tpw-question">
     <span class="open-label">Historical question · Not proved in the 1986 paper</span>
-    <p><strong>Stability of the TPW and selection of \(c_{\min}\) by localized initial data.</strong> The authors explicitly state that they did not prove TPW stability mathematically <a href="#ref-1">[1, pp. 151 and 159]</a>; their computations support the selection of the minimum speed <a href="#ref-1">[1, p. 155]</a>.</p>
+    <p><strong>Stability of the TPW and selection of \(c_{\min}\) by localized initial data.</strong> The authors explicitly state that they did not prove TPW stability mathematically <a href="#ref-1">[1]</a>; their computations support the selection of the minimum speed <a href="#ref-1">[1]</a>.</p>
 
   </div>
   <p><strong>Connection with the later sections.</strong> The patch model separates three questions: the linear invasion threshold, the construction and speed of a periodic front, and the long-time behavior of an initially localized population. These distinctions organize the discussion of <a href="#fronts">pulsating fronts</a>, <a href="#speeds">front speeds</a>, and the <a href="#cauchy">Cauchy problem</a> below.</p>
