@@ -19,6 +19,13 @@
     .tag { display: inline-block; border: 1px solid #d0d7de; border-radius: 1rem; padding: .05rem .55rem; font-size: .82rem; color: #57606a; }
     .equation { overflow-x: auto; padding: .85rem 1rem; margin: 1rem 0; background: #f6f8fa; border-radius: 6px; text-align: center; }
     .assumption { margin: .8rem 0; }
+    .figure { margin: 1.4rem 0; padding: 1rem; border: 1px solid #d8dee4; border-radius: 8px; background: #fff; }
+    .figure svg { display: block; width: 100%; height: auto; }
+    .figcaption { color: #57606a; font-size: .92rem; margin-top: .7rem; }
+    .three-terms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1rem 0; }
+    .term { border: 1px solid #d8dee4; border-radius: 8px; padding: .85rem; background: #f6f8fa; }
+    .term strong { display: block; margin-bottom: .35rem; }
+    @media (max-width: 640px) { .three-terms { grid-template-columns: 1fr; } }
     li { margin: .3rem 0; }
     @media (max-width: 600px) { body { margin-top: 1.2rem; } }
   </style>
@@ -39,6 +46,88 @@
   <p class="lead">Known results and open problems for reaction-diffusion equations in spatially periodic media.</p>
   <p>The purpose of this page is to organize and compare existing mathematical results by research question, not simply to list papers or present a textbook account. For each topic, we record the precise setting and assumptions, state the main known theorems in mathematical form, explain how the results relate to one another, and identify limitations that may lead to open problems.</p>
   <p>Open problems will be distinguished carefully from questions that are merely not addressed by a particular paper. Before presenting a question as open, its status should be checked against the relevant literature. The common equation and baseline assumptions below provide notation; each theorem may impose stronger hypotheses, which will be stated explicitly.</p>
+
+  <h2>Background and Biological Motivation</h2>
+  <p>Reaction-diffusion equations are used to describe how a quantity evolves through the combination of local dynamics and spatial movement. In mathematical biology, a standard example is the invasion of a habitat by a population: \(u(t,x)\) denotes population density at time \(t\) and position \(x\). Individuals disperse, reproduce, and die; meanwhile, the habitat may contain regions with different resources, mortality rates, or movement conditions.</p>
+
+  <h3>A patchy habitat and periodic invasion waves</h3>
+  <p>A classical model is due to Shigesada, Kawasaki and Teramoto (1986). They considered a single species in a one-dimensional heterogeneous environment formed by alternating patches with different diffusivities and intrinsic growth rates. Their analysis related successful invasion to patch sizes and biological parameters: when an invasion condition holds, a population initially localized in a bounded region can develop into a traveling periodic wave with constant speed; otherwise, invasion fails and the population tends to extinction [1].</p>
+
+  <figure class="figure">
+    <svg viewBox="0 0 760 210" role="img" aria-labelledby="patch-title patch-desc">
+      <title id="patch-title">Schematic of a periodically patchy habitat</title>
+      <desc id="patch-desc">Alternating favorable and less favorable habitat patches, each with different diffusion and growth parameters.</desc>
+      <rect x="22" y="55" width="716" height="68" rx="7" fill="#f6f8fa" stroke="#d0d7de"/>
+      <rect x="23" y="56" width="119" height="66" fill="#d8f0dc"/>
+      <rect x="142" y="56" width="119" height="66" fill="#fff0c2"/>
+      <rect x="261" y="56" width="119" height="66" fill="#d8f0dc"/>
+      <rect x="380" y="56" width="119" height="66" fill="#fff0c2"/>
+      <rect x="499" y="56" width="119" height="66" fill="#d8f0dc"/>
+      <rect x="618" y="56" width="119" height="66" fill="#fff0c2"/>
+      <g fill="#23432b" font-size="14" text-anchor="middle">
+        <text x="82" y="83">Favorable</text><text x="82" y="102">patch</text>
+        <text x="321" y="83">Favorable</text><text x="321" y="102">patch</text>
+        <text x="559" y="83">Favorable</text><text x="559" y="102">patch</text>
+      </g>
+      <g fill="#654f17" font-size="14" text-anchor="middle">
+        <text x="202" y="83">Less favorable</text><text x="202" y="102">patch</text>
+        <text x="439" y="83">Less favorable</text><text x="439" y="102">patch</text>
+        <text x="677" y="83">Less favorable</text><text x="677" y="102">patch</text>
+      </g>
+      <path d="M48 145 H710" stroke="#57606a" stroke-width="1.5"/>
+      <path d="M700 139 L710 145 L700 151" fill="none" stroke="#57606a" stroke-width="1.5"/>
+      <text x="380" y="168" font-size="13" text-anchor="middle" fill="#57606a">Spatial coordinate x</text>
+      <text x="380" y="25" font-size="15" font-weight="600" text-anchor="middle" fill="#24292f">A periodic environment</text>
+      <text x="380" y="194" font-size="13" text-anchor="middle" fill="#57606a">Each patch may have its own diffusivity D(x) and growth rate r(x)</text>
+    </svg>
+    <figcaption class="figcaption"><strong>Figure 1.</strong> Schematic habitat with alternating patches. The drawing is illustrative: the original ecological model specifies the patch parameters mathematically.</figcaption>
+  </figure>
+
+  <p>The ecological model motivates a broader mathematical question: how does a population spread when its environment varies periodically in space? The unknown \(u\) records the population density, while spatially dependent coefficients encode the habitat. In a continuous model, the same idea leads to an equation with periodic diffusion, drift, and reaction terms.</p>
+
+  <h3>From biological mechanisms to the equation</h3>
+  <div class="three-terms">
+    <div class="term">
+      <strong>Diffusion</strong>
+      <div>\(\nabla\cdot(A(x)\nabla u)\)</div>
+      <p>Models random dispersal. The matrix \(A(x)\) describes how movement varies with location and direction.</p>
+    </div>
+    <div class="term">
+      <strong>Advection / drift</strong>
+      <div>\(b(x)\cdot\nabla u\)</div>
+      <p>Represents directed transport, for example movement biased by a current or environmental gradient.</p>
+    </div>
+    <div class="term">
+      <strong>Local reaction</strong>
+      <div>\(f(x,u)\)</div>
+      <p>Describes local growth and loss, including reproduction, mortality, and density dependence.</p>
+    </div>
+  </div>
+
+  <figure class="figure">
+    <svg viewBox="0 0 760 210" role="img" aria-labelledby="wave-title wave-desc">
+      <title id="wave-title">Schematic of a spreading population front</title>
+      <desc id="wave-desc">A population profile changes from high density behind the front to low density ahead, while a moving front travels to the right.</desc>
+      <path d="M62 26 V157 H714" stroke="#57606a" stroke-width="1.5" fill="none"/>
+      <path d="M704 151 L714 157 L704 163" stroke="#57606a" stroke-width="1.5" fill="none"/>
+      <path d="M63 45 C145 45 202 47 251 56 C289 64 304 94 329 118 C353 142 383 150 423 153 L423 157 L63 157 Z" fill="#d8f0dc" opacity=".8"/>
+      <path d="M63 45 C145 45 202 47 251 56 C289 64 304 94 329 118 C353 142 383 150 423 153" fill="none" stroke="#218739" stroke-width="3"/>
+      <path d="M423 34 V157" stroke="#0969da" stroke-width="2" stroke-dasharray="6 5"/>
+      <path d="M435 73 H555" stroke="#0969da" stroke-width="2.5"/>
+      <path d="M545 66 L555 73 L545 80" stroke="#0969da" stroke-width="2.5" fill="none"/>
+      <g fill="#24292f" font-size="14">
+        <text x="86" y="78">Higher population</text>
+        <text x="472" y="57">Propagation</text>
+        <text x="435" y="178">Front position</text>
+        <text x="380" y="199" text-anchor="middle" fill="#57606a">Space x</text>
+        <text x="14" y="92" transform="rotate(-90 14 92)" text-anchor="middle" fill="#57606a">Density u</text>
+        <text x="590" y="116" fill="#57606a">Low density</text>
+      </g>
+    </svg>
+    <figcaption class="figcaption"><strong>Figure 2.</strong> Conceptual population front: the population is established behind the interface and invades new territory ahead. In periodic media, the profile typically oscillates with the environment rather than being a rigid translate of a single profile.</figcaption>
+  </figure>
+
+  <p>These mechanisms lead to the general reaction-diffusion-advection equation introduced below. The purpose of this page is to present known mathematical results for such models in a structured way, compare their hypotheses and conclusions, and use the resulting picture to identify well-founded open problems.</p>
 
   <h2>General Framework and Basic Assumptions</h2>
   <p>Unless a topic states otherwise, we consider a scalar reaction-diffusion equation in the whole space \(\mathbb{R}^N\):</p>
