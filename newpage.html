@@ -152,14 +152,29 @@
     <p>How are the outcome and propagation speed determined by the patch widths \(L_1,L_2\), diffusion coefficients \(D_1,D_2\), and growth rates \(r_1,r_2\)? (See Figure <a href="#fig-patches">1</a>.)</p>
   </div>
   <div class="question-box" style="border-left-color:#155e63;background:#f2f8f5;color:#214b3b;">
-    <span class="question-label" style="color:#26734d;">Main result of [1]</span>
-    <p>Shigesada, Kawasaki and Teramoto derived an invasion criterion in terms of the patch widths, diffusion coefficients, and intrinsic growth rates. Their conclusions can be summarized as follows:</p>
-    <ul>
-      <li><strong>Invasion regime:</strong> if the invasion criterion is satisfied, a population initially localized in a bounded region evolves into a traveling periodic wave (TPW) with a constant propagation speed.</li>
-      <li><strong>Extinction regime:</strong> if the criterion is not satisfied, invasion fails and the population tends to extinction.</li>
-      <li><strong>Speed selection:</strong> the TPW speed is calculated from a dispersion relation, allowing the authors to analyze how environmental heterogeneity affects the rate of spread.</li>
-    </ul>
-    <p>The exact invasion threshold is model-dependent; it should be quoted from the original paper rather than replaced by a universal condition.</p>
+    <span class="question-label" style="color:#26734d;">Main result of Shigesada–Kawasaki–Teramoto [1]</span>
+    <p>For the periodic patch model (B1)–(B2), the authors derive an invasion criterion depending on \(L_1,L_2,D_1,D_2,r_1,r_2\). Write this model-dependent criterion abstractly as</p>
+    <div class="equation">\[
+      \mathcal I(L_1,L_2,D_1,D_2,r_1,r_2)>0.
+      \tag{B5}
+    \]</div>
+    <p>Here \(\mathcal I>0\) is shorthand for the invasion condition derived in [1], not a new explicit formula. The result has the following dichotomy.</p>
+    <div class="equation">\[
+      \begin{array}{ll}
+      \mathcal I>0
+      &\Longrightarrow\ \text{invasion and formation of a TPW},\\[2mm]
+      \mathcal I\leq 0
+      &\Longrightarrow\ \text{invasion failure and extinction}.
+      \end{array}
+      \tag{B6}
+    \]</div>
+    <p>In the invasion regime, the traveling periodic wave advances by one habitat period \(L\) over a temporal period \(T\). Its average speed is therefore</p>
+    <div class="equation">\[
+      c_{\rm TPW}=\frac{L}{T},\qquad L=L_1+L_2.
+      \tag{B7}
+    \]</div>
+    <p>The speed is related to a dispersion relation obtained from the leading-edge analysis. This allows the dependence of \(c_{\rm TPW}\) on patch sizes, dispersal, and growth parameters to be studied [1].</p>
+    <p class="open-status">Notation note: \(\mathcal I\) in (B5) is a placeholder for the criterion in the original model; it must not be read as the paper's literal formula. The precise threshold and parameter restrictions should be transcribed from the original article before being quoted explicitly.</p>
   </div>
   <p><strong>Mathematical legacy.</strong> This work connects a biological invasion question to three general problems: (i) finding conditions for propagation or extinction, (ii) constructing traveling or pulsating fronts and determining their speeds, and (iii) relating these fronts to the large-time behavior of solutions to the Cauchy problem. Later theories develop these questions for more general periodic reaction-diffusion equations.</p>
 
