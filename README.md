@@ -33,7 +33,7 @@ E-mail:	guohj29@tongji.edu.cn
 
 ## Research Topics
 
-- [Spatially Periodic Reaction-Diffusion Equations: Selected Results](newpage.html)
+- [Spatially Periodic Reaction-Diffusion Equations](newpage.html)
 
 ## Publications
 
