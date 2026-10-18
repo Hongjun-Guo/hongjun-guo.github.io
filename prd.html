@@ -39,6 +39,8 @@
     .note { padding: 1rem 1.3rem; border-radius: 10px; color: #24292f; background: #f1f7f6; }
     .question-box { margin: 1.2rem 0 1.4rem; padding: 1rem 1.15rem; border: 0; border-radius: 10px; background: #f1f7f6; color: #24292f; }
     .question-label { display: block; margin-bottom: .35rem; color: #315f78; font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
+    .question-box.unresolved-question,
+    .question-box.unresolved-question .question-label { color: #b42318; }
     .question-box p { margin: 0; font-size: 1.04rem; }
     .highlight { color: #155e63; font-weight: 600; }
     .open-problem-box { margin: 1.3rem 0; padding: 1rem 1.15rem; border: 0; border-radius: 10px; background: #f1f7f6; color: #24292f; }
@@ -656,8 +658,8 @@
     \]</div>
   </div>
   <p><strong>Blocking <a href="#ref-2">[2]</a>.</strong> Periodic bistable media can also admit stationary interfaces and suppress propagation.</p>
-  <div class="question-box" id="bistable-existence-question">
-    <span class="question-label">Mathematical question · Propagation or pinning?</span>
+  <div class="question-box unresolved-question" id="bistable-existence-question">
+    <span class="question-label">Open problem · Propagation or pinning?</span>
     <div class="equation">\[
       \mathcal E(a,f):=\{L>0:\exists\text{ a pulsating front with }c_L\neq0\}.
     \]</div>
@@ -924,8 +926,8 @@
     </svg>
     <figcaption class="figcaption">Under the hypotheses of Theorem 6, \(E_\beta(t)\) is within \(o(t)\) of \(U+tW_0\). Purple: initial support; teal: its expansion. Schematic half-strip example.</figcaption>
   </figure>
-  <div class="question-box" id="general-geometry-question">
-    <span class="question-label">Mathematical question · Geometry beyond condition (G)</span>
+  <div class="question-box unresolved-question" id="general-geometry-question">
+    <span class="question-label">Open problem · Geometry beyond condition (G)</span>
     <p>For a periodic bistable equation with positive front speeds in every direction, suppose</p>
     <div class="equation">\[
       \exists e:\quad \max_{x\in\overline{W_0}}x\cdot e&lt;c^*(e).
@@ -946,8 +948,8 @@
   \]</div>
     <p>\(C_{\mathrm{loc}}\)-convergence means uniform convergence on every fixed ball. The directional limit set \(\Omega_e(u)\) uses sequences satisfying \(x_n\neq0\) and \(x_n/|x_n|\to e\).</p>
   </div>
-  <div class="question-box" id="front-convergence-question">
-    <span class="question-label">Mathematical question · Which profiles survive at large time?</span>
+  <div class="question-box unresolved-question" id="front-convergence-question">
+    <span class="question-label">Open problem · Classification of large-time profiles</span>
     <p>For invading solutions, characterize the nonconstant elements of \(\Omega(u)\). For which directions \(\nu\) can one find sequences such that, for every \(R>0\),</p>
     <div class="equation">\[
       \lim_{n\to\infty}\sup_{|x|\leq R}
