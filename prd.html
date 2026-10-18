@@ -51,6 +51,10 @@
     .numerical-observation { margin: 1.3rem 0; padding: 1rem 1.15rem; border: 0; border-radius: 10px; background: #f1f7f6; color: #24292f; }
     .numerical-observation .question-label { color: #315f78; }
     .source-location { font-size: .9rem; color: #57606a; }
+    .question-box p + p { margin-top: .45rem; }
+    .statement h3 { margin-top: 0; }
+    .diagram-panels { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+    @media (max-width: 600px) { .diagram-panels { grid-template-columns: 1fr; } }
     #invasion-threshold, #tpw-description, #patch-dispersion, #historical-tpw-question, #fig-patches, li[id^="ref-"] { scroll-margin-top: 1.2rem; }
     .paper { margin: 1rem auto 1.3rem; padding: 1rem 1.3rem; border-radius: 10px; background: #f1f7f6; }
     .meta { color: #57606a; margin-top: -.2rem; }
@@ -164,12 +168,12 @@
         <a href="#background">1. Biological motivation</a>
         <a class="sub-link" href="#patch-model">↳ One-dimensional patch model</a>
         <a class="sub-link" href="#anisotropic">↳ Two-dimensional anisotropy</a>
-        <a href="#framework">2. General equation and assumptions</a>
+        <a href="#framework">2. Equation and reaction classes</a>
         <a href="#fronts">3. Pulsating traveling fronts</a>
-        <a href="#speeds">4. Spreading and minimal speeds</a>
+        <a href="#speeds">4. Minimal speeds and spectra</a>
         <a href="#cauchy">5. Cauchy problem and spreading sets</a>
         <a href="#references">References</a>
-        <a href="#open-problems">Known results and open problems</a>
+        <a href="#open-problems">6. Mathematical questions</a>
       </nav>
     </aside>
     <main class="main-content">
@@ -385,26 +389,37 @@
   </div>
   <p><strong>Connection with the later sections.</strong> The patch model separates three questions: the linear invasion threshold, the construction and speed of a periodic front, and the long-time behavior of an initially localized population. These distinctions organize the discussion of <a href="#fronts">pulsating fronts</a>, <a href="#speeds">front speeds</a>, and the <a href="#cauchy">Cauchy problem</a> below.</p>
 
-  <h3 id="anisotropic">1.2. From One Dimension to Two: Anisotropic Spreading</h3>
-  <p>Kinezaki, Kawasaki, Takasu and Shigesada <a href="#ref-6">[6]</a> studied two-dimensional periodic striped habitats. An illustrative two-dimensional extension of (B1) in this geometry is</p>
+  <h3 id="anisotropic">1.2. Two-Dimensional Stripes and Anisotropic Spreading</h3>
+  <p>Striped habitat model, motivated by Kinezaki et al. <a href="#ref-6">[6]</a>:</p>
   <div class="equation">\[
-    \partial_t u(t,x,y)
-      = \nabla_{x,y}\!\cdot\!\left(D(x)\nabla_{x,y}u(t,x,y)\right)
-        + \bigl(r(x)-\mu u(t,x,y)\bigr)u(t,x,y),
-    \quad (x,y)\in\mathbb R^2,\ t>0.
-    \tag{B12}
+    u_t=\nabla_{x,y}\cdot\!\left(D(x)\nabla_{x,y}u\right)+(r(x)-\mu u)u,
+    \quad (x,y)\in\mathbb R^2,\quad t>0. \tag{B12}
   \]</div>
-  <p>with \(D(x+L)=D(x)\) and \(r(x+L)=r(x)\): the coefficients vary across the stripes but are invariant along them. The study considers two different initial configurations:</p>
   <div class="equation">\[
-    \begin{aligned}
-      &\text{line-supported introduction:} && u(0,x,y)\text{ concentrated near a line},\\
-      &\text{localized introduction:} && u(0,x,y)\text{ concentrated near }(0,0).
-    \end{aligned}
-    \tag{B13}
+    D(x+L)=D(x)>0,\quad r(x+L)=r(x),\quad\mu>0,
+    \qquad e_\vartheta=(\cos\vartheta,\sin\vartheta).
   \]</div>
-  <p>For line-supported initial data, the spreading pattern approaches a traveling periodic wave (TPW), with a front speed that can be determined analytically in the model. For a localized introduction, the invaded region expands in different directions with direction-dependent ray speeds. Their analysis shows that the asymptotic envelope can be nearly circular, oval-like, or spindle-like, depending on the parameters; in the striped configurations considered, the envelope is elongated along the stripes. Enlarging the fragmentation scale while keeping the relative patch proportions fixed increases the ray speed in every direction [<a href="#ref-6">6</a>].</p>
-
-  <p>This distinction is important for the Cauchy problem. In a heterogeneous periodic environment, the population need not spread equally fast in every direction. The geometry of the habitat can produce <span class="highlight">anisotropic spreading</span>: the large-time invaded region depends on the direction in which it is observed. Thus, the one-dimensional wave speed is only part of the picture; in higher dimensions, one must also understand the shape of the spreading set and the dependence of propagation speed on direction.</p>
+  <p>Two initial-data geometries:</p>
+  <div class="equation">\[
+    \begin{array}{ll}
+      \text{strip introduction:}&u_0(x,y)=g((x,y)\cdot e),\quad 0\leq g\in C_c(\mathbb R),\\
+      \text{localized introduction:}&0\leq u_0\in C_c(\mathbb R^2),\quad u_0\not\equiv0.
+    \end{array} \tag{B13}
+  \]</div>
+  <div class="question-box" id="anisotropic-question">
+    <span class="question-label">Mathematical question · Direction and shape</span>
+    <p>For localized data in an invasion regime, determine \(w(\vartheta)\) and \(W\):</p>
+    <div class="equation">\[
+      \begin{gathered}
+        u(t,ct e_\vartheta)-p(ct\cos\vartheta)\longrightarrow0
+        \quad(0\leq c&lt;w(\vartheta)),\\
+        u(t,ct e_\vartheta)\longrightarrow0\quad(c>w(\vartheta)),\\
+        W=\{r e_\vartheta:0\leq r&lt;w(\vartheta),\ 0\leq\vartheta&lt;2\pi\}.
+      \end{gathered}
+    \]</div>
+    <p>Here \(p(x)>0\) is the periodic invaded state. How do \(D_i,r_i,L_i\) determine \(w\) and \(\partial W\)?</p>
+  </div>
+  <p><strong>Reported patterns <a href="#ref-6">[6]</a>:</strong> nearly circular, oval, or spindle-shaped; elongated along the stripes in the configurations studied.</p>
 
   <figure class="figure">
     <svg viewBox="0 0 760 300" role="img" aria-labelledby="anis-title anis-desc">
@@ -437,34 +452,21 @@
       </g>
       <text x="380" y="296" text-anchor="middle" font-size="11.5" fill="#57606a">The shape and directional speeds depend on model parameters.</text>
     </svg>
-    <figcaption class="figcaption"><strong>Figure 2.</strong> Anisotropic spreading in a periodically striped habitat. The schematic reflects the qualitative result in Kinezaki et al. (2003): the asymptotic invaded region can be nearly circular, oval-like, or spindle-like, and the patterns considered are elongated along the stripes.</figcaption>
+    <figcaption class="figcaption"><strong>Figure 2.</strong> Anisotropic spreading in a periodically striped habitat. Schematic: direction-dependent spread, elongated parallel to the stripes <a href="#ref-6">[6]</a>.</figcaption>
   </figure>
 
-  <div class="question-box">
-    <span class="question-label">Guiding mathematical question</span>
-    <p>How do spatial periodicity and environmental heterogeneity affect <strong>invasion, propagation speed, and the shape of a spreading front</strong>?</p>
-  </div>
-  <p>The unknown \(u\) records population density, while spatially dependent coefficients encode the habitat. In a continuous model, this leads to an equation with periodic diffusion, drift, and reaction terms.</p>
-
-  <h3>1.3. From Biological Mechanisms to the Equation</h3>
-  <p>The one-dimensional model (B1) is a special case of equation (1) below, with \(N=1\), \(A(x)=D(x)\), \(b(x)=0\), and \(f(x,s)=(r(x)-\mu s)s\). Its positive periodic state \(p(x)\) should be distinguished from the constant state \(1\) assumed in some later front theorems.</p>
-  <div class="three-terms">
-    <div class="term">
-      <strong>Diffusion</strong>
-      <div>\(\nabla\cdot(A(x)\nabla u)\)</div>
-      <p>Models random dispersal. The matrix \(A(x)\) describes how movement varies with location and direction.</p>
-    </div>
-    <div class="term">
-      <strong>Advection / drift</strong>
-      <div>\(b(x)\cdot\nabla u\)</div>
-      <p>Represents directed transport, for example movement biased by a current or environmental gradient.</p>
-    </div>
-    <div class="term">
-      <strong>Local reaction</strong>
-      <div>\(f(x,u)\)</div>
-      <p>Describes local growth and loss, including reproduction, mortality, and density dependence.</p>
-    </div>
-  </div>
+  <h3>1.3. From Patch Models to Periodic Operators</h3>
+  <div class="equation">\[
+    \begin{gathered}
+      \underbrace{u_t}_{\text{density change}}
+      =\underbrace{\nabla\cdot(A(x)\nabla u)}_{\text{diffusion}}
+       +\underbrace{b(x)\cdot\nabla u}_{\text{drift}}
+       +\underbrace{f(x,u)}_{\text{reaction}},\\
+      \text{patch model:}\quad N=1,\quad A=D,\quad b=0,\quad
+      f(x,s)=(r(x)-\mu s)s.
+    \end{gathered}
+  \]</div>
+  <p>The patch model has invaded state \(p(x)\); Sections 2–5 use equilibria \(0\) and \(1\), except where \(p(x)\) is specified.</p>
 
   <figure class="figure">
     <svg viewBox="0 0 760 210" role="img" aria-labelledby="wave-title wave-desc">
@@ -486,242 +488,423 @@
         <text x="590" y="116" fill="#57606a">Low density</text>
       </g>
     </svg>
-    <figcaption class="figcaption"><strong>Figure 3.</strong> Conceptual population front: the population is established behind the interface and invades new territory ahead. In periodic media, the profile typically oscillates with the environment rather than being a rigid translate of a single profile.</figcaption>
+    <figcaption class="figcaption"><strong>Figure 3.</strong> Front geometry: invaded state behind; low density ahead. In periodic media, \(u(t,x)=\Phi(x,x\cdot e-ct)\).</figcaption>
   </figure>
 
-  <p>These mechanisms lead to the general reaction-diffusion-advection equation introduced below. The purpose of this page is to present known mathematical results for such models in a structured way, compare their hypotheses and conclusions, and use the resulting picture to identify well-founded open problems.</p>
-
-  <h2 id="framework">2. General Framework and Basic Assumptions</h2>
-  <p>Unless a topic states otherwise, we consider a scalar reaction-diffusion equation in the whole space \(\mathbb{R}^N\):</p>
-  <div class="equation">\[
-    \partial_t u(t,x)
-    = \nabla\!\cdot\!\big(A(x)\nabla u(t,x)\big)
-      + b(x)\cdot\nabla u(t,x)
-      + f(x,u(t,x)),
-    \qquad (t,x)\in I\times\mathbb{R}^N. \tag{1}
+  <h2 id="framework">2. Equation, Assumptions, and Reaction Classes</h2>
+  <h3>2.1. Periodic equation</h3>
+  <div class="equation" id="eq-general">\[
+    u_t=\mathcal A u+f(x,u),\qquad
+    \mathcal A u:=\nabla\cdot(A(x)\nabla u)+b(x)\cdot\nabla u,
+    \quad (t,x)\in I\times\mathbb R^N. \tag{1}
   \]</div>
-  <p>Here \(t\) is time, \(x\in\mathbb{R}^N\) is the space variable, and \(u(t,x)\in\mathbb{R}\) is the unknown scalar state. The time interval \(I\) depends on the problem: it may be \((0,\infty)\) for an initial-value problem, a finite interval for a local-in-time problem, or all of \(\mathbb{R}\) for an entire solution such as a traveling or transition front.</p>
+  <p>\(I=(0,\infty)\) for the Cauchy problem; \(I=\mathbb R\) for an entire front.</p>
 
-  <div class="assumption">
-    <h3>Spatial periodicity</h3>
-    <p>There is a lattice \(\mathcal{L}\subset\mathbb{R}^N\) such that, for every lattice vector \(k\in\mathcal{L}\),</p>
+  <div class="statement assumption" id="periodic-assumptions">
+    <p><strong>(H1) Periodicity and regularity.</strong> Fix \(\alpha\in(0,1)\), \(\ell_i>0\), and</p>
     <div class="equation">\[
-      A(x+k)=A(x),\qquad b(x+k)=b(x),\qquad
-      f(x+k,s)=f(x,s).
+      \begin{gathered}
+        Q=\prod_{i=1}^N(0,\ell_i),\qquad
+        \mathcal L=\ell_1\mathbb Z\times\cdots\times\ell_N\mathbb Z,\\
+        A\in C^{2,\alpha},\quad b\in C^{1,\alpha},\quad
+        f,\ f_s\in C^{0,\alpha}(\mathbb R^N\times[0,1]),\\
+        A(x+k)=A(x),\quad b(x+k)=b(x),\quad
+        f(x+k,s)=f(x,s)\quad(k\in\mathcal L).
+      \end{gathered}
     \]</div>
-    <p>The periodicity cell and lattice are fixed for a given equation. Time-periodic media, nonperiodic heterogeneous media, and bounded spatial domains are extensions that require separate notation or assumptions.</p>
-  </div>
-
-  <div class="assumption">
-    <h3>Diffusion matrix</h3>
-    <p>For the baseline uniformly parabolic framework, assume that \(A(x)\) is a measurable, bounded, symmetric matrix and that there are constants \(0&lt;\lambda\leq\Lambda&lt;\infty\) such that, for almost every \(x\) and every \(\xi\in\mathbb{R}^N\),</p>
+    <p><strong>(H2) Uniform ellipticity.</strong></p>
     <div class="equation">\[
-      \lambda |\xi|^2\leq \xi\cdot A(x)\xi
-      \leq \Lambda |\xi|^2.
+      A(x)=A(x)^{\mathsf T},\qquad
+      0&lt;\lambda_0|\eta|^2\leq\eta\cdot A(x)\eta\leq\Lambda_0|\eta|^2
+      \quad(\eta\neq0).
     \]</div>
-    <p>This is uniform ellipticity. It is a useful weak baseline for divergence-form equations; classical front results often impose additional smoothness on \(A\), while degenerate or nonuniformly elliptic diffusion lies outside this baseline.</p>
+    <p><strong>(H3) Incompressible flow with zero mean.</strong></p>
+    <div class="equation">\[
+      \nabla\cdot b=0,\qquad \int_Q b(x)\,dx=0.
+    \]</div>
+    <p><strong>(H4) Equilibria.</strong></p>
+    <div class="equation">\[
+      f(x,0)=f(x,1)=0,\qquad
+      0\leq u_0\leq1\ \Longrightarrow\ 0\leq u(t,\cdot)\leq1.
+    \]</div>
+    <p>These hypotheses apply to the smooth periodic equations in Sections 3–5.</p>
   </div>
 
-  <div class="assumption">
-    <h3>Advection field</h3>
-    <p>Assume initially that \(b(x)\) is measurable and bounded. Periodicity is imposed as above. Depending on the theorem, one may need Hölder or smoother coefficients. The sign convention for the drift varies in the literature; here the term is written as \(+b(x)\cdot\nabla u\).</p>
+  <h3>2.2. Three reaction classes</h3>
+  <div class="statement" id="reaction-classes">
+    <p><strong>(K) Fisher–KPP.</strong></p>
+    <div class="equation">\[
+      a(x):=f_s(x,0)>0,\qquad
+      0&lt;f(x,s)\leq a(x)s\quad(0&lt;s&lt;1). \tag{K}
+    \]</div>
+    <p><strong>(I) Ignition.</strong> For some \(\theta\in(0,1)\), \(\delta\in(0,1-\theta)\),</p>
+    <div class="equation">\[
+      \begin{gathered}
+        f(x,s)=0\quad(0\leq s\leq\theta),\qquad
+        f(x,s)>0\quad(\theta&lt;s&lt;1),\\
+        f_s(x,s)\leq0\quad(1-\delta\leq s\leq1).
+      \end{gathered} \tag{I}
+    \]</div>
+    <p><strong>(B) Bistable.</strong> For a periodic threshold \(\theta(x)\in(0,1)\) and \(\gamma>0\),</p>
+    <div class="equation">\[
+      \begin{gathered}
+        f(x,\theta(x))=0,\qquad
+        \begin{cases}
+          f(x,s)&lt;0,&0&lt;s&lt;\theta(x),\\
+          f(x,s)>0,&\theta(x)&lt;s&lt;1,
+        \end{cases}\\
+        f_s(x,0)\leq-\gamma,\qquad f_s(x,1)\leq-\gamma.
+      \end{gathered} \tag{B}
+    \]</div>
   </div>
 
-  <div class="assumption">
-    <h3>Reaction term</h3>
-    <p>Assume that \(f(x,s)\) is measurable in \(x\), continuous in \(s\), and locally Lipschitz in \(s\), uniformly in \(x\) on bounded ranges; for classical results, continuity or Hölder regularity in \(x\) is commonly added. A standard baseline equilibrium condition is \(f(x,0)=0\). Additional equilibria, sign conditions, or monostable/KPP, ignition, and bistable assumptions are topic-specific and will be stated when used.</p>
+  <figure class="figure" id="fig-reactions"><div class="diagram-panels">
+  <svg viewBox="0 0 250 225" role="img" aria-labelledby="kpp-plot-title">
+    <title id="kpp-plot-title">KPP reaction: positive growth between zero and one</title>
+    <text x="125" y="23" text-anchor="middle" font-size="16" font-weight="700" fill="#315f78">KPP</text>
+    <path d="M28 163H230 M40 196V42" stroke="#8b949e" stroke-width="1.3" fill="none"/>
+    <path d="M40 163Q122 8 204 163" fill="none" stroke="#16818a" stroke-width="3"/>
+    <g fill="#57606a" font-size="14"><text x="25" y="182">0</text><text x="200" y="182">1</text><text x="231" y="157">s</text><text x="48" y="46">f</text></g>
+    <text x="125" y="216" text-anchor="middle" font-size="13" fill="#57606a">Growth at every positive density</text>
+  </svg>
+  <svg viewBox="0 0 250 225" role="img" aria-labelledby="ignition-plot-title">
+    <title id="ignition-plot-title">Ignition reaction: growth only above threshold theta</title>
+    <text x="125" y="23" text-anchor="middle" font-size="16" font-weight="700" fill="#315f78">Ignition</text>
+    <path d="M28 163H230 M40 196V42" stroke="#8b949e" stroke-width="1.3" fill="none"/>
+    <path d="M40 163H100" stroke="#57606a" stroke-width="3"/>
+    <path d="M100 163C119 163 122 74 157 85Q193 94 204 163" fill="none" stroke="#16818a" stroke-width="3"/>
+    <g fill="#57606a" font-size="14"><text x="25" y="182">0</text><text x="200" y="182">1</text><text x="231" y="157">s</text><text x="48" y="46">f</text><text x="95" y="182">θ</text></g>
+    <text x="125" y="216" text-anchor="middle" font-size="13" fill="#57606a">Growth above a threshold</text>
+  </svg>
+  <svg viewBox="0 0 250 225" role="img" aria-labelledby="bistable-plot-title">
+    <title id="bistable-plot-title">Bistable reaction: decline below threshold, growth above</title>
+    <text x="125" y="23" text-anchor="middle" font-size="16" font-weight="700" fill="#315f78">Bistable</text>
+    <path d="M28 163H230 M40 206V42" stroke="#8b949e" stroke-width="1.3" fill="none"/>
+    <path d="M40 163C69 201 85 204 110 163" fill="none" stroke="#b16c46" stroke-width="3"/>
+    <path d="M110 163C139 108 171 83 204 163" fill="none" stroke="#16818a" stroke-width="3"/>
+    <g fill="#57606a" font-size="14"><text x="25" y="182">0</text><text x="200" y="182">1</text><text x="231" y="157">s</text><text x="48" y="46">f</text><text x="101" y="182">θ(x)</text></g>
+    <text x="125" y="221" text-anchor="middle" font-size="13" fill="#57606a">Decline, then growth</text>
+  </svg>
+</div><figcaption class="figcaption">Reaction profiles at a fixed \(x\), shown schematically. Teal: \(f>0\); brown: \(f&lt;0\).</figcaption></figure>
+
+  <h2 id="fronts">3. Pulsating Traveling Fronts</h2>
+  <h3>3.1. Definition and existence question</h3>
+  <div class="statement definition" id="front-definition">
+    <p><strong>Definition.</strong> A front in direction \(e\in\mathbb S^{N-1}\), with speed \(c>0\), is an entire solution of (1) satisfying</p>
+    <div class="equation">\[
+      \begin{gathered}
+        u(t,x)=\Phi(x,z),\qquad z=x\cdot e-ct,\qquad 0&lt;\Phi&lt;1,\\
+        \Phi(x+k,z)=\Phi(x,z)\quad(k\in\mathcal L),\qquad \Phi_z\leq0,\\
+        \lim_{z\to-\infty}\sup_{x\in Q}|\Phi(x,z)-1|=0,\qquad
+        \lim_{z\to+\infty}\sup_{x\in Q}\Phi(x,z)=0.
+      \end{gathered} \tag{2}
+    \]</div>
+    <p>\(z&lt;0\): invaded side; \(z>0\): leading edge.</p>
+  </div>
+  <div class="question-box" id="front-existence-question">
+    <span class="question-label">Mathematical question · Admissible speeds</span>
+    <p>For fixed \((A,b,f,e)\), determine</p>
+    <div class="equation">\[
+      \mathscr C(e):=\{c>0:\text{a front satisfying (1)–(2) exists}\}.
+      \tag{3}
+    \]</div>
+    <p>Is \(\mathscr C(e)\) empty, a singleton, or an interval? Is the profile unique up to \(z\)-translation?</p>
   </div>
 
-  <h3>Solutions, existence, and regularity</h3>
-  <ul>
-    <li><strong>Initial-value problem:</strong> prescribe \(u(0,x)=u_0(x)\) and study the solution for later times. Well-posedness assumptions depend on the chosen solution class and the growth of \(f\).</li>
-    <li><strong>Entire solutions:</strong> solve the equation for every \(t\in\mathbb{R}\). Pulsating traveling fronts and transition fronts are examples; they are not, in general, specified by data at one initial time.</li>
-    <li><strong>Weak versus classical solutions:</strong> measurable uniformly elliptic coefficients can support weak-solution theories under suitable hypotheses. To obtain classical derivatives and apply pointwise front arguments, stronger coefficient regularity is generally needed. Local parabolic regularity gives smoothness only to the extent allowed by the coefficients and nonlinearity.</li>
-    <li><strong>Bounds:</strong> many front problems seek solutions between two equilibria, often normalized as \(0\) and \(1\). The bound \(0\leq u\leq1\) and the equilibrium condition \(f(x,1)=0\) are common in particular models, but are not universal assumptions for every problem on this page.</li>
-  </ul>
-  <p class="note">These are common baseline assumptions, not a claim that one set of hypotheses is minimal for every theorem. Each topic below must specify any additional assumptions needed for existence, uniqueness, speed formulas, stability, or asymptotic spreading.</p>
+  <h3>3.2. Ignition: one speed</h3>
+  <div class="statement theorem" id="combustion-theorem">
+    <p><strong>Theorem 1 · Berestycki–Hamel <a href="#ref-3">[3]</a>.</strong> Assume (H1)–(H4) and (I). Then, for every \(e\in\mathbb S^{N-1}\),</p>
+    <div class="equation">\[
+      \begin{gathered}
+        \exists\,c_I(e)>0:\qquad \mathscr C(e)=\{c_I(e)\},\qquad \Phi_z&lt;0,\\
+        \Phi_1,\Phi_2\text{ front profiles in direction }e
+        \ \Longrightarrow\
+        \exists\tau\in\mathbb R:\ \Phi_2(x,z)=\Phi_1(x,z+\tau).
+      \end{gathered} \tag{4}
+    \]</div>
+  </div>
 
-  <h2 id="fronts">3. Existence of Pulsating Traveling Fronts</h2>
-  <h3>3.1. Hypotheses</h3>
-  <p>We consider equation (1) in \(\mathbb{R}^N\), with the periodicity assumptions and notation of the general framework. For the representative combustion result below, impose the following additional hypotheses.</p>
-  <p><strong>(H1) Periodicity and regularity.</strong> The coefficients \(A,b,f\) are periodic with respect to a common lattice \(\mathcal L\). For some \(\alpha\in(0,1)\), assume, for example, \(A\in C^{1,\alpha}(\mathbb R^N)\), \(b\in C^{0,\alpha}(\mathbb R^N;\mathbb R^N)\), and \(f\) is Hölder continuous in \(x\) and locally \(C^1\) in \(s\), uniformly on bounded \(s\)-intervals.</p>
-  <p><strong>(H2) Uniform ellipticity.</strong> There exist \(0&lt;\lambda\leq\Lambda\) such that</p>
+  <h3>3.3. KPP and monostable reactions: a speed threshold</h3>
+  <div class="statement theorem" id="kpp-theorem">
+    <p><strong>Theorem 2 · Periodic KPP fronts <a href="#ref-3">[3]</a>, <a href="#ref-4">[4]</a>.</strong> Assume (H1)–(H4) and (K). Then</p>
+    <div class="equation">\[
+      \forall e\in\mathbb S^{N-1},\qquad
+      \exists\,c^*(e)>0:\quad \mathscr C(e)=[c^*(e),\infty).
+      \tag{5}
+    \]</div>
+    <p>The spectral formula for \(c^*(e)\) is given in <a href="#spectral-formula">Section 4.1</a>.</p>
+  </div>
+  <div class="source-result" id="monostable-result">
+    <span class="question-label">Monostable extension <a href="#ref-3">[3]</a></span>
+    <p>Under (H1)–(H4), assume \(f_s(x,s)\leq0\) near \(s=1\). Then</p>
+    <div class="equation">\[
+      f(x,s)>0\quad(0&lt;s&lt;1)
+      \quad\Longrightarrow\quad
+      \mathscr C(e)=[c_M^*(e),\infty),\quad c_M^*(e)>0.
+    \]</div>
+    <p>The KPP bound \(f(x,s)\leq f_s(x,0)s\) is the additional hypothesis for the linear speed formula.</p>
+  </div>
+
+  <h3>3.4. Bistable reactions: dependence on the spatial period</h3>
+  <p>Let \(a>0\) and \(f\) be smooth and 1-periodic in \(y\), with \(f\) satisfying (B). Consider</p>
   <div class="equation">\[
-    \lambda|\xi|^2\leq \xi\cdot A(x)\xi\leq\Lambda|\xi|^2,
-    \qquad x,\xi\in\mathbb R^N.
+    \begin{gathered}
+      u_t=\partial_x\!\left(a(x/L)u_x\right)+f(x/L,u),\qquad L>0,\\
+      a_H:=\left(\int_0^1\frac{dy}{a(y)}\right)^{-1},\qquad
+      \bar f(s):=\int_0^1 f(y,s)\,dy.
+    \end{gathered} \tag{6}
   \]</div>
-  <p><strong>(H3) Equilibria.</strong> For every \(x\in\mathbb R^N\),</p>
-  <div class="equation">\[
-    f(x,0)=f(x,1)=0.
-  \]</div>
-  <p><strong>(H4) Combustion nonlinearity.</strong> There is \(\theta\in(0,1)\) such that, for all \(x\in\mathbb R^N\),</p>
+  <div class="statement theorem" id="bistable-theorem">
+    <p><strong>Theorem 3 · Ding–Hamel–Zhao <a href="#ref-7">[7]</a>.</strong> Suppose the homogenized equation has a unique front up to translation:</p>
+    <div class="equation">\[
+      a_H\phi_0''+c_0\phi_0'+\bar f(\phi_0)=0,\qquad
+      \phi_0(-\infty)=1,\quad\phi_0(+\infty)=0,\quad c_0\neq0.
+    \]</div>
+    <p>Then, for some \(L_*>0\),</p>
+    <div class="equation">\[
+      \begin{gathered}
+        0&lt;L&lt;L_*\ \Longrightarrow\
+        \exists\,u_L(t,x)=\Phi_L(x/L,x-c_Lt),\qquad c_L\neq0,\\
+        \Phi_L(y+1,z)=\Phi_L(y,z),\qquad
+        \Phi_L(y,-\infty)=1,\quad\Phi_L(y,+\infty)=0,\\
+        \lim_{L\to0^+}c_L=c_0.
+      \end{gathered}
+    \]</div>
+    <p>The front is unique up to a time translation. For large periods, another sufficient condition is</p>
+    <div class="equation">\[
+      \left.
+      \begin{gathered}
+        \int_0^1 f(y,s)\,ds>0\quad\forall y,\\
+        f_s(y,\theta(y))>0\quad\forall y
+      \end{gathered}
+      \right\}
+      \ \Longrightarrow\
+      \exists L^*>0:\ \forall L>L^*,\ \exists\text{ a front with }c_L>0.
+    \]</div>
+  </div>
+  <p><strong>Blocking <a href="#ref-2">[2]</a>.</strong> Periodic bistable media can also admit stationary interfaces and suppress propagation.</p>
+  <div class="question-box" id="bistable-existence-question">
+    <span class="question-label">Mathematical question · Propagation or pinning?</span>
+    <div class="equation">\[
+      \mathcal E(a,f):=\{L>0:\exists\text{ a pulsating front with }c_L\neq0\}.
+    \]</div>
+    <p>Given \((a,f)\), characterize \(\mathcal E(a,f)\) and its boundary. For which \(L\) does a stationary connection exist?</p>
+    <div class="equation">\[
+      \partial_x\!\left(a(x/L)p'\right)+f(x/L,p)=0,\quad
+      0&lt;p&lt;1,\quad p(-\infty)=1,\quad p(+\infty)=0.
+    \]</div>
+  </div>
+
+  <h2 id="speeds">4. Minimal Speeds and Spectral Problems</h2>
+  <div class="question-box">
+    <span class="question-label">Mathematical question · Linear determinacy</span>
+    <p>For (H1)–(H4) and (K), can the nonlinear front speed be recovered from the linearization at \(u=0\)?</p>
+    <div class="equation">\[
+      v_t=\mathcal A v+a(x)v,\qquad
+      v(t,x)=e^{-\sigma(x\cdot e-ct)}\varphi(x),\quad \sigma>0.
+    \]</div>
+  </div>
+  <h3 id="spectral-formula">4.1. Periodic principal eigenvalue</h3>
+  <p>Set \(\mathcal L_0:=\mathcal A+a(x)\). Exponential conjugation gives</p>
   <div class="equation">\[
     \begin{aligned}
-      f(x,s)&=0 &&\text{if }s\leq\theta\text{ or }s\geq1,\\
-      f(x,s)&>0 &&\text{if }\theta&lt;s&lt;1.
-    \end{aligned}
+      \mathcal L_{e,\sigma}\varphi
+      &:=e^{\sigma x\cdot e}\mathcal L_0
+        \!\left(e^{-\sigma x\cdot e}\varphi\right)\\
+      &=\nabla\cdot(A\nabla\varphi)
+        +(b-2\sigma Ae)\cdot\nabla\varphi\\
+      &\quad+\left[\sigma^2e\cdot Ae-\sigma\nabla\cdot(Ae)
+        -\sigma b\cdot e+a(x)\right]\varphi.
+    \end{aligned} \tag{7}
   \]</div>
-  <p>These are a convenient classical set of sufficient assumptions for the stated result, not a claim of optimal minimality. KPP/monostable and bistable reactions require different hypotheses.</p>
-
-  <h3>3.2. Definition</h3>
-  <div class="statement definition" id="front-definition">
-  <p>Let \(e\in\mathbb S^{N-1}\) and \(c>0\). A <em>pulsating traveling front</em> of (1) in direction \(e\), with speed \(c\), is an entire solution \(u\in C^{1,2}(\mathbb R\times\mathbb R^N)\), \(0&lt;u&lt;1\), for which there exists a profile \(\Phi\) satisfying</p>
-  <div class="equation">\[
-    u(t,x)=\Phi(x,x\cdot e-ct),\qquad
-    \Phi(x+k,z)=\Phi(x,z)
-    \quad(k\in\mathcal L),
-    \tag{2}
-  \]</div>
-  <p>with \(\Phi\) nonincreasing in \(z\) and</p>
-  <div class="equation">\[
-    \lim_{z\to-\infty}\Phi(x,z)=1,\qquad
-    \lim_{z\to+\infty}\Phi(x,z)=0
-    \quad\text{uniformly in }x\in\mathbb R^N.
-    \tag{3}
-  \]</div>
-  <p>Equivalently, \(\Phi\) is periodic in its first variable and connects the state \(1\) behind the front to the state \(0\) ahead of it. The function \(u\) is defined for every \(t\in\mathbb R\), so a pulsating front is an entire solution, not merely a solution of an initial-value problem.</p>
-
+  <div class="statement definition" id="principal-eigenvalue">
+    <p><strong>Principal eigenpair.</strong></p>
+    <div class="equation">\[
+      \begin{cases}
+        \mathcal L_{e,\sigma}\varphi_{e,\sigma}
+          =\lambda(e,\sigma)\varphi_{e,\sigma}&\text{in }\mathbb R^N,\\
+        \varphi_{e,\sigma}>0,\qquad
+        \varphi_{e,\sigma}(x+k)=\varphi_{e,\sigma}(x)&k\in\mathcal L,\\
+        \displaystyle\int_Q\varphi_{e,\sigma}^2\,dx=1.
+      \end{cases}
+    \]</div>
+  </div>
+  <div class="statement theorem" id="kpp-speed-theorem">
+    <p><strong>Theorem 4 · Berestycki–Hamel–Nadirashvili <a href="#ref-4">[4]</a>.</strong> Under (H1)–(H4) and (K),</p>
+    <div class="equation">\[
+      c^*(e)=\min_{\sigma>0}\frac{\lambda(e,\sigma)}{\sigma}.
+      \tag{8}
+    \]</div>
+    <p>Here \(\sigma\) is the exponential decay rate, and \(\lambda(e,\sigma)/\sigma\) is the speed of the corresponding linear mode.</p>
+  </div>
+  <h3>4.2. Homogeneous check</h3>
+  <div class="source-result" id="homogeneous-speed">
+    <p>For \(A=D I_N\), \(b=0\), \(a(x)=r>0\),</p>
+    <div class="equation">\[
+      \lambda(e,\sigma)=D\sigma^2+r,\qquad
+      c^*=\min_{\sigma>0}\left(D\sigma+\frac r\sigma\right)
+        =2\sqrt{Dr},\qquad \sigma_* =\sqrt{r/D}.
+    \]</div>
+  </div>
+  <h3>4.3. Periodic invaded states</h3>
+  <div class="source-result" id="periodic-state-fronts">
+    <span class="question-label">Biological invasion model <a href="#ref-5">[5]</a></span>
+    <p>For periodic KPP models with a positive periodic invaded state \(p\), the front connects \(p(x)\) to \(0\):</p>
+    <div class="equation">\[
+      \mathcal A p+f(x,p)=0,\quad p(x+k)=p(x)>0,\qquad
+      \Phi(x,-\infty)=p(x),\quad \Phi(x,+\infty)=0.
+    \]</div>
+    <p>The linear operator at \(0\) remains \(\mathcal A+f_s(x,0)\).</p>
   </div>
 
-  <h3>3.3. Existence Theorem</h3>
-  <div class="statement theorem" id="combustion-theorem">
-  <p><strong>Theorem 1 (Berestycki–Hamel <a href="#ref-3">[3]</a>, combustion case).</strong> Assume (H1)–(H4) in the periodic whole-space setting above. For each \(e\in\mathbb S^{N-1}\), there exist a speed \(c_e>0\) and a profile \(\Phi_e\) such that</p>
-  <div class="equation">\[
-    \begin{cases}
-      u_t=\nabla\cdot(A(x)\nabla u)+b(x)\cdot\nabla u+f(x,u),
-          &(t,x)\in\mathbb R\times\mathbb R^N,\\
-      u(t,x)=\Phi_e(x,x\cdot e-c_et),\\
-      \Phi_e(x+k,z)=\Phi_e(x,z),&k\in\mathcal L,\\
-      \partial_z\Phi_e(x,z)\leq0,\\
-      \displaystyle\lim_{z\to-\infty}\Phi_e(x,z)=1,\quad
-      \displaystyle\lim_{z\to+\infty}\Phi_e(x,z)=0
-          &\text{uniformly in }x.
-    \end{cases}
-    \tag{4}
-  \]</div>
-  <p>For the combustion problem covered by <a href="#ref-3">[3]</a>, the propagation speed is unique; the front profile is unique up to translation under the theorem's hypotheses.</p>
-  </div>
-  <p><strong>Reference <a href="#ref-3">[3]</a>.</strong> H. Berestycki and F. Hamel, “Front propagation in periodic excitable media,” <em>Communications on Pure and Applied Mathematics</em>, 55(8) (2002), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">https://doi.org/10.1002/cpa.3022</a>.</p>
-  <p>For a periodic biological-invasion model, see also H. Berestycki, F. Hamel and L. Roques, “Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts,” <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8) (2005), 1101–1146 <a href="#ref-5">[5]</a>.</p>
-
-  <h3>3.4. KPP / Monostable Reactions</h3>
-  <p>For a KPP-type nonlinearity, the unstable state \(u=0\) determines the leading-edge growth. A standard set of assumptions is</p>
-  <div class="equation">\[
-    f(x,0)=f(x,1)=0,\quad
-    0&lt;f(x,s)\leq f_u(x,0)s\quad(0&lt;s&lt;1),\quad
-    f_u(x,0)>0,
-    \tag{5}
-  \]</div>
-  <p>together with the periodicity and regularity hypotheses from the general framework. More general monostable nonlinearities require \(f(x,s)>0\) for \(0&lt;s&lt;1\), but need not satisfy the KPP upper bound in (5).</p>
-  <div class="statement theorem" id="kpp-theorem">
-  <p><strong>Theorem 2 (KPP-type fronts [3, 4]).</strong> Under the hypotheses of the periodic KPP theory, for each direction \(e\in\mathbb S^{N-1}\), there is a minimal speed \(c^*(e)>0\) such that pulsating fronts exist for \(c\geq c^*(e)\), and no such front exists for \(0&lt;c&lt;c^*(e)\). The minimal speed admits a spectral variational characterization; see Section 2.</p>
-  </div>
-  <p>For the broader monostable class, Berestycki–Hamel [3] prove, under their hypotheses, that the admissible speeds form a closed half-line bounded from below. The precise assumptions are important: the KPP spectral formula cannot be automatically transferred to every monostable nonlinearity.</p>
-
-  <h3>3.5. Bistable Reactions: Existence Depends on the Medium</h3>
-  <p>A typical bistable reaction has two stable equilibria \(0\) and \(1\), separated by an unstable intermediate state. In a spatially periodic medium, a representative assumption is</p>
-  <div class="equation">\[
-    f(x,0)=f(x,1)=0,\qquad
-    f_u(x,0)&lt;0,\quad f_u(x,1)&lt;0,
-    \tag{6}
-  \]</div>
-  <p>with a bistable sign change in \(s\in(0,1)\), uniformly in \(x\) in the specific model under consideration. The sign-change condition, coefficient regularity, and dependence on the spatial period must be stated precisely for each theorem.</p>
-  <div class="statement theorem" id="bistable-theorem">
-  <p><strong>Theorem 3 (Ding–Hamel–Zhao <a href="#ref-7">[7]</a>, representative results).</strong> For classes of spatially periodic bistable equations satisfying the assumptions in <a href="#ref-7">[7]</a>, pulsating fronts are proved to exist in several regimes, in particular for sufficiently small or sufficiently large spatial periods under the corresponding additional hypotheses. The paper also studies the set of periods admitting non-stationary fronts and proves the existence of stationary fronts or non-stationary partial fronts at boundary periods. These results do <em>not</em> assert existence for every periodic bistable equation at every period.</p>
-  </div>
-  <p>In contrast, Xin [2] gives a one-dimensional bistable example with periodic coefficients for which a traveling front does not exist and propagation is quenched. Thus, unlike the KPP setting, there is no universal minimal-speed formula that by itself classifies all bistable cases.</p>
-
-  <div class="open-problem-box">
-    <span class="open-label">Open problem 1 · Bistable front existence</span>
-    <p>For a general spatially periodic bistable nonlinearity satisfying the standard bistable sign and stability conditions, find a necessary-and-sufficient criterion for the existence of a non-stationary pulsating front, in terms of the reaction and the spatial heterogeneity. In particular, characterize when a given period supports a propagating front rather than only a stationary or partial front.</p>
-    <p class="open-status">Status note: this is a literature-motivated open direction, not a claim that every special case is unresolved. Ding–Hamel–Zhao <a href="#ref-7">[7]</a> establish substantial period-dependent existence results and explicitly discuss the difficulty of a general existence/nonexistence criterion.</p>
-  </div>
-
-  <h2 id="speeds">4. Spreading Speeds and Minimal Speeds</h2>
-  <p><span class="tag">Main question</span> How fast does an invading solution spread, and can the minimal speed of a pulsating front be computed from a linear eigenvalue problem?</p>
-  <p>For KPP-type reactions, the leading edge of the invasion is governed by the equation linearized near the unstable state. In periodic media, the relevant linear operator has periodic coefficients. Its principal eigenvalue leads to a variational formula for the minimal front speed. This is a central distinction between KPP-type problems and general monostable or bistable equations, where linear determinacy need not hold in the same way.</p>
-
-  <div class="paper">
-    <h3>4.1. Berestycki, Hamel &amp; Nadirashvili (2005) — The Periodic KPP Speed Formula</h3>
-    <p class="meta"><em>The speed of propagation for KPP type problems. I: Periodic framework.</em> Journal of the European Mathematical Society, 7(2), 173–213.</p>
-    <p>This paper proves that the minimal speed of pulsating fronts for KPP-type equations in periodic media is given by a variational formula involving principal eigenvalues of suitable linear operators. It also studies how the speed depends on the geometry of the domain and on reaction, advection, and diffusion coefficients, and connects front speeds with asymptotic spreading speeds for the Cauchy problem.</p>
-    <p><a href="https://doi.org/10.4171/JEMS/26">Publisher / DOI: 10.4171/JEMS/26</a></p>
-  </div>
-
-  <div class="paper">
-    <h3>4.2. Berestycki, Hamel &amp; Roques (2005) — Minimal Speed in Biological Invasion</h3>
-    <p class="meta"><em>Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts.</em> Journal de Mathématiques Pures et Appliquées, 84(8), 1101–1146.</p>
-    <p>This paper also belongs here: besides proving existence of pulsating invasion fronts, it characterizes the minimal speed for the periodic biological model. It is a useful bridge between the abstract spectral formula and an applied invasion model.</p>
-    <p><a href="https://doi.org/10.1016/j.matpur.2004.10.006">Publisher / DOI: 10.1016/j.matpur.2004.10.006</a></p>
-  </div>
-
-  <div class="paper">
-    <h3>4.3. Xin (1993) — Effective Speeds and Propagation Blocking</h3>
-    <p class="meta"><em>Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media.</em> Journal of Statistical Physics, 73, 893–926.</p>
-    <p>Xin's paper is relevant to the broader propagation question: when a traveling wave exists, its effective speed describes the propagation of suitable initial data. For bistable reactions, sufficiently strong heterogeneity can instead lead to the failure of wave propagation. Thus, the minimal-speed picture for KPP fronts should not be assumed to apply unchanged to all reaction types.</p>
-    <p><a href="https://doi.org/10.1007/BF01052815">Publisher / DOI: 10.1007/BF01052815</a></p>
-  </div>
-
-  <h3>4.4. Key Distinction</h3>
-  <ul>
-    <li><strong>Minimal front speed:</strong> the smallest speed for which a pulsating traveling front exists in a given direction.</li>
-    <li><strong>Asymptotic spreading speed:</strong> the speed describing the large-time expansion of solutions from suitable initial data.</li>
-    <li>In periodic KPP settings these quantities are closely linked and can be characterized spectrally; in other reaction regimes, the relationship requires separate hypotheses and results.</li>
-  </ul>
-
-  <h2 id="cauchy">5. Cauchy Problems, Directional Speeds, and Spreading Sets</h2>
-  <p>This section concerns solutions of the initial-value problem</p>
+  <h2 id="cauchy">5. Cauchy Problems and Spreading Geometry</h2>
+  <h3>5.1. Compact initial populations</h3>
   <div class="equation">\[
     \begin{cases}
-      u_t=\nabla\cdot(A(x)\nabla u)+b(x)\cdot\nabla u+f(x,u),
-          &t>0,\ x\in\mathbb R^N,\\
-      u(0,x)=u_0(x),&x\in\mathbb R^N,
-    \end{cases}
-    \tag{7}
+      u_t=\mathcal A u+f(x,u),&t>0,\quad x\in\mathbb R^N,\\
+      u(0,x)=u_0(x),&0\leq u_0\leq1,\quad u_0\not\equiv0,\quad u_0\in C_c(\mathbb R^N).
+    \end{cases} \tag{9}
   \]</div>
-  <p>For compactly supported, nontrivial initial data, a central question is how rapidly the invaded region expands. Under suitable monostable/KPP hypotheses, one can define a directional spreading speed \(w(e)\) by the asymptotic behavior along rays \(x\sim cte\): behind the speed the solution approaches the invaded state, while ahead of it the solution approaches \(0\).</p>
-
-  <h3>5.1. KPP: Minimal Front Speed and Spreading Speed</h3>
-  <p>For a periodic KPP equation, let \(\lambda(e,\sigma)\) denote the principal eigenvalue associated with the exponentially tilted linearized periodic operator in direction \(e\), with \(\sigma>0\). The minimal pulsating-front speed is given by</p>
-  <div class="equation">\[
-    c^*(e)=\inf_{\sigma>0}\frac{\lambda(e,\sigma)}{\sigma}.
-    \tag{8}
-  \]</div>
-  <p>Under the KPP hypotheses, the minimal front speed agrees with the asymptotic spreading speed in the same direction. This is the linear-determinacy property proved in the periodic framework of Berestycki–Hamel–Nadirashvili [4]. The exact definition of \(\lambda(e,\sigma)\) depends on the convention for the drift term and the tilted operator; it should be taken from the corresponding paper when using the formula for a specific equation.</p>
-
-  <h3>5.2. From Directional Speeds to a Spreading Set</h3>
-  <p>Directional speeds describe one ray at a time. The full large-time geometry is encoded by the asymptotic spreading set \(W\). In a standard convex spreading regime, it can be represented as the intersection of half-spaces</p>
-  <div class="equation">\[
-    W=\bigcap_{e\in\mathbb S^{N-1}}
-      \{x\in\mathbb R^N:\ x\cdot e\leq w(e)\}.
-    \tag{9}
-  \]</div>
-  <p>In periodic KPP settings, the Freidlin–Gärtner relation expresses the speed observed in a direction \(e\) in terms of planar propagation speeds in other directions:</p>
-  <div class="equation">\[
-    w(e)=\inf_{\substack{\xi\in\mathbb S^{N-1}\\ \xi\cdot e>0}}
-      \frac{c^*(\xi)}{\xi\cdot e}.
-    \tag{10}
-  \]</div>
-  <p>These formulas make the geometric role of anisotropy explicit: the spreading set need not be a ball, and the speed of expansion depends on direction. Formula (10) is stated here for the classical periodic KPP framework; more general reactions and initial supports require additional hypotheses and may involve a different formula.</p>
-
-  <div class="paper">
-    <h3>5.3. Hamel &amp; Rossi (2021) — Spreading Speeds for General Initial Supports</h3>
-    <p class="meta"><em>Spreading speeds and spreading sets of reaction-diffusion equations.</em> Preprint, arXiv:2105.08344.</p>
-    <p>This work studies large-time dynamics for bounded solutions with possibly unbounded initial support. It introduces notions describing bounded and unbounded directions of the initial support, derives directional spreading-speed formulas, and describes asymptotic level-set geometry. It also gives counterexamples showing that assumptions on the initial support and reaction cannot be omitted indiscriminately <a href="#ref-8">[8]</a>.</p>
-    <p><a href="https://arxiv.org/abs/2105.08344">arXiv:2105.08344</a></p>
+  <div class="question-box" id="spreading-question">
+    <span class="question-label">Mathematical question · Speed along a ray</span>
+    <p>Given \(\xi\in\mathbb S^{N-1}\), determine \(w(\xi)\) such that</p>
+    <div class="equation">\[
+      \lim_{t\to\infty}u(t,ct\xi)=
+      \begin{cases}
+        1,&0\leq c&lt;w(\xi),\\
+        0,&c>w(\xi).
+      \end{cases}
+    \]</div>
+  </div>
+  <div class="statement theorem" id="freidlin-gartner">
+    <p><strong>Theorem 5 · Periodic KPP spreading <a href="#ref-4">[4]</a>.</strong> Under (H1)–(H4) and (K), the solution of (9) has spreading speed</p>
+    <div class="equation">\[
+      w(\xi)=\min_{\substack{e\in\mathbb S^{N-1}\\e\cdot\xi>0}}
+        \frac{c^*(e)}{e\cdot\xi}. \tag{10}
+    \]</div>
+    <p>\(c^*(e)\): front speed in the normal direction \(e\); \(w(\xi)\): expansion speed along the ray \(\xi\).</p>
   </div>
 
-  <div class="paper">
-    <h3>5.4. Guo, Hamel &amp; Rossi — Spreading Speeds and Spreading Sets</h3>
-    <p class="meta"><em>Reaction-diffusion equations in periodic media: spreading speeds and spreading sets.</em></p>
-    <p>This work studies directional speeds and asymptotic invasion geometry in periodic media for a broad class of reaction terms and general initial supports. It connects the geometry of the initial support to the directions in which invasion can occur <a href="#ref-9">[9]</a>.</p>
-    <p><a href="https://arxiv.org/abs/2609.18795">arXiv link</a></p>
+  <figure class="figure" id="fig-front-ray">
+    <svg viewBox="0 0 760 310" role="img" aria-labelledby="ray-title ray-desc">
+      <title id="ray-title">Normal front speed and radial spreading speed</title>
+      <desc id="ray-desc">An elliptical spreading set W at unit time. A ray from the origin reaches a boundary point at distance w in direction xi. A tangent supporting line has unit normal e and distance c star of e from the origin. The radial direction and normal direction differ.</desc>
+      <defs><marker id="ray-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#0969da"/></marker><marker id="normal-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#b16c46"/></marker></defs>
+      <path d="M80 175H455 M240 278V28" stroke="#d0d7de" stroke-width="1.2"/>
+      <ellipse cx="240" cy="175" rx="145" ry="92" fill="#d8eeee" stroke="#16818a" stroke-width="2.5"/>
+      <path d="M239 175L342.5 110" stroke="#0969da" stroke-width="2.8" marker-end="url(#ray-arrow)"/>
+      <path d="M239 175L298.8 82.3" stroke="#b16c46" stroke-width="2.4" marker-end="url(#normal-arrow)"/>
+      <path d="M258 56L432 167" stroke="#b16c46" stroke-width="2"/>
+      <path d="M342.5 110L298.8 82.3" stroke="#b16c46" stroke-dasharray="4 4" fill="none"/>
+      <circle cx="240" cy="175" r="4" fill="#155e63"/><circle cx="342.5" cy="110" r="4" fill="#155e63"/>
+      <g font-family="Arial, sans-serif" font-size="15" fill="#24292f">
+        <text x="221" y="197">0</text><text x="165" y="150" fill="#155e63">W</text>
+        <text x="291" y="163" fill="#0969da">w(ξ) ξ</text><text x="225" y="86" fill="#b16c46">c*(e) e</text>
+        <text x="472" y="92" fill="#0969da" font-weight="700">Ray direction ξ</text><text x="472" y="118">Follow the expanding population.</text>
+        <text x="472" y="172" fill="#b16c46" font-weight="700">Normal direction e</text><text x="472" y="198">Follow a planar front.</text>
+        <text x="472" y="252" fill="#57606a">Geometry shown at t = 1</text>
+      </g>
+      <text x="240" y="303" text-anchor="middle" font-size="13" fill="#57606a">Supporting line: x · e = c*(e)</text>
+    </svg>
+    <figcaption class="figcaption">A schematic Wulff shape: \(w(\xi)\) is radial; \(c^*(e)\) supplies the planar constraints. In general, \(w(\xi)\neq c^*(\xi)\).</figcaption>
+  </figure>
+
+  <h3>5.2. The spreading set</h3>
+  <div class="statement definition" id="spreading-set">
+    <p><strong>Definition and KPP characterization.</strong></p>
+    <div class="equation">\[
+      \begin{aligned}
+        W_0
+        &=\{r\xi:\xi\in\mathbb S^{N-1},\ 0\leq r&lt;w(\xi)\}\\
+        &=\bigcap_{e\in\mathbb S^{N-1}}
+          \{x\in\mathbb R^N:x\cdot e&lt;c^*(e)\}.
+      \end{aligned} \tag{11}
+    \]</div>
+    <p>For compact \(K\subset W_0\) and compact \(F\subset\mathbb R^N\setminus\overline{W_0}\),</p>
+    <div class="equation">\[
+      \lim_{t\to\infty}\sup_{x\in tK}|u(t,x)-1|=0,\qquad
+      \lim_{t\to\infty}\sup_{x\in tF}u(t,x)=0.
+    \]</div>
+    <p>For \(\beta\in(0,1)\), set \(E_\beta(t):=\{x:u(t,x)>\beta\}\). The invaded region has scale \(tW_0\).</p>
   </div>
 
-  <div class="open-problem-box">
-    <span class="open-label">Open problem 2 · Beyond the classical spreading formula</span>
-    <p>For spatially periodic equations outside the KPP class, determine which structural assumptions on the reaction and on a general unbounded initial support guarantee a sharp Freidlin–Gärtner-type formula for the spreading set.</p>
-    <p class="open-status">Scope note: general-reaction results are already available, including <a href="#ref-8">[8]</a> and <a href="#ref-9">[9]</a>. Any remaining open question must isolate a precise class not covered by those theorems.</p>
+  <h3>5.3. General initial supports</h3>
+  <p>Now let \(u_0=\mathbf1_U\), with \(U\subset\mathbb R^N\) a Borel set. Define its thick interior, its bounded directions, and its unbounded directions:</p>
+  <div class="equation">\[
+    \begin{aligned}
+      U_\rho&:=\{x\in U:\operatorname{dist}(x,\partial U)\geq\rho\},\\
+      \mathcal B(U)&:=\left\{\xi\in\mathbb S^{N-1}:\liminf_{\tau\to\infty}
+        \frac{\operatorname{dist}(\tau\xi,U)}{\tau}>0\right\},\\
+      \mathcal U(U)&:=\left\{\xi\in\mathbb S^{N-1}:\lim_{\tau\to\infty}
+        \frac{\operatorname{dist}(\tau\xi,U)}{\tau}=0\right\},\\
+      \mathcal C(S)&:=\{r\xi:r>0,\ \xi\in S\},\qquad\mathcal C(\varnothing):=\{0\}.
+    \end{aligned} \tag{12}
+  \]</div>
+  <div class="source-result" id="homogeneous-supports">
+    <span class="question-label">Hamel–Rossi <a href="#ref-8">[8]</a> · Homogeneous benchmark</span>
+    <p>For \(u_t=\Delta u+u(1-u)\), let \(U_\rho\neq\varnothing\) and \(\mathcal B(U)\cup\mathcal U(U_\rho)=\mathbb S^{N-1}\). Then</p>
+    <div class="equation">\[
+      \begin{gathered}
+        W=\mathcal C(\mathcal U(U))+B_2,\qquad B_2:=\{x:|x|&lt;2\},\\
+        w_U(e)=\sup_{\substack{\xi\in\mathcal U(U)\\\xi\cdot e\geq0}}
+          \frac{2}{\sqrt{1-(\xi\cdot e)^2}},
+        \qquad \sup\varnothing:=2.
+      \end{gathered}
+    \]</div>
+    <p>A zero denominator gives \(w_U(e)=+\infty\). Here \(+\) denotes the Minkowski sum: \(A+B:=\{a+b:a\in A,\ b\in B\}\).</p>
+  </div>
+
+  <div class="statement theorem" id="general-supports">
+    <p><strong>Theorem 6 · Guo–Hamel–Rossi <a href="#ref-9">[9]</a>, KPP case.</strong> Assume (H1)–(H4), (K), and</p>
+    <div class="equation">\[
+      \max_{x\in\overline{W_0}}x\cdot e=c^*(e)
+      \qquad\forall e\in\mathbb S^{N-1}. \tag{G}
+    \]</div>
+    <p>Choose an invasion radius \(\rho>0\): a ball \(B_\rho(x_0)\) initially filled at density 1 invades from every centre \(x_0\). Let \(U_\rho\neq\varnothing\), and let \(d_H\) denote Hausdorff distance. Then</p>
+    <div class="equation">\[
+      d_H(U,U_\rho)&lt;\infty
+      \ \Longrightarrow\
+      \lim_{t\to\infty}\frac{d_H(E_\beta(t),\,U+tW_0)}{t}=0
+      \quad(0&lt;\beta&lt;1). \tag{13}
+    \]</div>
+    <p>If also \(\mathcal B(U)\cup\mathcal U(U_\rho)=\mathbb S^{N-1}\), the spreading set is</p>
+    <div class="equation">\[
+      W=\mathcal C(\mathcal U(U))+W_0. \tag{14}
+    \]</div>
+    <p>Condition (G) says that every planar constraint touches \(\partial W_0\). In the isotropic case \(W_0=B_{c^*}\), it holds automatically.</p>
+  </div>
+
+  <figure class="figure" id="fig-support-sum">
+    <svg viewBox="0 0 760 245" role="img" aria-labelledby="sum-title sum-desc">
+      <title id="sum-title">Initial support plus the compact-data spreading shape</title>
+      <desc id="sum-desc">A half-infinite strip U, plus an elliptical set t W zero, gives a widened strip with a rounded advancing end. This illustrates the Minkowski sum U plus t W zero.</desc>
+      <g font-family="Arial, sans-serif" text-anchor="middle" font-size="17" fill="#315f78" font-weight="700">
+        <text x="123" y="32">U</text><text x="366" y="32">t W₀</text><text x="622" y="32">U + t W₀</text>
+      </g>
+      <path d="M28 103H190V149H28" fill="#e0ddf0" stroke="#7765a5" stroke-width="2.3"/>
+      <path d="M29 102V150" stroke="#7765a5" stroke-dasharray="4 4"/>
+      <ellipse cx="366" cy="126" rx="70" ry="52" fill="#d8eeee" stroke="#16818a" stroke-width="2.3"/>
+      <path d="M513 51H620A70 52 0 0 1 690 103V149A70 52 0 0 1 620 201H513" fill="#d8eeee" stroke="#16818a" stroke-width="2.3"/>
+      <path d="M513 103H620V149H513" fill="#e0ddf0" stroke="#7765a5" stroke-width="1.4" stroke-dasharray="5 4"/>
+      <g font-family="Arial, sans-serif" font-size="30" fill="#57606a" text-anchor="middle"><text x="247" y="137">+</text><text x="476" y="137">=</text></g>
+      <g font-family="Arial, sans-serif" font-size="13" fill="#57606a" text-anchor="middle">
+        <text x="123" y="226">Initial occupied region</text><text x="366" y="226">Growth from a compact seed</text><text x="622" y="226">Predicted large-time region</text>
+      </g>
+      <g fill="#7765a5" font-size="22"><text x="6" y="133">⋯</text><text x="491" y="133">⋯</text></g>
+    </svg>
+    <figcaption class="figcaption">Under the hypotheses of Theorem 6, \(E_\beta(t)\) is within \(o(t)\) of \(U+tW_0\). Purple: initial support; teal: its expansion. Schematic half-strip example.</figcaption>
+  </figure>
+  <div class="question-box" id="general-geometry-question">
+    <span class="question-label">Mathematical question · Geometry beyond condition (G)</span>
+    <p>For a periodic bistable equation with positive front speeds in every direction, suppose</p>
+    <div class="equation">\[
+      \exists e:\quad \max_{x\in\overline{W_0}}x\cdot e&lt;c^*(e).
+    \]</div>
+    <p>Given an unbounded support \(U\), determine the spreading set \(W_U\), when it exists, and the directional limits</p>
+    <div class="equation">\[
+      \lim_{t\to\infty}u(t,ct\xi),\qquad
+      c>0,\quad\xi\in\mathbb S^{N-1}.
+    \]</div>
   </div>
 
   <h2 id="references">References cited on this page</h2>
@@ -737,14 +920,23 @@
     <li id="ref-9">Guo, H., Hamel, F. &amp; Rossi, L. Reaction-diffusion equations in periodic media: spreading speeds and spreading sets. <a href="https://arxiv.org/abs/2609.18795">arXiv:2609.18795</a>.</li>
   </ol>
 
-  <h2 id="open-problems">Known Results, Limitations, and Open Problems</h2>
-  <p>For each research question, the next stage of this project is to develop three connected parts:</p>
-  <ol>
-    <li><strong>Known results:</strong> precise theorem statements, including assumptions, conclusions, and references to the original sources.</li>
-    <li><strong>Limitations and relations:</strong> compare what different results cover, which hypotheses differ, and what follows from one theorem but not another.</li>
-    <li><strong>Open problems:</strong> formulate specific, mathematically meaningful questions suggested by these comparisons, and verify their status through the literature before labeling them open.</li>
-  </ol>
-  <p class="note">This is a developing research map, not yet an exhaustive survey. The goal is to use a careful synthesis of existing results to reveal genuine gaps and well-formulated open problems. Further modules will cover uniqueness and stability, bistable fronts, multidimensional propagation, and space-time periodic media.</p>
+  <h2 id="open-problems">6. Mathematical Questions at a Glance</h2>
+  <div class="statement" id="question-index">
+    <p><strong>Invasion and selection.</strong> <a href="#historical-tpw-question">§1.1</a></p>
+    <div class="equation">\[
+      u_0\in C_c,\quad u_0\geq0,\quad u_0\not\equiv0
+      \quad\longmapsto\quad c_{\mathrm{spread}},\ \Phi_*,\ m(t).
+    \]</div>
+    <p><strong>Existence and pinning.</strong> <a href="#front-existence-question">§3</a></p>
+    <div class="equation">\[
+      (A,b,f,e)\longmapsto\mathscr C(e),\qquad
+      (a,f)\longmapsto\mathcal E(a,f).
+    \]</div>
+    <p><strong>Speed and geometry.</strong> <a href="#spectral-formula">§4</a>, <a href="#general-geometry-question">§5</a></p>
+    <div class="equation">\[
+      (A,b,f,U)\longmapsto\lambda(e,\sigma),\ c^*(e),\ w_U(\xi),\ W_U.
+    \]</div>
+  </div>
   <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
     </main>
   </div>
