@@ -128,30 +128,37 @@
   <p>This distinction is important for the Cauchy problem. In a heterogeneous periodic environment, the population need not spread equally fast in every direction. The geometry of the habitat can produce <span class="highlight">anisotropic spreading</span>: the large-time invaded region depends on the direction in which it is observed. Thus, the one-dimensional wave speed is only part of the picture; in higher dimensions, one must also understand the shape of the spreading set and the dependence of propagation speed on direction.</p>
 
   <figure class="figure">
-    <svg viewBox="0 0 760 280" role="img" aria-labelledby="anis-title anis-desc">
-      <title id="anis-title">Schematic of direction-dependent spreading</title>
-      <desc id="anis-desc">Two-dimensional periodic habitat belts and a non-circular invaded region illustrating different spreading distances in different directions.</desc>
-      <defs><clipPath id="spread-clip"><rect x="22" y="20" width="310" height="226" rx="6"/></clipPath></defs>
-      <rect x="22" y="20" width="310" height="226" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
-      <g clip-path="url(#spread-clip)">
-        <rect x="22" y="20" width="52" height="226" fill="#d8f0dc"/><rect x="74" y="20" width="52" height="226" fill="#fff0c2"/>
-        <rect x="126" y="20" width="52" height="226" fill="#d8f0dc"/><rect x="178" y="20" width="52" height="226" fill="#fff0c2"/>
-        <rect x="230" y="20" width="52" height="226" fill="#d8f0dc"/><rect x="282" y="20" width="52" height="226" fill="#fff0c2"/>
-        <path d="M48 133 H310 M179 35 V232" stroke="#8b949e" stroke-width="1" stroke-dasharray="4 5"/>
-        <ellipse cx="179" cy="133" rx="119" ry="73" fill="#a8d8dc" fill-opacity=".7" stroke="#16818a" stroke-width="2.5"/>
-        <circle cx="179" cy="133" r="5" fill="#155e63"/>
+    <svg viewBox="0 0 760 300" role="img" aria-labelledby="anis-title anis-desc">
+      <title id="anis-title">Schematic of anisotropic spreading along periodic habitat stripes</title>
+      <desc id="anis-desc">Vertical favorable and unfavorable habitat stripes on the left. On the right, a localized introduction expands into a spreading region elongated vertically, parallel to the habitat stripes, with arrows illustrating different directional spreading distances.</desc>
+      <defs><clipPath id="habitat-clip"><rect x="22" y="28" width="300" height="230" rx="6"/></clipPath></defs>
+      <rect x="22" y="28" width="300" height="230" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+      <g clip-path="url(#habitat-clip)">
+        <rect x="22" y="28" width="50" height="230" fill="#d8f0dc"/>
+        <rect x="72" y="28" width="50" height="230" fill="#fff0c2"/>
+        <rect x="122" y="28" width="50" height="230" fill="#d8f0dc"/>
+        <rect x="172" y="28" width="50" height="230" fill="#fff0c2"/>
+        <rect x="222" y="28" width="50" height="230" fill="#d8f0dc"/>
+        <rect x="272" y="28" width="50" height="230" fill="#fff0c2"/>
       </g>
-      <text x="177" y="12" text-anchor="middle" font-size="13" fill="#57606a">Periodic striped habitat</text>
-      <path d="M357 133 H404 M395 126 L404 133 L395 140" stroke="#0969da" stroke-width="2" fill="none"/>
-      <rect x="423" y="20" width="315" height="226" rx="6" fill="#fff" stroke="#d0d7de"/>
-      <path d="M446 133 H715 M580 36 V232" stroke="#8b949e" stroke-width="1" stroke-dasharray="4 5"/>
-      <path d="M580 133 C580 82 624 69 661 93 C690 111 697 145 669 174 C638 207 591 194 566 179 C529 156 530 111 551 91 C561 80 570 78 580 78 Z" fill="#a8d8dc" fill-opacity=".6" stroke="#16818a" stroke-width="2.5"/>
-      <circle cx="580" cy="133" r="5" fill="#155e63"/>
-      <path d="M580 133 L678 133 M580 133 L580 79" stroke="#155e63" stroke-width="1.5"/>
-      <text x="580" y="12" text-anchor="middle" font-size="13" fill="#57606a">Direction-dependent invaded region</text>
-      <text x="380" y="270" text-anchor="middle" font-size="13" fill="#57606a">Schematic only: actual spreading sets depend on the equation and habitat.</text>
+      <text x="172" y="17" text-anchor="middle" font-size="13" fill="#57606a">Periodic striped habitat</text>
+      <text x="172" y="279" text-anchor="middle" font-size="12" fill="#57606a">Stripes run vertically</text>
+      <path d="M347 145 H397 M388 138 L397 145 L388 152" stroke="#0969da" stroke-width="2" fill="none"/>
+      <rect x="416" y="28" width="322" height="230" rx="6" fill="#fff" stroke="#d0d7de"/>
+      <path d="M435 143 H720 M577 42 V244" stroke="#8b949e" stroke-width="1" stroke-dasharray="4 5"/>
+      <path d="M577 48 C622 48 653 84 653 143 C653 202 622 238 577 238 C532 238 501 202 501 143 C501 84 532 48 577 48 Z" fill="#a8d8dc" fill-opacity=".65" stroke="#16818a" stroke-width="2.5"/>
+      <circle cx="577" cy="143" r="5" fill="#155e63"/>
+      <path d="M577 143 V61 M577 143 V225 M577 143 H514 M577 143 H640" stroke="#155e63" stroke-width="1.7"/>
+      <path d="M571 70 L577 60 L583 70 M571 216 L577 226 L583 216 M523 137 L513 143 L523 149 M631 137 L641 143 L631 149" stroke="#155e63" stroke-width="1.7" fill="none"/>
+      <g fill="#24292f" font-size="12.5">
+        <text x="577" y="17" text-anchor="middle" fill="#57606a">Illustrative spreading set</text>
+        <text x="589" y="72">Longer spread</text>
+        <text x="586" y="218">Longer spread</text>
+        <text x="437" y="279" fill="#57606a">Elongated parallel to habitat stripes</text>
+      </g>
+      <text x="380" y="296" text-anchor="middle" font-size="11.5" fill="#57606a">Conceptual illustration only; the precise shape and ray speeds depend on model parameters.</text>
     </svg>
-    <figcaption class="figcaption"><strong>Figure 2.</strong> Conceptual illustration of anisotropic spreading in two dimensions. The invaded region is not required to be circular; the propagation distance may vary with direction.</figcaption>
+    <figcaption class="figcaption"><strong>Figure 2.</strong> Anisotropic spreading in a periodically striped habitat. The schematic reflects the qualitative result in Kinezaki et al. (2003): the asymptotic invaded region can be nearly circular, oval-like, or spindle-like, and the patterns considered are elongated along the stripes. The drawing is illustrative, not a reproduction of their computed profile.</figcaption>
   </figure>
 
   <div class="question-box">
