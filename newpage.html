@@ -6,7 +6,16 @@
   <title>Spatially Periodic Reaction-Diffusion Equations | Hongjun Guo</title>
   <style>
     :root { color-scheme: light; }
-    body { max-width: 1120px; margin: 2.5rem auto; padding: 0 1.5rem 3rem; font: 16px/1.75 Arial, Helvetica, sans-serif; color: #24292f; }
+    body { max-width: 1440px; margin: 2rem auto; padding: 0 1.5rem 3rem; font: 16px/1.75 Arial, Helvetica, sans-serif; color: #24292f; }
+    .page-layout { display: grid; grid-template-columns: 235px minmax(0, 1fr); gap: 2rem; align-items: start; margin-top: 1.5rem; }
+    .sidebar { position: sticky; top: 1.25rem; border: 1px solid #d6e7e8; border-radius: 10px; padding: 1rem .8rem; background: #f7fbfb; }
+    .sidebar-title { margin: 0 0 .75rem; padding: 0 .55rem .65rem; border-bottom: 1px solid #d6e7e8; color: #155e63; font-size: .95rem; font-weight: 700; }
+    .sidebar a { display: block; padding: .5rem .6rem; border-radius: 6px; color: #315f78; font-size: .92rem; line-height: 1.4; }
+    .sidebar a:hover { background: #e7f3f3; color: #155e63; text-decoration: none; }
+    .sidebar .sub-link { padding-left: 1.2rem; font-size: .85rem; color: #57606a; }
+    .main-content { min-width: 0; }
+    html { scroll-behavior: smooth; }
+    h2[id], h3[id] { scroll-margin-top: 1.2rem; }
     a { color: #0969da; text-decoration: none; }
     a:hover { text-decoration: underline; }
     h1 { line-height: 1.25; margin-top: 1.5rem; text-align: center; color: #17324d; letter-spacing: .01em; }
@@ -28,13 +37,15 @@
     .figcaption { color: #57606a; font-size: .92rem; margin-top: .7rem; }
     .three-terms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1rem 0; }
     .term { border: 1px solid #d8dee4; border-radius: 8px; padding: .85rem; background: #f6f8fa; }
-    .roadmap { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .7rem; margin: 1.2rem 0 1.8rem; }
-    .roadmap-step { position: relative; padding: .9rem .8rem; border: 1px solid #c9dfe0; border-radius: 8px; background: #f3f9f9; }
-    .roadmap-step:not(:last-child)::after { content: "→"; position: absolute; right: -.65rem; top: 42%; z-index: 2; color: #16818a; font-weight: 700; background: #fff; padding: 0 .1rem; }
-    .roadmap-step .num { display: block; color: #147078; font-size: .8rem; font-weight: 700; margin-bottom: .3rem; }
-    .roadmap-step strong { display: block; color: #17324d; line-height: 1.35; }
-    .roadmap-step small { display: block; color: #57606a; margin-top: .35rem; line-height: 1.4; }
-    @media (max-width: 820px) { .roadmap { grid-template-columns: 1fr; } .roadmap-step:not(:last-child)::after { content: "↓"; right: 50%; top: auto; bottom: -.9rem; } }
+    @media (max-width: 900px) {
+      .page-layout { grid-template-columns: 1fr; gap: 1rem; }
+      .sidebar { position: static; }
+      .sidebar nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .2rem; }
+    }
+    @media (max-width: 560px) {
+      body { padding: 0 .9rem 2rem; }
+      .sidebar nav { grid-template-columns: 1fr; }
+    }
     .term strong { display: block; margin-bottom: .35rem; }
     @media (max-width: 640px) { .three-terms { grid-template-columns: 1fr; } }
     li { margin: .3rem 0; }
@@ -55,7 +66,21 @@
   <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
   <h1>Spatially Periodic Reaction-Diffusion Equations</h1>
 
-  <h2>Background and Biological Motivation</h2>
+  <div class="page-layout">
+    <aside class="sidebar">
+      <p class="sidebar-title">Research Roadmap</p>
+      <nav aria-label="Research topic navigation">
+        <a href="#background">1. Biological motivation</a>
+        <a class="sub-link" href="#anisotropic">↳ Two-dimensional anisotropy</a>
+        <a href="#framework">2. General equation and assumptions</a>
+        <a href="#fronts">3. Pulsating traveling fronts</a>
+        <a href="#speeds">4. Spreading and minimal speeds</a>
+        <a href="#references">References</a>
+        <a href="#open-problems">Known results and open problems</a>
+      </nav>
+    </aside>
+    <main class="main-content">
+  <h2 id="background">Background and Biological Motivation</h2>
   <p>Reaction-diffusion equations describe the combined effects of local dynamics and spatial movement. In mathematical biology, \(u(t,x)\) can represent population density at time \(t\) and position \(x\). Individuals disperse, reproduce, and die, while the habitat may contain regions with different resources, mortality rates, or movement conditions.</p>
 
   <h3>A patchy habitat and periodic invasion waves</h3>
@@ -91,7 +116,7 @@
     <figcaption class="figcaption"><strong>Figure 1.</strong> Schematic habitat with alternating patches. The drawing is illustrative: the original ecological model specifies the patch parameters mathematically.</figcaption>
   </figure>
 
-  <h3>From one dimension to two: anisotropic spreading</h3>
+  <h3 id="anisotropic">From one dimension to two: anisotropic spreading</h3>
   <p>The one-dimensional model of Shigesada, Kawasaki and Teramoto was later extended to two-dimensional striped habitats by Kinezaki, Kawasaki, Takasu and Shigesada (2003) [<a href="#ref-6">6</a>]. In this setting, favorable and unfavorable belts alternate in space. The authors studied both line-supported initial populations and populations introduced near a single point. For line-supported initial data, the invasion develops into a traveling periodic wave; for a localized introduction, the expansion is described by direction-dependent ray speeds.</p>
   <p>This distinction is important for the Cauchy problem. In a heterogeneous periodic environment, the population need not spread equally fast in every direction. The geometry of the habitat can produce <span class="highlight">anisotropic spreading</span>: the large-time invaded region depends on the direction in which it is observed. Thus, the one-dimensional wave speed is only part of the picture; in higher dimensions, one must also understand the shape of the spreading set and the dependence of propagation speed on direction.</p>
 
@@ -172,17 +197,7 @@
 
   <p>These mechanisms lead to the general reaction-diffusion-advection equation introduced below. The purpose of this page is to present known mathematical results for such models in a structured way, compare their hypotheses and conclusions, and use the resulting picture to identify well-founded open problems.</p>
 
-  <h3>From the biological model to mathematical questions</h3>
-  <div class="roadmap" aria-label="Research roadmap">
-    <div class="roadmap-step"><span class="num">01 · Motivation</span><strong>Biological invasion</strong><small>Population dispersal in a patchy habitat.</small></div>
-    <div class="roadmap-step"><span class="num">02 · Wave patterns</span><strong>1D periodic waves</strong><small>Traveling periodic waves in alternating patches.</small></div>
-    <div class="roadmap-step"><span class="num">03 · Front theory</span><strong>Pulsating fronts</strong><small>Define fronts and establish their existence and speeds.</small></div>
-    <div class="roadmap-step"><span class="num">04 · Higher dimensions</span><strong>Anisotropic spreading</strong><small>Different propagation rates in different directions.</small></div>
-    <div class="roadmap-step"><span class="num">05 · Cauchy problem</span><strong>Spreading sets</strong><small>Large-time invaded regions and directional speeds.</small></div>
-  </div>
-  <p class="note">The order matters: traveling and pulsating fronts provide basic propagation objects; the higher-dimensional initial-value problem then asks how these directional propagation mechanisms combine to determine the large-time spreading set.</p>
-
-  <h2>General Framework and Basic Assumptions</h2>
+  <h2 id="framework">General Framework and Basic Assumptions</h2>
   <p>Unless a topic states otherwise, we consider a scalar reaction-diffusion equation in the whole space \(\mathbb{R}^N\):</p>
   <div class="equation">\[
     \partial_t u(t,x)
@@ -232,7 +247,7 @@
   </ul>
   <p class="note">These are common baseline assumptions, not a claim that one set of hypotheses is minimal for every theorem. Each topic below must specify any additional assumptions needed for existence, uniqueness, speed formulas, stability, or asymptotic spreading.</p>
 
-  <h2>1. Existence of Pulsating Traveling Fronts</h2>
+  <h2 id="fronts">1. Existence of Pulsating Traveling Fronts</h2>
   <h3>1.1. Hypotheses</h3>
   <p>We consider equation (1) in \(\mathbb{R}^N\), with the periodicity assumptions and notation of the general framework. For the representative combustion result below, impose the following additional hypotheses.</p>
   <p><strong>(H1) Periodicity and regularity.</strong> The coefficients \(A,b,f\) are periodic with respect to a common lattice \(\mathcal L\). For some \(\alpha\in(0,1)\), assume, for example, \(A\in C^{1,\alpha}(\mathbb R^N)\), \(b\in C^{0,\alpha}(\mathbb R^N;\mathbb R^N)\), and \(f\) is Hölder continuous in \(x\) and locally \(C^1\) in \(s\), uniformly on bounded \(s\)-intervals.</p>
@@ -293,7 +308,7 @@
   <h3>1.4. Other reaction types</h3>
   <p>Theorem 1 is specifically a combustion-type result. For KPP reactions, fronts are typically associated with speeds \(c\geq c^*(e)\), where \(c^*(e)\) is determined by a spectral variational formula; see <a href="#ref-4">[4]</a>. Bistable reactions require their own sign, stability, and speed-selection hypotheses. These cases are not covered by (H4).</p>
 
-  <h2>2. Spreading Speeds and Minimal Speeds</h2>
+  <h2 id="speeds">2. Spreading Speeds and Minimal Speeds</h2>
   <p><span class="tag">Main question</span> How fast does an invading solution spread, and can the minimal speed of a pulsating front be computed from a linear eigenvalue problem?</p>
   <p>For KPP-type reactions, the leading edge of the invasion is governed by the equation linearized near the unstable state. In periodic media, the relevant linear operator has periodic coefficients. Its principal eigenvalue leads to a variational formula for the minimal front speed. This is a central distinction between KPP-type problems and general monostable or bistable equations, where linear determinacy need not hold in the same way.</p>
 
@@ -325,7 +340,7 @@
     <li>In periodic KPP settings these quantities are closely linked and can be characterized spectrally; in other reaction regimes, the relationship requires separate hypotheses and results.</li>
   </ul>
 
-  <h2>References cited on this page</h2>
+  <h2 id="references">References cited on this page</h2>
   <ol>
     <li id="ref-1">Shigesada, N., Kawasaki, K. &amp; Teramoto, E. (1986). Traveling periodic waves in heterogeneous environments. <em>Theoretical Population Biology</em>, 30(1), 143–160. <a href="https://doi.org/10.1016/0040-5809(86)90029-8">doi:10.1016/0040-5809(86)90029-8</a>.</li>
     <li id="ref-2">Xin, J. X. (1993). Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media. <em>Journal of Statistical Physics</em>, 73, 893–926. <a href="https://doi.org/10.1007/BF01052815">doi:10.1007/BF01052815</a>.</li>
@@ -335,7 +350,7 @@
     <li id="ref-6">Kinezaki, N., Kawasaki, K., Takasu, F. &amp; Shigesada, N. (2003). Modeling biological invasions into periodically fragmented environments. <em>Theoretical Population Biology</em>, 64(3), 291–302. <a href="https://doi.org/10.1016/S0040-5809(03)00091-1">doi:10.1016/S0040-5809(03)00091-1</a>.</li>
   </ol>
 
-  <h2>Known Results, Limitations, and Open Problems</h2>
+  <h2 id="open-problems">Known Results, Limitations, and Open Problems</h2>
   <p>For each research question, the next stage of this project is to develop three connected parts:</p>
   <ol>
     <li><strong>Known results:</strong> precise theorem statements, including assumptions, conclusions, and references to the original sources.</li>
@@ -344,5 +359,7 @@
   </ol>
   <p class="note">This is a developing research map, not yet an exhaustive survey. The goal is to use a careful synthesis of existing results to reveal genuine gaps and well-formulated open problems. Further modules will cover uniqueness and stability, bistable fronts, multidimensional propagation, and space-time periodic media.</p>
   <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
+    </main>
+  </div>
 </body>
 </html>
