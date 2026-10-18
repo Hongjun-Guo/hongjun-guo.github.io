@@ -48,7 +48,7 @@
   <p>Reaction-diffusion equations are used to describe how a quantity evolves through the combination of local dynamics and spatial movement. In mathematical biology, a standard example is the invasion of a habitat by a population: \(u(t,x)\) denotes population density at time \(t\) and position \(x\). Individuals disperse, reproduce, and die; meanwhile, the habitat may contain regions with different resources, mortality rates, or movement conditions.</p>
 
   <h3>A patchy habitat and periodic invasion waves</h3>
-  <p>A classical model is due to Shigesada, Kawasaki and Teramoto (1986). They considered a single species in a one-dimensional heterogeneous environment formed by alternating patches with different diffusivities and intrinsic growth rates. Their analysis related successful invasion to patch sizes and biological parameters: when an invasion condition holds, a population initially localized in a bounded region can develop into a traveling periodic wave with constant speed; otherwise, invasion fails and the population tends to extinction [1].</p>
+  <p>A classical model is due to Shigesada, Kawasaki and Teramoto (1986). They considered a single species in a one-dimensional heterogeneous environment formed by alternating patches with different diffusivities and intrinsic growth rates. Their analysis related successful invasion to patch sizes and biological parameters: when an invasion condition holds, a population initially localized in a bounded region can develop into a traveling periodic wave with constant speed; otherwise, invasion fails and the population tends to extinction <a href="#ref-1">[1]</a>.</p>
 
   <figure class="figure">
     <svg viewBox="0 0 760 210" role="img" aria-labelledby="patch-title patch-desc">
@@ -216,7 +216,7 @@
   <p>Equivalently, \(\Phi\) is periodic in its first variable and connects the state \(1\) behind the front to the state \(0\) ahead of it. The function \(u\) is defined for every \(t\in\mathbb R\), so a pulsating front is an entire solution, not merely a solution of an initial-value problem.</p>
 
   <h3>1.3. Existence theorem</h3>
-  <p><strong>Theorem 1 (Berestycki–Hamel [3], combustion case).</strong> Assume (H1)–(H4) in the periodic whole-space setting above. For each \(e\in\mathbb S^{N-1}\), there exist a speed \(c_e>0\) and a profile \(\Phi_e\) such that</p>
+  <p><strong>Theorem 1 (Berestycki–Hamel <a href="#ref-3">[3]</a>, combustion case).</strong> Assume (H1)–(H4) in the periodic whole-space setting above. For each \(e\in\mathbb S^{N-1}\), there exist a speed \(c_e>0\) and a profile \(\Phi_e\) such that</p>
   <div class="equation">\[
     \begin{cases}
       u_t=\nabla\cdot(A(x)\nabla u)+b(x)\cdot\nabla u+f(x,u),
@@ -230,12 +230,12 @@
     \end{cases}
     \tag{4}
   \]</div>
-  <p>For the combustion problem covered by [3], the propagation speed is unique; the front profile is unique up to translation under the theorem's hypotheses.</p>
-  <p><strong>Reference [3].</strong> H. Berestycki and F. Hamel, “Front propagation in periodic excitable media,” <em>Communications on Pure and Applied Mathematics</em>, 55(8) (2002), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">https://doi.org/10.1002/cpa.3022</a>.</p>
-  <p>For a periodic biological-invasion model, see also H. Berestycki, F. Hamel and L. Roques, “Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts,” <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8) (2005), 1101–1146 [5].</p>
+  <p>For the combustion problem covered by <a href="#ref-3">[3]</a>, the propagation speed is unique; the front profile is unique up to translation under the theorem's hypotheses.</p>
+  <p><strong>Reference <a href="#ref-3">[3]</a>.</strong> H. Berestycki and F. Hamel, “Front propagation in periodic excitable media,” <em>Communications on Pure and Applied Mathematics</em>, 55(8) (2002), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">https://doi.org/10.1002/cpa.3022</a>.</p>
+  <p>For a periodic biological-invasion model, see also H. Berestycki, F. Hamel and L. Roques, “Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts,” <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8) (2005), 1101–1146 <a href="#ref-5">[5]</a>.</p>
 
   <h3>1.4. Other reaction types</h3>
-  <p>Theorem 1 is specifically a combustion-type result. For KPP reactions, fronts are typically associated with speeds \(c\geq c^*(e)\), where \(c^*(e)\) is determined by a spectral variational formula; see [4]. Bistable reactions require their own sign, stability, and speed-selection hypotheses. These cases are not covered by (H4).</p>
+  <p>Theorem 1 is specifically a combustion-type result. For KPP reactions, fronts are typically associated with speeds \(c\geq c^*(e)\), where \(c^*(e)\) is determined by a spectral variational formula; see <a href="#ref-4">[4]</a>. Bistable reactions require their own sign, stability, and speed-selection hypotheses. These cases are not covered by (H4).</p>
 
   <h2>2. Spreading Speeds and Minimal Speeds</h2>
   <p><span class="tag">Main question</span> How fast does an invading solution spread, and can the minimal speed of a pulsating front be computed from a linear eigenvalue problem?</p>
@@ -271,11 +271,11 @@
 
   <h2>References cited on this page</h2>
   <ol>
-    <li>Shigesada, N., Kawasaki, K. &amp; Teramoto, E. (1986). Traveling periodic waves in heterogeneous environments. <em>Theoretical Population Biology</em>, 30(1), 143–160. <a href="https://doi.org/10.1016/0040-5809(86)90029-8">doi:10.1016/0040-5809(86)90029-8</a>.</li>
-    <li>Xin, J. X. (1993). Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media. <em>Journal of Statistical Physics</em>, 73, 893–926. <a href="https://doi.org/10.1007/BF01052815">doi:10.1007/BF01052815</a>.</li>
-    <li>Berestycki, H. &amp; Hamel, F. (2002). Front propagation in periodic excitable media. <em>Communications on Pure and Applied Mathematics</em>, 55(8), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">doi:10.1002/cpa.3022</a>.</li>
-    <li>Berestycki, H., Hamel, F. &amp; Nadirashvili, N. (2005). The speed of propagation for KPP type problems. I: Periodic framework. <em>Journal of the European Mathematical Society</em>, 7(2), 173–213. <a href="https://doi.org/10.4171/JEMS/26">doi:10.4171/JEMS/26</a>.</li>
-    <li>Berestycki, H., Hamel, F. &amp; Roques, L. (2005). Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts. <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8), 1101–1146. <a href="https://doi.org/10.1016/j.matpur.2004.10.006">doi:10.1016/j.matpur.2004.10.006</a>.</li>
+    <li id="ref-1">Shigesada, N., Kawasaki, K. &amp; Teramoto, E. (1986). Traveling periodic waves in heterogeneous environments. <em>Theoretical Population Biology</em>, 30(1), 143–160. <a href="https://doi.org/10.1016/0040-5809(86)90029-8">doi:10.1016/0040-5809(86)90029-8</a>.</li>
+    <li id="ref-2">Xin, J. X. (1993). Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media. <em>Journal of Statistical Physics</em>, 73, 893–926. <a href="https://doi.org/10.1007/BF01052815">doi:10.1007/BF01052815</a>.</li>
+    <li id="ref-3">Berestycki, H. &amp; Hamel, F. (2002). Front propagation in periodic excitable media. <em>Communications on Pure and Applied Mathematics</em>, 55(8), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">doi:10.1002/cpa.3022</a>.</li>
+    <li id="ref-4">Berestycki, H., Hamel, F. &amp; Nadirashvili, N. (2005). The speed of propagation for KPP type problems. I: Periodic framework. <em>Journal of the European Mathematical Society</em>, 7(2), 173–213. <a href="https://doi.org/10.4171/JEMS/26">doi:10.4171/JEMS/26</a>.</li>
+    <li id="ref-5">Berestycki, H., Hamel, F. &amp; Roques, L. (2005). Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts. <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8), 1101–1146. <a href="https://doi.org/10.1016/j.matpur.2004.10.006">doi:10.1016/j.matpur.2004.10.006</a>.</li>
   </ol>
 
   <h2>Known Results, Limitations, and Open Problems</h2>
