@@ -212,7 +212,8 @@
         <a href="#speeds">4. Minimal speeds and spectra</a>
         <a href="#cauchy">5. Cauchy problem and spreading sets</a>
         <a href="#convergence">6. Convergence to pulsating fronts</a>
-        <a href="#heterogeneity">7. Habitat scale and flows</a>
+        <a href="#heterogeneity">7. Habitat scale, optimization, and flows</a>
+        <a class="sub-link" href="#habitat-optimization">↳ Optimal habitat distribution</a>
         <a href="#extensions">8. Transition fronts and terraces</a>
         <a href="#open-problems">9. Mathematical questions</a>
         <a href="#references">References</a>
@@ -1169,7 +1170,7 @@
     <p>The \(O(1)\) statement describes the position; convergence to a fixed phase is a stronger assertion. Local profile limits, uniform orbital stability, and logarithmic position corrections address different aspects of convergence.</p>
   </div>
 
-  <h2 id="heterogeneity">7. Habitat Scale, Fragmentation, and Advection</h2>
+  <h2 id="heterogeneity">7. Habitat Scale, Fragmentation, Optimization, and Advection</h2>
   <h3 id="homogenization">7.1. Rapid and slow spatial oscillations</h3>
   <p>For \(u_t=\partial_x(a(x/L)u_x)+f(x/L,u)\), the cell size \(L\) is a mathematical parameter. Rapid oscillations lead to effective coefficients; slow oscillations resolve the local habitats. Heinze–Papanicolaou–Stevens <a href="#ref-37">[37]</a> develop variational speed principles, while Caffarelli–Lee–Mellet <a href="#ref-38">[38]</a> study homogenized propagation in periodic excitable media.</p>
   <div class="statement" id="kpp-homogenization">
@@ -1187,7 +1188,64 @@
   <h3 id="fragmentation-interfaces">7.2. Fragmentation and interfaces</h3>
   <p>The biological questions extend beyond a change in cell size: one can rearrange favorable habitat, alter patch lengths, or change dispersal at the boundaries. Berestycki–Hamel–Roques <a href="#ref-18">[18]</a>, <a href="#ref-5">[5]</a> connect fragmentation with persistence and invasion. Shigesada–Kawasaki–Teramoto <a href="#ref-1">[1]</a> and Kinezaki et al. <a href="#ref-6">[6]</a> give the patch-model and numerical starting points.</p>
   <p>Hamel–Lutscher–Zhang <a href="#ref-46">[46]</a> develop periodic patchy models with interface conditions, incorporating movement preferences and jumps in density. Their framework extends the continuous-density, continuous-flux baseline (B3). The interface law is part of the model and changes both the persistence threshold and spreading behavior.</p>
-  <h3 id="advection-effects">7.3. Flow strength, flow direction, and persistence</h3>
+
+  <h3 id="habitat-optimization">7.3. Optimizing habitat distribution and spreading speeds</h3>
+  <div class="question-box" id="resource-speed-question">
+    <span class="question-label">From environmental effects to optimal design</span>
+    <p>With the period and total low-density growth fixed, which spatial distribution produces the fastest invasion? This asks us to optimize the coefficient in the <a href="#spectral-formula">spectral speed formula (§4.1)</a>; in several dimensions, it also asks how the <a href="#cauchy">compact-data spreading set (§5)</a> changes.</p>
+  </div>
+  <p>We first fix unit diffusion, no advection, a period \(L>0\), and a mean growth \(\alpha>0\). For a smooth coefficient, consider</p>
+  <div class="equation">\[
+    u_t=u_{xx}+b(x)u(1-u),\qquad
+    b\geq0,\quad b(x+L)=b(x),\quad \int_0^L b(x)\,dx=\alpha L.
+  \]</div>
+  <p>Let \(\mathcal A_{\alpha,L}\) be this class of nonnegative \(C^1\) periodic coefficients, and let \(\overline{\mathcal A}_{\alpha,L}\) be its weak-* closure in periodic nonnegative Radon measures. The quantity \(c^*(b)\) is the minimal pulsating-front speed and, in this one-dimensional setting, the compact-data spreading speed.</p>
+  <div class="source-result" id="dirac-optimal-growth">
+    <span class="question-label">Liang–Lin–Matano (2010) <a href="#ref-53">[53]</a> · Concentration under a fixed mean</span>
+    <p>The wave and spreading-speed theory extends to the measure-valued coefficients above. Set</p>
+    <div class="equation">\[
+      \begin{gathered}
+      h_{\alpha,L}=\alpha L\sum_{k\in\mathbb Z}\delta_{kL},\\[.5em]
+      \max_{b\in\overline{\mathcal A}_{\alpha,L}}c^*(b)
+        =c^*(h_{\alpha,L})
+        =\sup_{b\in\mathcal A_{\alpha,L}}c^*(b).
+      \end{gathered}
+    \]</div>
+    <p>No smooth coefficient attains this supremum: \(c^*(b)&lt;c^*(h_{\alpha,L})\) for every \(b\in\mathcal A_{\alpha,L}\). Narrow smooth growth peaks can approximate the optimal measure. Translations of the periodic Dirac array give the same speed.</p>
+    <p class="source-location">Source: [53], Theorems 2.17–2.19. The singular equation is interpreted through mild/weak solutions, rather than the smooth-coefficient hypotheses of Section 2.</p>
+  </div>
+  <p>The constraint is essential: only the total mass and period are fixed here, with no upper bound on the growth amplitude. A Dirac measure describes an idealized concentration of low-density growth; it is not an admissible bounded habitat profile. This conclusion should not be transferred unchanged to bounded-growth, fixed-distribution, or \(L^p\)-budget problems.</p>
+  <div class="source-result" id="stratified-optimal-growth">
+    <span class="question-label">Liang–Matano (2014) <a href="#ref-54">[54]</a> · Directional speeds and spreading shape</span>
+    <p>For the representative stratified KPP equation</p>
+    <div class="equation">\[
+      u_t=u_{xx}+u_{yy}+b(x)u(1-u),\qquad (x,y)\in\mathbb R^2,
+    \]</div>
+    <p>the coefficient varies across the layers in \(x\) and is homogeneous along them in \(y\). Under the same mass constraint, \(h_{\alpha,L}\) maximizes both the minimal front speed \(c^*(\theta;b)\) and the radial spreading speed \(w(\theta;b)\), simultaneously in every direction:</p>
+    <div class="equation">\[
+      \begin{gathered}
+      w(\theta;b)=\min_{|\theta-\phi|&lt;\pi/2}
+       \frac{c^*(\phi;b)}{\cos(\theta-\phi)},\\[.5em]
+      \begin{aligned}
+      c^*(\theta;b)&\leq c^*(\theta;h_{\alpha,L}),\\
+      w(\theta;b)&\leq w(\theta;h_{\alpha,L}).
+      \end{aligned}
+      \end{gathered}
+    \]</div>
+    <p>Here the optimal measure is supported on parallel lines, not isolated points in the plane. For nonconstant \(b\), both speeds increase strictly as \(\theta\) runs from \(0\) (across layers) to \(\pi/2\) (along layers). For the optimal array, as \(L\to0\) both speeds tend to \(2\sqrt\alpha\) in every direction; for large \(L\), the appropriately rescaled spreading boundary approaches two parabolic arcs.</p>
+    <p class="source-location">Source: [54], Theorems 2.13–2.20. The paper also treats more general KPP reactions of the form \(b(x)f(u)+g(u)\).</p>
+  </div>
+  <p><strong>Why the layered assumption matters.</strong> Section 8 of [54] shows that allowing a general doubly periodic coefficient \(b(x,y)\), with only a fixed mean, permits smooth concentrating sequences whose minimal speeds become unbounded. Some singular two-dimensional coefficients also destroy well-posedness. The finite optimal layered configuration therefore does not solve the unrestricted two-dimensional problem.</p>
+  <p><strong>Related directions.</strong> The following studies change either the admissible class or the optimization objective:</p>
+  <ul>
+    <li><strong>Rearrangement at fixed distribution.</strong> Nadin <a href="#ref-55">[55]</a> proves a Schwarz-rearrangement inequality for the one-dimensional periodic principal eigenvalue, yielding an increase of the KPP speed under the corresponding rearrangement of growth. This compares spatial arrangements with the same value distribution, rather than allowing arbitrary concentration under a mass constraint.</li>
+    <li><strong>Other resource budgets.</strong> Mori–Xiao <a href="#ref-56">[56]</a> study speed maximization under more general constraints. Under an \(L^2\) budget they derive an Euler–Lagrange equation for an optimizer; they also analyze limiting regimes and restricted step-function classes under \(L^p\) budgets.</li>
+    <li><strong>Relaxation and fine oscillations.</strong> Ito <a href="#ref-57">[57]</a> considers growth \(H(b(x))\) with a prescribed mean of the controllable parameter \(b\). Under the paper's assumptions, Young measures describe relaxed optimizers and arbitrarily fine oscillations that may prevent attainment in the original function class.</li>
+    <li><strong>Minimizing invasion speed.</strong> Ito <a href="#ref-58">[58]</a> studies \(u_t=(d(x)u_x)_x+(r(x)-u)u\), with a given positive periodic diffusivity, and explicitly identifies a minimizing growth coefficient under the stated constraint. Variable diffusion and speed minimization give a different design problem from [53].</li>
+  </ul>
+  <p class="note">These results distinguish three mechanisms: concentrating mass, rearranging a fixed distribution, and creating fine oscillations. The admissible coefficients and resource constraint must be specified before asking whether fragmentation speeds up invasion or whether an optimal habitat exists.</p>
+
+  <h3 id="advection-effects">7.4. Flow strength, flow direction, and persistence</h3>
   <p>For incompressible periodic flows, replacing \(b\) by \(Mb\) leads to the parameter-dependent speed \(c_M^*(e)\). Berestycki–Hamel–Nadirashvili <a href="#ref-52">[52]</a> relate large-drift eigenvalue asymptotics to flow first integrals and nonlinear propagation. Their periodic speed theory <a href="#ref-4">[4]</a> also describes how reaction, diffusion, and advection enter the variational problem.</p>
   <p>A conservative population flux gives a different equation. Boutillon–Hamel–Roques <a href="#ref-47">[47]</a> study the one-dimensional periodic KPP model</p>
   <div class="equation">\[u_t=u_{xx}-\partial_x(b(x)u)+f(x,u)=u_{xx}-b(x)u_x+f(x,u)-b'(x)u.\]</div>
@@ -1262,6 +1320,7 @@
       <tr><td>Spreading geometry</td><td>Wulff shape; unbounded supports; periodic domains</td><td><a href="#ref-8">[8]</a>, <a href="#ref-9">[9]</a>, <a href="#ref-15">[15]</a>, <a href="#ref-28">[28]</a>, <a href="#ref-35">[35]</a></td></tr>
       <tr><td>Front convergence</td><td>Tail-dependent stability; logarithmic lag; translated local limits</td><td><a href="#ref-10">[10]</a>, <a href="#ref-11">[11]</a>, <a href="#ref-22">[22]</a>, <a href="#ref-29">[29]</a>, <a href="#ref-30">[30]</a></td></tr>
       <tr><td>Environmental scales</td><td>Homogenized speeds; slow bistable limit; interface laws; advection</td><td><a href="#ref-26">[26]</a>, <a href="#ref-36">[36]</a>, <a href="#ref-46">[46]</a>, <a href="#ref-47">[47]</a>, <a href="#ref-52">[52]</a></td></tr>
+      <tr><td><a href="#habitat-optimization">Habitat optimization</a></td><td>Fixed-mass concentration; stratified spreading shapes; rearrangement; resource budgets; relaxed optimization</td><td><a href="#ref-53">[53]</a>–<a href="#ref-58">[58]</a></td></tr>
       <tr><td>Beyond a single front</td><td>Transition waves; curved interfaces; direction-dependent terraces</td><td><a href="#ref-41">[41]</a>, <a href="#ref-42">[42]</a>, <a href="#ref-43">[43]</a>, <a href="#ref-50">[50]</a>, <a href="#ref-51">[51]</a></td></tr>
       <tr><td>Seasonal environments</td><td>Space–time periodic fronts; parabolic eigenvalues</td><td><a href="#ref-39">[39]</a>, <a href="#ref-40">[40]</a></td></tr>
     </tbody>
@@ -1321,6 +1380,12 @@
     <li id="ref-50">Giletti, T. &amp; Rossi, L. Stability of propagating terraces in spatially periodic multistable equations in R^N. <em>Preprint, revised August 2026.</em> <a href="https://arxiv.org/abs/2503.07128">arXiv:2503.07128</a>.</li>
     <li id="ref-51">El Smaily, M., Hamel, F. &amp; Huang, R. (2011). Two-dimensional curved fronts in a periodic shear flow. <em>Nonlinear Analysis, 74, 6469–6486.</em> <a href="https://arxiv.org/abs/1006.2580">arXiv:1006.2580</a>.</li>
     <li id="ref-52">Berestycki, H., Hamel, F. &amp; Nadirashvili, N. (2005). Elliptic eigenvalue problems with large drift and applications to nonlinear propagation phenomena. <em>Communications in Mathematical Physics, 253, 451–480.</em> <a href="https://doi.org/10.1007/s00220-004-1201-9">doi:10.1007/s00220-004-1201-9</a>.</li>
+    <li id="ref-53">Liang, X., Lin, X. &amp; Matano, H. (2010). A variational problem associated with the minimal speed of travelling waves for spatially periodic reaction-diffusion equations. <em>Transactions of the American Mathematical Society, 362, 5605–5633.</em> <a href="https://doi.org/10.1090/S0002-9947-2010-04931-1">doi:10.1090/S0002-9947-2010-04931-1</a>.</li>
+    <li id="ref-54">Liang, X. &amp; Matano, H. (2014). Maximizing the spreading speed of KPP fronts in two-dimensional stratified media. <em>Proceedings of the London Mathematical Society, 109, 1137–1174.</em> <a href="https://doi.org/10.1112/plms/pdu031">doi:10.1112/plms/pdu031</a>.</li>
+    <li id="ref-55">Nadin, G. (2010). The effect of the Schwarz rearrangement on the periodic principal eigenvalue of a nonsymmetric operator. <em>SIAM Journal on Mathematical Analysis, 41, 2388–2406.</em> <a href="https://doi.org/10.1137/080743597">doi:10.1137/080743597</a>.</li>
+    <li id="ref-56">Mori, R. &amp; Xiao, D. (2019). A variational problem associated with the minimal speed of traveling waves for spatially periodic KPP type equations. <em>Proceedings of the London Mathematical Society, 119, 654–680.</em> <a href="https://doi.org/10.1112/plms.12243">doi:10.1112/plms.12243</a>.</li>
+    <li id="ref-57">Ito, R. (2018). Analysis of the minimal traveling wave speed via the methods of Young measures. <em>SIAM Journal on Mathematical Analysis, 50, 3478–3534.</em> <a href="https://doi.org/10.1137/17M1111218">doi:10.1137/17M1111218</a>.</li>
+    <li id="ref-58">Ito, R. (2020). Determining the optimal coefficient of the spatially periodic Fisher–KPP equation that minimizes the spreading speed. <em>Journal of Mathematical Biology, 80, 1953–1970.</em> <a href="https://doi.org/10.1007/s00285-020-01486-x">doi:10.1007/s00285-020-01486-x</a>.</li>
   </ol>
 
   <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
