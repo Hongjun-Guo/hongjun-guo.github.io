@@ -23,7 +23,7 @@
     .sidebar-title { margin: 0 0 .75rem; padding: 0 .55rem .65rem; border-bottom: 1px solid #d6e7e8; color: #155e63; font-size: .95rem; font-weight: 700; }
     .sidebar a { display: block; padding: .5rem .6rem; border-radius: 6px; color: #315f78; font-size: .92rem; line-height: 1.4; }
     .sidebar a:hover { background: #e7f3f3; color: #155e63; text-decoration: none; }
-    .sidebar a.active { background: #dcefee; color: #104f55; font-weight: 700; box-shadow: inset 4px 0 0 #16818a, 0 1px 5px rgba(21,94,99,.12); }
+    .sidebar a.active { background: #dcefee; color: #104f55; font-weight: 700; box-shadow: 0 1px 5px rgba(21,94,99,.12); }
     .sidebar a.active::after { content: "You are here"; display: block; margin-top: .12rem; color: #39757a; font-size: .72rem; font-weight: 500; }
     .sidebar .sub-link { padding-left: 1.2rem; font-size: .85rem; color: #57606a; }
     .sidebar .sub-link.active { padding-left: 1.2rem; }
@@ -35,23 +35,23 @@
     h2 { margin-top: 2.4rem; padding-bottom: .35rem; border-bottom: 2px solid #d6e7e8; color: #155e63; }
     h3 { margin-bottom: .35rem; color: #315f78; }
     .lead { color: #57606a; font-size: 1.05rem; }
-    .note { border-left: 3px solid #3f7c85; padding: .5rem 1rem; color: #465b64; background: #f0f7f7; }
-    .question-box { margin: 1.2rem 0 1.4rem; padding: 1rem 1.15rem; border-left: 4px solid #16818a; border-radius: 0 8px 8px 0; background: #edf7f6; color: #193f46; }
-    .question-label { display: block; margin-bottom: .35rem; color: #147078; font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
+    .note { padding: 1rem 1.3rem; border-radius: 10px; color: #24292f; background: #f1f7f6; }
+    .question-box { margin: 1.2rem 0 1.4rem; padding: 1rem 1.15rem; border: 0; border-radius: 10px; background: #f1f7f6; color: #24292f; }
+    .question-label { display: block; margin-bottom: .35rem; color: #315f78; font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
     .question-box p { margin: 0; font-size: 1.04rem; }
     .highlight { color: #155e63; font-weight: 600; }
-    .open-problem-box { margin: 1.3rem 0; padding: 1rem 1.15rem; border: 1px solid #f1aeb5; border-left: 5px solid #c62828; border-radius: 8px; background: #fff5f5; color: #5f1717; }
-    .open-label { display: block; margin-bottom: .5rem; color: #b4232b; font-size: .84rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+    .open-problem-box { margin: 1.3rem 0; padding: 1rem 1.15rem; border: 0; border-radius: 10px; background: #f1f7f6; color: #24292f; }
+    .open-label { display: block; margin-bottom: .5rem; color: #315f78; font-size: .84rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
     .open-problem-box p { margin: .45rem 0; }
-    .open-status { color: #7a4545; font-size: .9rem; }
-    .source-result { margin: 1.3rem 0; padding: 1rem 1.15rem; border-left: 4px solid #26734d; border-radius: 0 8px 8px 0; background: #f2f8f5; color: #214b3b; }
-    .source-result .question-label { color: #26734d; }
+    .open-status { color: #57606a; font-size: .9rem; }
+    .source-result { margin: 1.3rem 0; padding: 1rem 1.15rem; border: 0; border-radius: 10px; background: #f1f7f6; color: #24292f; }
+    .source-result .question-label { color: #315f78; }
     .source-result p, .numerical-observation p { margin: .55rem 0; }
-    .numerical-observation { margin: 1.3rem 0; padding: 1rem 1.15rem; border-left: 4px solid #956516; border-radius: 0 8px 8px 0; background: #fff9ed; color: #594313; }
-    .numerical-observation .question-label { color: #805615; }
+    .numerical-observation { margin: 1.3rem 0; padding: 1rem 1.15rem; border: 0; border-radius: 10px; background: #f1f7f6; color: #24292f; }
+    .numerical-observation .question-label { color: #315f78; }
     .source-location { font-size: .9rem; color: #57606a; }
     #invasion-threshold, #tpw-description, #patch-dispersion, #historical-tpw-question, #fig-patches, li[id^="ref-"] { scroll-margin-top: 1.2rem; }
-    .paper { margin: 1rem 0 1.3rem; padding: .1rem 0 .1rem 1rem; border-left: 2px solid #d8dee4; }
+    .paper { margin: 1rem auto 1.3rem; padding: 1rem 1.3rem; border-radius: 10px; background: #f1f7f6; }
     .meta { color: #57606a; margin-top: -.2rem; }
     .tag { display: inline-block; border: 1px solid #d0d7de; border-radius: 1rem; padding: .05rem .55rem; font-size: .82rem; color: #57606a; }
     .equation { overflow: visible; padding: .85rem 1rem; margin: 1rem 0; background: #f6f8fa; border-radius: 6px; text-align: center; }
@@ -79,10 +79,10 @@
     @media (max-width: 640px) { .three-terms { grid-template-columns: 1fr; } }
     li { margin: .3rem 0; }
     @media (max-width: 600px) { body { margin-top: 1.2rem; } }
-    .question-box, .open-problem-box {
+    .question-box, .open-problem-box, .note {
       box-sizing: border-box; width: 86%; max-width: 58rem; margin-left: auto; margin-right: auto;
     }
-    .source-result, .numerical-observation, .statement, .assumption {
+    .source-result, .numerical-observation, .statement, .assumption, .paper {
       box-sizing: border-box; width: 90%; max-width: 62rem; margin-left: auto; margin-right: auto;
     }
     .figure { box-sizing: border-box; width: 78%; max-width: 48rem; margin-left: auto; margin-right: auto; }
@@ -93,13 +93,16 @@
       margin-top: 1.4rem; margin-bottom: 1.4rem; padding: 1rem 1.3rem;
       border: 0; border-radius: 10px; background: #f1f7f6;
     }
-    .statement > p:first-child { margin-top: 0; }
-    .statement > p:last-child { margin-bottom: 0; }
+    .statement > p:first-child, .paper > :first-child { margin-top: 0; }
+    .statement > p:last-child, .paper > :last-child { margin-bottom: 0; }
     .statement > p:first-child > strong { color: #315f78; }
-    .statement .equation { box-sizing: border-box; width: 100%; padding: .6rem .4rem; background: transparent; }
+    .statement .equation, .source-result .equation, .numerical-observation .equation,
+    .question-box .equation, .open-problem-box .equation, .paper .equation {
+      box-sizing: border-box; width: 100%; padding: .6rem .4rem; background: transparent;
+    }
     @media (max-width: 820px) {
       .question-box, .open-problem-box, .source-result, .numerical-observation,
-      .statement, .assumption, .main-content > .equation { width: 100%; }
+      .statement, .assumption, .paper, .note, .main-content > .equation { width: 100%; }
       .figure { width: 94%; }
       .statement { padding: .9rem 1rem; }
     }
