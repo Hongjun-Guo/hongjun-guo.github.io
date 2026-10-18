@@ -37,7 +37,57 @@
   <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
   <h1>Spatially Periodic Reaction-Diffusion Equations</h1>
   <p class="lead">A problem-oriented guide to research on propagation, pulsating traveling fronts, and spreading speeds in spatially periodic media.</p>
-  <p>This page organizes the literature by mathematical questions rather than by publication date. The aim is to explain what each group of papers establishes, how the results fit together, and where the main assumptions enter. The current version starts with two foundational questions; other topics will be added progressively.</p>
+  <p>This page collects results on spatially periodic reaction-diffusion equations and organizes the literature by mathematical questions. Before treating individual topics, we fix a common equation, notation, and baseline assumptions. Specific results may require stronger hypotheses, which will be stated in the corresponding sections.</p>
+
+  <h2>General Framework and Basic Assumptions</h2>
+  <p>Unless a topic states otherwise, we consider a scalar reaction-diffusion equation in the whole space \\(\mathbb{R}^N\\):</p>
+  <div class="equation">\\[
+    \partial_t u(t,x)
+    = \nabla\!\\cdot\!\\big(A(x)\nabla u(t,x)\\big)
+      + b(x)\\cdot\nabla u(t,x)
+      + f(x,u(t,x)),
+    \qquad (t,x)\\in I\\times\mathbb{R}^N.
+  \\]</div>
+  <p>Here \\(t\\) is time, \\(x\\in\mathbb{R}^N\\) is the space variable, and \\(u(t,x)\\in\mathbb{R}\\) is the unknown scalar state. The time interval \\(I\\) depends on the problem: it may be \\((0,\infty)\\) for an initial-value problem, a finite interval for a local-in-time problem, or all of \\(\mathbb{R}\\) for an entire solution such as a traveling or transition front.</p>
+
+  <div class="assumption">
+    <h3>Spatial periodicity</h3>
+    <p>There is a lattice \\(\mathcal{L}\\subset\mathbb{R}^N\\) such that, for every lattice vector \\(k\\in\mathcal{L}\\),</p>
+    <div class="equation">\\[
+      A(x+k)=A(x),\qquad b(x+k)=b(x),\qquad
+      f(x+k,s)=f(x,s).
+    \\]</div>
+    <p>The periodicity cell and lattice are fixed for a given equation. Time-periodic media, nonperiodic heterogeneous media, and bounded spatial domains are extensions that require separate notation or assumptions.</p>
+  </div>
+
+  <div class="assumption">
+    <h3>Diffusion matrix</h3>
+    <p>For the baseline uniformly parabolic framework, assume that \\(A(x)\\) is a measurable, bounded, symmetric matrix and that there are constants \\(0<\lambda\leq\Lambda<\infty\\) such that, for almost every \\(x\\) and every \\(\xi\in\mathbb{R}^N\\),</p>
+    <div class="equation">\\[
+      \lambda |\xi|^2\leq \xi\cdot A(x)\xi
+      \leq \Lambda |\xi|^2.
+    \\]</div>
+    <p>This is uniform ellipticity. It is a useful weak baseline for divergence-form equations; classical front results often impose additional smoothness on \\(A\\), while degenerate or nonuniformly elliptic diffusion lies outside this baseline.</p>
+  </div>
+
+  <div class="assumption">
+    <h3>Advection field</h3>
+    <p>Assume initially that \\(b(x)\\) is measurable and bounded. Periodicity is imposed as above. Depending on the theorem, one may need Hölder or smoother coefficients. The sign convention for the drift varies in the literature; here the term is written as \\(+b(x)\cdot\nabla u\\).</p>
+  </div>
+
+  <div class="assumption">
+    <h3>Reaction term</h3>
+    <p>Assume that \\(f(x,s)\\) is measurable in \\(x\\), continuous in \\(s\\), and locally Lipschitz in \\(s\\), uniformly in \\(x\\) on bounded ranges; for classical results, continuity or Hölder regularity in \\(x\\) is commonly added. A standard baseline equilibrium condition is \\(f(x,0)=0\\). Additional equilibria, sign conditions, or monostable/KPP, ignition, and bistable assumptions are topic-specific and will be stated when used.</p>
+  </div>
+
+  <h3>Solutions, existence, and regularity</h3>
+  <ul>
+    <li><strong>Initial-value problem:</strong> prescribe \\(u(0,x)=u_0(x)\\) and study the solution for later times. Well-posedness assumptions depend on the chosen solution class and the growth of \\(f\\).</li>
+    <li><strong>Entire solutions:</strong> solve the equation for every \\(t\in\mathbb{R}\\). Pulsating traveling fronts and transition fronts are examples; they are not, in general, specified by data at one initial time.</li>
+    <li><strong>Weak versus classical solutions:</strong> measurable uniformly elliptic coefficients can support weak-solution theories under suitable hypotheses. To obtain classical derivatives and apply pointwise front arguments, stronger coefficient regularity is generally needed. Local parabolic regularity gives smoothness only to the extent allowed by the coefficients and nonlinearity.</li>
+    <li><strong>Bounds:</strong> many front problems seek solutions between two equilibria, often normalized as \\(0\\) and \\(1\\). The bound \\(0\leq u\leq1\\) and the equilibrium condition \\(f(x,1)=0\\) are common in particular models, but are not universal assumptions for every problem on this page.</li>
+  </ul>
+  <p class="note">These are common baseline assumptions, not a claim that one set of hypotheses is minimal for every theorem. Each topic below must specify any additional assumptions needed for existence, uniqueness, speed formulas, stability, or asymptotic spreading.</p>
 
   <h2>1. Existence of Pulsating Traveling Fronts</h2>
   <p><span class="tag">Main question</span> In a medium whose coefficients vary periodically in space, when does a solution exist that connects two stable or unstable states and propagates in a prescribed direction?</p>
