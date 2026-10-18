@@ -58,6 +58,4 @@ E-mail:	guohj29@tongji.edu.cn
 
 <br>
 
-## Visitor Counter
-
 ![Visitor count](https://visitor-badge.laobi.icu/badge?page_id=Hongjun-Guo.hongjun-guo.github.io)
