@@ -104,18 +104,18 @@
     </aside>
     <main class="main-content">
   <h2 id="background">Background and Biological Motivation</h2>
-  <p>Reaction-diffusion equations describe the combined effects of local population dynamics and spatial dispersal. Let \(n(t,x)\) denote the density of a single species at time \(t\) and location \(x\). A classical starting point is Fisher's equation, in which diffusion models random movement and a logistic reaction models reproduction with density-dependent saturation. Shigesada, Kawasaki and Teramoto [<a href="#ref-1">1</a>] studied how this picture changes when the habitat is spatially heterogeneous.</p>
+  <p>Reaction-diffusion equations describe the combined effects of local population dynamics and spatial dispersal. Let \(u(t,x)\) denote the density of a single species at time \(t\) and location \(x\). A classical starting point is Fisher's equation, in which diffusion models random movement and a logistic reaction models reproduction with density-dependent saturation. Shigesada, Kawasaki and Teramoto [<a href="#ref-1">1</a>] studied how this picture changes when the habitat is spatially heterogeneous.</p>
 
   <h3>A one-dimensional patch model</h3>
   <p>In their 1986 model, the habitat consists of two types of patches arranged alternately along the real line. The patches have different widths, diffusion coefficients, and intrinsic growth rates. A representative extended Fisher equation illustrating this model class is</p>
   <div class="equation">\[
-    \partial_t n(t,x)
-      = \partial_x\!\left(D(x)\partial_x n(t,x)\right)
-        + r(x)n(t,x)\left(1-\frac{n(t,x)}{K}\right),
+    \partial_t u(t,x)
+      = \partial_x\!\left(D(x)\partial_x u(t,x)\right)
+        + r(x)u(t,x)\big(1-u(t,x)\big),
     \qquad (t,x)\in(0,\infty)\times\mathbb R.
     \tag{B1}
   \]</div>
-  <p>Here \(D(x)>0\) is the local dispersal rate, \(r(x)\) is the intrinsic growth rate, and \(K>0\) is a carrying-capacity scale. The patch structure is encoded by periodic, typically piecewise-constant coefficients: for a period \(L=L_1+L_2\), one may take</p>
+  <p>Here \(D(x)>0\) is the local dispersal rate and \(r(x)\) is the intrinsic growth rate. The density has been normalized by the carrying capacity, so the saturated state is \(u=1\). The patch structure is encoded by periodic, typically piecewise-constant coefficients: for a period \(L=L_1+L_2\), one may take</p>
   <div class="equation">\[
     (D(x),r(x))=
     \begin{cases}
@@ -130,7 +130,7 @@
   <div class="three-terms">
     <div class="term">
       <strong>Dispersal</strong>
-      <div>\(\partial_x(D(x)\partial_x n)\)</div>
+      <div>\(\partial_x(D(x)\partial_x u)\)</div>
       <p>Movement between nearby locations; spatial variation in \(D\) changes how readily the population crosses patch boundaries.</p>
     </div>
     <div class="term">
@@ -180,17 +180,17 @@
   <h3 id="anisotropic">From one dimension to two: anisotropic spreading</h3>
   <p>Kinezaki, Kawasaki, Takasu and Shigesada [<a href="#ref-6">6</a>] extended the periodic-habitat model to a two-dimensional environment made of alternating vertical habitat stripes. A representative equation for this geometry is</p>
   <div class="equation">\[
-    \partial_t n(t,x,y)
-      = \nabla_{x,y}\!\cdot\!\left(D(x)\nabla_{x,y}n(t,x,y)\right)
-        + r(x)n(t,x,y)\left(1-\frac{n(t,x,y)}{K}\right),
+    \partial_t u(t,x,y)
+      = \nabla_{x,y}\!\cdot\!\left(D(x)\nabla_{x,y}u(t,x,y)\right)
+        + r(x)u(t,x,y)\left(1-\frac{u(t,x,y)}{K}\right),
     \quad (x,y)\in\mathbb R^2,\ t>0,
     \tag{B3}
   \]</div>
   <p>with \(D(x+L)=D(x)\) and \(r(x+L)=r(x)\): the coefficients vary across the stripes but are invariant along them. The study considers two different initial configurations:</p>
   <div class="equation">\[
     \begin{aligned}
-      &\text{line-supported introduction:} && n(0,x,y)\text{ concentrated near a line},\\
-      &\text{localized introduction:} && n(0,x,y)\text{ concentrated near }(0,0).
+      &\text{line-supported introduction:} && u(0,x,y)\text{ concentrated near a line},\\
+      &\text{localized introduction:} && u(0,x,y)\text{ concentrated near }(0,0).
     \end{aligned}
     \tag{B4}
   \]</div>
