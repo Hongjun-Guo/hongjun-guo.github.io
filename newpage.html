@@ -93,6 +93,7 @@
       <p class="sidebar-title">Research Roadmap</p>
       <nav aria-label="Research topic navigation">
         <a href="#background">1. Biological motivation</a>
+        <a class="sub-link" href="#patch-model">↳ One-dimensional patch model</a>
         <a class="sub-link" href="#anisotropic">↳ Two-dimensional anisotropy</a>
         <a href="#framework">2. General equation and assumptions</a>
         <a href="#fronts">3. Pulsating traveling fronts</a>
@@ -106,7 +107,7 @@
   <h2 id="background">Background and Biological Motivation</h2>
   <p>Reaction-diffusion equations describe the combined effects of local population dynamics and spatial dispersal. Let \(u(t,x)\) denote the density of a single species at time \(t\) and location \(x\). A classical starting point is Fisher's equation, in which diffusion models random movement and a logistic reaction models reproduction with density-dependent saturation. Shigesada, Kawasaki and Teramoto [<a href="#ref-1">1</a>] studied how this picture changes when the habitat is spatially heterogeneous.</p>
 
-  <h3>A one-dimensional patch model</h3>
+  <h3 id="patch-model">A one-dimensional patch model</h3>
   <p>In their 1986 model [<a href="#ref-1">1</a>], the habitat consists of two types of patches arranged alternately along the real line. The patches have different widths, diffusion coefficients, and intrinsic growth rates. A representative extended Fisher equation illustrating this model class is</p>
   <div class="equation">\[
     \partial_t u(t,x)
@@ -115,7 +116,7 @@
     \qquad (t,x)\in(0,\infty)\times\mathbb R.
     \tag{B1}
   \]</div>
-  <p>Here \(D(x)>0\) is the local dispersal rate and \(r(x)\) is the intrinsic growth rate. The density has been normalized by the carrying capacity, so the saturated state is \(u=1\). The patch structure is encoded by periodic, typically piecewise-constant coefficients: for a period \(L=L_1+L_2\), one may take</p>
+  <p>Here \(D_i>0\) and \(r_i\) are respectively the diffusion coefficient and intrinsic growth rate in patch type \(i\in\{1,2\}\). The population density is normalized so that the carrying-capacity state is \(u=1\). The two patch widths are \(L_1>0\) and \(L_2>0\), and one spatial period has length \(L=L_1+L_2\). Thus, in each period, type 1 occupies an interval of length \(L_1\), followed by type 2 on an interval of length \(L_2\):</p>
   <div class="equation">\[
     (D(x),r(x))=
     \begin{cases}
