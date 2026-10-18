@@ -53,6 +53,8 @@
     .source-location { font-size: .9rem; color: #57606a; }
     .question-box p + p { margin-top: .45rem; }
     .statement h3 { margin-top: 0; }
+    .diagram-mobile { display: none; }
+    @media (max-width: 600px) { .figure .diagram-desktop { display: none; } .figure .diagram-mobile { display: block; } }
     .diagram-panels { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
     @media (max-width: 600px) { .diagram-panels { grid-template-columns: 1fr; } }
     #invasion-threshold, #tpw-description, #patch-dispersion, #historical-tpw-question, #fig-patches, li[id^="ref-"] { scroll-margin-top: 1.2rem; }
@@ -172,8 +174,8 @@
         <a href="#fronts">3. Pulsating traveling fronts</a>
         <a href="#speeds">4. Minimal speeds and spectra</a>
         <a href="#cauchy">5. Cauchy problem and spreading sets</a>
-        <a href="#references">References</a>
         <a href="#open-problems">6. Mathematical questions</a>
+        <a href="#references">References</a>
       </nav>
     </aside>
     <main class="main-content">
@@ -392,19 +394,26 @@
   <h3 id="anisotropic">1.2. Two-Dimensional Stripes and Anisotropic Spreading</h3>
   <p>Striped habitat model, motivated by Kinezaki et al. <a href="#ref-6">[6]</a>:</p>
   <div class="equation">\[
-    u_t=\nabla_{x,y}\cdot\!\left(D(x)\nabla_{x,y}u\right)+(r(x)-\mu u)u,
-    \quad (x,y)\in\mathbb R^2,\quad t>0. \tag{B12}
+    \begin{gathered}
+      u_t=\nabla_{x,y}\cdot\!\left(D(x)\nabla_{x,y}u\right)+(r(x)-\mu u)u,\\
+      (x,y)\in\mathbb R^2,\qquad t>0.
+    \end{gathered} \tag{B12}
   \]</div>
   <div class="equation">\[
-    D(x+L)=D(x)>0,\quad r(x+L)=r(x),\quad\mu>0,
-    \qquad e_\vartheta=(\cos\vartheta,\sin\vartheta).
+    \begin{gathered}
+      D(x+L)=D(x)>0,\qquad r(x+L)=r(x),\\
+      \mu>0,\qquad e_\vartheta=(\cos\vartheta,\sin\vartheta).
+    \end{gathered}
   \]</div>
   <p>Two initial-data geometries:</p>
   <div class="equation">\[
-    \begin{array}{ll}
-      \text{strip introduction:}&u_0(x,y)=g((x,y)\cdot e),\quad 0\leq g\in C_c(\mathbb R),\\
-      \text{localized introduction:}&0\leq u_0\in C_c(\mathbb R^2),\quad u_0\not\equiv0.
-    \end{array} \tag{B13}
+    \begin{gathered}
+      \text{Strip introduction:}\\
+      u_0(x,y)=g((x,y)\cdot e),\\
+      0\leq g\in C_c(\mathbb R),\qquad g\not\equiv0;\\
+      \text{Localized introduction:}\\
+      0\leq u_0\in C_c(\mathbb R^2),\qquad u_0\not\equiv0.
+    \end{gathered} \tag{B13}
   \]</div>
   <div class="question-box" id="anisotropic-question">
     <span class="question-label">Mathematical question · Direction and shape</span>
@@ -494,9 +503,10 @@
   <h2 id="framework">2. Equation, Assumptions, and Reaction Classes</h2>
   <h3>2.1. Periodic equation</h3>
   <div class="equation" id="eq-general">\[
-    u_t=\mathcal A u+f(x,u),\qquad
-    \mathcal A u:=\nabla\cdot(A(x)\nabla u)+b(x)\cdot\nabla u,
-    \quad (t,x)\in I\times\mathbb R^N. \tag{1}
+    \begin{gathered}
+      u_t=\mathcal A u+f(x,u),\qquad(t,x)\in I\times\mathbb R^N,\\
+      \mathcal A u:=\nabla\cdot(A(x)\nabla u)+b(x)\cdot\nabla u.
+    \end{gathered} \tag{1}
   \]</div>
   <p>\(I=(0,\infty)\) for the Cauchy problem; \(I=\mathbb R\) for an entire front.</p>
 
@@ -508,8 +518,8 @@
         \mathcal L=\ell_1\mathbb Z\times\cdots\times\ell_N\mathbb Z,\\
         A\in C^{2,\alpha},\quad b\in C^{1,\alpha},\quad
         f,\ f_s\in C^{0,\alpha}(\mathbb R^N\times[0,1]),\\
-        A(x+k)=A(x),\quad b(x+k)=b(x),\quad
-        f(x+k,s)=f(x,s)\quad(k\in\mathcal L).
+        A(x+k)=A(x),\qquad b(x+k)=b(x),\\
+        f(x+k,s)=f(x,s)\qquad(k\in\mathcal L).
       \end{gathered}
     \]</div>
     <p><strong>(H2) Uniform ellipticity.</strong></p>
@@ -534,13 +544,15 @@
   <div class="statement" id="reaction-classes">
     <p><strong>(K) Fisher–KPP.</strong></p>
     <div class="equation">\[
-      a(x):=f_s(x,0)>0,\qquad
-      0&lt;f(x,s)\leq a(x)s\quad(0&lt;s&lt;1). \tag{K}
+      \begin{gathered}
+        a(x):=f_s(x,0)>0,\\
+        0&lt;f(x,s)\leq a(x)s\quad(0&lt;s&lt;1).
+      \end{gathered} \tag{K}
     \]</div>
     <p><strong>(I) Ignition.</strong> For some \(\theta\in(0,1)\), \(\delta\in(0,1-\theta)\),</p>
     <div class="equation">\[
       \begin{gathered}
-        f(x,s)=0\quad(0\leq s\leq\theta),\qquad
+        f(x,s)=0\quad(0\leq s\leq\theta),\\
         f(x,s)>0\quad(\theta&lt;s&lt;1),\\
         f_s(x,s)\leq0\quad(1-\delta\leq s\leq1).
       \end{gathered} \tag{I}
@@ -616,11 +628,13 @@
     <p><strong>Theorem 1 · Berestycki–Hamel <a href="#ref-3">[3]</a>.</strong> Assume (H1)–(H4) and (I). Then, for every \(e\in\mathbb S^{N-1}\),</p>
     <div class="equation">\[
       \begin{gathered}
-        \exists\,c_I(e)>0:\qquad \mathscr C(e)=\{c_I(e)\},\qquad \Phi_z&lt;0,\\
-        \Phi_1,\Phi_2\text{ front profiles in direction }e
-        \ \Longrightarrow\
-        \exists\tau\in\mathbb R:\ \Phi_2(x,z)=\Phi_1(x,z+\tau).
+        \exists\,c_I(e)>0:\quad \mathscr C(e)=\{c_I(e)\},\\
+        \Phi_z&lt;0.
       \end{gathered} \tag{4}
+    \]</div>
+    <p>For any two front profiles \(\Phi_1,\Phi_2\) in direction \(e\),</p>
+    <div class="equation">\[
+      \exists\tau\in\mathbb R:\quad\Phi_2(x,z)=\Phi_1(x,z+\tau).
     \]</div>
   </div>
 
@@ -638,9 +652,10 @@
     <span class="question-label">Monostable extension <a href="#ref-3">[3]</a></span>
     <p>Under (H1)–(H4), assume \(f_s(x,s)\leq0\) near \(s=1\). Then</p>
     <div class="equation">\[
-      f(x,s)>0\quad(0&lt;s&lt;1)
-      \quad\Longrightarrow\quad
-      \mathscr C(e)=[c_M^*(e),\infty),\quad c_M^*(e)>0.
+      \begin{gathered}
+        f(x,s)>0\quad(0&lt;s&lt;1)\\
+        \Longrightarrow\quad\mathscr C(e)=[c_M^*(e),\infty),\quad c_M^*(e)>0.
+      \end{gathered}
     \]</div>
     <p>The KPP bound \(f(x,s)\leq f_s(x,0)s\) is the additional hypothesis for the linear speed formula.</p>
   </div>
@@ -657,29 +672,28 @@
   <div class="statement theorem" id="bistable-theorem">
     <p><strong>Theorem 3 · Ding–Hamel–Zhao <a href="#ref-7">[7]</a>.</strong> Suppose the homogenized equation has a unique front up to translation:</p>
     <div class="equation">\[
-      a_H\phi_0''+c_0\phi_0'+\bar f(\phi_0)=0,\qquad
-      \phi_0(-\infty)=1,\quad\phi_0(+\infty)=0,\quad c_0\neq0.
+      \begin{gathered}
+        a_H\phi_0''+c_0\phi_0'+\bar f(\phi_0)=0,\\
+        \phi_0(-\infty)=1,\quad\phi_0(+\infty)=0,\quad c_0\neq0.
+      \end{gathered}
     \]</div>
     <p>Then, for some \(L_*>0\),</p>
     <div class="equation">\[
       \begin{gathered}
-        0&lt;L&lt;L_*\ \Longrightarrow\
-        \exists\,u_L(t,x)=\Phi_L(x/L,x-c_Lt),\qquad c_L\neq0,\\
-        \Phi_L(y+1,z)=\Phi_L(y,z),\qquad
+        0&lt;L&lt;L_*\ \Longrightarrow\ \exists\,(c_L,\Phi_L),\quad c_L\neq0,\\
+        u_L(t,x)=\Phi_L(x/L,x-c_Lt),\\
+        \Phi_L(y+1,z)=\Phi_L(y,z),\\
         \Phi_L(y,-\infty)=1,\quad\Phi_L(y,+\infty)=0,\\
         \lim_{L\to0^+}c_L=c_0.
       \end{gathered}
     \]</div>
     <p>The front is unique up to a time translation. For large periods, another sufficient condition is</p>
     <div class="equation">\[
-      \left.
       \begin{gathered}
-        \int_0^1 f(y,s)\,ds>0\quad\forall y,\\
-        f_s(y,\theta(y))>0\quad\forall y
+        \int_0^1 f(y,s)\,ds>0,\quad f_s(y,\theta(y))>0\quad\forall y\\
+        \Longrightarrow\quad\exists L^*>0:\\
+        L>L^*\ \Rightarrow\ \exists\text{ a front with }c_L>0.
       \end{gathered}
-      \right\}
-      \ \Longrightarrow\
-      \exists L^*>0:\ \forall L>L^*,\ \exists\text{ a front with }c_L>0.
     \]</div>
   </div>
   <p><strong>Blocking <a href="#ref-2">[2]</a>.</strong> Periodic bistable media can also admit stationary interfaces and suppress propagation.</p>
@@ -690,8 +704,10 @@
     \]</div>
     <p>Given \((a,f)\), characterize \(\mathcal E(a,f)\) and its boundary. For which \(L\) does a stationary connection exist?</p>
     <div class="equation">\[
-      \partial_x\!\left(a(x/L)p'\right)+f(x/L,p)=0,\quad
-      0&lt;p&lt;1,\quad p(-\infty)=1,\quad p(+\infty)=0.
+      \begin{gathered}
+        \partial_x\!\left(a(x/L)p'\right)+f(x/L,p)=0,\\
+        0&lt;p&lt;1,\quad p(-\infty)=1,\quad p(+\infty)=0.
+      \end{gathered}
     \]</div>
   </div>
 
@@ -741,9 +757,11 @@
   <div class="source-result" id="homogeneous-speed">
     <p>For \(A=D I_N\), \(b=0\), \(a(x)=r>0\),</p>
     <div class="equation">\[
-      \lambda(e,\sigma)=D\sigma^2+r,\qquad
-      c^*=\min_{\sigma>0}\left(D\sigma+\frac r\sigma\right)
-        =2\sqrt{Dr},\qquad \sigma_* =\sqrt{r/D}.
+      \begin{gathered}
+        \lambda(e,\sigma)=D\sigma^2+r,\\
+        c^*=\min_{\sigma>0}\left(D\sigma+\frac r\sigma\right)=2\sqrt{Dr},\\
+        \sigma_* =\sqrt{r/D}.
+      \end{gathered}
     \]</div>
   </div>
   <h3>4.3. Periodic invaded states</h3>
@@ -751,8 +769,10 @@
     <span class="question-label">Biological invasion model <a href="#ref-5">[5]</a></span>
     <p>For periodic KPP models with a positive periodic invaded state \(p\), the front connects \(p(x)\) to \(0\):</p>
     <div class="equation">\[
-      \mathcal A p+f(x,p)=0,\quad p(x+k)=p(x)>0,\qquad
-      \Phi(x,-\infty)=p(x),\quad \Phi(x,+\infty)=0.
+      \begin{gathered}
+        \mathcal A p+f(x,p)=0,\qquad p(x+k)=p(x)>0,\\
+        \Phi(x,-\infty)=p(x),\qquad\Phi(x,+\infty)=0.
+      \end{gathered}
     \]</div>
     <p>The linear operator at \(0\) remains \(\mathcal A+f_s(x,0)\).</p>
   </div>
@@ -760,10 +780,11 @@
   <h2 id="cauchy">5. Cauchy Problems and Spreading Geometry</h2>
   <h3>5.1. Compact initial populations</h3>
   <div class="equation">\[
-    \begin{cases}
-      u_t=\mathcal A u+f(x,u),&t>0,\quad x\in\mathbb R^N,\\
-      u(0,x)=u_0(x),&0\leq u_0\leq1,\quad u_0\not\equiv0,\quad u_0\in C_c(\mathbb R^N).
-    \end{cases} \tag{9}
+    \begin{gathered}
+      u_t=\mathcal A u+f(x,u),\qquad t>0,\quad x\in\mathbb R^N,\\
+      u(0,x)=u_0(x),\qquad 0\leq u_0\leq1,\\
+      u_0\not\equiv0,\qquad u_0\in C_c(\mathbb R^N).
+    \end{gathered} \tag{9}
   \]</div>
   <div class="question-box" id="spreading-question">
     <span class="question-label">Mathematical question · Speed along a ray</span>
@@ -786,7 +807,7 @@
   </div>
 
   <figure class="figure" id="fig-front-ray">
-    <svg viewBox="0 0 760 310" role="img" aria-labelledby="ray-title ray-desc">
+    <svg class="diagram-desktop" viewBox="0 0 760 310" role="img" aria-labelledby="ray-title ray-desc">
       <title id="ray-title">Normal front speed and radial spreading speed</title>
       <desc id="ray-desc">An elliptical spreading set W at unit time. A ray from the origin reaches a boundary point at distance w in direction xi. A tangent supporting line has unit normal e and distance c star of e from the origin. The radial direction and normal direction differ.</desc>
       <defs><marker id="ray-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#0969da"/></marker><marker id="normal-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#b16c46"/></marker></defs>
@@ -805,7 +826,26 @@
         <text x="472" y="252" fill="#57606a">Geometry shown at t = 1</text>
       </g>
       <text x="240" y="303" text-anchor="middle" font-size="13" fill="#57606a">Supporting line: x · e = c*(e)</text>
-    </svg>
+    </svg><svg class="diagram-mobile" viewBox="70 20 390 290" role="img" aria-labelledby="ray-title-mobile ray-desc-mobile">
+      <title id="ray-title-mobile">Normal front speed and radial spreading speed</title>
+      <desc id="ray-desc-mobile">An elliptical spreading set W at unit time. A ray from the origin reaches a boundary point at distance w in direction xi. A tangent supporting line has unit normal e and distance c star of e from the origin. The radial direction and normal direction differ.</desc>
+      <defs><marker id="ray-arrow-mobile" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#0969da"/></marker><marker id="normal-arrow-mobile" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#b16c46"/></marker></defs>
+      <path d="M80 175H455 M240 278V28" stroke="#d0d7de" stroke-width="1.2"/>
+      <ellipse cx="240" cy="175" rx="145" ry="92" fill="#d8eeee" stroke="#16818a" stroke-width="2.5"/>
+      <path d="M239 175L342.5 110" stroke="#0969da" stroke-width="2.8" marker-end="url(#ray-arrow-mobile)"/>
+      <path d="M239 175L298.8 82.3" stroke="#b16c46" stroke-width="2.4" marker-end="url(#normal-arrow-mobile)"/>
+      <path d="M258 56L432 167" stroke="#b16c46" stroke-width="2"/>
+      <path d="M342.5 110L298.8 82.3" stroke="#b16c46" stroke-dasharray="4 4" fill="none"/>
+      <circle cx="240" cy="175" r="4" fill="#155e63"/><circle cx="342.5" cy="110" r="4" fill="#155e63"/>
+      <g font-family="Arial, sans-serif" font-size="15" fill="#24292f">
+        <text x="221" y="197">0</text><text x="165" y="150" fill="#155e63">W</text>
+        <text x="291" y="163" fill="#0969da">w(ξ) ξ</text><text x="225" y="86" fill="#b16c46">c*(e) e</text>
+        
+        
+        
+      </g>
+      <text x="240" y="303" text-anchor="middle" font-size="13" fill="#57606a">Supporting line: x · e = c*(e)</text>
+    </svg><p class="diagram-mobile">Blue: radial speed \(w(\xi)\). Brown: normal speed \(c^*(e)\).</p>
     <figcaption class="figcaption">A schematic Wulff shape: \(w(\xi)\) is radial; \(c^*(e)\) supplies the planar constraints. In general, \(w(\xi)\neq c^*(\xi)\).</figcaption>
   </figure>
 
@@ -862,10 +902,12 @@
     \]</div>
     <p>Choose an invasion radius \(\rho>0\): a ball \(B_\rho(x_0)\) initially filled at density 1 invades from every centre \(x_0\). Let \(U_\rho\neq\varnothing\), and let \(d_H\) denote Hausdorff distance. Then</p>
     <div class="equation">\[
-      d_H(U,U_\rho)&lt;\infty
-      \ \Longrightarrow\
-      \lim_{t\to\infty}\frac{d_H(E_\beta(t),\,U+tW_0)}{t}=0
-      \quad(0&lt;\beta&lt;1). \tag{13}
+      \begin{gathered}
+        d_H(U,U_\rho)&lt;\infty\\
+        \Longrightarrow\quad
+        \lim_{t\to\infty}\frac{d_H(E_\beta(t),\,U+tW_0)}{t}=0,\\
+        0&lt;\beta&lt;1.
+      \end{gathered} \tag{13}
     \]</div>
     <p>If also \(\mathcal B(U)\cup\mathcal U(U_\rho)=\mathbb S^{N-1}\), the spreading set is</p>
     <div class="equation">\[
@@ -875,7 +917,7 @@
   </div>
 
   <figure class="figure" id="fig-support-sum">
-    <svg viewBox="0 0 760 245" role="img" aria-labelledby="sum-title sum-desc">
+    <svg class="diagram-desktop" viewBox="0 0 760 245" role="img" aria-labelledby="sum-title sum-desc">
       <title id="sum-title">Initial support plus the compact-data spreading shape</title>
       <desc id="sum-desc">A half-infinite strip U, plus an elliptical set t W zero, gives a widened strip with a rounded advancing end. This illustrates the Minkowski sum U plus t W zero.</desc>
       <g font-family="Arial, sans-serif" text-anchor="middle" font-size="17" fill="#315f78" font-weight="700">
@@ -887,6 +929,54 @@
       <path d="M513 51H620A70 52 0 0 1 690 103V149A70 52 0 0 1 620 201H513" fill="#d8eeee" stroke="#16818a" stroke-width="2.3"/>
       <path d="M513 103H620V149H513" fill="#e0ddf0" stroke="#7765a5" stroke-width="1.4" stroke-dasharray="5 4"/>
       <g font-family="Arial, sans-serif" font-size="30" fill="#57606a" text-anchor="middle"><text x="247" y="137">+</text><text x="476" y="137">=</text></g>
+      <g font-family="Arial, sans-serif" font-size="13" fill="#57606a" text-anchor="middle">
+        <text x="123" y="226">Initial occupied region</text><text x="366" y="226">Growth from a compact seed</text><text x="622" y="226">Predicted large-time region</text>
+      </g>
+      <g fill="#7765a5" font-size="22"><text x="6" y="133">⋯</text><text x="491" y="133">⋯</text></g>
+    </svg><svg class="diagram-mobile" viewBox="0 0 225 245" role="img" aria-labelledby="sum-title-mobile-0 sum-desc-mobile-0">
+      <title id="sum-title-mobile-0">Initial support plus the compact-data spreading shape</title>
+      <desc id="sum-desc-mobile-0">A half-infinite strip U, plus an elliptical set t W zero, gives a widened strip with a rounded advancing end. This illustrates the Minkowski sum U plus t W zero.</desc>
+      <g font-family="Arial, sans-serif" text-anchor="middle" font-size="17" fill="#315f78" font-weight="700">
+        <text x="123" y="32">U</text><text x="366" y="32">t W₀</text><text x="622" y="32">U + t W₀</text>
+      </g>
+      <path d="M28 103H190V149H28" fill="#e0ddf0" stroke="#7765a5" stroke-width="2.3"/>
+      <path d="M29 102V150" stroke="#7765a5" stroke-dasharray="4 4"/>
+      <ellipse cx="366" cy="126" rx="70" ry="52" fill="#d8eeee" stroke="#16818a" stroke-width="2.3"/>
+      <path d="M513 51H620A70 52 0 0 1 690 103V149A70 52 0 0 1 620 201H513" fill="#d8eeee" stroke="#16818a" stroke-width="2.3"/>
+      <path d="M513 103H620V149H513" fill="#e0ddf0" stroke="#7765a5" stroke-width="1.4" stroke-dasharray="5 4"/>
+      
+      <g font-family="Arial, sans-serif" font-size="13" fill="#57606a" text-anchor="middle">
+        <text x="123" y="226">Initial occupied region</text><text x="366" y="226">Growth from a compact seed</text><text x="622" y="226">Predicted large-time region</text>
+      </g>
+      <g fill="#7765a5" font-size="22"><text x="6" y="133">⋯</text><text x="491" y="133">⋯</text></g>
+    </svg><svg class="diagram-mobile" viewBox="266 0 200 245" role="img" aria-labelledby="sum-title-mobile-1 sum-desc-mobile-1">
+      <title id="sum-title-mobile-1">Initial support plus the compact-data spreading shape</title>
+      <desc id="sum-desc-mobile-1">A half-infinite strip U, plus an elliptical set t W zero, gives a widened strip with a rounded advancing end. This illustrates the Minkowski sum U plus t W zero.</desc>
+      <g font-family="Arial, sans-serif" text-anchor="middle" font-size="17" fill="#315f78" font-weight="700">
+        <text x="123" y="32">U</text><text x="366" y="32">t W₀</text><text x="622" y="32">U + t W₀</text>
+      </g>
+      <path d="M28 103H190V149H28" fill="#e0ddf0" stroke="#7765a5" stroke-width="2.3"/>
+      <path d="M29 102V150" stroke="#7765a5" stroke-dasharray="4 4"/>
+      <ellipse cx="366" cy="126" rx="70" ry="52" fill="#d8eeee" stroke="#16818a" stroke-width="2.3"/>
+      <path d="M513 51H620A70 52 0 0 1 690 103V149A70 52 0 0 1 620 201H513" fill="#d8eeee" stroke="#16818a" stroke-width="2.3"/>
+      <path d="M513 103H620V149H513" fill="#e0ddf0" stroke="#7765a5" stroke-width="1.4" stroke-dasharray="5 4"/>
+      
+      <g font-family="Arial, sans-serif" font-size="13" fill="#57606a" text-anchor="middle">
+        <text x="123" y="226">Initial occupied region</text><text x="366" y="226">Growth from a compact seed</text><text x="622" y="226">Predicted large-time region</text>
+      </g>
+      <g fill="#7765a5" font-size="22"><text x="6" y="133">⋯</text><text x="491" y="133">⋯</text></g>
+    </svg><svg class="diagram-mobile" viewBox="486 0 270 245" role="img" aria-labelledby="sum-title-mobile-2 sum-desc-mobile-2">
+      <title id="sum-title-mobile-2">Initial support plus the compact-data spreading shape</title>
+      <desc id="sum-desc-mobile-2">A half-infinite strip U, plus an elliptical set t W zero, gives a widened strip with a rounded advancing end. This illustrates the Minkowski sum U plus t W zero.</desc>
+      <g font-family="Arial, sans-serif" text-anchor="middle" font-size="17" fill="#315f78" font-weight="700">
+        <text x="123" y="32">U</text><text x="366" y="32">t W₀</text><text x="622" y="32">U + t W₀</text>
+      </g>
+      <path d="M28 103H190V149H28" fill="#e0ddf0" stroke="#7765a5" stroke-width="2.3"/>
+      <path d="M29 102V150" stroke="#7765a5" stroke-dasharray="4 4"/>
+      <ellipse cx="366" cy="126" rx="70" ry="52" fill="#d8eeee" stroke="#16818a" stroke-width="2.3"/>
+      <path d="M513 51H620A70 52 0 0 1 690 103V149A70 52 0 0 1 620 201H513" fill="#d8eeee" stroke="#16818a" stroke-width="2.3"/>
+      <path d="M513 103H620V149H513" fill="#e0ddf0" stroke="#7765a5" stroke-width="1.4" stroke-dasharray="5 4"/>
+      
       <g font-family="Arial, sans-serif" font-size="13" fill="#57606a" text-anchor="middle">
         <text x="123" y="226">Initial occupied region</text><text x="366" y="226">Growth from a compact seed</text><text x="622" y="226">Predicted large-time region</text>
       </g>
@@ -907,19 +997,6 @@
     \]</div>
   </div>
 
-  <h2 id="references">References cited on this page</h2>
-  <ol>
-    <li id="ref-1">Shigesada, N., Kawasaki, K. &amp; Teramoto, E. (1986). Traveling periodic waves in heterogeneous environments. <em>Theoretical Population Biology</em>, 30(1), 143–160. <a href="https://doi.org/10.1016/0040-5809(86)90029-8">doi:10.1016/0040-5809(86)90029-8</a>.</li>
-    <li id="ref-2">Xin, J. X. (1993). Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media. <em>Journal of Statistical Physics</em>, 73, 893–926. <a href="https://doi.org/10.1007/BF01052815">doi:10.1007/BF01052815</a>.</li>
-    <li id="ref-3">Berestycki, H. &amp; Hamel, F. (2002). Front propagation in periodic excitable media. <em>Communications on Pure and Applied Mathematics</em>, 55(8), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">doi:10.1002/cpa.3022</a>.</li>
-    <li id="ref-4">Berestycki, H., Hamel, F. &amp; Nadirashvili, N. (2005). The speed of propagation for KPP type problems. I: Periodic framework. <em>Journal of the European Mathematical Society</em>, 7(2), 173–213. <a href="https://doi.org/10.4171/JEMS/26">doi:10.4171/JEMS/26</a>.</li>
-    <li id="ref-5">Berestycki, H., Hamel, F. &amp; Roques, L. (2005). Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts. <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8), 1101–1146. <a href="https://doi.org/10.1016/j.matpur.2004.10.006">doi:10.1016/j.matpur.2004.10.006</a>.</li>
-    <li id="ref-6">Kinezaki, N., Kawasaki, K., Takasu, F. &amp; Shigesada, N. (2003). Modeling biological invasions into periodically fragmented environments. <em>Theoretical Population Biology</em>, 64(3), 291–302. <a href="https://doi.org/10.1016/S0040-5809(03)00091-1">doi:10.1016/S0040-5809(03)00091-1</a>.</li>
-    <li id="ref-7">Ding, W., Hamel, F. &amp; Zhao, X.-Q. (2017). Bistable pulsating fronts for reaction-diffusion equations in a periodic habitat. <em>Indiana University Mathematics Journal</em>, 66(4), 1189–1265. <a href="https://doi.org/10.1512/iumj.2017.66.6070">doi:10.1512/iumj.2017.66.6070</a>.</li>
-    <li id="ref-8">Hamel, F. &amp; Rossi, L. (2021). Spreading speeds and spreading sets of reaction-diffusion equations. <a href="https://arxiv.org/abs/2105.08344">arXiv:2105.08344</a>.</li>
-    <li id="ref-9">Guo, H., Hamel, F. &amp; Rossi, L. Reaction-diffusion equations in periodic media: spreading speeds and spreading sets. <a href="https://arxiv.org/abs/2609.18795">arXiv:2609.18795</a>.</li>
-  </ol>
-
   <h2 id="open-problems">6. Mathematical Questions at a Glance</h2>
   <div class="statement" id="question-index">
     <p><strong>Invasion and selection.</strong> <a href="#historical-tpw-question">§1.1</a></p>
@@ -937,6 +1014,19 @@
       (A,b,f,U)\longmapsto\lambda(e,\sigma),\ c^*(e),\ w_U(\xi),\ W_U.
     \]</div>
   </div>
+  <h2 id="references">References cited on this page</h2>
+  <ol>
+    <li id="ref-1">Shigesada, N., Kawasaki, K. &amp; Teramoto, E. (1986). Traveling periodic waves in heterogeneous environments. <em>Theoretical Population Biology</em>, 30(1), 143–160. <a href="https://doi.org/10.1016/0040-5809(86)90029-8">doi:10.1016/0040-5809(86)90029-8</a>.</li>
+    <li id="ref-2">Xin, J. X. (1993). Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media. <em>Journal of Statistical Physics</em>, 73, 893–926. <a href="https://doi.org/10.1007/BF01052815">doi:10.1007/BF01052815</a>.</li>
+    <li id="ref-3">Berestycki, H. &amp; Hamel, F. (2002). Front propagation in periodic excitable media. <em>Communications on Pure and Applied Mathematics</em>, 55(8), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">doi:10.1002/cpa.3022</a>.</li>
+    <li id="ref-4">Berestycki, H., Hamel, F. &amp; Nadirashvili, N. (2005). The speed of propagation for KPP type problems. I: Periodic framework. <em>Journal of the European Mathematical Society</em>, 7(2), 173–213. <a href="https://doi.org/10.4171/JEMS/26">doi:10.4171/JEMS/26</a>.</li>
+    <li id="ref-5">Berestycki, H., Hamel, F. &amp; Roques, L. (2005). Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts. <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8), 1101–1146. <a href="https://doi.org/10.1016/j.matpur.2004.10.006">doi:10.1016/j.matpur.2004.10.006</a>.</li>
+    <li id="ref-6">Kinezaki, N., Kawasaki, K., Takasu, F. &amp; Shigesada, N. (2003). Modeling biological invasions into periodically fragmented environments. <em>Theoretical Population Biology</em>, 64(3), 291–302. <a href="https://doi.org/10.1016/S0040-5809(03)00091-1">doi:10.1016/S0040-5809(03)00091-1</a>.</li>
+    <li id="ref-7">Ding, W., Hamel, F. &amp; Zhao, X.-Q. (2017). Bistable pulsating fronts for reaction-diffusion equations in a periodic habitat. <em>Indiana University Mathematics Journal</em>, 66(4), 1189–1265. <a href="https://doi.org/10.1512/iumj.2017.66.6070">doi:10.1512/iumj.2017.66.6070</a>.</li>
+    <li id="ref-8">Hamel, F. &amp; Rossi, L. (2021). Spreading speeds and spreading sets of reaction-diffusion equations. <a href="https://arxiv.org/abs/2105.08344">arXiv:2105.08344</a>.</li>
+    <li id="ref-9">Guo, H., Hamel, F. &amp; Rossi, L. Reaction-diffusion equations in periodic media: spreading speeds and spreading sets. <a href="https://arxiv.org/abs/2609.18795">arXiv:2609.18795</a>.</li>
+  </ol>
+
   <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
     </main>
   </div>
