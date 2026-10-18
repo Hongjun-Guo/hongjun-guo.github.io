@@ -31,6 +31,10 @@ E-mail:	guohj29@tongji.edu.cn
 - Traveling waves, generalized transition waves, Propagation phenomena
 - Mathematical biology
 
+## Research Topics
+
+- [Spatially Periodic Reaction-Diffusion Equations: Selected Results](newpage.html)
+
 ## Publications
 
 - (with F. Hamel and L. Rossi) Reaction-diffusion equations in periodic media: spreading speeds and spreading sets, [arXiv](https://arxiv.org/abs/2609.18795).
@@ -53,7 +57,3 @@ E-mail:	guohj29@tongji.edu.cn
 - (with F. Hamel) Monotonicity of bistable transition fronts in R^N, **_J. Elliptic Parabol. Equ._** 2 (2016), 145-155.([link](https://link.springer.com/article/10.1007%2FBF03377398))
 
 <br>
-
-## Other page
-
-[Visit the new page](newpage.html)
