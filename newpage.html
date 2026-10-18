@@ -128,8 +128,8 @@
   <div class="equation" id="eq-patch-coefficients">\[
     (D(x),r(x))=
     \begin{cases}
-      (D_1,r_1),&kL<x<kL+L_1,\\
-      (D_2,r_2),&kL+L_1<x<(k+1)L,
+      (D_1,r_1),&kL&lt;x&lt;kL+L_1,\\
+      (D_2,r_2),&kL+L_1&lt;x&lt;(k+1)L,
     \end{cases}
     \qquad k\in\mathbb Z.
     \tag{B2}
@@ -217,7 +217,7 @@
     <p>The linearization \(v_t=(D(x)v_x)_x+r(x)v\), with the same interface conditions, satisfies the following stability criterion at \(v\equiv0\):</p>
     <div class="equation">\[
       \begin{aligned}
-        L_1<L_{1,\mathrm{crit}}
+        L_1&lt;L_{1,\mathrm{crit}}
         &\ \Longrightarrow\ v\equiv0\ \text{is linearly stable},\\[1mm]
         L_1>L_{1,\mathrm{crit}}
         &\ \Longrightarrow\ v\equiv0\ \text{is linearly unstable}.
@@ -419,7 +419,7 @@
 
   <div class="assumption">
     <h3>Diffusion matrix</h3>
-    <p>For the baseline uniformly parabolic framework, assume that \(A(x)\) is a measurable, bounded, symmetric matrix and that there are constants \(0<\lambda\leq\Lambda<\infty\) such that, for almost every \(x\) and every \(\xi\in\mathbb{R}^N\),</p>
+    <p>For the baseline uniformly parabolic framework, assume that \(A(x)\) is a measurable, bounded, symmetric matrix and that there are constants \(0&lt;\lambda\leq\Lambda&lt;\infty\) such that, for almost every \(x\) and every \(\xi\in\mathbb{R}^N\),</p>
     <div class="equation">\[
       \lambda |\xi|^2\leq \xi\cdot A(x)\xi
       \leq \Lambda |\xi|^2.
@@ -450,7 +450,7 @@
   <h3>3.1. Hypotheses</h3>
   <p>We consider equation (1) in \(\mathbb{R}^N\), with the periodicity assumptions and notation of the general framework. For the representative combustion result below, impose the following additional hypotheses.</p>
   <p><strong>(H1) Periodicity and regularity.</strong> The coefficients \(A,b,f\) are periodic with respect to a common lattice \(\mathcal L\). For some \(\alpha\in(0,1)\), assume, for example, \(A\in C^{1,\alpha}(\mathbb R^N)\), \(b\in C^{0,\alpha}(\mathbb R^N;\mathbb R^N)\), and \(f\) is Hölder continuous in \(x\) and locally \(C^1\) in \(s\), uniformly on bounded \(s\)-intervals.</p>
-  <p><strong>(H2) Uniform ellipticity.</strong> There exist \(0<\lambda\leq\Lambda\) such that</p>
+  <p><strong>(H2) Uniform ellipticity.</strong> There exist \(0&lt;\lambda\leq\Lambda\) such that</p>
   <div class="equation">\[
     \lambda|\xi|^2\leq \xi\cdot A(x)\xi\leq\Lambda|\xi|^2,
     \qquad x,\xi\in\mathbb R^N.
@@ -463,13 +463,13 @@
   <div class="equation">\[
     \begin{aligned}
       f(x,s)&=0 &&\text{if }s\leq\theta\text{ or }s\geq1,\\
-      f(x,s)&>0 &&\text{if }\theta<s<1.
+      f(x,s)&>0 &&\text{if }\theta&lt;s&lt;1.
     \end{aligned}
   \]</div>
   <p>These are a convenient classical set of sufficient assumptions for the stated result, not a claim of optimal minimality. KPP/monostable and bistable reactions require different hypotheses.</p>
 
   <h3>3.2. Definition</h3>
-  <p>Let \(e\in\mathbb S^{N-1}\) and \(c>0\). A <em>pulsating traveling front</em> of (1) in direction \(e\), with speed \(c\), is an entire solution \(u\in C^{1,2}(\mathbb R\times\mathbb R^N)\), \(0<u<1\), for which there exists a profile \(\Phi\) satisfying</p>
+  <p>Let \(e\in\mathbb S^{N-1}\) and \(c>0\). A <em>pulsating traveling front</em> of (1) in direction \(e\), with speed \(c\), is an entire solution \(u\in C^{1,2}(\mathbb R\times\mathbb R^N)\), \(0&lt;u&lt;1\), for which there exists a profile \(\Phi\) satisfying</p>
   <div class="equation">\[
     u(t,x)=\Phi(x,x\cdot e-ct),\qquad
     \Phi(x+k,z)=\Phi(x,z)
@@ -508,19 +508,19 @@
   <p>For a KPP-type nonlinearity, the unstable state \(u=0\) determines the leading-edge growth. A standard set of assumptions is</p>
   <div class="equation">\[
     f(x,0)=f(x,1)=0,\quad
-    0<f(x,s)\leq f_u(x,0)s\quad(0<s<1),\quad
+    0&lt;f(x,s)\leq f_u(x,0)s\quad(0&lt;s&lt;1),\quad
     f_u(x,0)>0,
     \tag{5}
   \]</div>
-  <p>together with the periodicity and regularity hypotheses from the general framework. More general monostable nonlinearities require \(f(x,s)>0\) for \(0<s<1\), but need not satisfy the KPP upper bound in (5).</p>
-  <p><strong>Theorem 2 (KPP-type fronts [3, 4]).</strong> Under the hypotheses of the periodic KPP theory, for each direction \(e\in\mathbb S^{N-1}\), there is a minimal speed \(c^*(e)>0\) such that pulsating fronts exist for \(c\geq c^*(e)\), and no such front exists for \(0<c<c^*(e)\). The minimal speed admits a spectral variational characterization; see Section 2.</p>
+  <p>together with the periodicity and regularity hypotheses from the general framework. More general monostable nonlinearities require \(f(x,s)>0\) for \(0&lt;s&lt;1\), but need not satisfy the KPP upper bound in (5).</p>
+  <p><strong>Theorem 2 (KPP-type fronts [3, 4]).</strong> Under the hypotheses of the periodic KPP theory, for each direction \(e\in\mathbb S^{N-1}\), there is a minimal speed \(c^*(e)>0\) such that pulsating fronts exist for \(c\geq c^*(e)\), and no such front exists for \(0&lt;c&lt;c^*(e)\). The minimal speed admits a spectral variational characterization; see Section 2.</p>
   <p>For the broader monostable class, Berestycki–Hamel [3] prove, under their hypotheses, that the admissible speeds form a closed half-line bounded from below. The precise assumptions are important: the KPP spectral formula cannot be automatically transferred to every monostable nonlinearity.</p>
 
   <h3>3.5. Bistable Reactions: Existence Depends on the Medium</h3>
   <p>A typical bistable reaction has two stable equilibria \(0\) and \(1\), separated by an unstable intermediate state. In a spatially periodic medium, a representative assumption is</p>
   <div class="equation">\[
     f(x,0)=f(x,1)=0,\qquad
-    f_u(x,0)<0,\quad f_u(x,1)<0,
+    f_u(x,0)&lt;0,\quad f_u(x,1)&lt;0,
     \tag{6}
   \]</div>
   <p>with a bistable sign change in \(s\in(0,1)\), uniformly in \(x\) in the specific model under consideration. The sign-change condition, coefficient regularity, and dependence on the spatial period must be stated precisely for each theorem.</p>
