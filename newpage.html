@@ -54,7 +54,7 @@
     .paper { margin: 1rem 0 1.3rem; padding: .1rem 0 .1rem 1rem; border-left: 2px solid #d8dee4; }
     .meta { color: #57606a; margin-top: -.2rem; }
     .tag { display: inline-block; border: 1px solid #d0d7de; border-radius: 1rem; padding: .05rem .55rem; font-size: .82rem; color: #57606a; }
-    .equation { overflow-x: auto; padding: .85rem 1rem; margin: 1rem 0; background: #f6f8fa; border-radius: 6px; text-align: center; }
+    .equation { overflow: visible; padding: .85rem 1rem; margin: 1rem 0; background: #f6f8fa; border-radius: 6px; text-align: center; }
     .assumption { margin: .8rem 0; }
     .figure { margin: 1.4rem 0; padding: 1rem; border: 1px solid #d8dee4; border-radius: 8px; background: #fff; }
     .figure svg { display: block; width: 100%; height: auto; }
@@ -85,6 +85,38 @@
       tex: {
         inlineMath: [['\\(', '\\)']],
         displayMath: [['\\[', '\\]']]
+      },
+      startup: {
+        pageReady() {
+          return MathJax.startup.defaultPageReady().then(() => {
+            const formulas = Array.from(document.querySelectorAll('.equation')).map(equation => {
+              const math = equation.querySelector('mjx-container[display="true"]');
+              return math && { equation, math, fontSize: math.style.fontSize };
+            }).filter(Boolean);
+            const fitFormulas = () => {
+              formulas.forEach(({ equation, math, fontSize }) => {
+                math.style.fontSize = fontSize;
+                const style = getComputedStyle(equation);
+                const available = equation.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+                const width = Math.max(math.getBoundingClientRect().width, math.scrollWidth);
+                if (available > 0 && width > available) {
+                  math.style.fontSize = (parseFloat(getComputedStyle(math).fontSize) * (available - 1) / width) + 'px';
+                }
+              });
+            };
+            fitFormulas();
+            if ('ResizeObserver' in window) {
+              let previousWidth = 0;
+              new ResizeObserver(([entry]) => {
+                if (entry.contentRect.width === previousWidth) return;
+                previousWidth = entry.contentRect.width;
+                fitFormulas();
+              }).observe(document.querySelector('.main-content'));
+            } else {
+              window.addEventListener('resize', fitFormulas);
+            }
+          });
+        }
       },
       options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
     };
