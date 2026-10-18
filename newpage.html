@@ -44,6 +44,13 @@
     .open-label { display: block; margin-bottom: .5rem; color: #b4232b; font-size: .84rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
     .open-problem-box p { margin: .45rem 0; }
     .open-status { color: #7a4545; font-size: .9rem; }
+    .source-result { margin: 1.3rem 0; padding: 1rem 1.15rem; border-left: 4px solid #26734d; border-radius: 0 8px 8px 0; background: #f2f8f5; color: #214b3b; }
+    .source-result .question-label { color: #26734d; }
+    .source-result p, .numerical-observation p { margin: .55rem 0; }
+    .numerical-observation { margin: 1.3rem 0; padding: 1rem 1.15rem; border-left: 4px solid #956516; border-radius: 0 8px 8px 0; background: #fff9ed; color: #594313; }
+    .numerical-observation .question-label { color: #805615; }
+    .source-location { font-size: .9rem; color: #57606a; }
+    #invasion-threshold, #tpw-description, #patch-dispersion, #historical-tpw-question, #fig-patches, li[id^="ref-"] { scroll-margin-top: 1.2rem; }
     .paper { margin: 1rem 0 1.3rem; padding: .1rem 0 .1rem 1rem; border-left: 2px solid #d8dee4; }
     .meta { color: #57606a; margin-top: -.2rem; }
     .tag { display: inline-block; border: 1px solid #d0d7de; border-radius: 1rem; padding: .05rem .55rem; font-size: .82rem; color: #57606a; }
@@ -105,58 +112,65 @@
     </aside>
     <main class="main-content">
   <h2 id="background">1. Background and Biological Motivation</h2>
-  <p>Reaction-diffusion equations describe the combined effects of local population dynamics and spatial dispersal. Let \(u(t,x)\) denote the density of a single species at time \(t\) and location \(x\). A classical starting point is Fisher's equation, in which diffusion models random movement and a logistic reaction models reproduction with density-dependent saturation. Shigesada, Kawasaki and Teramoto [<a href="#ref-1">1</a>] studied how this picture changes when the habitat is spatially heterogeneous.</p>
+  <p>Let \(u(t,x)\) denote population density. The model of Shigesada, Kawasaki and Teramoto <a href="#ref-1">[1]</a> combines Fickian dispersal, spatially varying low-density growth, and intraspecific competition in a periodically fragmented habitat.</p>
 
   <h3 id="patch-model">1.1. A One-Dimensional Patch Model</h3>
-  <p>In their 1986 model [<a href="#ref-1">1</a>], the habitat consists of two types of patches arranged alternately along the real line. The patches have different widths, diffusion coefficients, and intrinsic growth rates. A representative extended Fisher equation illustrating this model class is</p>
-  <div class="equation">\[
+  <p>In the 1986 model <a href="#ref-1">[1, Eq. (1), p. 144]</a>, the population satisfies</p>
+  <div class="equation" id="eq-patch-model">\[
     \partial_t u(t,x)
       = \partial_x\!\left(D(x)\partial_x u(t,x)\right)
-        + r(x)u(t,x)\big(1-u(t,x)\big),
-    \qquad (t,x)\in(0,\infty)\times\mathbb R.
+        + \bigl(r(x)-\mu u(t,x)\bigr)u(t,x),
+    \qquad t>0,\quad x\in\mathbb R,\quad \mu>0.
     \tag{B1}
   \]</div>
-  <p>Here \(D_i>0\) and \(r_i\) are respectively the diffusion coefficient and intrinsic growth rate in patch type \(i\in\{1,2\}\). The population density is normalized so that the carrying-capacity state is \(u=1\). The two patch widths are \(L_1>0\) and \(L_2>0\), and one spatial period has length \(L=L_1+L_2\). Thus, in each period, type 1 occupies an interval of length \(L_1\), followed by type 2 on an interval of length \(L_2\):</p>
-  <div class="equation">\[
+  <p class="source-location">Notation: throughout this page, \(D(x)\), \(r(x)\), and \(L_i\) denote the dimensional quantities written as \(d(x)\), \(\varepsilon(x)\), and \(l_i\) in <a href="#ref-1">[1]</a>. The competition coefficient \(\mu\) is a positive constant. The formulas below are rewritten in this notation; they do not use the paper's dimensionless \(D_b,E_b,L_i\).</p>
+  <p>Let \(D_1,D_2>0\), \(r_1\geq r_2\), \(r_1>0\), and let \(L_1,L_2>0\) be the widths of the two patch types. One habitat period has length \(L=L_1+L_2\). The coefficients are</p>
+  <div class="equation" id="eq-patch-coefficients">\[
     (D(x),r(x))=
     \begin{cases}
-      (D_1,r_1),&x\in[kL,kL+L_1),\\
-      (D_2,r_2),&x\in[kL+L_1,(k+1)L),
+      (D_1,r_1),&kL<x<kL+L_1,\\
+      (D_2,r_2),&kL+L_1<x<(k+1)L,
     \end{cases}
-    \quad k\in\mathbb Z.
+    \qquad k\in\mathbb Z.
     \tag{B2}
   \]</div>
-  <p>The favorable and unfavorable labels refer to the biological parameters, not to a universal ordering of every coefficient: typically the patches differ in growth and dispersal, and whether invasion succeeds depends on their values and widths. Equation (B1) is a schematic continuous formulation of the extended Fisher model class; the exact scaling and coefficient conventions should be taken from the original article when reproducing a particular calculation.</p>
+  <p>The coefficients repeat every \(L\). At each interface \(x_j\in\{kL,kL+L_1:k\in\mathbb Z\}\), density and flux are continuous:</p>
+  <div class="equation" id="eq-patch-interfaces">\[
+    [u]_{x_j}=0,\qquad [D u_x]_{x_j}=0,
+    \qquad [h]_{x_j}:=h(x_j^+)-h(x_j^-).
+    \tag{B3}
+  \]</div>
+  <p>These are the transmission conditions in <a href="#ref-1">[1, Eqs. (4) and (9), pp. 146–147]</a>. In the interiors of the patches, (B1) reads \(u_t=D_i u_{xx}+r_i u-\mu u^2\). The initial population in <a href="#ref-1">[1, Eq. (3), p. 145]</a> is continuous, nonnegative, single-peaked, and confined to a bounded interval:</p>
+  <div class="equation">\[
+    u(0,x)=u_0(x)\geq0,\qquad u_0\not\equiv0,
+    \qquad \operatorname{supp}u_0\subset[-R,R],\quad R>0.
+    \tag{B4}
+  \]</div>
 
   <div class="three-terms">
     <div class="term">
       <strong>Dispersal</strong>
       <div>\(\partial_x(D(x)\partial_x u)\)</div>
-      <p>Movement between nearby locations; spatial variation in \(D\) changes how readily the population crosses patch boundaries.</p>
+      <p>Fickian movement with patch-dependent diffusivity \(D_i>0\); the flux matches across patch boundaries.</p>
     </div>
     <div class="term">
-      <strong>Growth</strong>
+      <strong>Low-density growth</strong>
       <div>\(r(x)u\)</div>
-      <p>Low-density reproduction or decline. Positive growth supports invasion, while negative growth suppresses it.</p>
+      <p>Positive \(r_i\) means growth when the population is rare; negative \(r_i\) means local decline.</p>
     </div>
     <div class="term">
-      <strong>Density regulation</strong>
-      <div>\(-r(x)u^2\)</div>
-      <p>Logistic saturation prevents indefinite growth and models competition for limited resources.</p>
+      <strong>Intraspecific competition</strong>
+      <div>\(-\mu u^2,\quad\mu>0\)</div>
+      <p>A density-dependent loss in both patch types, independent of the sign of \(r_i\).</p>
     </div>
   </div>
+  <p>The reaction in (B1) is \(r(x)u-\mu u^2\), <strong>not</strong> \(r(x)u(1-u)\). In particular, no common carrying-capacity state \(u=1\) is imposed in this model <a href="#ref-1">[1, pp. 144–147]</a>.</p>
 
   <div class="question-box">
-    <span class="question-label">The central question · Shigesada–Kawasaki–Teramoto (1986) [<a href="#ref-1">1</a>]</span>
+    <span class="question-label">The central question · Shigesada–Kawasaki–Teramoto (1986) <a href="#ref-1">[1]</a></span>
     <p><strong>When does a species invade a periodically fragmented habitat, and when does it become extinct?</strong></p>
-    <p>How are the outcome and propagation speed determined by the patch widths \(L_1,L_2\), diffusion coefficients \(D_1,D_2\), and growth rates \(r_1,r_2\)? (See Figure <a href="#fig-patches">1</a>.)</p>
+    <p>How are the outcome and propagation speed determined by \(L_1,L_2,D_1,D_2,r_1,r_2\)? The alternating habitat is illustrated in <a href="#fig-patches">Figure 1</a>.</p>
   </div>
-  <div class="question-box" style="border-left-color:#155e63;background:#f2f8f5;color:#214b3b;">
-    <span class="question-label" style="color:#26734d;">Invasion and extinction <a href="#ref-1">[1]</a></span>
-    <p>Shigesada, Kawasaki and Teramoto investigated whether a population initially confined to a bounded region can invade a one-dimensional habitat made of alternating patches. Their abstract reports an invasion condition obtained by stability analysis, involving patch widths, diffusion coefficients, and intrinsic growth rates.</p>
-    <p>When this condition is satisfied, the population spreads and develops into a traveling periodic wave with a constant propagation speed. Otherwise, invasion fails and the population tends to extinction. The wave speed is calculated from a dispersion relation, allowing the influence of environmental heterogeneity on propagation to be examined <a href="#ref-1">[1]</a>.</p>
-  </div>
-  <p><strong>Mathematical legacy.</strong> This work connects a biological invasion question to three general problems: (i) finding conditions for propagation or extinction, (ii) constructing traveling or pulsating fronts and determining their speeds, and (iii) relating these fronts to the large-time behavior of solutions to the Cauchy problem. Later theories develop these questions for more general periodic reaction-diffusion equations.</p>
 
   <figure class="figure" id="fig-patches">
     <svg viewBox="0 0 760 210" role="img" aria-labelledby="patch-title patch-desc">
@@ -185,17 +199,105 @@
       <text x="380" y="25" font-size="15" font-weight="600" text-anchor="middle" fill="#24292f">A periodic environment</text>
       <text x="380" y="194" font-size="13" text-anchor="middle" fill="#57606a">Each patch may have its own diffusivity D(x) and growth rate r(x)</text>
     </svg>
-    <figcaption class="figcaption"><strong>Figure 1.</strong> Schematic of the one-dimensional periodic habitat studied in the patch-model literature [<a href="#ref-1">1</a>]. Favorable and less favorable patches alternate, with different diffusion coefficients and intrinsic growth rates.</figcaption>
+    <figcaption class="figcaption"><strong>Figure 1.</strong> Schematic of the one-dimensional periodic habitat in (B2), motivated by <a href="#ref-1">[1]</a>. The widths of the two patch types are \(L_1\) and \(L_2\). This illustration is not a reproduction of a figure from the article; the drawing does not fix the numerical patch widths.</figcaption>
   </figure>
 
+  <div class="source-result" id="invasion-threshold">
+    <span class="question-label">Analytical result · Linear invasion threshold <a href="#ref-1">[1]</a></span>
+    <p>For (B1)–(B3), assume \(r_1>0>r_2\). Define</p>
+    <div class="equation">\[
+      L_{1,\mathrm{crit}}
+      =2\sqrt{\frac{D_1}{r_1}}\,
+       \arctan\!\left[
+         \sqrt{\frac{-r_2D_2}{r_1D_1}}\,
+         \tanh\!\left(\frac{L_2}{2}\sqrt{\frac{-r_2}{D_2}}\right)
+       \right].
+      \tag{B5}
+    \]</div>
+    <p>The linearization \(v_t=(D(x)v_x)_x+r(x)v\), with the same interface conditions, satisfies the following stability criterion at \(v\equiv0\):</p>
+    <div class="equation">\[
+      \begin{aligned}
+        L_1<L_{1,\mathrm{crit}}
+        &\ \Longrightarrow\ v\equiv0\ \text{is linearly stable},\\[1mm]
+        L_1>L_{1,\mathrm{crit}}
+        &\ \Longrightarrow\ v\equiv0\ \text{is linearly unstable}.
+      \end{aligned}
+      \tag{B6}
+    \]</div>
+    <p class="source-location">Source: <a href="#ref-1">[1, Eqs. (14a)–(14b), p. 148]</a>. Formula (B5) restores dimensions using the scaling in their Eqs. (5) and (8). The inequalities are strict; \(L_1=L_{1,\mathrm{crit}}\) is the critical boundary and is not assigned to either alternative here.</p>
+    <p>The authors interpret the stable side as invasion failure and the unstable side as invasion when rare. They explicitly distinguish this linear analysis from the nonlinear long-time behavior <a href="#ref-1">[1, pp. 148–149]</a>.</p>
+  </div>
+
+  <h4 id="tpw-description">Periodic invaded state and traveling periodic wave</h4>
+  <p>The positive stationary state considered in <a href="#ref-1">[1, Eq. (10), p. 147]</a>, when it exists, is a periodic function \(p\), not a prescribed constant:</p>
+  <div class="equation">\[
+    \begin{cases}
+      (D(x)p')'+\bigl(r(x)-\mu p\bigr)p=0
+        &\text{inside each patch},\\
+      p(x+L)=p(x)>0,\\
+      [p]_{x_j}=[Dp']_{x_j}=0.
+    \end{cases}
+    \tag{B7}
+  \]</div>
+  <p>For a right-moving TPW, the formulation in <a href="#ref-1">[1, Eq. (17), p. 151]</a> becomes</p>
+  <div class="equation">\[
+    \begin{gathered}
+      u_{\mathrm{TPW}}(t+T,x+L)=u_{\mathrm{TPW}}(t,x),
+      \qquad T>0,\qquad c=\frac{L}{T},\\
+      \lim_{x\to+\infty}u_{\mathrm{TPW}}(t,x)=0,\qquad
+      \lim_{x\to-\infty}\bigl(u_{\mathrm{TPW}}(t,x)-p(x)\bigr)=0.
+    \end{gathered}
+    \tag{B8}
+  \]</div>
+  <p>Here \(u_{\mathrm{TPW}}\) denotes the wave itself. The shift identity in (B8) is not imposed on an arbitrary Cauchy solution with localized initial data.</p>
+
+  <div class="numerical-observation">
+    <span class="question-label">Numerical observations in the 1986 paper</span>
+    <p>For the localized initial distributions studied in <a href="#ref-1">[1, pp. 149–151, Fig. 3]</a>, the computations report extinction on the linearly stable side and outward spreading in both directions on the unstable side. In the spreading case, the profiles approach the TPW pattern, while the population near the introduction site approaches a periodic stationary distribution.</p>
+    <p>These are the reported nonlinear numerical observations, not a theorem of convergence to a TPW proved in <a href="#ref-1">[1]</a>.</p>
+  </div>
+
+  <h4 id="patch-dispersion">Leading-edge dispersion relation</h4>
+  <p>For the linearized equation, take the positive periodic leading-edge ansatz</p>
+  <div class="equation">\[
+    v(t,x)=e^{-\sigma(x-ct)}g(x),\qquad
+    \sigma>0,\qquad g(x+L)=g(x)>0,
+    \qquad [g]_{x_j}=[D(g'-\sigma g)]_{x_j}=0.
+    \tag{B9}
+  \]</div>
+  <p>The dispersion relation in <a href="#ref-1">[1, Eqs. (30)–(31), p. 154]</a>, rewritten in the dimensional notation of (B1)–(B2), is</p>
+  <div class="equation">\[
+    \begin{aligned}
+      \cosh(\sigma L)
+      ={}&\cosh(q_1L_1)\cosh(q_2L_2)\\
+      &+\frac{(D_1q_1)^2+(D_2q_2)^2}{2D_1D_2q_1q_2}
+          \sinh(q_1L_1)\sinh(q_2L_2),\\[1mm]
+      &q_i^2=\frac{c\sigma-r_i}{D_i},\qquad i=1,2.
+    \end{aligned}
+    \tag{B10}
+  \]</div>
+  <p>Only the branch compatible with \(g>0\) is relevant. If \(q_i\) is imaginary, the original paper imposes \(|q_i|L_i\leq\pi\); the hyperbolic factors are interpreted through their trigonometric counterparts. At \(q_i=0\), the expression is understood by continuity. On the admissible branch, write the speed curve as \(c=c(\sigma)\) and its minimum as</p>
+  <div class="equation">\[
+    c_{\min}=\min_{\sigma>0}c(\sigma).
+    \tag{B11}
+  \]</div>
+  <p class="source-location">The paper computes this minimum from the dispersion relation <a href="#ref-1">[1, pp. 154–155]</a>. Selection of \(c_{\min}\) by the nonlinear Cauchy problem is reported from numerical calculations, not established by the dispersion relation alone.</p>
+
+  <div class="open-problem-box" id="historical-tpw-question">
+    <span class="open-label">Historical question · Not proved in the 1986 paper</span>
+    <p><strong>Stability of the TPW and selection of \(c_{\min}\) by localized initial data.</strong> The authors explicitly state that they did not prove TPW stability mathematically <a href="#ref-1">[1, pp. 151 and 159]</a>; their computations support the selection of the minimum speed <a href="#ref-1">[1, p. 155]</a>.</p>
+    <p class="open-status">This records the scope of the 1986 article. It does not assert that the question remains open today; later results must be checked for the precise model and interface assumptions.</p>
+  </div>
+  <p><strong>Connection with the later sections.</strong> The patch model separates three questions: the linear invasion threshold, the construction and speed of a periodic front, and the long-time behavior of an initially localized population. These distinctions organize the discussion of <a href="#fronts">pulsating fronts</a>, <a href="#speeds">front speeds</a>, and the <a href="#cauchy">Cauchy problem</a> below. No proofs are included here.</p>
+
   <h3 id="anisotropic">1.2. From One Dimension to Two: Anisotropic Spreading</h3>
-  <p>Kinezaki, Kawasaki, Takasu and Shigesada [<a href="#ref-6">6</a>] extended the periodic-habitat model to a two-dimensional environment made of alternating vertical habitat stripes. A representative equation for this geometry is</p>
+  <p>Kinezaki, Kawasaki, Takasu and Shigesada <a href="#ref-6">[6]</a> studied two-dimensional periodic striped habitats. To connect that geometry with the notation of (B1), the following equation is an illustrative two-dimensional extension of the same Fickian logistic model, rather than a transcription of the exact model in <a href="#ref-6">[6]</a>:</p>
   <div class="equation">\[
     \partial_t u(t,x,y)
       = \nabla_{x,y}\!\cdot\!\left(D(x)\nabla_{x,y}u(t,x,y)\right)
-        + r(x)u(t,x,y)\big(1-u(t,x,y)\big),
-    \quad (x,y)\in\mathbb R^2,\ t>0,
-    \tag{B3}
+        + \bigl(r(x)-\mu u(t,x,y)\bigr)u(t,x,y),
+    \quad (x,y)\in\mathbb R^2,\ t>0.
+    \tag{B12}
   \]</div>
   <p>with \(D(x+L)=D(x)\) and \(r(x+L)=r(x)\): the coefficients vary across the stripes but are invariant along them. The study considers two different initial configurations:</p>
   <div class="equation">\[
@@ -203,7 +305,7 @@
       &\text{line-supported introduction:} && u(0,x,y)\text{ concentrated near a line},\\
       &\text{localized introduction:} && u(0,x,y)\text{ concentrated near }(0,0).
     \end{aligned}
-    \tag{B4}
+    \tag{B13}
   \]</div>
   <p>For line-supported initial data, the spreading pattern approaches a traveling periodic wave (TPW), with a front speed that can be determined analytically in the model. For a localized introduction, the invaded region expands in different directions with direction-dependent ray speeds. Their analysis shows that the asymptotic envelope can be nearly circular, oval-like, or spindle-like, depending on the parameters; in the striped configurations considered, the envelope is elongated along the stripes. Enlarging the fragmentation scale while keeping the relative patch proportions fixed increases the ray speed in every direction [<a href="#ref-6">6</a>].</p>
   <p>The one-dimensional model of Shigesada, Kawasaki and Teramoto was later extended to two-dimensional striped habitats by Kinezaki, Kawasaki, Takasu and Shigesada (2003) [<a href="#ref-6">6</a>]. In this setting, favorable and unfavorable belts alternate in space. The authors studied both line-supported initial populations and populations introduced near a single point. For line-supported initial data, the invasion develops into a traveling periodic wave; for a localized introduction, the expansion is described by direction-dependent ray speeds.</p>
@@ -250,6 +352,7 @@
   <p>The unknown \(u\) records population density, while spatially dependent coefficients encode the habitat. In a continuous model, this leads to an equation with periodic diffusion, drift, and reaction terms.</p>
 
   <h3>1.3. From Biological Mechanisms to the Equation</h3>
+  <p>The one-dimensional model (B1) is a special case of equation (1) below, with \(N=1\), \(A(x)=D(x)\), \(b(x)=0\), and \(f(x,s)=(r(x)-\mu s)s\). Its positive periodic state \(p(x)\) should be distinguished from the constant state \(1\) assumed in some later front theorems.</p>
   <div class="three-terms">
     <div class="term">
       <strong>Diffusion</strong>
@@ -475,12 +578,12 @@
   <p>For compactly supported, nontrivial initial data, a central question is how rapidly the invaded region expands. Under suitable monostable/KPP hypotheses, one can define a directional spreading speed \(w(e)\) by the asymptotic behavior along rays \(x\sim cte\): behind the speed the solution approaches the invaded state, while ahead of it the solution approaches \(0\).</p>
 
   <h3>5.1. KPP: Minimal Front Speed and Spreading Speed</h3>
-  <p>For a periodic KPP equation, let \(\lambda(e,\mu)\) denote the principal eigenvalue associated with the exponentially tilted linearized periodic operator in direction \(e\), with \(\mu>0\). The minimal pulsating-front speed is given by</p>
+  <p>For a periodic KPP equation, let \(\lambda(e,\sigma)\) denote the principal eigenvalue associated with the exponentially tilted linearized periodic operator in direction \(e\), with \(\sigma>0\). The minimal pulsating-front speed is given by</p>
   <div class="equation">\[
-    c^*(e)=\inf_{\mu>0}\frac{\lambda(e,\mu)}{\mu}.
+    c^*(e)=\inf_{\sigma>0}\frac{\lambda(e,\sigma)}{\sigma}.
     \tag{8}
   \]</div>
-  <p>Under the KPP hypotheses, the minimal front speed agrees with the asymptotic spreading speed in the same direction. This is the linear-determinacy property proved in the periodic framework of Berestycki–Hamel–Nadirashvili [4]. The exact definition of \(\lambda(e,\mu)\) depends on the convention for the drift term and the tilted operator; it should be taken from the corresponding paper when using the formula for a specific equation.</p>
+  <p>Under the KPP hypotheses, the minimal front speed agrees with the asymptotic spreading speed in the same direction. This is the linear-determinacy property proved in the periodic framework of Berestycki–Hamel–Nadirashvili [4]. The exact definition of \(\lambda(e,\sigma)\) depends on the convention for the drift term and the tilted operator; it should be taken from the corresponding paper when using the formula for a specific equation.</p>
 
   <h3>5.2. From Directional Speeds to a Spreading Set</h3>
   <p>Directional speeds describe one ray at a time. The full large-time geometry is encoded by the asymptotic spreading set \(W\). In a standard convex spreading regime, it can be represented as the intersection of half-spaces</p>
