@@ -345,16 +345,9 @@
   <p>Here \(c\) is the propagation speed, \(\sigma\) is the exponential decay rate ahead of the front, and \(g(x)\) describes the modulation caused by the periodic habitat. A larger \(\sigma\) means a more rapidly decaying leading-edge envelope.</p>
   <p>The solutions in the two patch types must join with continuous density and flux and satisfy the periodicity of \(g\). These requirements impose a compatibility condition between \(c\) and \(\sigma\), called the <em>dispersion relation</em> <a href="#ref-1">[1]</a>:</p>
   <div class="equation">\[
-    \begin{aligned}
-      \cosh(\sigma L)
-      ={}&\cosh(q_1L_1)\cosh(q_2L_2)\\
-      &+\frac{(D_1q_1)^2+(D_2q_2)^2}{2D_1D_2q_1q_2}
-          \sinh(q_1L_1)\sinh(q_2L_2),\\[1mm]
-      &q_i^2=\frac{c\sigma-r_i}{D_i},\qquad i=1,2.
-    \end{aligned}
-    \tag{B10}
+    \cosh(\sigma L)=\cosh(q_1L_1)\cosh(q_2L_2)+\frac{(D_1q_1)^2+(D_2q_2)^2}{2D_1D_2q_1q_2}\sinh(q_1L_1)\sinh(q_2L_2). \tag{B10}
   \]</div>
-  <p>In (B10), \(D_i,r_i,L_i\) are the given habitat parameters. The quantities \(q_i\) are auxiliary quantities determined by \(c\) and \(\sigma\). The left-hand side describes exponential decay across one habitat period; the right-hand side combines the two patch solutions and their interface conditions. Equality means that the proposed speed and decay rate are compatible with the periodic habitat.</p>
+  <p>\(q_i^2=(c\sigma-r_i)/D_i\), \(i=1,2\). In (B10), \(D_i,r_i,L_i\) are the given habitat parameters. The quantities \(q_i\) are auxiliary quantities determined by \(c\) and \(\sigma\). The left-hand side describes exponential decay across one habitat period; the right-hand side combines the two patch solutions and their interface conditions. Equality means that the proposed speed and decay rate are compatible with the periodic habitat.</p>
   <p><strong>How to use (B10).</strong></p>
   <ol>
     <li>Fix the habitat parameters and choose a decay rate \(\sigma>0\). Solve (B10) for \(c\), retaining the branch with a positive periodic profile \(g\).</li>
@@ -380,14 +373,10 @@
       \end{aligned}
     \]</div>
     <p>The first limit means that the population settles to \(p(x)\) throughout every region expanding slower than \(c_{\min}\). The second means that the density tends to zero beyond every region expanding faster than \(c_{\min}\).</p>
-    <p><strong>2. Does the spreading front approach a traveling periodic wave?</strong> Is there a right-moving TPW \(U_*\) of (B1)–(B3), with periodic profile \(\Phi_*(x+L,z)=\Phi_*(x,z)\), connecting \(p(x)\) behind the front to \(0\) ahead, and a front position \(m(t)=c_{\min}t+o(t)\), such that for every fixed \(R>0\),</p>
+    <p><strong>2. Does the spreading front approach a traveling periodic wave?</strong> Is there a right-moving TPW \(U_*(t,x)=\Phi_*(x,x-c_{\min}t)\) of (B1)–(B3), with periodic profile \(\Phi_*(x+L,z)=\Phi_*(x,z)\), connecting \(p(x)\) behind the front to \(0\) ahead, and a front position \(m(t)=c_{\min}t+o(t)\), such that for every fixed \(R>0\),</p>
     <div class="equation">\[
-      \begin{gathered}
-        U_*(t,x)=\Phi_*(x,x-c_{\min}t),\\[1mm]
-        \lim_{t\to\infty}\ \sup_{|z|\leq R}
-        \left|u(t,m(t)+z)-\Phi_*(m(t)+z,z)\right|=0?
-      \end{gathered}
-    \]</div>
+    \lim_{t\to\infty}\ \sup_{|z|\leq R}\left|u(t,m(t)+z)-\Phi_*(m(t)+z,z)\right|=0?
+  \]</div>
     <p>This asks whether the solution near the moving front approaches the TPW profile. The correction \(m(t)-c_{\min}t=o(t)\) allows a possible delay while keeping the asymptotic speed equal to \(c_{\min}\). The corresponding convergence question is also posed for the left-moving front.</p>
   </div>
   <p><strong>Connection with the later sections.</strong> The patch model separates three questions: the linear invasion threshold, the construction and speed of a periodic front, and the long-time behavior of an initially localized population. These distinctions organize the discussion of <a href="#fronts">pulsating fronts</a>, <a href="#speeds">front speeds</a>, and the <a href="#cauchy">Cauchy problem</a> below.</p>
@@ -404,12 +393,10 @@
   \]</div>
   <p>Two initial-data geometries:</p>
   <div class="equation">\[
-    \begin{gathered}
-      \text{Strip introduction:}\\
-      u_0(x,y)=g((x,y)\cdot e),\quad 0\leq g\in C_c(\mathbb R),\quad g\not\equiv0;\\
-      \text{Localized introduction:}\\
-      0\leq u_0\in C_c(\mathbb R^2),\qquad u_0\not\equiv0.
-    \end{gathered} \tag{B13}
+    \begin{array}{ll}
+\text{Strip introduction:}&u_0(x,y)=g((x,y)\cdot e),\quad 0\leq g\in C_c(\mathbb R),\quad g\not\equiv0,\\
+\text{Localized introduction:}&0\leq u_0\in C_c(\mathbb R^2),\quad u_0\not\equiv0.
+\end{array} \tag{B13}
   \]</div>
   <div class="question-box" id="anisotropic-question">
     <span class="question-label">Mathematical question · Direction and shape</span>
@@ -462,16 +449,9 @@
 
   <h3>1.3. From Patch Models to Periodic Operators</h3>
   <div class="equation">\[
-    \begin{gathered}
-      \underbrace{u_t}_{\text{density change}}
-      =\underbrace{\nabla\cdot(A(x)\nabla u)}_{\text{diffusion}}
-       +\underbrace{b(x)\cdot\nabla u}_{\text{drift}}
-       +\underbrace{f(x,u)}_{\text{reaction}},\\
-      \text{patch model:}\quad N=1,\quad A=D,\quad b=0,\quad
-      f(x,s)=(r(x)-\mu s)s.
-    \end{gathered}
+    \underbrace{u_t}_{\text{density change}}=\underbrace{\nabla\cdot(A(x)\nabla u)}_{\text{diffusion}}+\underbrace{b(x)\cdot\nabla u}_{\text{drift}}+\underbrace{f(x,u)}_{\text{reaction}}.
   \]</div>
-  <p>The patch model has invaded state \(p(x)\); Sections 2–5 use equilibria \(0\) and \(1\), except where \(p(x)\) is specified.</p>
+  <p>Patch model: \(N=1\), \(A=D\), \(b=0\), \(f(x,s)=(r(x)-\mu s)s\). Its invaded state is \(p(x)\); Sections 2–5 use equilibria \(0\) and \(1\), except where \(p(x)\) is specified.</p>
 
   <figure class="figure">
     <svg viewBox="0 0 760 210" role="img" aria-labelledby="wave-title wave-desc">
@@ -544,12 +524,8 @@
     \]</div>
     <p><strong>(I) Ignition.</strong> For some \(\theta\in(0,1)\), \(\delta\in(0,1-\theta)\),</p>
     <div class="equation">\[
-      \begin{gathered}
-        f(x,s)=0\quad(0\leq s\leq\theta),\qquad
-        f(x,s)>0\quad(\theta&lt;s&lt;1),\\
-        f_s(x,s)\leq0\quad(1-\delta\leq s\leq1).
-      \end{gathered} \tag{I}
-    \]</div>
+    f(x,s)=0\ (0\leq s\leq\theta),\qquad f(x,s)>0\ (\theta&lt;s&lt;1),\qquad f_s(x,s)\leq0\ (1-\delta\leq s\leq1). \tag{I}
+  \]</div>
     <p><strong>(B) Bistable.</strong> For a periodic threshold \(\theta(x)\in(0,1)\) and \(\gamma>0\),</p>
     <div class="equation">\[
       \begin{gathered}
@@ -620,12 +596,11 @@
   <div class="statement theorem" id="combustion-theorem">
     <p><strong>Theorem 1 · Berestycki–Hamel <a href="#ref-3">[3]</a>.</strong> Assume (H1)–(H4) and (I). Then, for every \(e\in\mathbb S^{N-1}\),</p>
     <div class="equation">\[
-      \begin{gathered}
-        \exists\,c_I(e)>0:\qquad \mathscr C(e)=\{c_I(e)\},\qquad \Phi_z&lt;0,\\
-        \Phi_1,\Phi_2\text{ front profiles in direction }e
-        \ \Longrightarrow\
-        \exists\tau\in\mathbb R:\ \Phi_2(x,z)=\Phi_1(x,z+\tau).
-      \end{gathered} \tag{4}
+    \exists\,c_I(e)>0:\qquad \mathscr C(e)=\{c_I(e)\},\qquad \Phi_z&lt;0. \tag{4}
+  \]</div>
+    <p>Any two front profiles \(\Phi_1,\Phi_2\) in direction \(e\) satisfy</p>
+    <div class="equation">\[
+      \exists\tau\in\mathbb R:\qquad \Phi_2(x,z)=\Phi_1(x,z+\tau).
     \]</div>
   </div>
 
@@ -653,12 +628,9 @@
   <h3>3.4. Bistable reactions: dependence on the spatial period</h3>
   <p>Let \(a>0\) and \(f\) be smooth and 1-periodic in \(y\), with \(f\) satisfying (B). Consider</p>
   <div class="equation">\[
-    \begin{gathered}
-      u_t=\partial_x\!\left(a(x/L)u_x\right)+f(x/L,u),\qquad L>0,\\
-      a_H:=\left(\int_0^1\frac{dy}{a(y)}\right)^{-1},\qquad
-      \bar f(s):=\int_0^1 f(y,s)\,dy.
-    \end{gathered} \tag{6}
+    u_t=\partial_x\!\left(a(x/L)u_x\right)+f(x/L,u),\qquad L>0. \tag{6}
   \]</div>
+  <p>\(a_H:=\left(\int_0^1 a(y)^{-1}\,dy\right)^{-1}\), \(\bar f(s):=\int_0^1 f(y,s)\,dy\).</p>
   <div class="statement theorem" id="bistable-theorem">
     <p><strong>Theorem 3 · Ding–Hamel–Zhao <a href="#ref-7">[7]</a>.</strong> Suppose the homogenized equation has a unique front up to translation:</p>
     <div class="equation">\[
@@ -709,14 +681,9 @@
   <p>Set \(\mathcal L_0:=\mathcal A+a(x)\). Exponential conjugation gives</p>
   <div class="equation">\[
     \begin{aligned}
-      \mathcal L_{e,\sigma}\varphi
-      &:=e^{\sigma x\cdot e}\mathcal L_0
-        \!\left(e^{-\sigma x\cdot e}\varphi\right)\\
-      &=\nabla\cdot(A\nabla\varphi)
-        +(b-2\sigma Ae)\cdot\nabla\varphi\\
-      &\quad+\left[\sigma^2e\cdot Ae-\sigma\nabla\cdot(Ae)
-        -\sigma b\cdot e+a(x)\right]\varphi.
-    \end{aligned} \tag{7}
+\mathcal L_{e,\sigma}\varphi&:=e^{\sigma x\cdot e}\mathcal L_0\!\left(e^{-\sigma x\cdot e}\varphi\right)\\
+&=\nabla\cdot(A\nabla\varphi)+(b-2\sigma Ae)\cdot\nabla\varphi+\left[\sigma^2e\cdot Ae-\sigma\nabla\cdot(Ae)-\sigma b\cdot e+a(x)\right]\varphi.
+\end{aligned} \tag{7}
   \]</div>
   <div class="statement definition" id="principal-eigenvalue">
     <p><strong>Principal eigenpair.</strong></p>
@@ -833,13 +800,8 @@
   <div class="statement definition" id="spreading-set">
     <p><strong>Definition and KPP characterization.</strong></p>
     <div class="equation">\[
-      \begin{aligned}
-        W_0
-        &=\{r\xi:\xi\in\mathbb S^{N-1},\ 0\leq r&lt;w(\xi)\}\\
-        &=\bigcap_{e\in\mathbb S^{N-1}}
-          \{x\in\mathbb R^N:x\cdot e&lt;c^*(e)\}.
-      \end{aligned} \tag{11}
-    \]</div>
+    W_0=\{r\xi:\xi\in\mathbb S^{N-1},\ 0\leq r&lt;w(\xi)\}=\bigcap_{e\in\mathbb S^{N-1}}\{x\in\mathbb R^N:x\cdot e&lt;c^*(e)\}. \tag{11}
+  \]</div>
     <p>For compact \(K\subset W_0\) and compact \(F\subset\mathbb R^N\setminus\overline{W_0}\),</p>
     <div class="equation">\[
       \lim_{t\to\infty}\sup_{x\in tK}|u(t,x)-1|=0,\qquad
@@ -980,12 +942,8 @@
   <div class="statement definition" id="local-limit-set">
     <p><strong>Translated limit profiles.</strong> For a solution \(0\leq u\leq1\), define</p>
     <div class="equation">\[
-      \Omega(u):=\left\{\psi:\ \begin{array}{l}
-        \exists\,t_n\to\infty,\quad x_n\in\mathbb R^N,\\
-        u(t_n,x_n+\cdot)\longrightarrow\psi\ \text{in }C_{\mathrm{loc}}(\mathbb R^N)
-      \end{array}\right\}.
-      \tag{15}
-    \]</div>
+    \Omega(u):=\left\{\psi:\ \exists\,t_n\to\infty,\ x_n\in\mathbb R^N,\quad u(t_n,x_n+\cdot)\longrightarrow\psi\ \text{in }C_{\mathrm{loc}}(\mathbb R^N)\right\}. \tag{15}
+  \]</div>
     <p>\(C_{\mathrm{loc}}\)-convergence means uniform convergence on every fixed ball. The directional limit set \(\Omega_e(u)\) uses sequences satisfying \(x_n\neq0\) and \(x_n/|x_n|\to e\).</p>
   </div>
   <div class="question-box" id="front-convergence-question">
