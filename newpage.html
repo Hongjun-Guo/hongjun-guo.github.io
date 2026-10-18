@@ -325,14 +325,15 @@
   </figure>
 
   <h4 id="patch-dispersion">Leading-edge dispersion relation</h4>
-  <p>For the linearized equation, take the positive periodic leading-edge ansatz</p>
+  <p><strong>Purpose: estimating the invasion speed.</strong> Once an invasion can establish, the next question is how fast its front moves. The paper studies the low-density leading edge, where the competition term is small and the linearized equation provides a speed relation. Seek a leading edge of the form</p>
   <div class="equation">\[
     v(t,x)=e^{-\sigma(x-ct)}g(x),\qquad
     \sigma>0,\qquad g(x+L)=g(x)>0,
     \qquad [g]_{x_j}=[D(g'-\sigma g)]_{x_j}=0.
     \tag{B9}
   \]</div>
-  <p>The dispersion relation in <a href="#ref-1">[1]</a> is</p>
+  <p>Here \(c\) is the propagation speed, \(\sigma\) is the exponential decay rate ahead of the front, and \(g(x)\) describes the modulation caused by the periodic habitat. A larger \(\sigma\) means a more rapidly decaying leading-edge envelope.</p>
+  <p>The solutions in the two patch types must join with continuous density and flux and satisfy the periodicity of \(g\). These requirements impose a compatibility condition between \(c\) and \(\sigma\), called the <em>dispersion relation</em> <a href="#ref-1">[1]</a>:</p>
   <div class="equation">\[
     \begin{aligned}
       \cosh(\sigma L)
@@ -343,12 +344,18 @@
     \end{aligned}
     \tag{B10}
   \]</div>
-  <p>Only the branch compatible with \(g>0\) is relevant. If \(q_i\) is imaginary, the original paper imposes \(|q_i|L_i\leq\pi\); the hyperbolic factors are interpreted through their trigonometric counterparts. At \(q_i=0\), the expression is understood by continuity. On the admissible branch, write the speed curve as \(c=c(\sigma)\) and its minimum as</p>
+  <p>In (B10), \(D_i,r_i,L_i\) are the given habitat parameters. The quantities \(q_i\) are auxiliary quantities determined by \(c\) and \(\sigma\). The left-hand side describes exponential decay across one habitat period; the right-hand side combines the two patch solutions and their interface conditions. Equality means that the proposed speed and decay rate are compatible with the periodic habitat.</p>
+  <p><strong>How to use (B10).</strong></p>
+  <ol>
+    <li>Fix the habitat parameters and choose a decay rate \(\sigma>0\). Solve (B10) for \(c\), retaining the branch with a positive periodic profile \(g\).</li>
+    <li>Vary \(\sigma\) to obtain the speed curve \(c=c(\sigma)\). Its lowest value gives the minimum leading-edge speed:</li>
+  </ol>
   <div class="equation">\[
     c_{\min}=\min_{\sigma>0}c(\sigma).
     \tag{B11}
   \]</div>
-  <p class="source-location">The paper computes this minimum from the dispersion relation <a href="#ref-1">[1]</a>. Selection of \(c_{\min}\) by the nonlinear Cauchy problem is reported from numerical calculations, not established by the dispersion relation alone.</p>
+  <p>If \(q_i\) is imaginary, the admissible branch must satisfy \(|q_i|L_i\leq\pi\), and the hyperbolic factors are evaluated using their trigonometric counterparts. At \(q_i=0\), the expression is understood by continuity.</p>
+  <p class="source-location">Thus (B10)–(B11) turn the habitat parameters into a computable candidate for the invasion speed. The nonlinear simulations in <a href="#ref-1">[1]</a> approach this minimum; the paper does not prove this speed-selection result analytically.</p>
 
   <div class="open-problem-box" id="historical-tpw-question">
     <span class="open-label">Historical question · Not proved in the 1986 paper</span>
