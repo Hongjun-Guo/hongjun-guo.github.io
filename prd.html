@@ -271,27 +271,6 @@
     \qquad k\in\mathbb Z.
     \tag{B2}
   \]</div>
-  <p>The coefficients repeat every \(L\). At each interface \(x_j\in\{kL,kL+L_1:k\in\mathbb Z\}\), density and flux are continuous:</p>
-  <div class="equation" id="eq-patch-interfaces">\[
-    [u]_{x_j}=0,\qquad [D u_x]_{x_j}=0,
-    \qquad [h]_{x_j}:=h(x_j^+)-h(x_j^-).
-    \tag{B3}
-  \]</div>
-  <p><strong>Jump notation.</strong> The brackets \([h]_{x_j}\) measure the jump of \(h\) across the interface \(x_j\): \(h(x_j^+)\) is the limit from the right and \(h(x_j^-)\) is the limit from the left. The subscript identifies the interface; it does not indicate differentiation.</p>
-  <p>Thus \([u]_{x_j}=0\) means that population density has the same value on both sides, and \([D u_x]_{x_j}=0\) means that the diffusion flux matches across the interface <a href="#ref-1">[1]</a>. Derivatives are taken inside each patch. When \(D\) changes at an interface, the slopes \(u_x\) on the two sides may differ while \(D u_x\) remains continuous.</p>
-  <p>In the interiors of the patches, (B1) reads \(u_t=D_i u_{xx}+r_i u-\mu u^2\). The initial population in <a href="#ref-1">[1]</a> is continuous, nonnegative, single-peaked, and confined to a bounded interval:</p>
-  <div class="equation">\[
-    u(0,x)=u_0(x)\geq0,\qquad u_0\not\equiv0,
-    \qquad \operatorname{supp}u_0\subset[-R,R],\quad R>0.
-    \tag{B4}
-  \]</div>
-
-  <div class="question-box" id="central-question">
-    <span class="question-label">The central question · Shigesada–Kawasaki–Teramoto (1986) <a href="#ref-1">[1]</a></span>
-    <p><strong>When does a species invade a periodically fragmented habitat, and when does it become extinct?</strong></p>
-    <p>How are the outcome and propagation speed determined by \(L_1,L_2,D_1,D_2,r_1,r_2\)? The alternating habitat is illustrated in <a href="#fig-patches">Figure 1</a>.</p>
-  </div>
-
   <figure class="figure" id="fig-patches">
     <svg viewBox="0 0 760 210" role="img" aria-labelledby="patch-title patch-desc">
       <title id="patch-title">Schematic of a periodically patchy habitat</title>
@@ -321,6 +300,28 @@
     </svg>
     <figcaption class="figcaption"><strong>Figure 1.</strong> Schematic of the one-dimensional periodic habitat in (B2), motivated by <a href="#ref-1">[1]</a>. The widths of the two patch types are \(L_1\) and \(L_2\).</figcaption>
   </figure>
+
+  <p>The coefficients repeat every \(L\). At each interface \(x_j\in\{kL,kL+L_1:k\in\mathbb Z\}\), density and flux are continuous:</p>
+  <div class="equation" id="eq-patch-interfaces">\[
+    [u]_{x_j}=0,\qquad [D u_x]_{x_j}=0,
+    \qquad [h]_{x_j}:=h(x_j^+)-h(x_j^-).
+    \tag{B3}
+  \]</div>
+  <p><strong>Jump notation.</strong> The brackets \([h]_{x_j}\) measure the jump of \(h\) across the interface \(x_j\): \(h(x_j^+)\) is the limit from the right and \(h(x_j^-)\) is the limit from the left. The subscript identifies the interface; it does not indicate differentiation.</p>
+  <p>Thus \([u]_{x_j}=0\) means that population density has the same value on both sides, and \([D u_x]_{x_j}=0\) means that the diffusion flux matches across the interface <a href="#ref-1">[1]</a>. Derivatives are taken inside each patch. When \(D\) changes at an interface, the slopes \(u_x\) on the two sides may differ while \(D u_x\) remains continuous.</p>
+  <p>In the interiors of the patches, (B1) reads \(u_t=D_i u_{xx}+r_i u-\mu u^2\). The initial population in <a href="#ref-1">[1]</a> is continuous, nonnegative, single-peaked, and confined to a bounded interval:</p>
+  <div class="equation">\[
+    u(0,x)=u_0(x)\geq0,\qquad u_0\not\equiv0,
+    \qquad \operatorname{supp}u_0\subset[-R,R],\quad R>0.
+    \tag{B4}
+  \]</div>
+
+  <div class="question-box" id="central-question">
+    <span class="question-label">The central question · Shigesada–Kawasaki–Teramoto (1986) <a href="#ref-1">[1]</a></span>
+    <p><strong>When does a species invade a periodically fragmented habitat, and when does it become extinct?</strong></p>
+    <p>How are the outcome and propagation speed determined by \(L_1,L_2,D_1,D_2,r_1,r_2\)? The alternating habitat is illustrated in <a href="#fig-patches">Figure 1</a>.</p>
+  </div>
+
 
   <div class="source-result" id="invasion-threshold">
     <span class="question-label">Analytical result · Linear invasion threshold <a href="#ref-1">[1]</a></span>
