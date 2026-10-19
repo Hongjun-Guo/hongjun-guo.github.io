@@ -167,7 +167,7 @@
     .reader-status { color: #57606a; font-size: .82rem; white-space: nowrap; }
     .reader-progress { flex-basis: 100%; height: 3px; border-radius: 3px; background: #deebea; overflow: hidden; }
     .reader-progress span { display: block; height: 100%; background: #16818a; transition: width .15s; }
-    .reader-sheet { box-sizing: border-box; width: 100%; padding: 1rem 1.25rem; background: white; border: 1px solid #d6e4e5; border-radius: 10px; box-shadow: 0 2px 8px #17324d06; min-height: var(--reader-page-height, 470px); }
+    .reader-sheet { box-sizing: border-box; width: 100%; padding: 3rem 3rem 2.5rem; background: white; border: 1px solid #d6e4e5; border-radius: 3px; box-shadow: 0 3px 16px #17324d0b; min-height: var(--reader-page-height, 1400px); }
     .reader-sheet[hidden] { display: none !important; }
     .reader-page-context { margin: 0 0 .65rem !important; color: #70818a; font-size: .8rem; line-height: 1.4; }
     .reader-unit { display: flow-root; }
@@ -1568,9 +1568,14 @@
     const context = document.createElement('p'); context.className = 'reader-page-context'; context.textContent = 'Reading';
     stage.append(context, ...units); host.append(stage);
     if (window.fitSurveyFormulas) window.fitSurveyFormulas();
-    const contentTop = stage.getBoundingClientRect().top + scrollY + 34;
-    const capacity = Math.max(410, Math.min(780, innerHeight - contentTop - 92));
-    main.style.setProperty('--reader-page-height', (capacity + 62) + 'px');
+    const paperHeight = Math.round(stage.getBoundingClientRect().width * 297 / 210);
+    const paperStyle = getComputedStyle(stage);
+    const contextStyle = getComputedStyle(context);
+    const pageMargins = parseFloat(paperStyle.paddingTop) + parseFloat(paperStyle.paddingBottom)
+      + parseFloat(paperStyle.borderTopWidth) + parseFloat(paperStyle.borderBottomWidth)
+      + context.getBoundingClientRect().height + parseFloat(contextStyle.marginBottom);
+    const capacity = paperHeight - pageMargins;
+    main.style.setProperty('--reader-page-height', paperHeight + 'px');
     const heights = units.map(u => u.getBoundingClientRect().height);
     stage.remove();
     const pages = [];
@@ -1580,7 +1585,7 @@
       page.className = 'reader-sheet'; page.id = 'page-' + (pages.length + 1);
       page.dataset.readerSection = unit.dataset.section || '';
       const label = unit.querySelector('.question-label,.open-label,.statement h3,.figcaption strong');
-      page.dataset.readerTitle = label ? label.textContent.replace(/\[\d+\]/g, '').trim().replace(/[·,]\s*$/, '').trim() : unit.dataset.topic || 'Overview';
+      page.dataset.readerTitle = label ? label.textContent.replace(/\[\d+\]/g, '').replace(/[·,\s]+$/, '').trim() : unit.dataset.topic || 'Overview';
       page.dataset.readerChapter = unit.dataset.chapter || 'Overview';
       const heading = document.createElement('p'); heading.className = 'reader-page-context';
       heading.id = 'reader-context-' + (pages.length + 1);
@@ -1590,8 +1595,8 @@
       return page;
     }
     units.forEach((unit, i) => {
-      const chapterBreak = unit.dataset.newChapter === 'true';
-      const topicBreak = unit.dataset.newTopic === 'true' && used > capacity * .42;
+      const chapterBreak = unit.dataset.newChapter === 'true' && currentPage?.dataset.readerChapter !== 'Overview';
+      const topicBreak = unit.dataset.newTopic === 'true' && used > capacity * .82;
       if (!currentPage || (used > 0 && (chapterBreak || topicBreak || used + heights[i] > capacity))) currentPage = newPage(unit);
       currentPage.append(unit); used += heights[i];
     });
