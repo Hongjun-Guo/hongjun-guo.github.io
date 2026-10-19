@@ -229,13 +229,13 @@
   </div>
 
   <h2 id="background">1. Background and Biological Motivation</h2>
-  <p>Let \(u(t,x)\) denote population density. The model of Shigesada, Kawasaki and Teramoto <a href="#ref-1">[1]</a> combines Fickian dispersal, spatially varying low-density growth, and intraspecific competition in a periodically fragmented habitat.</p>
+  <p>Let \(u(t,x)\) denote population density. The model of Shigesada, Kawasaki and Teramoto <a href="#ref-55">[55]</a> combines Fickian dispersal, spatially varying low-density growth, and intraspecific competition in a periodically fragmented habitat.</p>
 
 
-  <p>The homogeneous starting point is the Fisher–KPP equation <a href="#ref-12">[12]</a>, <a href="#ref-13">[13]</a>, \(u_t=D\Delta u+ru(1-u)\), with minimal planar speed \(2\sqrt{Dr}\). Aronson–Weinberger <a href="#ref-14">[14]</a> connected traveling fronts to the large-time spreading of localized populations. Spatial fragmentation replaces a constant growth rate by a periodic environment and turns this speed-selection problem into a spectral and geometric one.</p>
+  <p>The homogeneous starting point is the Fisher–KPP equation <a href="#ref-24">[24]</a>, <a href="#ref-46">[46]</a>, \(u_t=D\Delta u+ru(1-u)\), with minimal planar speed \(2\sqrt{Dr}\). Aronson–Weinberger <a href="#ref-1">[1]</a> connected traveling fronts to the large-time spreading of localized populations. Spatial fragmentation replaces a constant growth rate by a periodic environment and turns this speed-selection problem into a spectral and geometric one.</p>
 
   <h3 id="patch-model">1.1. A One-Dimensional Patch Model</h3>
-  <p>For the periodic two-patch habitat shown in <a href="#fig-patches">Figure 1</a>, the 1986 model <a href="#ref-1">[1]</a> reads</p>
+  <p>For the periodic two-patch habitat shown in <a href="#fig-patches">Figure 1</a>, the 1986 model <a href="#ref-55">[55]</a> reads</p>
   <div class="equation" id="eq-patch-model">\[
     \partial_t u(t,x)
       = \partial_x\!\left(D(x)\partial_x u(t,x)\right)
@@ -299,7 +299,7 @@
       <text x="380" y="25" font-size="15" font-weight="600" text-anchor="middle" fill="#24292f">A periodic environment</text>
       <text x="380" y="194" font-size="13" text-anchor="middle" fill="#57606a">Each patch may have its own diffusivity D(x) and growth rate r(x)</text>
     </svg>
-    <figcaption class="figcaption"><strong>Figure 1.</strong> Schematic of the one-dimensional periodic habitat in (B2), motivated by <a href="#ref-1">[1]</a>. The widths of the two patch types are \(L_1\) and \(L_2\).</figcaption>
+    <figcaption class="figcaption"><strong>Figure 1.</strong> Schematic of the one-dimensional periodic habitat in (B2), motivated by <a href="#ref-55">[55]</a>. The widths of the two patch types are \(L_1\) and \(L_2\).</figcaption>
   </figure>
 
   <p>The coefficients repeat every \(L\). At each interface \(x_j\in\{kL,kL+L_1:k\in\mathbb Z\}\), density and flux are continuous:</p>
@@ -309,8 +309,8 @@
     \tag{B3}
   \]</div>
   <p><strong>Jump notation.</strong> The brackets \([h]_{x_j}\) measure the jump of \(h\) across the interface \(x_j\): \(h(x_j^+)\) is the limit from the right and \(h(x_j^-)\) is the limit from the left. The subscript identifies the interface; it does not indicate differentiation.</p>
-  <p>Thus \([u]_{x_j}=0\) means that population density has the same value on both sides, and \([D u_x]_{x_j}=0\) means that the diffusion flux matches across the interface <a href="#ref-1">[1]</a>. Derivatives are taken inside each patch. When \(D\) changes at an interface, the slopes \(u_x\) on the two sides may differ while \(D u_x\) remains continuous.</p>
-  <p>In the interiors of the patches, (B1) reads \(u_t=D_i u_{xx}+r_i u-\mu u^2\). The initial population in <a href="#ref-1">[1]</a> is continuous, nonnegative, single-peaked, and confined to a bounded interval:</p>
+  <p>Thus \([u]_{x_j}=0\) means that population density has the same value on both sides, and \([D u_x]_{x_j}=0\) means that the diffusion flux matches across the interface <a href="#ref-55">[55]</a>. Derivatives are taken inside each patch. When \(D\) changes at an interface, the slopes \(u_x\) on the two sides may differ while \(D u_x\) remains continuous.</p>
+  <p>In the interiors of the patches, (B1) reads \(u_t=D_i u_{xx}+r_i u-\mu u^2\). The initial population in <a href="#ref-55">[55]</a> is continuous, nonnegative, single-peaked, and confined to a bounded interval:</p>
   <div class="equation">\[
     u(0,x)=u_0(x)\geq0,\qquad u_0\not\equiv0,
     \qquad \operatorname{supp}u_0\subset[-R,R],\quad R>0.
@@ -318,14 +318,14 @@
   \]</div>
 
   <div class="question-box" id="central-question">
-    <span class="question-label">The central questions · Shigesada–Kawasaki–Teramoto (1986) <a href="#ref-1">[1]</a></span>
+    <span class="question-label">The central questions · Shigesada–Kawasaki–Teramoto (1986) <a href="#ref-55">[55]</a></span>
     <p><strong>Q1.</strong> When does a species invade a periodically fragmented habitat, and when does it become extinct?</p>
     <p><strong>Q2.</strong> How are the outcome and propagation speed determined by \(L_1,L_2,D_1,D_2,r_1,r_2\)?</p>
   </div>
-  <p>To address <strong>Q1</strong>, Shigesada, Kawasaki and Teramoto <a href="#ref-1">[1]</a> obtained the following linear invasion threshold.</p>
+  <p>To address <strong>Q1</strong>, Shigesada, Kawasaki and Teramoto <a href="#ref-55">[55]</a> obtained the following linear invasion threshold.</p>
 
   <div class="source-result" id="invasion-threshold">
-    <span class="question-label">Analytical result · Linear invasion threshold <a href="#ref-1">[1]</a></span>
+    <span class="question-label">Analytical result · Linear invasion threshold <a href="#ref-55">[55]</a></span>
     <p>For (B1)–(B3), assume \(r_1>0>r_2\). Define</p>
     <div class="equation">\[
       L_{1,\mathrm{crit}}
@@ -360,7 +360,7 @@
     <p>How does \(L\) affect the principal growth eigenvalue \(\kappa(L)\)? Can changing the period reverse the linear stability of \(u\equiv0\)?</p>
   </div>
   <div class="source-result" id="period-eigenvalue-result">
-    <span class="question-label">Principal eigenvalues and period dependence <a href="#ref-18">[18]</a>, <a href="#ref-55">[55]</a>, <a href="#ref-59">[59]</a></span>
+    <span class="question-label">Principal eigenvalues and period dependence <a href="#ref-7">[7]</a>, <a href="#ref-52">[52]</a>, <a href="#ref-34">[34]</a></span>
     <p>For the no-advection linearization \(v_t=(D_Lv_x)_x+r_Lv\), define</p>
     <div class="equation">\[
       (D_L\varphi_L')'+r_L\varphi_L=\kappa(L)\varphi_L,\qquad
@@ -391,11 +391,11 @@
       0&lt;L&lt;L_*\ \Longrightarrow\ \kappa(L)&lt;0,\qquad
       L>L_*\ \Longrightarrow\ \kappa(L)>0.
     \]</div>
-    <p>If \(\bar r\geq0\), then \(\kappa(L)>0\) for every \(L>0\). Berestycki–Hamel–Roques <a href="#ref-18">[18]</a> link the eigenvalue sign to persistence; Nadin <a href="#ref-55">[55]</a> studies period dependence, while Hamel–Fayard–Roques <a href="#ref-59">[59]</a> connect period-dependent spectra with spreading in slowly oscillating habitats.</p>
+    <p>If \(\bar r\geq0\), then \(\kappa(L)>0\) for every \(L>0\). Berestycki–Hamel–Roques <a href="#ref-7">[7]</a> link the eigenvalue sign to persistence; Nadin <a href="#ref-52">[52]</a> studies period dependence, while Hamel–Fayard–Roques <a href="#ref-34">[34]</a> connect period-dependent spectra with spreading in slowly oscillating habitats.</p>
   </div>
 
   <h4 id="tpw-description">Periodic invaded state and traveling periodic wave</h4>
-  <p>The positive stationary state considered in <a href="#ref-1">[1]</a>, when it exists, is a periodic function \(p\):</p>
+  <p>The positive stationary state considered in <a href="#ref-55">[55]</a>, when it exists, is a periodic function \(p\):</p>
   <div class="equation">\[
     \begin{cases}
       (D(x)p')'+\bigl(r(x)-\mu p\bigr)p=0
@@ -405,7 +405,7 @@
     \end{cases}
     \tag{B7}
   \]</div>
-  <p>For a right-moving <em>traveling periodic wave</em> (TPW), the formulation in <a href="#ref-1">[1]</a> becomes</p>
+  <p>For a right-moving <em>traveling periodic wave</em> (TPW), the formulation in <a href="#ref-55">[55]</a> becomes</p>
   <div class="equation">\[
     \begin{gathered}
       u_{\mathrm{TPW}}(t+T,x+L)=u_{\mathrm{TPW}}(t,x),
@@ -419,7 +419,7 @@
 
   <div class="numerical-observation">
     <span class="question-label">Numerical observations in the 1986 paper</span>
-    <p>For the localized initial distributions studied in <a href="#ref-1">[1]</a>, the computations report extinction on the linearly stable side and outward spreading in both directions on the unstable side. In the spreading case, the profiles approach the TPW pattern, while the population near the introduction site approaches a periodic stationary distribution.</p>
+    <p>For the localized initial distributions studied in <a href="#ref-55">[55]</a>, the computations report extinction on the linearly stable side and outward spreading in both directions on the unstable side. In the spreading case, the profiles approach the TPW pattern, while the population near the introduction site approaches a periodic stationary distribution.</p>
 
   </div>
 
@@ -427,7 +427,7 @@
     <a href="assets/images/shigesada1986-figure3.png" target="_blank" rel="noopener">
       <img src="assets/images/shigesada1986-figure3.png" width="883" height="754" loading="lazy" decoding="async" alt="Original numerical simulations: (a) population profiles decay to extinction; (b) a traveling periodic wave on the positive half-axis at times T, T+T*, and T+2T*.">
     </a>
-    <figcaption class="figcaption"><strong>Numerical simulations.</strong> (a) Extinction from a localized initial population. (b) A traveling periodic wave at successive times. Source: <a href="#ref-1">[1]</a>.</figcaption>
+    <figcaption class="figcaption"><strong>Numerical simulations.</strong> (a) Extinction from a localized initial population. (b) A traveling periodic wave at successive times. Source: <a href="#ref-55">[55]</a>.</figcaption>
   </figure>
 
   <h4 id="patch-dispersion">Leading-edge dispersion relation</h4>
@@ -439,7 +439,7 @@
     \tag{B9}
   \]</div>
   <p>Here \(c\) is the propagation speed, \(\sigma\) is the exponential decay rate ahead of the front, and \(g(x)\) describes the modulation caused by the periodic habitat. A larger \(\sigma\) means a more rapidly decaying leading-edge envelope.</p>
-  <p>The solutions in the two patch types must join with continuous density and flux and satisfy the periodicity of \(g\). These requirements impose a compatibility condition between \(c\) and \(\sigma\), called the <em>dispersion relation</em> <a href="#ref-1">[1]</a>:</p>
+  <p>The solutions in the two patch types must join with continuous density and flux and satisfy the periodicity of \(g\). These requirements impose a compatibility condition between \(c\) and \(\sigma\), called the <em>dispersion relation</em> <a href="#ref-55">[55]</a>:</p>
   <div class="equation">\[
     \cosh(\sigma L)=\cosh(q_1L_1)\cosh(q_2L_2)+\frac{(D_1q_1)^2+(D_2q_2)^2}{2D_1D_2q_1q_2}\sinh(q_1L_1)\sinh(q_2L_2). \tag{B10}
   \]</div>
@@ -454,11 +454,11 @@
     \tag{B11}
   \]</div>
   <p>If \(q_i\) is imaginary, the admissible branch must satisfy \(|q_i|L_i\leq\pi\), and the hyperbolic factors are evaluated using their trigonometric counterparts. At \(q_i=0\), the expression is understood by continuity.</p>
-  <p class="source-location">Thus (B10)–(B11) turn the habitat parameters into a computable candidate for the invasion speed. The nonlinear simulations in <a href="#ref-1">[1]</a> approach this minimum.</p>
+  <p class="source-location">Thus (B10)–(B11) turn the habitat parameters into a computable candidate for the invasion speed. The nonlinear simulations in <a href="#ref-55">[55]</a> approach this minimum.</p>
 
   <div class="open-problem-box" id="historical-tpw-question">
     <span class="open-label">Mathematical question · Spreading speed and front convergence</span>
-    <p>Consider (B1)–(B3) <a href="#ref-1">[1]</a> in the invasion regime \(r_1>0>r_2\) and \(L_1>L_{1,\mathrm{crit}}\). Let \(p(x)>0\) be the periodic stationary state, and let \(u(t,x)\) start from any continuous, compactly supported initial population \(u_0\geq0\), \(u_0\not\equiv0\).</p>
+    <p>Consider (B1)–(B3) <a href="#ref-55">[55]</a> in the invasion regime \(r_1>0>r_2\) and \(L_1>L_{1,\mathrm{crit}}\). Let \(p(x)>0\) be the periodic stationary state, and let \(u(t,x)\) start from any continuous, compactly supported initial population \(u_0\geq0\), \(u_0\not\equiv0\).</p>
     <p><strong>1. Does the nonlinear invasion select the speed \(c_{\min}\) computed in (B10)–(B11)?</strong> More precisely, do the following limits hold?</p>
     <div class="equation">\[
       \begin{aligned}
@@ -478,7 +478,7 @@
   <p><strong>Connection with the later sections.</strong> The patch model separates three questions: the linear invasion threshold, the construction and speed of a periodic front, and the long-time behavior of an initially localized population. These distinctions organize the discussion of <a href="#fronts">pulsating fronts</a>, <a href="#speeds">front speeds</a>, and the <a href="#cauchy">Cauchy problem</a> below.</p>
 
   <h3 id="anisotropic">1.2. Two-Dimensional Stripes and Anisotropic Spreading</h3>
-  <p>Striped habitat model, motivated by Kinezaki et al. <a href="#ref-6">[6]</a>:</p>
+  <p>Striped habitat model, motivated by Kinezaki et al. <a href="#ref-45">[45]</a>:</p>
   <div class="equation">\[
     u_t=\nabla_{x,y}\cdot\!\left(D(x)\nabla_{x,y}u\right)+(r(x)-\mu u)u,
     \quad (x,y)\in\mathbb R^2,\quad t>0. \tag{B12}
@@ -507,7 +507,7 @@
     \]</div>
     <p>Here \(p(x)>0\) is the periodic invaded state. How do \(D_i,r_i,L_i\) determine \(w\) and \(\partial W\)?</p>
   </div>
-  <p><strong>Reported patterns <a href="#ref-6">[6]</a>:</strong> nearly circular, oval, or spindle-shaped; elongated along the stripes in the configurations studied.</p>
+  <p><strong>Reported patterns <a href="#ref-45">[45]</a>:</strong> nearly circular, oval, or spindle-shaped; elongated along the stripes in the configurations studied.</p>
 
   <figure class="figure">
     <svg viewBox="0 0 760 300" role="img" aria-labelledby="anis-title anis-desc">
@@ -540,7 +540,7 @@
       </g>
       <text x="380" y="296" text-anchor="middle" font-size="11.5" fill="#57606a">The shape and directional speeds depend on model parameters.</text>
     </svg>
-    <figcaption class="figcaption"><strong>Figure 2.</strong> Anisotropic spreading in a periodically striped habitat. Schematic: direction-dependent spread, elongated parallel to the stripes <a href="#ref-6">[6]</a>.</figcaption>
+    <figcaption class="figcaption"><strong>Figure 2.</strong> Anisotropic spreading in a periodically striped habitat. Schematic: direction-dependent spread, elongated parallel to the stripes <a href="#ref-45">[45]</a>.</figcaption>
   </figure>
 
   <h3>1.3. From Patch Models to Periodic Operators</h3>
@@ -671,11 +671,11 @@
   <p>Here \(A,r,\beta\) are smooth and periodic, \(A\) is uniformly elliptic, and \(r\) may change sign. Define the principal growth eigenvalue by</p>
   <div class="equation">\[\nabla\cdot(A\nabla\varphi)+r(x)\varphi=\kappa\varphi,\qquad \varphi>0,\quad\varphi\text{ periodic}.\]</div>
   <div class="statement" id="persistence-result">
-    <p><strong>Persistence criterion · Berestycki–Hamel–Roques <a href="#ref-18">[18]</a>.</strong> For nonzero, nonnegative, bounded, continuous initial data,</p>
+    <p><strong>Persistence criterion · Berestycki–Hamel–Roques <a href="#ref-7">[7]</a>.</strong> For nonzero, nonnegative, bounded, continuous initial data,</p>
     <div class="equation">\[\kappa\leq0\ \Longrightarrow\ \|u(t,\cdot)\|_\infty\to0,\qquad \kappa>0\ \Longrightarrow\ u(t,\cdot)\to p\text{ locally uniformly}.\]</div>
     <p>In the second case, \(p\) is the unique positive periodic equilibrium. The threshold depends on the whole cell and its diffusion, rather than only on the sign of \(r\) in an individual patch.</p>
   </div>
-  <p>The eigenvalue and maximum-principle framework is developed by Berestycki–Nirenberg–Varadhan <a href="#ref-19">[19]</a> and, for unbounded domains and generalized principal eigenvalues, Berestycki–Rossi <a href="#ref-20">[20]</a>. The periodic criterion above gives a rigorous counterpart to the invasion threshold in §1.1; fronts connecting \(p(x)\) to \(0\) belong to the theory in <a href="#ref-5">[5]</a>.</p>
+  <p>The eigenvalue and maximum-principle framework is developed by Berestycki–Nirenberg–Varadhan <a href="#ref-9">[9]</a> and, for unbounded domains and generalized principal eigenvalues, Berestycki–Rossi <a href="#ref-10">[10]</a>. The periodic criterion above gives a rigorous counterpart to the invasion threshold in §1.1; fronts connecting \(p(x)\) to \(0\) belong to the theory in <a href="#ref-8">[8]</a>.</p>
 
   <h2 id="fronts">3. Pulsating Traveling Fronts</h2>
   <h3>3.1. Definition and existence question</h3>
@@ -703,7 +703,7 @@
 
   <h3>3.2. Ignition: one speed</h3>
   <div class="statement theorem" id="combustion-theorem">
-    <p><strong>Theorem 1 · Berestycki–Hamel <a href="#ref-3">[3]</a>.</strong> Assume (H1)–(H4) and (I). Then, for every \(e\in\mathbb S^{N-1}\),</p>
+    <p><strong>Theorem 1 · Berestycki–Hamel <a href="#ref-2">[2]</a>.</strong> Assume (H1)–(H4) and (I). Then, for every \(e\in\mathbb S^{N-1}\),</p>
     <div class="equation">\[
     \exists\,c_I(e)>0:\qquad \mathscr C(e)=\{c_I(e)\},\qquad \Phi_z&lt;0. \tag{4}
   \]</div>
@@ -715,7 +715,7 @@
 
   <h3>3.3. KPP and monostable reactions: a speed threshold</h3>
   <div class="statement theorem" id="kpp-theorem">
-    <p><strong>Theorem 2 · Periodic KPP fronts <a href="#ref-3">[3]</a>, <a href="#ref-4">[4]</a>.</strong> Assume (H1)–(H4) and (K). Then</p>
+    <p><strong>Theorem 2 · Periodic KPP fronts <a href="#ref-2">[2]</a>, <a href="#ref-5">[5]</a>.</strong> Assume (H1)–(H4) and (K). Then</p>
     <div class="equation">\[
       \forall e\in\mathbb S^{N-1},\qquad
       \exists\,c^*(e)>0:\quad \mathscr C(e)=[c^*(e),\infty).
@@ -724,7 +724,7 @@
     <p>The spectral formula for \(c^*(e)\) is given in <a href="#spectral-formula">Section 4.1</a>.</p>
   </div>
   <div class="source-result" id="monostable-result">
-    <span class="question-label">Monostable extension <a href="#ref-3">[3]</a></span>
+    <span class="question-label">Monostable extension <a href="#ref-2">[2]</a></span>
     <p>Under (H1)–(H4), assume \(f_s(x,s)\leq0\) near \(s=1\). Then</p>
     <div class="equation">\[
       f(x,s)>0\quad(0&lt;s&lt;1)
@@ -741,7 +741,7 @@
   \]</div>
   <p>\(a_H:=\left(\int_0^1 a(y)^{-1}\,dy\right)^{-1}\), \(\bar f(s):=\int_0^1 f(y,s)\,dy\).</p>
   <div class="statement theorem" id="bistable-theorem">
-    <p><strong>Theorem 3 · Ding–Hamel–Zhao <a href="#ref-7">[7]</a>.</strong> Suppose the homogenized equation has a unique front up to translation:</p>
+    <p><strong>Theorem 3 · Ding–Hamel–Zhao <a href="#ref-16">[16]</a>.</strong> Suppose the homogenized equation has a unique front up to translation:</p>
     <div class="equation">\[
       a_H\phi_0''+c_0\phi_0'+\bar f(\phi_0)=0,\qquad
       \phi_0(-\infty)=1,\quad\phi_0(+\infty)=0,\quad c_0\neq0.
@@ -764,7 +764,7 @@
       \end{gathered}
     \]</div>
   </div>
-  <p><strong>Blocking <a href="#ref-2">[2]</a>.</strong> Periodic bistable media can also admit stationary interfaces and suppress propagation.</p>
+  <p><strong>Blocking <a href="#ref-57">[57]</a>.</strong> Periodic bistable media can also admit stationary interfaces and suppress propagation.</p>
   <div class="question-box unresolved-question" id="bistable-existence-question">
     <span class="question-label">Open problem · Propagation or pinning?</span>
     <div class="equation">\[
@@ -779,15 +779,15 @@
 
 
   <h3 id="front-qualitative">3.5. Uniqueness, leading edges, and pushed fronts</h3>
-  <p>Qualitative front analysis includes strict monotonicity, decay at the end states, and uniqueness up to a time shift. Hamel <a href="#ref-21">[21]</a> derives precise leading-edge asymptotics; Hamel–Roques <a href="#ref-22">[22]</a> establish uniqueness and stability under strict KPP and end-state stability hypotheses, including critical fronts with suitable matching conditions on the initial tail.</p>
+  <p>Qualitative front analysis includes strict monotonicity, decay at the end states, and uniqueness up to a time shift. Hamel <a href="#ref-32">[32]</a> derives precise leading-edge asymptotics; Hamel–Roques <a href="#ref-38">[38]</a> establish uniqueness and stability under strict KPP and end-state stability hypotheses, including critical fronts with suitable matching conditions on the initial tail.</p>
   <div class="statement" id="pulled-pushed">
     <p><strong>Linear and nonlinear selection.</strong> For a smooth monostable reaction with \(f_s(x,0)>0\), let \(c_M^*(e)\) be the minimal nonlinear front speed and set</p>
     <div class="equation">\[c_{\mathrm{lin}}(e):=\min_{\sigma>0}\frac{\lambda(e,\sigma)}{\sigma},\qquad c_M^*(e)\geq c_{\mathrm{lin}}(e).\]</div>
-    <p>The KPP inequality gives equality. A minimal front is called <em>pushed</em> when \(c_M^*(e)>c_{\mathrm{lin}}(e)\). Guo <a href="#ref-23">[23]</a> studies the leading-edge decay and stability of pushed pulsating fronts. Consequently, the eigenvalue formula in §4 is specific to linear determinacy.</p>
+    <p>The KPP inequality gives equality. A minimal front is called <em>pushed</em> when \(c_M^*(e)>c_{\mathrm{lin}}(e)\). Guo <a href="#ref-29">[29]</a> studies the leading-edge decay and stability of pushed pulsating fronts. Consequently, the eigenvalue formula in §4 is specific to linear determinacy.</p>
   </div>
   <h3 id="bistable-literature">3.6. Bistable existence, counterexamples, and terraces</h3>
-  <p>Fang–Zhao <a href="#ref-24">[24]</a> provide an existence framework for bistable traveling waves of monotone semiflows, including periodic problems, under their counter-propagation and compactness hypotheses. In contrast, Zlatoš <a href="#ref-25">[25]</a> constructs periodic bistable reactions without a transition front. Thus the pointwise sign pattern (B) alone is insufficient to guarantee a single front connecting \(1\) to \(0\).</p>
-  <p>Ding–Hamel–Zhao <a href="#ref-7">[7]</a> resolve existence and stability in several spatial-period regimes. Ding–Hamel–Liang <a href="#ref-26">[26]</a> determine the large-period speed under uniformly favorable frozen bistable dynamics; the limit is stated in §7.1. Giletti–Rossi <a href="#ref-43">[43]</a> develop the multidimensional multistable theory, where intermediate periodic states can produce a propagating terrace (§8.2).</p>
+  <p>Fang–Zhao <a href="#ref-22">[22]</a> provide an existence framework for bistable traveling waves of monotone semiflows, including periodic problems, under their counter-propagation and compactness hypotheses. In contrast, Zlatoš <a href="#ref-59">[59]</a> constructs periodic bistable reactions without a transition front. Thus the pointwise sign pattern (B) alone is insufficient to guarantee a single front connecting \(1\) to \(0\).</p>
+  <p>Ding–Hamel–Zhao <a href="#ref-16">[16]</a> resolve existence and stability in several spatial-period regimes. Ding–Hamel–Liang <a href="#ref-14">[14]</a> determine the large-period speed under uniformly favorable frozen bistable dynamics; the limit is stated in §7.1. Giletti–Rossi <a href="#ref-27">[27]</a> develop the multidimensional multistable theory, where intermediate periodic states can produce a propagating terrace (§8.2).</p>
 
   <h2 id="speeds">4. Minimal Speeds and Spectral Problems</h2>
   <div class="question-box">
@@ -819,7 +819,7 @@
     \]</div>
   </div>
   <div class="statement theorem" id="kpp-speed-theorem">
-    <p><strong>Theorem 4 · Berestycki–Hamel–Nadirashvili <a href="#ref-4">[4]</a>.</strong> Under (H1)–(H4) and (K),</p>
+    <p><strong>Theorem 4 · Berestycki–Hamel–Nadirashvili <a href="#ref-5">[5]</a>.</strong> Under (H1)–(H4) and (K),</p>
     <div class="equation">\[
       c^*(e)=\min_{\sigma>0}\frac{\lambda(e,\sigma)}{\sigma}.
       \tag{8}
@@ -837,7 +837,7 @@
   </div>
   <h3>4.3. Periodic invaded states</h3>
   <div class="source-result" id="periodic-state-fronts">
-    <span class="question-label">Biological invasion model <a href="#ref-5">[5]</a></span>
+    <span class="question-label">Biological invasion model <a href="#ref-8">[8]</a></span>
     <p>For periodic KPP models with a positive periodic invaded state \(p\), the front connects \(p(x)\) to \(0\):</p>
     <div class="equation">\[
       \mathcal A p+f(x,p)=0,\quad p(x+k)=p(x)>0,\qquad
@@ -848,10 +848,10 @@
 
 
   <h3 id="speed-variational">4.4. Beyond the linear spectral formula</h3>
-  <p>For ignition and general monostable reactions, El Smaily <a href="#ref-27">[27]</a> gives nonlinear min–max descriptions of front speeds. A useful profile operator, with \(D_e=\nabla_x+e\partial_z\), is</p>
+  <p>For ignition and general monostable reactions, El Smaily <a href="#ref-19">[19]</a> gives nonlinear min–max descriptions of front speeds. A useful profile operator, with \(D_e=\nabla_x+e\partial_z\), is</p>
   <div class="equation">\[\mathcal P_e\Phi:=D_e\cdot(A(x)D_e\Phi)+b(x)\cdot D_e\Phi+f(x,\Phi),\qquad c=-\frac{\mathcal P_e\Phi}{\Phi_z}.\]</div>
   <p>The last identity holds for an actual strictly decreasing front. The variational theory optimizes corresponding quotients over admissible profiles with the prescribed periodicity and end states. It retains the full nonlinearity, which is essential for ignition and pushed fronts.</p>
-  <p>Weinberger <a href="#ref-16">[16]</a> and Liang–Zhao <a href="#ref-17">[17]</a> place spreading speeds and traveling waves in an order-preserving evolution framework. This connects PDE results with periodic recursions and monotone semiflows, under their respective comparison, compactness, and monostability assumptions.</p>
+  <p>Weinberger <a href="#ref-56">[56]</a> and Liang–Zhao <a href="#ref-49">[49]</a> place spreading speeds and traveling waves in an order-preserving evolution framework. This connects PDE results with periodic recursions and monotone semiflows, under their respective comparison, compactness, and monostability assumptions.</p>
 
   <h2 id="cauchy">5. Cauchy Problems and Spreading Geometry</h2>
   <h3>5.1. Compact initial populations</h3>
@@ -873,7 +873,7 @@
     \]</div>
   </div>
   <div class="statement theorem" id="freidlin-gartner">
-    <p><strong>Theorem 5 · Periodic KPP spreading <a href="#ref-15">[15]</a>, <a href="#ref-4">[4]</a>.</strong> Under (H1)–(H4) and (K), the solution of (9) has spreading speed</p>
+    <p><strong>Theorem 5 · Periodic KPP spreading <a href="#ref-25">[25]</a>, <a href="#ref-5">[5]</a>.</strong> Under (H1)–(H4) and (K), the solution of (9) has spreading speed</p>
     <div class="equation">\[
       w(\xi)=\min_{\substack{e\in\mathbb S^{N-1}\\e\cdot\xi>0}}
         \frac{c^*(e)}{e\cdot\xi}. \tag{10}
@@ -951,7 +951,7 @@
     \end{aligned} \tag{12}
   \]</div>
   <div class="source-result" id="homogeneous-supports">
-    <span class="question-label">Hamel–Rossi <a href="#ref-8">[8]</a> · Homogeneous benchmark</span>
+    <span class="question-label">Hamel–Rossi <a href="#ref-39">[39]</a> · Homogeneous benchmark</span>
     <p>For \(u_t=\Delta u+u(1-u)\), let \(U_\rho\neq\varnothing\) and \(\mathcal B(U)\cup\mathcal U(U_\rho)=\mathbb S^{N-1}\). Then</p>
     <div class="equation">\[
       \begin{gathered}
@@ -965,7 +965,7 @@
   </div>
 
   <div class="statement theorem" id="general-supports">
-    <p><strong>Theorem 6 · Guo–Hamel–Rossi <a href="#ref-9">[9]</a>, KPP case.</strong> Assume (H1)–(H4), (K), and</p>
+    <p><strong>Theorem 6 · Guo–Hamel–Rossi <a href="#ref-31">[31]</a>, KPP case.</strong> Assume (H1)–(H4), (K), and</p>
     <div class="equation">\[
       \max_{x\in\overline{W_0}}x\cdot e=c^*(e)
       \qquad\forall e\in\mathbb S^{N-1}. \tag{G}
@@ -1067,14 +1067,14 @@
 
 
   <h3 id="spreading-beyond-kpp">5.4. Spreading beyond KPP</h3>
-  <p>The Freidlin–Gärtner construction is not limited to linear determinacy. Rossi <a href="#ref-28">[28]</a> establishes a front-based characterization of the compact-data spreading set for broader monostable, ignition, and bistable equations, under the relevant invasion and front hypotheses. With positive front speeds in every direction, the geometry is again determined by the supporting half-spaces</p>
+  <p>The Freidlin–Gärtner construction is not limited to linear determinacy. Rossi <a href="#ref-54">[54]</a> establishes a front-based characterization of the compact-data spreading set for broader monostable, ignition, and bistable equations, under the relevant invasion and front hypotheses. With positive front speeds in every direction, the geometry is again determined by the supporting half-spaces</p>
   <div class="equation">\[W_0=\bigcap_{e\in\mathbb S^{N-1}}\{x:x\cdot e&lt;c^*(e)\}.\]</div>
   <p>For a general monostable equation, \(c^*(e)\) denotes the minimal nonlinear front speed; for ignition or a bistable equation with a unique propagating front, it denotes that front speed. Ignition and bistable initial populations must be large enough to trigger invasion. An arbitrarily small compact population can instead become extinct.</p>
   <h3 id="tails-and-domains">5.5. Initial tails and domain geometry</h3>
-  <p>Support geometry and small positive tails are distinct mechanisms. The indicator-data results in §5.3 concern \(u_0=\mathbf1_U\). For homogeneous KPP equations, Hamel–Roques <a href="#ref-33">[33]</a> show that slowly decaying positive tails can cause acceleration. For example, with \(u_t=u_{xx}+u(1-u)\) and a suitable monotone front-like tail,</p>
+  <p>Support geometry and small positive tails are distinct mechanisms. The indicator-data results in §5.3 concern \(u_0=\mathbf1_U\). For homogeneous KPP equations, Hamel–Roques <a href="#ref-37">[37]</a> show that slowly decaying positive tails can cause acceleration. For example, with \(u_t=u_{xx}+u(1-u)\) and a suitable monotone front-like tail,</p>
   <div class="equation">\[u_0(x)\sim e^{-x^\alpha}\quad(x\to+\infty),\quad0&lt;\alpha&lt;1\qquad\Longrightarrow\qquad X_\beta(t)\sim t^{1/\alpha},\quad0&lt;\beta&lt;1,\]</div>
   <p>where \(X_\beta(t)\) is the rightmost \(\beta\)-level position. A finite constant spreading speed therefore requires assumptions on the initial tail as well as on the coefficients.</p>
-  <p>In a periodic domain \(\mathcal D\), obstacles and channels introduce a second geometry. Berestycki–Hamel–Nadirashvili <a href="#ref-34">[34]</a> study KPP propagation in general domains. Ducasse <a href="#ref-35">[35]</a> analyzes spreading in periodic domains with no-flux boundaries and the distinction between front and spreading speeds. These results replace the whole-space problem by</p>
+  <p>In a periodic domain \(\mathcal D\), obstacles and channels introduce a second geometry. Berestycki–Hamel–Nadirashvili <a href="#ref-6">[6]</a> study KPP propagation in general domains. Ducasse <a href="#ref-17">[17]</a> analyzes spreading in periodic domains with no-flux boundaries and the distinction between front and spreading speeds. These results replace the whole-space problem by</p>
   <div class="equation">\[u_t=\nabla\cdot(A\nabla u)+f(x,u)\quad\text{in }\mathcal D,\qquad \nu\cdot A\nabla u=0\quad\text{on }\partial\mathcal D.\]</div>
 
   <h2 id="convergence">6. Convergence to Pulsating Fronts</h2>
@@ -1126,7 +1126,7 @@
 
   <h3>6.2. Fisher–KPP: asymptotic one-dimensional symmetry</h3>
   <div class="statement theorem" id="hamel-rossi-symmetry">
-    <p><strong>Theorem 7 · Hamel–Rossi <a href="#ref-10">[10]</a>.</strong> Let \(N\geq2\) and</p>
+    <p><strong>Theorem 7 · Hamel–Rossi <a href="#ref-40">[40]</a>.</strong> Let \(N\geq2\) and</p>
     <div class="equation">\[
       u_t=\Delta u+f(u),\qquad u(0,\cdot)=\mathbf1_U,\qquad f\in C^1([0,1]),
     \]</div>
@@ -1168,7 +1168,7 @@
     \]</div>
   </div>
   <div class="statement theorem" id="guo-hamel-rossi-convergence">
-    <p><strong>Theorem 8 · Guo–Hamel–Rossi <a href="#ref-11">[11]</a>.</strong> Under these hypotheses, let \(u\) be invading:</p>
+    <p><strong>Theorem 8 · Guo–Hamel–Rossi <a href="#ref-30">[30]</a>.</strong> Under these hypotheses, let \(u\) be invading:</p>
     <div class="equation">\[
       u(t,\cdot)\longrightarrow1\quad\text{in }C_{\mathrm{loc}}(\mathbb R^N)
       \quad(t\to\infty).
@@ -1190,7 +1190,7 @@
 
   <h3>6.4. Front-like data: convergence to a single shifted front</h3>
   <div class="statement theorem" id="bistable-front-convergence">
-    <p><strong>Theorem 9 · Ding–Hamel–Zhao <a href="#ref-7">[7]</a>.</strong> For the smooth bistable equation (6), suppose a front \(U_L(t,x)\) exists with \(c_L\neq0\). If</p>
+    <p><strong>Theorem 9 · Ding–Hamel–Zhao <a href="#ref-16">[16]</a>.</strong> For the smooth bistable equation (6), suppose a front \(U_L(t,x)\) exists with \(c_L\neq0\). If</p>
     <div class="equation">\[
       0\leq u_0\leq1,\qquad
       \lim_{x\to-\infty}u_0(x)=1,\qquad
@@ -1207,9 +1207,9 @@
 
 
   <h3 id="minimal-front-selection">6.5. Minimal-front selection and logarithmic delay</h3>
-  <p>Fife–McLeod <a href="#ref-32">[32]</a> provide the classical homogeneous stability theory for bistable fronts. For KPP equations, the selected minimal front has a different correction: its position can lag behind \(c^*t\) by a logarithmic term. Bramson <a href="#ref-31">[31]</a> establishes this phenomenon for the homogeneous Fisher–KPP equation. Giletti <a href="#ref-30">[30]</a> proves convergence in speed and shape to minimal pulsating fronts in one-dimensional periodic and asymptotically periodic KPP environments.</p>
+  <p>Fife–McLeod <a href="#ref-23">[23]</a> provide the classical homogeneous stability theory for bistable fronts. For KPP equations, the selected minimal front has a different correction: its position can lag behind \(c^*t\) by a logarithmic term. Bramson <a href="#ref-12">[12]</a> establishes this phenomenon for the homogeneous Fisher–KPP equation. Giletti <a href="#ref-26">[26]</a> proves convergence in speed and shape to minimal pulsating fronts in one-dimensional periodic and asymptotically periodic KPP environments.</p>
   <div class="statement" id="periodic-log-delay">
-    <p><strong>Periodic logarithmic delay · Hamel–Nolen–Roquejoffre–Ryzhik <a href="#ref-29">[29]</a>.</strong> Let</p>
+    <p><strong>Periodic logarithmic delay · Hamel–Nolen–Roquejoffre–Ryzhik <a href="#ref-36">[36]</a>.</strong> Let</p>
     <div class="equation">\[u_t=u_{xx}+g(x)u(1-u),\qquad g(x+1)=g(x)>0,\qquad 0\leq u_0\leq1,\quad u_0\in C_c(\mathbb R)\setminus\{0\},\]</div>
     <p>with smooth \(g\). Let \(\sigma_*\) minimize the principal-eigenvalue quotient in (8), and define \(X_\beta(t)=\sup\{x:u(t,x)\geq\beta\}\), \(0&lt;\beta&lt;1\). Then</p>
     <div class="equation">\[X_\beta(t)=c^*t-\frac{3}{2\sigma_*}\log t+O(1)\qquad(t\to\infty).\]</div>
@@ -1218,22 +1218,22 @@
 
   <h2 id="heterogeneity">7. Habitat Scale, Fragmentation, Optimization, and Advection</h2>
   <h3 id="homogenization">7.1. Rapid and slow spatial oscillations</h3>
-  <p>For \(u_t=\partial_x(a(x/L)u_x)+f(x/L,u)\), the cell size \(L\) is a mathematical parameter. Rapid oscillations lead to effective coefficients; slow oscillations resolve the local habitats. Heinze–Papanicolaou–Stevens <a href="#ref-37">[37]</a> develop variational speed principles, while Caffarelli–Lee–Mellet <a href="#ref-38">[38]</a> study homogenized propagation in periodic excitable media.</p>
+  <p>For \(u_t=\partial_x(a(x/L)u_x)+f(x/L,u)\), the cell size \(L\) is a mathematical parameter. Rapid oscillations lead to effective coefficients; slow oscillations resolve the local habitats. Heinze–Papanicolaou–Stevens <a href="#ref-42">[42]</a> develop variational speed principles, while Caffarelli–Lee–Mellet <a href="#ref-13">[13]</a> study homogenized propagation in periodic excitable media.</p>
   <div class="statement" id="kpp-homogenization">
-    <p><strong>Rapidly oscillating KPP habitats · El Smaily–Hamel–Roques <a href="#ref-36">[36]</a>.</strong> For smooth positive 1-periodic \(a,\beta\), periodic \(r\), and \(\overline r=\int_0^1r(y)\,dy>0\), set \(f(y,u)=r(y)u-\beta(y)u^2\). Then</p>
+    <p><strong>Rapidly oscillating KPP habitats · El Smaily–Hamel–Roques <a href="#ref-21">[21]</a>.</strong> For smooth positive 1-periodic \(a,\beta\), periodic \(r\), and \(\overline r=\int_0^1r(y)\,dy>0\), set \(f(y,u)=r(y)u-\beta(y)u^2\). Then</p>
     <div class="equation">\[a_H:=\left(\int_0^1\frac{dy}{a(y)}\right)^{-1},\qquad \lim_{L\to0}c_L^*=2\sqrt{a_H\overline r}.\]</div>
     <p>Diffusion is averaged harmonically and growth arithmetically in this one-dimensional divergence-form model.</p>
   </div>
   <div class="statement" id="bistable-slow-limit">
-    <p><strong>Slowly oscillating bistable habitats · Ding–Hamel–Liang <a href="#ref-26">[26]</a>.</strong> Assume smooth 1-periodic \(a>0\), a uniformly bistable \(f\) with uniformly stable end states, and</p>
+    <p><strong>Slowly oscillating bistable habitats · Ding–Hamel–Liang <a href="#ref-14">[14]</a>.</strong> Assume smooth 1-periodic \(a>0\), a uniformly bistable \(f\) with uniformly stable end states, and</p>
     <div class="equation">\[\int_0^1f(y,s)\,ds>0,\qquad f_s(y,\theta(y))>0\qquad(\forall y).\]</div>
     <p>Let \(c(y)>0\) be the unique speed of the frozen homogeneous equation \(v_t=a(y)v_{xx}+f(y,v)\). For all sufficiently large \(L\), the periodic front exists and</p>
     <div class="equation">\[\lim_{L\to\infty}c_L=\left(\int_0^1\frac{dy}{c(y)}\right)^{-1}.\]</div>
     <p>This harmonic mean of frozen bistable speeds belongs to the slow-oscillation regime. A general KPP reaction with spatially varying growth has a different large-period variational limit.</p>
   </div>
   <h3 id="fragmentation-interfaces">7.2. Fragmentation and interfaces</h3>
-  <p>The biological questions extend beyond a change in cell size: one can rearrange favorable habitat, alter patch lengths, or change dispersal at the boundaries. Berestycki–Hamel–Roques <a href="#ref-18">[18]</a>, <a href="#ref-5">[5]</a> connect fragmentation with persistence and invasion. Shigesada–Kawasaki–Teramoto <a href="#ref-1">[1]</a> and Kinezaki et al. <a href="#ref-6">[6]</a> give the patch-model and numerical starting points.</p>
-  <p>Hamel–Lutscher–Zhang <a href="#ref-46">[46]</a> develop periodic patchy models with interface conditions, incorporating movement preferences and jumps in density. Their framework extends the continuous-density, continuous-flux baseline (B3). The interface law is part of the model and changes both the persistence threshold and spreading behavior.</p>
+  <p>The biological questions extend beyond a change in cell size: one can rearrange favorable habitat, alter patch lengths, or change dispersal at the boundaries. Berestycki–Hamel–Roques <a href="#ref-7">[7]</a>, <a href="#ref-8">[8]</a> connect fragmentation with persistence and invasion. Shigesada–Kawasaki–Teramoto <a href="#ref-55">[55]</a> and Kinezaki et al. <a href="#ref-45">[45]</a> give the patch-model and numerical starting points.</p>
+  <p>Hamel–Lutscher–Zhang <a href="#ref-35">[35]</a> develop periodic patchy models with interface conditions, incorporating movement preferences and jumps in density. Their framework extends the continuous-density, continuous-flux baseline (B3). The interface law is part of the model and changes both the persistence threshold and spreading behavior.</p>
 
   <h3 id="habitat-optimization">7.3. Optimizing habitat distribution and spreading speeds</h3>
   <div class="question-box" id="resource-speed-question">
@@ -1247,7 +1247,7 @@
   \]</div>
   <p>Let \(\mathcal A_{\alpha,L}\) be this class of nonnegative \(C^1\) periodic coefficients, and let \(\overline{\mathcal A}_{\alpha,L}\) be its weak-* closure in periodic nonnegative Radon measures. The quantity \(c^*(b)\) is the minimal pulsating-front speed and, in this one-dimensional setting, the compact-data spreading speed.</p>
   <div class="source-result" id="dirac-optimal-growth">
-    <span class="question-label">Liang–Lin–Matano (2010) <a href="#ref-53">[53]</a> · Concentration under a fixed mean</span>
+    <span class="question-label">Liang–Lin–Matano (2010) <a href="#ref-47">[47]</a> · Concentration under a fixed mean</span>
     <p>The wave and spreading-speed theory extends to the measure-valued coefficients above. Set</p>
     <div class="equation">\[
       \begin{gathered}
@@ -1262,7 +1262,7 @@
   </div>
   <p>The constraint is essential: only the total mass and period are fixed here, with no upper bound on the growth amplitude. A Dirac measure describes an idealized concentration of low-density growth; it is not an admissible bounded habitat profile. This conclusion should not be transferred unchanged to bounded-growth, fixed-distribution, or \(L^p\)-budget problems.</p>
   <div class="source-result" id="stratified-optimal-growth">
-    <span class="question-label">Liang–Matano (2014) <a href="#ref-54">[54]</a> · Directional speeds and spreading shape</span>
+    <span class="question-label">Liang–Matano (2014) <a href="#ref-48">[48]</a> · Directional speeds and spreading shape</span>
     <p>For the representative stratified KPP equation</p>
     <div class="equation">\[
       u_t=u_{xx}+u_{yy}+b(x)u(1-u),\qquad (x,y)\in\mathbb R^2,
@@ -1284,24 +1284,24 @@
   <p><strong>Why the layered assumption matters.</strong> Section 8 of [54] shows that allowing a general doubly periodic coefficient \(b(x,y)\), with only a fixed mean, permits smooth concentrating sequences whose minimal speeds become unbounded. Some singular two-dimensional coefficients also destroy well-posedness. The finite optimal layered configuration therefore does not solve the unrestricted two-dimensional problem.</p>
   <p><strong>Related directions.</strong> The following studies change either the admissible class or the optimization objective:</p>
   <ul>
-    <li><strong>Rearrangement at fixed distribution.</strong> Nadin <a href="#ref-55">[55]</a> proves a Schwarz-rearrangement inequality for the one-dimensional periodic principal eigenvalue, yielding an increase of the KPP speed under the corresponding rearrangement of growth. This compares spatial arrangements with the same value distribution, rather than allowing arbitrary concentration under a mass constraint.</li>
-    <li><strong>Other resource budgets.</strong> Mori–Xiao <a href="#ref-56">[56]</a> study speed maximization under more general constraints. Under an \(L^2\) budget they derive an Euler–Lagrange equation for an optimizer; they also analyze limiting regimes and restricted step-function classes under \(L^p\) budgets.</li>
-    <li><strong>Relaxation and fine oscillations.</strong> Ito <a href="#ref-57">[57]</a> considers growth \(H(b(x))\) with a prescribed mean of the controllable parameter \(b\). Under the paper's assumptions, Young measures describe relaxed optimizers and arbitrarily fine oscillations that may prevent attainment in the original function class.</li>
-    <li><strong>Minimizing invasion speed.</strong> Ito <a href="#ref-58">[58]</a> studies \(u_t=(d(x)u_x)_x+(r(x)-u)u\), with a given positive periodic diffusivity, and explicitly identifies a minimizing growth coefficient under the stated constraint. Variable diffusion and speed minimization give a different design problem from [53].</li>
+    <li><strong>Rearrangement at fixed distribution.</strong> Nadin <a href="#ref-52">[52]</a> proves a Schwarz-rearrangement inequality for the one-dimensional periodic principal eigenvalue, yielding an increase of the KPP speed under the corresponding rearrangement of growth. This compares spatial arrangements with the same value distribution, rather than allowing arbitrary concentration under a mass constraint.</li>
+    <li><strong>Other resource budgets.</strong> Mori–Xiao <a href="#ref-50">[50]</a> study speed maximization under more general constraints. Under an \(L^2\) budget they derive an Euler–Lagrange equation for an optimizer; they also analyze limiting regimes and restricted step-function classes under \(L^p\) budgets.</li>
+    <li><strong>Relaxation and fine oscillations.</strong> Ito <a href="#ref-43">[43]</a> considers growth \(H(b(x))\) with a prescribed mean of the controllable parameter \(b\). Under the paper's assumptions, Young measures describe relaxed optimizers and arbitrarily fine oscillations that may prevent attainment in the original function class.</li>
+    <li><strong>Minimizing invasion speed.</strong> Ito <a href="#ref-44">[44]</a> studies \(u_t=(d(x)u_x)_x+(r(x)-u)u\), with a given positive periodic diffusivity, and explicitly identifies a minimizing growth coefficient under the stated constraint. Variable diffusion and speed minimization give a different design problem from [53].</li>
   </ul>
   <p class="note">These results distinguish three mechanisms: concentrating mass, rearranging a fixed distribution, and creating fine oscillations. The admissible coefficients and resource constraint must be specified before asking whether fragmentation speeds up invasion or whether an optimal habitat exists.</p>
 
   <h3 id="advection-effects">7.4. Flow strength, flow direction, and persistence</h3>
-  <p>For incompressible periodic flows, replacing \(b\) by \(Mb\) leads to the parameter-dependent speed \(c_M^*(e)\). Berestycki–Hamel–Nadirashvili <a href="#ref-52">[52]</a> relate large-drift eigenvalue asymptotics to flow first integrals and nonlinear propagation. Their periodic speed theory <a href="#ref-4">[4]</a> also describes how reaction, diffusion, and advection enter the variational problem.</p>
-  <p>A conservative population flux gives a different equation. Boutillon–Hamel–Roques <a href="#ref-47">[47]</a> study the one-dimensional periodic KPP model</p>
+  <p>For incompressible periodic flows, replacing \(b\) by \(Mb\) leads to the parameter-dependent speed \(c_M^*(e)\). Berestycki–Hamel–Nadirashvili <a href="#ref-4">[4]</a> relate large-drift eigenvalue asymptotics to flow first integrals and nonlinear propagation. Their periodic speed theory <a href="#ref-5">[5]</a> also describes how reaction, diffusion, and advection enter the variational problem.</p>
+  <p>A conservative population flux gives a different equation. Boutillon–Hamel–Roques <a href="#ref-11">[11]</a> study the one-dimensional periodic KPP model</p>
   <div class="equation">\[u_t=u_{xx}-\partial_x(b(x)u)+f(x,u)=u_{xx}-b(x)u_x+f(x,u)-b'(x)u.\]</div>
   <p>Reversing the flow can change persistence and spreading. The term \(-b'(x)u\) modifies local growth, so the incompressible zero-mean assumptions (H3) do not apply to this extension. Existence of a positive periodic state, local persistence at a fixed point, and transport of a population are separate questions.</p>
 
   <h2 id="extensions">8. Transition Fronts, Terraces, and Time-Periodic Media</h2>
   <h3 id="transition-fronts">8.1. Interfaces beyond a pulsating profile</h3>
-  <p>Berestycki–Hamel <a href="#ref-41">[41]</a> define generalized transition waves through moving interfaces and uniform convergence to the limiting states away from those interfaces. In the normalized two-state setting, a front has invaded and uninvaded regions \(\mathcal D_t^-\), \(\mathcal D_t^+\), separated by \(\Gamma_t\), with</p>
+  <p>Berestycki–Hamel <a href="#ref-3">[3]</a> define generalized transition waves through moving interfaces and uniform convergence to the limiting states away from those interfaces. In the normalized two-state setting, a front has invaded and uninvaded regions \(\mathcal D_t^-\), \(\mathcal D_t^+\), separated by \(\Gamma_t\), with</p>
   <div class="equation">\[\lim_{R\to\infty}\ \sup_{\substack{t\in\mathbb R,\ x\in\mathcal D_t^-\\d(x,\Gamma_t)\geq R}}|u(t,x)-1|=0,\qquad \lim_{R\to\infty}\ \sup_{\substack{t\in\mathbb R,\ x\in\mathcal D_t^+\\d(x,\Gamma_t)\geq R}}u(t,x)=0.\]</div>
-  <p>The interface satisfies the geometric conditions of that theory and need not be a plane. Ding–Hamel–Zhao <a href="#ref-44">[44]</a> treat transition fronts in periodic bistable equations; Hamel <a href="#ref-45">[45]</a> studies bistable transition fronts in \(\mathbb R^N\). El Smaily–Hamel–Huang <a href="#ref-51">[51]</a> construct curved fronts with conical end conditions in periodic shear flows.</p>
+  <p>The interface satisfies the geometric conditions of that theory and need not be a plane. Ding–Hamel–Zhao <a href="#ref-15">[15]</a> treat transition fronts in periodic bistable equations; Hamel <a href="#ref-33">[33]</a> studies bistable transition fronts in \(\mathbb R^N\). El Smaily–Hamel–Huang <a href="#ref-20">[20]</a> construct curved fronts with conical end conditions in periodic shear flows.</p>
   <h3 id="terraces">8.2. Multistability and propagating terraces</h3>
   <div class="statement definition" id="terrace-definition">
     <p><strong>Propagating terrace.</strong> Suppose intermediate periodic equilibria are ordered:</p>
@@ -1309,7 +1309,7 @@
     <p>A terrace in direction \(e\) consists of fronts \(\Phi_j\) connecting \(p_{j-1}\) to \(p_j\), with ordered speeds</p>
     <div class="equation">\[\Phi_j(x,-\infty)=p_{j-1}(x),\quad \Phi_j(x,+\infty)=p_j(x),\qquad c_1(e)\leq\cdots\leq c_J(e).\]</div>
   </div>
-  <p>Ducrot–Giletti–Matano <a href="#ref-42">[42]</a> establish existence and convergence to terraces in one-dimensional periodic equations. Giletti–Rossi <a href="#ref-43">[43]</a> extend the theory to several dimensions: both the intermediate states and the number of component fronts can depend on \(e\). Their subsequent work <a href="#ref-50">[50]</a> establishes terrace uniqueness and describes Cauchy spreading for planar-like and compactly supported data under its multistability hypotheses.</p>
+  <p>Ducrot–Giletti–Matano <a href="#ref-18">[18]</a> establish existence and convergence to terraces in one-dimensional periodic equations. Giletti–Rossi <a href="#ref-27">[27]</a> extend the theory to several dimensions: both the intermediate states and the number of component fronts can depend on \(e\). Their subsequent work <a href="#ref-28">[28]</a> establishes terrace uniqueness and describes Cauchy spreading for planar-like and compactly supported data under its multistability hypotheses.</p>
   <figure class="figure" id="fig-terrace">
     <svg viewBox="0 0 760 265" role="img" aria-labelledby="terrace-title terrace-desc">
       <title id="terrace-title">A propagating terrace with two separating fronts</title>
@@ -1325,11 +1325,11 @@
     <figcaption class="figcaption">A two-front terrace, shown in the macroscopic propagation coordinate. In periodic media each platform is a periodic equilibrium and each component is a pulsating front.</figcaption>
   </figure>
   <h3 id="space-time-periodic">8.3. Space–time periodic coefficients</h3>
-  <p>Seasonal forcing leads to coefficients periodic in both \(t\) and \(x\). Nolen–Rudd–Xin <a href="#ref-39">[39]</a> construct KPP fronts in space–time periodic advection and obtain a speed variational principle. Nadin <a href="#ref-40">[40]</a> develops the space–time periodic theory, including KPP and broader monostable reactions.</p>
+  <p>Seasonal forcing leads to coefficients periodic in both \(t\) and \(x\). Nolen–Rudd–Xin <a href="#ref-53">[53]</a> construct KPP fronts in space–time periodic advection and obtain a speed variational principle. Nadin <a href="#ref-51">[51]</a> develops the space–time periodic theory, including KPP and broader monostable reactions.</p>
   <div class="statement" id="parabolic-spectrum">
     <p><strong>Parabolic spectral problem.</strong> With time period \(T\), set \(\mathcal A(t)=\nabla\cdot(A(t,x)\nabla)+b(t,x)\cdot\nabla\) and \(a(t,x)=f_s(t,x,0)\). The exponentially tilted eigenproblem becomes</p>
     <div class="equation">\[\left[-\partial_t+e^{\sigma x\cdot e}\big(\mathcal A(t)+a(t,x)\big)e^{-\sigma x\cdot e}\right]\varphi=\lambda(e,\sigma)\varphi,\qquad \varphi>0,\]</div>
-    <p>with \(\varphi(t+T,x)=\varphi(t,x)=\varphi(t,x+k)\). Under the periodic KPP invasion hypotheses in <a href="#ref-39">[39]</a>, <a href="#ref-40">[40]</a>, the corresponding minimal front speed is characterized by \(\inf_{\sigma>0}\lambda(e,\sigma)/\sigma\).</p>
+    <p>with \(\varphi(t+T,x)=\varphi(t,x)=\varphi(t,x+k)\). Under the periodic KPP invasion hypotheses in <a href="#ref-53">[53]</a>, <a href="#ref-51">[51]</a>, the corresponding minimal front speed is characterized by \(\inf_{\sigma>0}\lambda(e,\sigma)/\sigma\).</p>
   </div>
 
   <h2 id="open-problems">9. Mathematical Questions at a Glance</h2>
@@ -1360,79 +1360,79 @@
     <caption>Questions, mathematical objects, and further reading</caption>
     <thead><tr><th>Question</th><th>Objects and results</th><th>Reading</th></tr></thead>
     <tbody>
-      <tr><td>Persistence</td><td>Principal growth eigenvalue; positive periodic equilibrium</td><td><a href="#ref-18">[18]</a>, <a href="#ref-19">[19]</a>, <a href="#ref-20">[20]</a></td></tr>
-      <tr><td>Front existence</td><td>Ignition uniqueness; monostable thresholds; bistable counterexamples</td><td><a href="#ref-3">[3]</a>, <a href="#ref-7">[7]</a>, <a href="#ref-24">[24]</a>, <a href="#ref-25">[25]</a></td></tr>
-      <tr><td>Speed selection</td><td>Spectral KPP formula; nonlinear min–max; pushed fronts</td><td><a href="#ref-4">[4]</a>, <a href="#ref-23">[23]</a>, <a href="#ref-27">[27]</a></td></tr>
-      <tr><td>Spreading geometry</td><td>Wulff shape; unbounded supports; periodic domains</td><td><a href="#ref-8">[8]</a>, <a href="#ref-9">[9]</a>, <a href="#ref-15">[15]</a>, <a href="#ref-28">[28]</a>, <a href="#ref-35">[35]</a></td></tr>
-      <tr><td>Front convergence</td><td>Tail-dependent stability; logarithmic lag; translated local limits</td><td><a href="#ref-10">[10]</a>, <a href="#ref-11">[11]</a>, <a href="#ref-22">[22]</a>, <a href="#ref-29">[29]</a>, <a href="#ref-30">[30]</a></td></tr>
-      <tr><td>Environmental scales</td><td>Homogenized speeds; slow bistable limit; interface laws; advection</td><td><a href="#ref-26">[26]</a>, <a href="#ref-36">[36]</a>, <a href="#ref-46">[46]</a>, <a href="#ref-47">[47]</a>, <a href="#ref-52">[52]</a></td></tr>
-      <tr><td><a href="#habitat-optimization">Habitat optimization</a></td><td>Fixed-mass concentration; stratified spreading shapes; rearrangement; resource budgets; relaxed optimization</td><td><a href="#ref-53">[53]</a>–<a href="#ref-58">[58]</a></td></tr>
-      <tr><td>Beyond a single front</td><td>Transition waves; curved interfaces; direction-dependent terraces</td><td><a href="#ref-41">[41]</a>, <a href="#ref-42">[42]</a>, <a href="#ref-43">[43]</a>, <a href="#ref-50">[50]</a>, <a href="#ref-51">[51]</a></td></tr>
-      <tr><td>Seasonal environments</td><td>Space–time periodic fronts; parabolic eigenvalues</td><td><a href="#ref-39">[39]</a>, <a href="#ref-40">[40]</a></td></tr>
+      <tr><td>Persistence</td><td>Principal growth eigenvalue; positive periodic equilibrium</td><td><a href="#ref-7">[7]</a>, <a href="#ref-9">[9]</a>, <a href="#ref-10">[10]</a></td></tr>
+      <tr><td>Front existence</td><td>Ignition uniqueness; monostable thresholds; bistable counterexamples</td><td><a href="#ref-2">[2]</a>, <a href="#ref-16">[16]</a>, <a href="#ref-22">[22]</a>, <a href="#ref-59">[59]</a></td></tr>
+      <tr><td>Speed selection</td><td>Spectral KPP formula; nonlinear min–max; pushed fronts</td><td><a href="#ref-5">[5]</a>, <a href="#ref-29">[29]</a>, <a href="#ref-19">[19]</a></td></tr>
+      <tr><td>Spreading geometry</td><td>Wulff shape; unbounded supports; periodic domains</td><td><a href="#ref-39">[39]</a>, <a href="#ref-31">[31]</a>, <a href="#ref-25">[25]</a>, <a href="#ref-54">[54]</a>, <a href="#ref-17">[17]</a></td></tr>
+      <tr><td>Front convergence</td><td>Tail-dependent stability; logarithmic lag; translated local limits</td><td><a href="#ref-40">[40]</a>, <a href="#ref-30">[30]</a>, <a href="#ref-38">[38]</a>, <a href="#ref-36">[36]</a>, <a href="#ref-26">[26]</a></td></tr>
+      <tr><td>Environmental scales</td><td>Homogenized speeds; slow bistable limit; interface laws; advection</td><td><a href="#ref-14">[14]</a>, <a href="#ref-21">[21]</a>, <a href="#ref-35">[35]</a>, <a href="#ref-11">[11]</a>, <a href="#ref-4">[4]</a></td></tr>
+      <tr><td><a href="#habitat-optimization">Habitat optimization</a></td><td>Fixed-mass concentration; stratified spreading shapes; rearrangement; resource budgets; relaxed optimization</td><td><a href="#ref-47">[47]</a>–<a href="#ref-44">[44]</a></td></tr>
+      <tr><td>Beyond a single front</td><td>Transition waves; curved interfaces; direction-dependent terraces</td><td><a href="#ref-3">[3]</a>, <a href="#ref-18">[18]</a>, <a href="#ref-27">[27]</a>, <a href="#ref-28">[28]</a>, <a href="#ref-20">[20]</a></td></tr>
+      <tr><td>Seasonal environments</td><td>Space–time periodic fronts; parabolic eigenvalues</td><td><a href="#ref-53">[53]</a>, <a href="#ref-51">[51]</a></td></tr>
     </tbody>
   </table>
 
   <h2 id="references">References</h2>
   <ol>
-    <li id="ref-1">Shigesada, N., Kawasaki, K. &amp; Teramoto, E. (1986). Traveling periodic waves in heterogeneous environments. <em>Theoretical Population Biology</em>, 30(1), 143–160. <a href="https://doi.org/10.1016/0040-5809(86)90029-8">doi:10.1016/0040-5809(86)90029-8</a>.</li>
-    <li id="ref-2">Xin, J. X. (1993). Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media. <em>Journal of Statistical Physics</em>, 73, 893–926. <a href="https://doi.org/10.1007/BF01052815">doi:10.1007/BF01052815</a>.</li>
-    <li id="ref-3">Berestycki, H. &amp; Hamel, F. (2002). Front propagation in periodic excitable media. <em>Communications on Pure and Applied Mathematics</em>, 55(8), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">doi:10.1002/cpa.3022</a>.</li>
-    <li id="ref-4">Berestycki, H., Hamel, F. &amp; Nadirashvili, N. (2005). The speed of propagation for KPP type problems. I: Periodic framework. <em>Journal of the European Mathematical Society</em>, 7(2), 173–213. <a href="https://doi.org/10.4171/JEMS/26">doi:10.4171/JEMS/26</a>.</li>
-    <li id="ref-5">Berestycki, H., Hamel, F. &amp; Roques, L. (2005). Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts. <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8), 1101–1146. <a href="https://doi.org/10.1016/j.matpur.2004.10.006">doi:10.1016/j.matpur.2004.10.006</a>.</li>
-    <li id="ref-6">Kinezaki, N., Kawasaki, K., Takasu, F. &amp; Shigesada, N. (2003). Modeling biological invasions into periodically fragmented environments. <em>Theoretical Population Biology</em>, 64(3), 291–302. <a href="https://doi.org/10.1016/S0040-5809(03)00091-1">doi:10.1016/S0040-5809(03)00091-1</a>.</li>
-    <li id="ref-7">Ding, W., Hamel, F. &amp; Zhao, X.-Q. (2017). Bistable pulsating fronts for reaction-diffusion equations in a periodic habitat. <em>Indiana University Mathematics Journal</em>, 66(4), 1189–1265. <a href="https://doi.org/10.1512/iumj.2017.66.6070">doi:10.1512/iumj.2017.66.6070</a>.</li>
-    <li id="ref-8">Hamel, F. &amp; Rossi, L. (2021). Spreading speeds and spreading sets of reaction-diffusion equations. <a href="https://arxiv.org/abs/2105.08344">arXiv:2105.08344</a>.</li>
-    <li id="ref-9">Guo, H., Hamel, F. &amp; Rossi, L. Reaction-diffusion equations in periodic media: spreading speeds and spreading sets. <a href="https://arxiv.org/abs/2609.18795">arXiv:2609.18795</a>.</li>
-    <li id="ref-10">Hamel, F. &amp; Rossi, L. Asymptotic one-dimensional symmetry for the Fisher–KPP equation. <em>Journal of the European Mathematical Society</em>. <a href="https://doi.org/10.4171/JEMS/1593">doi:10.4171/JEMS/1593</a>. <a href="https://arxiv.org/abs/2207.05147">arXiv:2207.05147</a>.</li>
-    <li id="ref-11">Guo, H., Hamel, F. &amp; Rossi, L. Reaction-diffusion equations in periodic media: convergence to pulsating fronts. <a href="https://arxiv.org/abs/2505.19726">arXiv:2505.19726</a>.</li>
-    <li id="ref-12">Fisher, R. A. (1937). The wave of advance of advantageous genes. <em>Annals of Eugenics, 7, 355–369.</em> <a href="https://doi.org/10.1111/j.1469-1809.1937.tb02153.x">doi:10.1111/j.1469-1809.1937.tb02153.x</a>.</li>
-    <li id="ref-13">Kolmogorov, A. N., Petrovskii, I. G. &amp; Piskunov, N. S. (1937). Étude de l’équation de la diffusion avec croissance de la quantité de matière et son application à un problème biologique. <em>Bulletin de l’Université d’État de Moscou, Série internationale A, 1.</em></li>
-    <li id="ref-14">Aronson, D. G. &amp; Weinberger, H. F. (1978). Multidimensional nonlinear diffusion arising in population genetics. <em>Advances in Mathematics, 30, 33–76.</em> <a href="https://doi.org/10.1016/0001-8708(78)90130-5">doi:10.1016/0001-8708(78)90130-5</a>.</li>
-    <li id="ref-15">Gärtner, J. &amp; Freidlin, M. I. (1979). On the propagation of concentration waves in periodic and random media. <em>Soviet Mathematics Doklady, 20, 1282–1286.</em> <a href="https://www.mathnet.ru/rus/person9140">Paper</a>.</li>
-    <li id="ref-16">Weinberger, H. F. (2002). On spreading speeds and traveling waves for growth and migration models in a periodic habitat. <em>Journal of Mathematical Biology, 45, 511–548.</em> <a href="https://doi.org/10.1007/s00285-002-0169-3">doi:10.1007/s00285-002-0169-3</a>.</li>
-    <li id="ref-17">Liang, X. &amp; Zhao, X.-Q. (2007). Asymptotic speeds of spread and traveling waves for monotone semiflows with applications. <em>Communications on Pure and Applied Mathematics, 60, 1–40.</em> <a href="https://doi.org/10.1002/cpa.20154">doi:10.1002/cpa.20154</a>.</li>
-    <li id="ref-18">Berestycki, H., Hamel, F. &amp; Roques, L. (2005). Analysis of the periodically fragmented environment model: I—Species persistence. <em>Journal of Mathematical Biology, 51, 75–113.</em> <a href="https://doi.org/10.1007/s00285-004-0313-3">doi:10.1007/s00285-004-0313-3</a>.</li>
-    <li id="ref-19">Berestycki, H., Nirenberg, L. &amp; Varadhan, S. R. S. (1994). The principal eigenvalue and maximum principle for second-order elliptic operators in general domains. <em>Communications on Pure and Applied Mathematics, 47, 47–92.</em> <a href="https://doi.org/10.1002/cpa.3160470105">doi:10.1002/cpa.3160470105</a>.</li>
-    <li id="ref-20">Berestycki, H. &amp; Rossi, L. (2015). Generalizations and properties of the principal eigenvalue of elliptic operators in unbounded domains. <em>Communications on Pure and Applied Mathematics, 68, 1014–1065.</em> <a href="https://doi.org/10.1002/cpa.21536">doi:10.1002/cpa.21536</a>.</li>
-    <li id="ref-21">Hamel, F. (2008). Qualitative properties of monostable pulsating fronts: exponential decay and monotonicity. <em>Journal de Mathématiques Pures et Appliquées, 89, 355–399.</em> <a href="https://doi.org/10.1016/j.matpur.2007.12.005">doi:10.1016/j.matpur.2007.12.005</a>.</li>
-    <li id="ref-22">Hamel, F. &amp; Roques, L. (2011). Uniqueness and stability properties of monostable pulsating fronts. <em>Journal of the European Mathematical Society, 13, 345–390.</em> <a href="https://doi.org/10.4171/JEMS/256">doi:10.4171/JEMS/256</a>.</li>
-    <li id="ref-23">Guo, H. (2022). Pushed fronts of monostable reaction-diffusion-advection equations. <em>Preprint.</em> <a href="https://arxiv.org/abs/2108.06546">arXiv:2108.06546</a>.</li>
-    <li id="ref-24">Fang, J. &amp; Zhao, X.-Q. (2015). Bistable traveling waves for monotone semiflows with applications. <em>Journal of the European Mathematical Society, 17, 2243–2288.</em> <a href="https://doi.org/10.4171/JEMS/556">doi:10.4171/JEMS/556</a>.</li>
-    <li id="ref-25">Zlatoš, A. (2017). Existence and non-existence of transition fronts for bistable and ignition reactions. <em>Annales de l’Institut Henri Poincaré C, Analyse non linéaire, 34, 1687–1705.</em> <a href="https://doi.org/10.1016/j.anihpc.2016.11.004">doi:10.1016/j.anihpc.2016.11.004</a>.</li>
-    <li id="ref-26">Ding, W., Hamel, F. &amp; Liang, X. (2025). Bistable pulsating fronts in slowly oscillating one-dimensional environments. <em>Journal de Mathématiques Pures et Appliquées, 194, 103668.</em> <a href="https://doi.org/10.1016/j.matpur.2025.103668">doi:10.1016/j.matpur.2025.103668</a>.</li>
-    <li id="ref-27">El Smaily, M. (2010). Min–max formulæ for the speeds of pulsating travelling fronts in periodic excitable media. <em>Annali di Matematica Pura ed Applicata, 189, 47–66.</em> <a href="https://doi.org/10.1007/s10231-009-0100-2">doi:10.1007/s10231-009-0100-2</a>.</li>
-    <li id="ref-28">Rossi, L. (2017). The Freidlin–Gärtner formula for general reaction terms. <em>Advances in Mathematics, 317, 267–298.</em> <a href="https://doi.org/10.1016/j.aim.2017.07.002">doi:10.1016/j.aim.2017.07.002</a>.</li>
-    <li id="ref-29">Hamel, F., Nolen, J., Roquejoffre, J.-M. &amp; Ryzhik, L. (2016). The logarithmic delay of KPP fronts in a periodic medium. <em>Journal of the European Mathematical Society, 18, 465–505.</em> <a href="https://doi.org/10.4171/JEMS/595">doi:10.4171/JEMS/595</a>.</li>
-    <li id="ref-30">Giletti, T. (2014). Convergence to pulsating traveling waves with minimal speed in some KPP heterogeneous problems. <em>Calculus of Variations and Partial Differential Equations, 51, 265–289.</em> <a href="https://doi.org/10.1007/s00526-013-0674-9">doi:10.1007/s00526-013-0674-9</a>.</li>
-    <li id="ref-31">Bramson, M. (1983). Convergence of solutions of the Kolmogorov equation to travelling waves. <em>Memoirs of the American Mathematical Society, 44, no. 285.</em> <a href="https://doi.org/10.1090/memo/0285">doi:10.1090/memo/0285</a>.</li>
-    <li id="ref-32">Fife, P. C. &amp; McLeod, J. B. (1977). The approach of solutions of nonlinear diffusion equations to travelling front solutions. <em>Archive for Rational Mechanics and Analysis, 65, 335–361.</em> <a href="https://doi.org/10.1007/BF00250432">doi:10.1007/BF00250432</a>.</li>
-    <li id="ref-33">Hamel, F. &amp; Roques, L. (2010). Fast propagation for KPP equations with slowly decaying initial conditions. <em>Journal of Differential Equations, 249, 1726–1745.</em> <a href="https://doi.org/10.1016/j.jde.2010.06.025">doi:10.1016/j.jde.2010.06.025</a>.</li>
-    <li id="ref-34">Berestycki, H., Hamel, F. &amp; Nadirashvili, N. (2010). The speed of propagation for KPP type problems. II: General domains. <em>Journal of the American Mathematical Society, 23, 1–34.</em> <a href="https://www.i2m.univ-amu.fr/perso/francois.hamel/bhn3.pdf">Paper</a>.</li>
-    <li id="ref-35">Ducasse, R. (2020). Propagation properties of reaction-diffusion equations in periodic domains. <em>Analysis &amp; PDE, 13, 2259–2288.</em> <a href="https://doi.org/10.2140/apde.2020.13.2259">doi:10.2140/apde.2020.13.2259</a>.</li>
-    <li id="ref-36">El Smaily, M., Hamel, F. &amp; Roques, L. (2009). Homogenization and influence of fragmentation in a biological invasion model. <em>Discrete and Continuous Dynamical Systems, 25, 321–342.</em> <a href="https://www.i2m.univ-amu.fr/perso/francois.hamel/ehr.pdf">Paper</a>.</li>
-    <li id="ref-37">Heinze, S., Papanicolaou, G. &amp; Stevens, A. (2001). Variational principles for propagation speeds in inhomogeneous media. <em>SIAM Journal on Applied Mathematics, 62, 129–148.</em> <a href="https://doi.org/10.1137/S0036139999361148">doi:10.1137/S0036139999361148</a>.</li>
-    <li id="ref-38">Caffarelli, L. A., Lee, K.-A. &amp; Mellet, A. (2006). Homogenization and flame propagation in periodic excitable media: The asymptotic speed of propagation. <em>Communications on Pure and Applied Mathematics, 59, 501–525.</em> <a href="https://doi.org/10.1002/cpa.20094">doi:10.1002/cpa.20094</a>.</li>
-    <li id="ref-39">Nolen, J., Rudd, M. &amp; Xin, J. (2005). Existence of KPP fronts in spatially-temporally periodic advection and variational principle for propagation speeds. <em>Dynamics of Partial Differential Equations, 2, 1–24.</em> <a href="https://doi.org/10.4310/dpde.2005.v2.n1.a1">doi:10.4310/dpde.2005.v2.n1.a1</a>.</li>
-    <li id="ref-40">Nadin, G. (2009). Traveling fronts in space–time periodic media. <em>Journal de Mathématiques Pures et Appliquées, 92, 232–262.</em> <a href="https://doi.org/10.1016/j.matpur.2009.04.002">doi:10.1016/j.matpur.2009.04.002</a>.</li>
-    <li id="ref-41">Berestycki, H. &amp; Hamel, F. (2012). Generalized transition waves and their properties. <em>Communications on Pure and Applied Mathematics, 65, 592–648.</em> <a href="https://doi.org/10.1002/cpa.21389">doi:10.1002/cpa.21389</a>.</li>
-    <li id="ref-42">Ducrot, A., Giletti, T. &amp; Matano, H. (2014). Existence and convergence to a propagating terrace in one-dimensional reaction-diffusion equations. <em>Transactions of the American Mathematical Society, 366, 5541–5566.</em> <a href="https://doi.org/10.1090/S0002-9947-2014-06105-9">doi:10.1090/S0002-9947-2014-06105-9</a>.</li>
-    <li id="ref-43">Giletti, T. &amp; Rossi, L. (2020). Pulsating solutions for multidimensional bistable and multistable equations. <em>Mathematische Annalen, 378, 1555–1611.</em> <a href="https://doi.org/10.1007/s00208-019-01919-z">doi:10.1007/s00208-019-01919-z</a>.</li>
-    <li id="ref-44">Ding, W., Hamel, F. &amp; Zhao, X.-Q. (2015). Transition fronts for periodic bistable reaction-diffusion equations. <em>Calculus of Variations and Partial Differential Equations, 54, 2517–2551.</em> <a href="https://www.i2m.univ-amu.fr/perso/francois.hamel/dhz2.pdf">Paper</a>.</li>
-    <li id="ref-45">Hamel, F. (2016). Bistable transition fronts in R^N. <em>Advances in Mathematics, 289, 279–344.</em> <a href="https://www.i2m.univ-amu.fr/perso/francois.hamel/h9.pdf">Paper</a>.</li>
-    <li id="ref-46">Hamel, F., Lutscher, F. &amp; Zhang, M. (2024). Propagation phenomena in periodic patchy landscapes with interface conditions. <em>Journal of Dynamics and Differential Equations, 36, 435–486.</em> <a href="https://www.i2m.univ-amu.fr/perso/francois.hamel/hlz1.pdf">Paper</a>.</li>
-    <li id="ref-47">Boutillon, N., Hamel, F. &amp; Roques, L. (2026). Periodic KPP equations: new insights into persistence, spreading, and the role of advection. <em>Journal of Differential Equations, 463, 114174.</em> <a href="https://www.i2m.univ-amu.fr/perso/francois.hamel/bhr4.pdf">Paper</a>.</li>
-    <li id="ref-48">Xin, J. (2000). Front propagation in heterogeneous media. <em>SIAM Review, 42, 161–230.</em> <a href="https://doi.org/10.1137/S0036144599364296">doi:10.1137/S0036144599364296</a>.</li>
-    <li id="ref-49">Hamel, F. &amp; Rossi, L. Spreading, flattening and logarithmic lag for reaction-diffusion equations in R^N: old and new results. <em>Survey preprint.</em> <a href="https://arxiv.org/abs/2307.03555">arXiv:2307.03555</a>.</li>
-    <li id="ref-50">Giletti, T. &amp; Rossi, L. Stability of propagating terraces in spatially periodic multistable equations in R^N. <em>Preprint, revised August 2026.</em> <a href="https://arxiv.org/abs/2503.07128">arXiv:2503.07128</a>.</li>
-    <li id="ref-51">El Smaily, M., Hamel, F. &amp; Huang, R. (2011). Two-dimensional curved fronts in a periodic shear flow. <em>Nonlinear Analysis, 74, 6469–6486.</em> <a href="https://arxiv.org/abs/1006.2580">arXiv:1006.2580</a>.</li>
-    <li id="ref-52">Berestycki, H., Hamel, F. &amp; Nadirashvili, N. (2005). Elliptic eigenvalue problems with large drift and applications to nonlinear propagation phenomena. <em>Communications in Mathematical Physics, 253, 451–480.</em> <a href="https://doi.org/10.1007/s00220-004-1201-9">doi:10.1007/s00220-004-1201-9</a>.</li>
-    <li id="ref-53">Liang, X., Lin, X. &amp; Matano, H. (2010). A variational problem associated with the minimal speed of travelling waves for spatially periodic reaction-diffusion equations. <em>Transactions of the American Mathematical Society, 362, 5605–5633.</em> <a href="https://doi.org/10.1090/S0002-9947-2010-04931-1">doi:10.1090/S0002-9947-2010-04931-1</a>.</li>
-    <li id="ref-54">Liang, X. &amp; Matano, H. (2014). Maximizing the spreading speed of KPP fronts in two-dimensional stratified media. <em>Proceedings of the London Mathematical Society, 109, 1137–1174.</em> <a href="https://doi.org/10.1112/plms/pdu031">doi:10.1112/plms/pdu031</a>.</li>
-    <li id="ref-55">Nadin, G. (2010). The effect of the Schwarz rearrangement on the periodic principal eigenvalue of a nonsymmetric operator. <em>SIAM Journal on Mathematical Analysis, 41, 2388–2406.</em> <a href="https://doi.org/10.1137/080743597">doi:10.1137/080743597</a>.</li>
-    <li id="ref-56">Mori, R. &amp; Xiao, D. (2019). A variational problem associated with the minimal speed of traveling waves for spatially periodic KPP type equations. <em>Proceedings of the London Mathematical Society, 119, 654–680.</em> <a href="https://doi.org/10.1112/plms.12243">doi:10.1112/plms.12243</a>.</li>
-    <li id="ref-57">Ito, R. (2018). Analysis of the minimal traveling wave speed via the methods of Young measures. <em>SIAM Journal on Mathematical Analysis, 50, 3478–3534.</em> <a href="https://doi.org/10.1137/17M1111218">doi:10.1137/17M1111218</a>.</li>
-    <li id="ref-58">Ito, R. (2020). Determining the optimal coefficient of the spatially periodic Fisher–KPP equation that minimizes the spreading speed. <em>Journal of Mathematical Biology, 80, 1953–1970.</em> <a href="https://doi.org/10.1007/s00285-020-01486-x">doi:10.1007/s00285-020-01486-x</a>.</li>
-    <li id="ref-59">Hamel, F., Fayard, J. &amp; Roques, L. (2010). Spreading speeds in slowly oscillating environments. <em>Bulletin of Mathematical Biology</em>, 72, 1166–1191. <a href="https://doi.org/10.1007/s11538-009-9486-7">doi:10.1007/s11538-009-9486-7</a>.</li>
+    <li id="ref-1">Aronson, D. G. &amp; Weinberger, H. F. (1978). Multidimensional nonlinear diffusion arising in population genetics. <em>Advances in Mathematics, 30, 33–76.</em> <a href="https://doi.org/10.1016/0001-8708(78)90130-5">doi:10.1016/0001-8708(78)90130-5</a>.</li>
+    <li id="ref-2">Berestycki, H. &amp; Hamel, F. (2002). Front propagation in periodic excitable media. <em>Communications on Pure and Applied Mathematics</em>, 55(8), 949–1032. <a href="https://doi.org/10.1002/cpa.3022">doi:10.1002/cpa.3022</a>.</li>
+    <li id="ref-3">Berestycki, H. &amp; Hamel, F. (2012). Generalized transition waves and their properties. <em>Communications on Pure and Applied Mathematics, 65, 592–648.</em> <a href="https://doi.org/10.1002/cpa.21389">doi:10.1002/cpa.21389</a>.</li>
+    <li id="ref-4">Berestycki, H., Hamel, F. &amp; Nadirashvili, N. (2005). Elliptic eigenvalue problems with large drift and applications to nonlinear propagation phenomena. <em>Communications in Mathematical Physics, 253, 451–480.</em> <a href="https://doi.org/10.1007/s00220-004-1201-9">doi:10.1007/s00220-004-1201-9</a>.</li>
+    <li id="ref-5">Berestycki, H., Hamel, F. &amp; Nadirashvili, N. (2005). The speed of propagation for KPP type problems. I: Periodic framework. <em>Journal of the European Mathematical Society</em>, 7(2), 173–213. <a href="https://doi.org/10.4171/JEMS/26">doi:10.4171/JEMS/26</a>.</li>
+    <li id="ref-6">Berestycki, H., Hamel, F. &amp; Nadirashvili, N. (2010). The speed of propagation for KPP type problems. II: General domains. <em>Journal of the American Mathematical Society, 23, 1–34.</em> <a href="https://www.i2m.univ-amu.fr/perso/francois.hamel/bhn3.pdf">Paper</a>.</li>
+    <li id="ref-7">Berestycki, H., Hamel, F. &amp; Roques, L. (2005). Analysis of the periodically fragmented environment model: I—Species persistence. <em>Journal of Mathematical Biology, 51, 75–113.</em> <a href="https://doi.org/10.1007/s00285-004-0313-3">doi:10.1007/s00285-004-0313-3</a>.</li>
+    <li id="ref-8">Berestycki, H., Hamel, F. &amp; Roques, L. (2005). Analysis of the periodically fragmented environment model: II—Biological invasions and pulsating travelling fronts. <em>Journal de Mathématiques Pures et Appliquées</em>, 84(8), 1101–1146. <a href="https://doi.org/10.1016/j.matpur.2004.10.006">doi:10.1016/j.matpur.2004.10.006</a>.</li>
+    <li id="ref-9">Berestycki, H., Nirenberg, L. &amp; Varadhan, S. R. S. (1994). The principal eigenvalue and maximum principle for second-order elliptic operators in general domains. <em>Communications on Pure and Applied Mathematics, 47, 47–92.</em> <a href="https://doi.org/10.1002/cpa.3160470105">doi:10.1002/cpa.3160470105</a>.</li>
+    <li id="ref-10">Berestycki, H. &amp; Rossi, L. (2015). Generalizations and properties of the principal eigenvalue of elliptic operators in unbounded domains. <em>Communications on Pure and Applied Mathematics, 68, 1014–1065.</em> <a href="https://doi.org/10.1002/cpa.21536">doi:10.1002/cpa.21536</a>.</li>
+    <li id="ref-11">Boutillon, N., Hamel, F. &amp; Roques, L. (2026). Periodic KPP equations: new insights into persistence, spreading, and the role of advection. <em>Journal of Differential Equations, 463, 114174.</em> <a href="https://www.i2m.univ-amu.fr/perso/francois.hamel/bhr4.pdf">Paper</a>.</li>
+    <li id="ref-12">Bramson, M. (1983). Convergence of solutions of the Kolmogorov equation to travelling waves. <em>Memoirs of the American Mathematical Society, 44, no. 285.</em> <a href="https://doi.org/10.1090/memo/0285">doi:10.1090/memo/0285</a>.</li>
+    <li id="ref-13">Caffarelli, L. A., Lee, K.-A. &amp; Mellet, A. (2006). Homogenization and flame propagation in periodic excitable media: The asymptotic speed of propagation. <em>Communications on Pure and Applied Mathematics, 59, 501–525.</em> <a href="https://doi.org/10.1002/cpa.20094">doi:10.1002/cpa.20094</a>.</li>
+    <li id="ref-14">Ding, W., Hamel, F. &amp; Liang, X. (2025). Bistable pulsating fronts in slowly oscillating one-dimensional environments. <em>Journal de Mathématiques Pures et Appliquées, 194, 103668.</em> <a href="https://doi.org/10.1016/j.matpur.2025.103668">doi:10.1016/j.matpur.2025.103668</a>.</li>
+    <li id="ref-15">Ding, W., Hamel, F. &amp; Zhao, X.-Q. (2015). Transition fronts for periodic bistable reaction-diffusion equations. <em>Calculus of Variations and Partial Differential Equations, 54, 2517–2551.</em> <a href="https://www.i2m.univ-amu.fr/perso/francois.hamel/dhz2.pdf">Paper</a>.</li>
+    <li id="ref-16">Ding, W., Hamel, F. &amp; Zhao, X.-Q. (2017). Bistable pulsating fronts for reaction-diffusion equations in a periodic habitat. <em>Indiana University Mathematics Journal</em>, 66(4), 1189–1265. <a href="https://doi.org/10.1512/iumj.2017.66.6070">doi:10.1512/iumj.2017.66.6070</a>.</li>
+    <li id="ref-17">Ducasse, R. (2020). Propagation properties of reaction-diffusion equations in periodic domains. <em>Analysis &amp; PDE, 13, 2259–2288.</em> <a href="https://doi.org/10.2140/apde.2020.13.2259">doi:10.2140/apde.2020.13.2259</a>.</li>
+    <li id="ref-18">Ducrot, A., Giletti, T. &amp; Matano, H. (2014). Existence and convergence to a propagating terrace in one-dimensional reaction-diffusion equations. <em>Transactions of the American Mathematical Society, 366, 5541–5566.</em> <a href="https://doi.org/10.1090/S0002-9947-2014-06105-9">doi:10.1090/S0002-9947-2014-06105-9</a>.</li>
+    <li id="ref-19">El Smaily, M. (2010). Min–max formulæ for the speeds of pulsating travelling fronts in periodic excitable media. <em>Annali di Matematica Pura ed Applicata, 189, 47–66.</em> <a href="https://doi.org/10.1007/s10231-009-0100-2">doi:10.1007/s10231-009-0100-2</a>.</li>
+    <li id="ref-20">El Smaily, M., Hamel, F. &amp; Huang, R. (2011). Two-dimensional curved fronts in a periodic shear flow. <em>Nonlinear Analysis, 74, 6469–6486.</em> <a href="https://arxiv.org/abs/1006.2580">arXiv:1006.2580</a>.</li>
+    <li id="ref-21">El Smaily, M., Hamel, F. &amp; Roques, L. (2009). Homogenization and influence of fragmentation in a biological invasion model. <em>Discrete and Continuous Dynamical Systems, 25, 321–342.</em> <a href="https://www.i2m.univ-amu.fr/perso/francois.hamel/ehr.pdf">Paper</a>.</li>
+    <li id="ref-22">Fang, J. &amp; Zhao, X.-Q. (2015). Bistable traveling waves for monotone semiflows with applications. <em>Journal of the European Mathematical Society, 17, 2243–2288.</em> <a href="https://doi.org/10.4171/JEMS/556">doi:10.4171/JEMS/556</a>.</li>
+    <li id="ref-23">Fife, P. C. &amp; McLeod, J. B. (1977). The approach of solutions of nonlinear diffusion equations to travelling front solutions. <em>Archive for Rational Mechanics and Analysis, 65, 335–361.</em> <a href="https://doi.org/10.1007/BF00250432">doi:10.1007/BF00250432</a>.</li>
+    <li id="ref-24">Fisher, R. A. (1937). The wave of advance of advantageous genes. <em>Annals of Eugenics, 7, 355–369.</em> <a href="https://doi.org/10.1111/j.1469-1809.1937.tb02153.x">doi:10.1111/j.1469-1809.1937.tb02153.x</a>.</li>
+    <li id="ref-25">Gärtner, J. &amp; Freidlin, M. I. (1979). On the propagation of concentration waves in periodic and random media. <em>Soviet Mathematics Doklady, 20, 1282–1286.</em> <a href="https://www.mathnet.ru/rus/person9140">Paper</a>.</li>
+    <li id="ref-26">Giletti, T. (2014). Convergence to pulsating traveling waves with minimal speed in some KPP heterogeneous problems. <em>Calculus of Variations and Partial Differential Equations, 51, 265–289.</em> <a href="https://doi.org/10.1007/s00526-013-0674-9">doi:10.1007/s00526-013-0674-9</a>.</li>
+    <li id="ref-27">Giletti, T. &amp; Rossi, L. (2020). Pulsating solutions for multidimensional bistable and multistable equations. <em>Mathematische Annalen, 378, 1555–1611.</em> <a href="https://doi.org/10.1007/s00208-019-01919-z">doi:10.1007/s00208-019-01919-z</a>.</li>
+    <li id="ref-28">Giletti, T. &amp; Rossi, L. Stability of propagating terraces in spatially periodic multistable equations in R^N. <em>Preprint, revised August 2026.</em> <a href="https://arxiv.org/abs/2503.07128">arXiv:2503.07128</a>.</li>
+    <li id="ref-29">Guo, H. (2022). Pushed fronts of monostable reaction-diffusion-advection equations. <em>Preprint.</em> <a href="https://arxiv.org/abs/2108.06546">arXiv:2108.06546</a>.</li>
+    <li id="ref-30">Guo, H., Hamel, F. &amp; Rossi, L. Reaction-diffusion equations in periodic media: convergence to pulsating fronts. <a href="https://arxiv.org/abs/2505.19726">arXiv:2505.19726</a>.</li>
+    <li id="ref-31">Guo, H., Hamel, F. &amp; Rossi, L. Reaction-diffusion equations in periodic media: spreading speeds and spreading sets. <a href="https://arxiv.org/abs/2609.18795">arXiv:2609.18795</a>.</li>
+    <li id="ref-32">Hamel, F. (2008). Qualitative properties of monostable pulsating fronts: exponential decay and monotonicity. <em>Journal de Mathématiques Pures et Appliquées, 89, 355–399.</em> <a href="https://doi.org/10.1016/j.matpur.2007.12.005">doi:10.1016/j.matpur.2007.12.005</a>.</li>
+    <li id="ref-33">Hamel, F. (2016). Bistable transition fronts in R^N. <em>Advances in Mathematics, 289, 279–344.</em> <a href="https://www.i2m.univ-amu.fr/perso/francois.hamel/h9.pdf">Paper</a>.</li>
+    <li id="ref-34">Hamel, F., Fayard, J. &amp; Roques, L. (2010). Spreading speeds in slowly oscillating environments. <em>Bulletin of Mathematical Biology</em>, 72, 1166–1191. <a href="https://doi.org/10.1007/s11538-009-9486-7">doi:10.1007/s11538-009-9486-7</a>.</li>
+    <li id="ref-35">Hamel, F., Lutscher, F. &amp; Zhang, M. (2024). Propagation phenomena in periodic patchy landscapes with interface conditions. <em>Journal of Dynamics and Differential Equations, 36, 435–486.</em> <a href="https://www.i2m.univ-amu.fr/perso/francois.hamel/hlz1.pdf">Paper</a>.</li>
+    <li id="ref-36">Hamel, F., Nolen, J., Roquejoffre, J.-M. &amp; Ryzhik, L. (2016). The logarithmic delay of KPP fronts in a periodic medium. <em>Journal of the European Mathematical Society, 18, 465–505.</em> <a href="https://doi.org/10.4171/JEMS/595">doi:10.4171/JEMS/595</a>.</li>
+    <li id="ref-37">Hamel, F. &amp; Roques, L. (2010). Fast propagation for KPP equations with slowly decaying initial conditions. <em>Journal of Differential Equations, 249, 1726–1745.</em> <a href="https://doi.org/10.1016/j.jde.2010.06.025">doi:10.1016/j.jde.2010.06.025</a>.</li>
+    <li id="ref-38">Hamel, F. &amp; Roques, L. (2011). Uniqueness and stability properties of monostable pulsating fronts. <em>Journal of the European Mathematical Society, 13, 345–390.</em> <a href="https://doi.org/10.4171/JEMS/256">doi:10.4171/JEMS/256</a>.</li>
+    <li id="ref-39">Hamel, F. &amp; Rossi, L. (2021). Spreading speeds and spreading sets of reaction-diffusion equations. <a href="https://arxiv.org/abs/2105.08344">arXiv:2105.08344</a>.</li>
+    <li id="ref-40">Hamel, F. &amp; Rossi, L. Asymptotic one-dimensional symmetry for the Fisher–KPP equation. <em>Journal of the European Mathematical Society</em>. <a href="https://doi.org/10.4171/JEMS/1593">doi:10.4171/JEMS/1593</a>. <a href="https://arxiv.org/abs/2207.05147">arXiv:2207.05147</a>.</li>
+    <li id="ref-41">Hamel, F. &amp; Rossi, L. Spreading, flattening and logarithmic lag for reaction-diffusion equations in R^N: old and new results. <em>Survey preprint.</em> <a href="https://arxiv.org/abs/2307.03555">arXiv:2307.03555</a>.</li>
+    <li id="ref-42">Heinze, S., Papanicolaou, G. &amp; Stevens, A. (2001). Variational principles for propagation speeds in inhomogeneous media. <em>SIAM Journal on Applied Mathematics, 62, 129–148.</em> <a href="https://doi.org/10.1137/S0036139999361148">doi:10.1137/S0036139999361148</a>.</li>
+    <li id="ref-43">Ito, R. (2018). Analysis of the minimal traveling wave speed via the methods of Young measures. <em>SIAM Journal on Mathematical Analysis, 50, 3478–3534.</em> <a href="https://doi.org/10.1137/17M1111218">doi:10.1137/17M1111218</a>.</li>
+    <li id="ref-44">Ito, R. (2020). Determining the optimal coefficient of the spatially periodic Fisher–KPP equation that minimizes the spreading speed. <em>Journal of Mathematical Biology, 80, 1953–1970.</em> <a href="https://doi.org/10.1007/s00285-020-01486-x">doi:10.1007/s00285-020-01486-x</a>.</li>
+    <li id="ref-45">Kinezaki, N., Kawasaki, K., Takasu, F. &amp; Shigesada, N. (2003). Modeling biological invasions into periodically fragmented environments. <em>Theoretical Population Biology</em>, 64(3), 291–302. <a href="https://doi.org/10.1016/S0040-5809(03)00091-1">doi:10.1016/S0040-5809(03)00091-1</a>.</li>
+    <li id="ref-46">Kolmogorov, A. N., Petrovskii, I. G. &amp; Piskunov, N. S. (1937). Étude de l’équation de la diffusion avec croissance de la quantité de matière et son application à un problème biologique. <em>Bulletin de l’Université d’État de Moscou, Série internationale A, 1.</em></li>
+    <li id="ref-47">Liang, X., Lin, X. &amp; Matano, H. (2010). A variational problem associated with the minimal speed of travelling waves for spatially periodic reaction-diffusion equations. <em>Transactions of the American Mathematical Society, 362, 5605–5633.</em> <a href="https://doi.org/10.1090/S0002-9947-2010-04931-1">doi:10.1090/S0002-9947-2010-04931-1</a>.</li>
+    <li id="ref-48">Liang, X. &amp; Matano, H. (2014). Maximizing the spreading speed of KPP fronts in two-dimensional stratified media. <em>Proceedings of the London Mathematical Society, 109, 1137–1174.</em> <a href="https://doi.org/10.1112/plms/pdu031">doi:10.1112/plms/pdu031</a>.</li>
+    <li id="ref-49">Liang, X. &amp; Zhao, X.-Q. (2007). Asymptotic speeds of spread and traveling waves for monotone semiflows with applications. <em>Communications on Pure and Applied Mathematics, 60, 1–40.</em> <a href="https://doi.org/10.1002/cpa.20154">doi:10.1002/cpa.20154</a>.</li>
+    <li id="ref-50">Mori, R. &amp; Xiao, D. (2019). A variational problem associated with the minimal speed of traveling waves for spatially periodic KPP type equations. <em>Proceedings of the London Mathematical Society, 119, 654–680.</em> <a href="https://doi.org/10.1112/plms.12243">doi:10.1112/plms.12243</a>.</li>
+    <li id="ref-51">Nadin, G. (2009). Traveling fronts in space–time periodic media. <em>Journal de Mathématiques Pures et Appliquées, 92, 232–262.</em> <a href="https://doi.org/10.1016/j.matpur.2009.04.002">doi:10.1016/j.matpur.2009.04.002</a>.</li>
+    <li id="ref-52">Nadin, G. (2010). The effect of the Schwarz rearrangement on the periodic principal eigenvalue of a nonsymmetric operator. <em>SIAM Journal on Mathematical Analysis, 41, 2388–2406.</em> <a href="https://doi.org/10.1137/080743597">doi:10.1137/080743597</a>.</li>
+    <li id="ref-53">Nolen, J., Rudd, M. &amp; Xin, J. (2005). Existence of KPP fronts in spatially-temporally periodic advection and variational principle for propagation speeds. <em>Dynamics of Partial Differential Equations, 2, 1–24.</em> <a href="https://doi.org/10.4310/dpde.2005.v2.n1.a1">doi:10.4310/dpde.2005.v2.n1.a1</a>.</li>
+    <li id="ref-54">Rossi, L. (2017). The Freidlin–Gärtner formula for general reaction terms. <em>Advances in Mathematics, 317, 267–298.</em> <a href="https://doi.org/10.1016/j.aim.2017.07.002">doi:10.1016/j.aim.2017.07.002</a>.</li>
+    <li id="ref-55">Shigesada, N., Kawasaki, K. &amp; Teramoto, E. (1986). Traveling periodic waves in heterogeneous environments. <em>Theoretical Population Biology</em>, 30(1), 143–160. <a href="https://doi.org/10.1016/0040-5809(86)90029-8">doi:10.1016/0040-5809(86)90029-8</a>.</li>
+    <li id="ref-56">Weinberger, H. F. (2002). On spreading speeds and traveling waves for growth and migration models in a periodic habitat. <em>Journal of Mathematical Biology, 45, 511–548.</em> <a href="https://doi.org/10.1007/s00285-002-0169-3">doi:10.1007/s00285-002-0169-3</a>.</li>
+    <li id="ref-57">Xin, J. X. (1993). Existence and nonexistence of traveling waves and reaction-diffusion front propagation in periodic media. <em>Journal of Statistical Physics</em>, 73, 893–926. <a href="https://doi.org/10.1007/BF01052815">doi:10.1007/BF01052815</a>.</li>
+    <li id="ref-58">Xin, J. (2000). Front propagation in heterogeneous media. <em>SIAM Review, 42, 161–230.</em> <a href="https://doi.org/10.1137/S0036144599364296">doi:10.1137/S0036144599364296</a>.</li>
+    <li id="ref-59">Zlatoš, A. (2017). Existence and non-existence of transition fronts for bistable and ignition reactions. <em>Annales de l’Institut Henri Poincaré C, Analyse non linéaire, 34, 1687–1705.</em> <a href="https://doi.org/10.1016/j.anihpc.2016.11.004">doi:10.1016/j.anihpc.2016.11.004</a>.</li>
   </ol>
 
   <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
