@@ -1519,6 +1519,7 @@
           node.id = 'reading-' + slug;
         }
         if (node.tagName === 'H2') { chapter = node.textContent; section = node.id; }
+        if (navLinks.some(link => link.hash === '#' + node.id)) section = node.id;
         topic = node.textContent;
         pending.push(node);
         continue;
@@ -1539,6 +1540,11 @@
           unit.append(following);
           i++;
         }
+      }
+      if (unit.querySelector('#eq-patch-model') && tokens[i + 1]?.matches('.three-terms')) unit.append(tokens[++i]);
+      if (unit.querySelector('#eq-patch-coefficients') && tokens[i + 1]?.id === 'fig-patches') unit.append(tokens[++i]);
+      if (unit.querySelector('#eq-patch-interfaces')) {
+        for (let count = 0; count < 2 && tokens[i + 1]?.tagName === 'P'; count++) unit.append(tokens[++i]);
       }
       if (!unit.querySelector('[id]')) node.id = node.id || 'reading-block-' + (units.length + 1);
       units.push(unit);
@@ -1562,7 +1568,7 @@
     const context = document.createElement('p'); context.className = 'reader-page-context'; context.textContent = 'Reading';
     stage.append(context, ...units); host.append(stage);
     if (window.fitSurveyFormulas) window.fitSurveyFormulas();
-    const contentTop = stage.getBoundingClientRect().top + 34;
+    const contentTop = stage.getBoundingClientRect().top + scrollY + 34;
     const capacity = Math.max(410, Math.min(780, innerHeight - contentTop - 92));
     main.style.setProperty('--reader-page-height', (capacity + 62) + 'px');
     const heights = units.map(u => u.getBoundingClientRect().height);
@@ -1573,7 +1579,8 @@
       const page = document.createElement('article');
       page.className = 'reader-sheet'; page.id = 'page-' + (pages.length + 1);
       page.dataset.readerSection = unit.dataset.section || '';
-      page.dataset.readerTitle = unit.dataset.topic || 'Overview';
+      const label = unit.querySelector('.question-label,.open-label,.statement h3,.figcaption strong');
+      page.dataset.readerTitle = label ? label.textContent.replace(/\[\d+\]/g, '').trim().replace(/[·,]\s*$/, '').trim() : unit.dataset.topic || 'Overview';
       page.dataset.readerChapter = unit.dataset.chapter || 'Overview';
       const heading = document.createElement('p'); heading.className = 'reader-page-context';
       heading.id = 'reader-context-' + (pages.length + 1);
@@ -1593,6 +1600,7 @@
     pages.forEach((page, i) => {
       const refs = [...page.querySelectorAll('li[id^="ref-"]')];
       if (refs.length) page.dataset.readerTitle = 'References [' + refs[0].id.slice(4) + '–' + refs.at(-1).id.slice(4) + ']';
+      if (refs.length) page.querySelector('.reader-page-context').textContent = page.dataset.readerTitle;
       if (page.dataset.readerChapter !== previousChapter) {
         optionGroup = document.createElement('optgroup'); optionGroup.label = page.dataset.readerChapter;
         select.append(optionGroup); previousChapter = page.dataset.readerChapter;
@@ -1616,7 +1624,6 @@
     function fit() { if (window.fitSurveyFormulas) window.fitSurveyFormulas(); }
     function updateNav() {
       const page = pages[index];
-      const activeTopic = [...page.querySelectorAll('h2[id],h3[id],h4[id]')].map(h => h.id);
       const choices = navLinks.filter(a => pageById.get(a.hash.slice(1)) === index);
       const chosen = choices.find(a => a.classList.contains('sub-link')) || choices[0];
       navLinks.forEach(link => {
@@ -1639,6 +1646,7 @@
       mode.textContent = full ? 'Return to paged reading' : 'View full text';
       backToText.hidden = !textReturn || full || !pages[index].querySelector('li[id^="ref-"]');
       updateNav(); fit();
+      window.dispatchEvent(new Event('readerpagechange'));
     }
     function go(targetIndex, options = {}) {
       if (targetIndex < 0 || targetIndex >= pages.length) return;
@@ -1646,7 +1654,10 @@
       if (options.history !== false) history.pushState(null, '', options.hash || '#' + pages[index].id);
       render();
       if (options.target) {
-        requestAnimationFrame(() => document.getElementById(options.target)?.scrollIntoView({block:'start', behavior:'instant'}));
+        requestAnimationFrame(() => {
+          const target = document.getElementById(options.target);
+          if (target) window.scrollTo({top: Math.max(0, target.getBoundingClientRect().top + scrollY - toolbar.offsetHeight - 16), behavior:'instant'});
+        });
       } else window.scrollTo({top:0, behavior:'instant'});
     }
     function fromHash() {
@@ -1823,6 +1834,7 @@
           clearTimeout(timer); busy = false; refresh.disabled = false; more.disabled = false;
         }
       }
+      window.addEventListener('readerpagechange', () => { if (!panel.hidden) sectionContext(); });
       toggle.addEventListener('click', () => setOpen(panel.hidden));
       close.addEventListener('click', () => setOpen(false));
       document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) setOpen(false); });
