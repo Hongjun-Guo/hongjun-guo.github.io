@@ -153,6 +153,48 @@
     .reader-comment .comment-permalink { font-size: .8rem; }
     button:focus-visible, .comments-panel a:focus-visible { outline: 3px solid #7abfc1; outline-offset: 3px; }
     .figure#fig-patches { width: 70%; max-width: 42rem; }
+    body.reader-paged { margin-top: .8rem; background: #f8fafb; }
+    body.reader-paged > p:first-of-type { margin: 0; font-size: .84rem; }
+    body.reader-paged > h1 { font-size: 1.5rem; margin: .35rem 0 .6rem; }
+    body.reader-paged .page-layout { margin-top: .6rem; }
+    .reader-toolbar { position: sticky; top: 0; z-index: 30; display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; padding: .55rem 0 .65rem; background: #f8fafb; }
+    .reader-toolbar button, .reader-footer button, .reader-toolbar select { font: inherit; font-size: .88rem; line-height: 1.4; border: 1px solid #cadfdf; border-radius: 7px; padding: .5rem .75rem; color: #155e63; background: white; cursor: pointer; }
+    .reader-toolbar button:hover, .reader-footer button:hover { background: #edf6f5; }
+    .reader-toolbar button:disabled, .reader-footer button:disabled { opacity: .4; cursor: default; }
+    .reader-toolbar select { flex: 1 1 230px; min-width: 0; max-width: 440px; text-overflow: ellipsis; }
+    .reader-toolbar .reader-mode { margin-left: auto; background: #155e63; color: white; }
+    .reader-toolbar .reader-mode:hover { background: #104f55; }
+    .reader-status { color: #57606a; font-size: .82rem; white-space: nowrap; }
+    .reader-progress { flex-basis: 100%; height: 3px; border-radius: 3px; background: #deebea; overflow: hidden; }
+    .reader-progress span { display: block; height: 100%; background: #16818a; transition: width .15s; }
+    .reader-sheet { box-sizing: border-box; width: 100%; padding: 1rem 1.25rem; background: white; border: 1px solid #d6e4e5; border-radius: 10px; box-shadow: 0 2px 8px #17324d06; min-height: var(--reader-page-height, 470px); }
+    .reader-sheet[hidden] { display: none !important; }
+    .reader-page-context { margin: 0 0 .65rem !important; color: #70818a; font-size: .8rem; line-height: 1.4; }
+    .reader-unit { display: flow-root; }
+    .reader-unit > h2 { margin-top: 1.1rem; }
+    .reader-unit > h3 { margin-top: .8rem; }
+    .reader-unit > h4 { margin-top: .7rem; margin-bottom: .45rem; }
+    .reader-sheet > .reader-unit:first-of-type > :first-child { margin-top: .25rem; }
+    .reader-unit > .equation { box-sizing: border-box; width: 92%; max-width: 64rem; margin-left: auto; margin-right: auto; }
+    .reader-footer { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: .8rem auto 1.5rem; padding-bottom: .7rem; }
+    .reader-reference-list { font-size: .94rem; margin: .25rem 0; padding-left: 1.6rem; }
+    .reader-reference-list li { margin: .35rem 0 .8rem; }
+    .reader-return[hidden] { display: none; }
+    .reader-toolbar label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .reader-full .reader-toolbar { background: white; }
+    .reader-full .reader-paged-control, .reader-full .reader-progress, .reader-full .reader-footer, .reader-full .reader-page-context { display: none; }
+    .reader-full .reader-sheet { min-height: 0; padding: 0; margin: 0; border: 0; border-radius: 0; box-shadow: none; }
+    .reader-full .reader-toolbar .reader-mode { margin-left: 0; }
+    .reader-full .reader-unit > h2 { margin-top: 2.4rem; }
+    @media print {
+      .reader-toolbar, .reader-footer, .reader-page-context, .sidebar, .comments-toggle, .comments-panel, .visitor-counter { display: none !important; }
+      body { max-width: none; margin: 0; padding: 0; background: white !important; }
+      .page-layout { display: block; width: 100%; margin: 0; }
+      .reader-sheet, .reader-sheet[hidden] { display: block !important; min-height: 0; padding: 0; border: 0; box-shadow: none; }
+      .reader-unit > h2 { margin-top: 1.4rem; }
+      .statement, .source-result, .question-box, .figure, .equation { break-inside: avoid; }
+    }
+
   </style>
   <script>
     window.MathJax = {
@@ -178,6 +220,7 @@
                 }
               });
             };
+            window.fitSurveyFormulas = fitFormulas;
             fitFormulas();
             if ('ResizeObserver' in window) {
               let previousWidth = 0;
@@ -1441,33 +1484,239 @@
   </div>
 
 <script>
-  (function () {
-    const links = Array.from(document.querySelectorAll('.sidebar nav a[href^="#"]'));
-    const targets = links
-      .map(link => ({ link, target: document.getElementById(link.getAttribute('href').slice(1)) }))
-      .filter(item => item.target);
-    if (!('IntersectionObserver' in window) || targets.length === 0) return;
-
-    const activate = (id) => {
-      links.forEach(link => {
-        const active = link.getAttribute('href') === '#' + id;
+(() => {
+  let initialized = false;
+  function startReader() {
+    if (initialized) return;
+    initialized = true;
+    const main = document.querySelector('main.main-content');
+    if (!main) return;
+    const original = [...main.children];
+    const navLinks = [...document.querySelectorAll('.sidebar nav a[href^="#"]')];
+    const isHeading = n => /^H[234]$/.test(n.tagName);
+    const isEquation = n => n.classList.contains('equation');
+    const tokens = [];
+    let referenceNumber = 0;
+    for (const node of original) {
+      if (node.tagName === 'OL' && node.querySelector('li[id^="ref-"]')) {
+        for (const item of [...node.children]) {
+          const one = document.createElement('ol');
+          one.className = 'reader-reference-list';
+          one.start = ++referenceNumber;
+          one.append(item);
+          tokens.push(one);
+        }
+        node.remove();
+      } else tokens.push(node);
+    }
+    const units = [];
+    let chapter = 'Overview', section = '', topic = 'Overview', pending = [];
+    for (let i = 0; i < tokens.length; i++) {
+      const node = tokens[i];
+      if (isHeading(node)) {
+        if (!node.id) {
+          const slug = node.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+          node.id = 'reading-' + slug;
+        }
+        if (node.tagName === 'H2') { chapter = node.textContent; section = node.id; }
+        topic = node.textContent;
+        pending.push(node);
+        continue;
+      }
+      const unit = document.createElement('div');
+      unit.className = 'reader-unit';
+      unit.dataset.chapter = chapter;
+      unit.dataset.section = section;
+      unit.dataset.topic = topic;
+      unit.dataset.newChapter = String(pending.some(n => n.tagName === 'H2'));
+      unit.dataset.newTopic = String(pending.length > 0);
+      unit.append(...pending, node);
+      pending = [];
+      const following = tokens[i + 1];
+      if (node.tagName === 'P' && following && !isHeading(following)) {
+        const leadsToResult = /following|satisfies|reads|define|then|:\s*$/i.test(node.textContent);
+        if (isEquation(following) || (leadsToResult && following.matches('.statement,.source-result'))) {
+          unit.append(following);
+          i++;
+        }
+      }
+      if (!unit.querySelector('[id]')) node.id = node.id || 'reading-block-' + (units.length + 1);
+      units.push(unit);
+    }
+    if (pending.length) {
+      const unit = document.createElement('div'); unit.className = 'reader-unit'; unit.append(...pending);
+      unit.dataset.chapter = chapter; unit.dataset.section = section; unit.dataset.topic = topic;
+      units.push(unit);
+    }
+    const toolbar = document.createElement('div');
+    toolbar.className = 'reader-toolbar';
+    toolbar.setAttribute('role', 'region'); toolbar.setAttribute('aria-label', 'Reading controls');
+    toolbar.innerHTML = '<button type="button" class="reader-paged-control" id="reader-previous">← Previous</button><label for="reader-page-select">Choose a reading page</label><select class="reader-paged-control" id="reader-page-select"></select><button type="button" class="reader-paged-control" id="reader-next">Next →</button><span class="reader-status" id="reader-status" role="status" aria-live="polite"></span><button type="button" class="reader-return" id="reader-return" hidden>Back to text</button><button type="button" class="reader-mode" id="reader-mode">View full text</button><div class="reader-progress" aria-hidden="true"><span id="reader-progress"></span></div>';
+    const host = document.createElement('div'); host.className = 'reader-pages';
+    const footer = document.createElement('nav');
+    footer.className = 'reader-footer'; footer.setAttribute('aria-label', 'Turn reading pages');
+    footer.innerHTML = '<button type="button" id="reader-previous-bottom">← Previous page</button><span class="reader-status" id="reader-bottom-status"></span><button type="button" id="reader-next-bottom">Next page →</button>';
+    main.replaceChildren(toolbar, host, footer);
+    document.body.classList.add('reader-paged');
+    const stage = document.createElement('article'); stage.className = 'reader-sheet';
+    const context = document.createElement('p'); context.className = 'reader-page-context'; context.textContent = 'Reading';
+    stage.append(context, ...units); host.append(stage);
+    if (window.fitSurveyFormulas) window.fitSurveyFormulas();
+    const contentTop = stage.getBoundingClientRect().top + 34;
+    const capacity = Math.max(410, Math.min(780, innerHeight - contentTop - 92));
+    main.style.setProperty('--reader-page-height', (capacity + 62) + 'px');
+    const heights = units.map(u => u.getBoundingClientRect().height);
+    stage.remove();
+    const pages = [];
+    let currentPage, used = 0;
+    function newPage(unit) {
+      const page = document.createElement('article');
+      page.className = 'reader-sheet'; page.id = 'page-' + (pages.length + 1);
+      page.dataset.readerSection = unit.dataset.section || '';
+      page.dataset.readerTitle = unit.dataset.topic || 'Overview';
+      page.dataset.readerChapter = unit.dataset.chapter || 'Overview';
+      const heading = document.createElement('p'); heading.className = 'reader-page-context';
+      heading.id = 'reader-context-' + (pages.length + 1);
+      heading.textContent = page.dataset.readerChapter === page.dataset.readerTitle ? page.dataset.readerTitle : page.dataset.readerChapter + ' · ' + page.dataset.readerTitle;
+      page.setAttribute('aria-labelledby', heading.id);
+      page.append(heading); pages.push(page); host.append(page); used = 0;
+      return page;
+    }
+    units.forEach((unit, i) => {
+      const chapterBreak = unit.dataset.newChapter === 'true';
+      const topicBreak = unit.dataset.newTopic === 'true' && used > capacity * .42;
+      if (!currentPage || (used > 0 && (chapterBreak || topicBreak || used + heights[i] > capacity))) currentPage = newPage(unit);
+      currentPage.append(unit); used += heights[i];
+    });
+    const select = document.getElementById('reader-page-select');
+    let optionGroup, previousChapter = '';
+    pages.forEach((page, i) => {
+      const refs = [...page.querySelectorAll('li[id^="ref-"]')];
+      if (refs.length) page.dataset.readerTitle = 'References [' + refs[0].id.slice(4) + '–' + refs.at(-1).id.slice(4) + ']';
+      if (page.dataset.readerChapter !== previousChapter) {
+        optionGroup = document.createElement('optgroup'); optionGroup.label = page.dataset.readerChapter;
+        select.append(optionGroup); previousChapter = page.dataset.readerChapter;
+      }
+      const option = document.createElement('option'); option.value = String(i);
+      option.textContent = (i + 1) + ' · ' + page.dataset.readerTitle;
+      optionGroup.append(option);
+    });
+    const pageById = new Map();
+    pages.forEach((page, i) => {
+      pageById.set(page.id, i);
+      page.querySelectorAll('[id]').forEach(node => pageById.set(node.id, i));
+    });
+    const previous = document.getElementById('reader-previous');
+    const next = document.getElementById('reader-next');
+    const previousBottom = document.getElementById('reader-previous-bottom');
+    const nextBottom = document.getElementById('reader-next-bottom');
+    const mode = document.getElementById('reader-mode');
+    const backToText = document.getElementById('reader-return');
+    let index = 0, full = new URL(location.href).searchParams.get('view') === 'full', textReturn = null;
+    function fit() { if (window.fitSurveyFormulas) window.fitSurveyFormulas(); }
+    function updateNav() {
+      const page = pages[index];
+      const activeTopic = [...page.querySelectorAll('h2[id],h3[id],h4[id]')].map(h => h.id);
+      const choices = navLinks.filter(a => pageById.get(a.hash.slice(1)) === index);
+      const chosen = choices.find(a => a.classList.contains('sub-link')) || choices[0];
+      navLinks.forEach(link => {
+        const active = chosen ? link === chosen : link.hash === '#' + page.dataset.readerSection;
         link.classList.toggle('active', active);
-        if (active) link.setAttribute('aria-current', 'location');
-        else link.removeAttribute('aria-current');
+        if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
       });
-    };
+    }
+    function render() {
+      document.body.classList.toggle('reader-paged', !full);
+      document.body.classList.toggle('reader-full', full);
+      pages.forEach((page, i) => page.hidden = !full && i !== index);
+      previous.disabled = previousBottom.disabled = index === 0;
+      next.disabled = nextBottom.disabled = index === pages.length - 1;
+      select.value = String(index);
+      const status = 'Page ' + (index + 1) + ' of ' + pages.length;
+      document.getElementById('reader-status').textContent = full ? 'Full text' : status;
+      document.getElementById('reader-bottom-status').textContent = status;
+      document.getElementById('reader-progress').style.width = ((index + 1) / pages.length * 100) + '%';
+      mode.textContent = full ? 'Return to paged reading' : 'View full text';
+      backToText.hidden = !textReturn || full || !pages[index].querySelector('li[id^="ref-"]');
+      updateNav(); fit();
+    }
+    function go(targetIndex, options = {}) {
+      if (targetIndex < 0 || targetIndex >= pages.length) return;
+      index = targetIndex;
+      if (options.history !== false) history.pushState(null, '', options.hash || '#' + pages[index].id);
+      render();
+      if (options.target) {
+        requestAnimationFrame(() => document.getElementById(options.target)?.scrollIntoView({block:'start', behavior:'instant'}));
+      } else window.scrollTo({top:0, behavior:'instant'});
+    }
+    function fromHash() {
+      let id = '';
+      try { id = decodeURIComponent(location.hash.slice(1)); } catch (error) { id = ''; }
+      if (pageById.has(id)) go(pageById.get(id), {history:false, target: /^page-\d+$/.test(id) ? null : id});
+      else go(0, {history:false});
+    }
+    previous.addEventListener('click', () => go(index - 1));
+    next.addEventListener('click', () => go(index + 1));
+    previousBottom.addEventListener('click', () => go(index - 1));
+    nextBottom.addEventListener('click', () => go(index + 1));
+    select.addEventListener('change', () => go(Number(select.value)));
+    mode.addEventListener('click', () => {
+      if (full) {
+        const visible = pages.filter(p => p.getBoundingClientRect().top <= innerHeight * .4).pop();
+        if (visible) index = pages.indexOf(visible);
+      }
+      full = !full;
+      const url = new URL(location.href);
+      if (full) url.searchParams.set('view', 'full'); else url.searchParams.delete('view');
+      history.replaceState(null, '', url.pathname + url.search + url.hash);
+      render();
+      if (full) pages[index].scrollIntoView({block:'start', behavior:'instant'});
+      else { history.replaceState(null, '', '#' + pages[index].id); window.scrollTo({top:0, behavior:'instant'}); }
+    });
+    backToText.addEventListener('click', () => { if (textReturn) go(textReturn.index, {hash:textReturn.hash}); });
+    document.addEventListener('click', event => {
+      if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      const link = event.target.closest('a[href^="#"]');
+      if (!link || full) return;
+      const id = decodeURIComponent(link.hash.slice(1));
+      if (!pageById.has(id)) return;
+      event.preventDefault();
+      if (/^ref-\d+$/.test(id) && !pages[index].querySelector('li[id^="ref-"]')) textReturn = {index, hash:location.hash || '#' + pages[index].id};
+      go(pageById.get(id), {hash:link.hash, target:id});
+    });
+    window.addEventListener('hashchange', fromHash);
+    document.addEventListener('keydown', event => {
+      if (full || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+      if (event.target.closest('input,textarea,select,[contenteditable="true"],#comments-panel') || window.getSelection()?.toString()) return;
+      if (event.key === 'ArrowRight' && index < pages.length - 1) { event.preventDefault(); go(index + 1); }
+      if (event.key === 'ArrowLeft' && index > 0) { event.preventDefault(); go(index - 1); }
+    });
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        if (!full) return;
+        const visible = entries.filter(e => e.isIntersecting).sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (!visible.length) return;
+        navLinks.forEach(link => {
+          const active = link.hash === '#' + visible[0].target.id;
+          link.classList.toggle('active', active);
+          if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
+        });
+      }, {rootMargin:'-8% 0px -72% 0px'});
+      navLinks.forEach(link => { const node = document.getElementById(link.hash.slice(1)); if (node) observer.observe(node); });
+    }
+    fromHash();
+    if (!location.hash) history.replaceState(null, '', '#page-1');
+    requestAnimationFrame(fit);
+  }
+  function ready() {
+    const promise = window.MathJax && window.MathJax.startup && window.MathJax.startup.promise;
+    if (promise && typeof promise.then === 'function') promise.then(startReader).catch(startReader);
+    else startReader();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready, {once:true});
+  else ready();
+})();
 
-    const observer = new IntersectionObserver(entries => {
-      const visible = entries
-        .filter(entry => entry.isIntersecting)
-        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-      if (visible.length) activate(visible[0].target.id);
-    }, { rootMargin: '-12% 0px -72% 0px', threshold: 0 });
-
-    targets.forEach(item => observer.observe(item.target));
-    if (location.hash) activate(location.hash.slice(1));
-    else if (targets.length) activate(targets[0].target.id);
-  })();
 </script>
 
 
@@ -1507,6 +1756,12 @@
       const copy = document.getElementById('comments-copy');
       let page = 1, loaded = false, busy = false, sectionURL = location.origin + location.pathname;
       function sectionContext() {
+        const readingPage = document.body.classList.contains('reader-paged') && document.querySelector('.reader-sheet:not([hidden])');
+        if (readingPage) {
+          sectionURL = location.origin + location.pathname + location.search + (location.hash || '#' + readingPage.id);
+          document.getElementById('comments-context').textContent = 'Reading: ' + readingPage.dataset.readerTitle;
+          return;
+        }
         const headings = [...document.querySelectorAll('main h2[id], main h3[id]')];
         const current = headings.filter(h => h.getBoundingClientRect().top <= innerHeight * .35).pop() || headings[0];
         sectionURL = location.origin + location.pathname + (current ? '#' + current.id : '');
