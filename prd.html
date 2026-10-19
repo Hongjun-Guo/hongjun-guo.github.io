@@ -348,6 +348,52 @@
     \]</div>
       </div>
 
+
+  <h4 id="period-eigenvalue">Environmental period and the principal eigenvalue</h4>
+  <p>Fix the favorable-habitat fraction \(\theta\in(0,1)\), the patch values \(D_i>0\), and \(r_1>0>r_2\). Let \(D,r\) be fixed 1-periodic two-patch profiles, with patch 1 occupying \((0,\theta)\) in each unit cell. Vary the environmental period by setting</p>
+  <div class="equation">\[
+    L_1=\theta L,\qquad L_2=(1-\theta)L,\qquad
+    D_L(x)=D(x/L),\qquad r_L(x)=r(x/L),\qquad L>0.
+  \]</div>
+  <div class="question-box" id="period-stability-question">
+    <span class="question-label">Further question · Period size and linear stability</span>
+    <p>How does \(L\) affect the principal growth eigenvalue \(\kappa(L)\)? Can changing the period reverse the linear stability of \(u\equiv0\)?</p>
+  </div>
+  <div class="source-result" id="period-eigenvalue-result">
+    <span class="question-label">Principal eigenvalues and period dependence <a href="#ref-18">[18]</a>, <a href="#ref-55">[55]</a>, <a href="#ref-59">[59]</a></span>
+    <p>For the no-advection linearization \(v_t=(D_Lv_x)_x+r_Lv\), define</p>
+    <div class="equation">\[
+      (D_L\varphi_L')'+r_L\varphi_L=\kappa(L)\varphi_L,\qquad
+      \varphi_L>0,\qquad\varphi_L(x+L)=\varphi_L(x),
+    \]</div>
+    <p>with continuous density and flux at patch interfaces. The principal mode is \(e^{\kappa(L)t}\varphi_L(x)\), so</p>
+    <div class="equation">\[
+      \kappa(L)&lt;0\ \Longrightarrow\ 0\text{ is linearly stable},\qquad
+      \kappa(L)>0\ \Longrightarrow\ 0\text{ is linearly unstable}.
+    \]</div>
+    <p>The fixed-cell variational characterization is</p>
+    <div class="equation">\[
+      \kappa(L)=
+      \max_{\substack{\psi\in H^1_{\mathrm{per}}(0,1)\\\psi\not\equiv0}}
+      \frac{\displaystyle\int_0^1 r(y)\psi(y)^2\,dy
+      -L^{-2}\displaystyle\int_0^1D(y)|\psi'(y)|^2\,dy}
+      {\displaystyle\int_0^1\psi(y)^2\,dy}.
+    \]</div>
+    <p>For these nonconstant two-patch growth profiles, its consequences are</p>
+    <div class="equation">\[
+      0&lt;L_a&lt;L_b\ \Longrightarrow\ \kappa(L_a)&lt;\kappa(L_b),\qquad
+      \lim_{L\to0^+}\kappa(L)=\bar r:=\theta r_1+(1-\theta)r_2,\qquad
+      \lim_{L\to\infty}\kappa(L)=r_1.
+    \]</div>
+    <p>If \(\bar r&lt;0\), there is a unique critical period \(L_*>0\) such that</p>
+    <div class="equation">\[
+      \kappa(L_*)=0,\qquad
+      0&lt;L&lt;L_*\ \Longrightarrow\ \kappa(L)&lt;0,\qquad
+      L>L_*\ \Longrightarrow\ \kappa(L)>0.
+    \]</div>
+    <p>If \(\bar r\geq0\), then \(\kappa(L)>0\) for every \(L>0\). Berestycki–Hamel–Roques <a href="#ref-18">[18]</a> link the eigenvalue sign to persistence; Nadin <a href="#ref-55">[55]</a> studies period dependence, while Hamel–Fayard–Roques <a href="#ref-59">[59]</a> connect period-dependent spectra with spreading in slowly oscillating habitats.</p>
+  </div>
+
   <h4 id="tpw-description">Periodic invaded state and traveling periodic wave</h4>
   <p>The positive stationary state considered in <a href="#ref-1">[1]</a>, when it exists, is a periodic function \(p\):</p>
   <div class="equation">\[
@@ -1386,6 +1432,7 @@
     <li id="ref-56">Mori, R. &amp; Xiao, D. (2019). A variational problem associated with the minimal speed of traveling waves for spatially periodic KPP type equations. <em>Proceedings of the London Mathematical Society, 119, 654–680.</em> <a href="https://doi.org/10.1112/plms.12243">doi:10.1112/plms.12243</a>.</li>
     <li id="ref-57">Ito, R. (2018). Analysis of the minimal traveling wave speed via the methods of Young measures. <em>SIAM Journal on Mathematical Analysis, 50, 3478–3534.</em> <a href="https://doi.org/10.1137/17M1111218">doi:10.1137/17M1111218</a>.</li>
     <li id="ref-58">Ito, R. (2020). Determining the optimal coefficient of the spatially periodic Fisher–KPP equation that minimizes the spreading speed. <em>Journal of Mathematical Biology, 80, 1953–1970.</em> <a href="https://doi.org/10.1007/s00285-020-01486-x">doi:10.1007/s00285-020-01486-x</a>.</li>
+    <li id="ref-59">Hamel, F., Fayard, J. &amp; Roques, L. (2010). Spreading speeds in slowly oscillating environments. <em>Bulletin of Mathematical Biology</em>, 72, 1166–1191. <a href="https://doi.org/10.1007/s11538-009-9486-7">doi:10.1007/s11538-009-9486-7</a>.</li>
   </ol>
 
   <p><a href="/">← Back to Hongjun Guo's homepage</a></p>
