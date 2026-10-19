@@ -35,6 +35,10 @@ E-mail:	guohj29@tongji.edu.cn
 
 - [Spatially Periodic Reaction-Diffusion Equations](prd.html)
 
+## Teaching（教学）
+
+- [数学物理方程](mathematical-physics-equations.html)
+
 ## Publications
 
 - (with F. Hamel and L. Rossi) Reaction-diffusion equations in periodic media: spreading speeds and spreading sets, [arXiv](https://arxiv.org/abs/2609.18795).
