@@ -41,6 +41,7 @@ E-mail:	guohj29@tongji.edu.cn
 
 ## Publications
 
+- (with K. Wang and M. Zhou) The Hamel–Nadirashvili conjecture for the Fisher–KPP equation, [arXiv](https://arxiv.org/abs/2610.27896).
 - (with F. Hamel and L. Rossi) Reaction-diffusion equations in periodic media: spreading speeds and spreading sets, [arXiv](https://arxiv.org/abs/2609.18795).
 - (with W.T. Li and B. Liu) Propagation dynamics for multidimensional nonlocal diffusion equations: a general Freidlin-Gärtner formula, [arXiv](https://arxiv.org/abs/2606.13050).
 - Spreading dynamics for the Lotka-Volterra system with general initial supports: the strong competition, [arXiv](https://arxiv.org/abs/2602.21537).
