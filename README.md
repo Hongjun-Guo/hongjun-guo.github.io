@@ -53,7 +53,7 @@ E-mail:	guohj29@tongji.edu.cn
 - (with Y. Lyu and Z.C. Wang) On traveling fronts of combustion equations in spatially periodic media, **_J. Dyn. Diff. Equations_**, 37 (2025), 2869–2929. ([link](https://link.springer.com/article/10.1007/s10884-024-10388-1))
 - Pushed fronts of monostable reaction-diffusion-advection equations, **_J. Diff. Equations_**, 356 (2023), 127-162. ([link](https://doi.org/10.1016/j.jde.2023.01.042))
 - (with W.T. Li, R. Liu and Z.C. Wang) Curved fronts of bistable reaction-diffusion equations in spatially periodic media, **_Arch. Ration. Mech. Anal._** 242 (2021), 1571–1627. ([link](https://link.springer.com/article/10.1007/s00205-021-01711-x))
-- (with J. Forbey and R. Liu) Front propagation and blocking of reaction-diffusion systems in cylinders, **_Nonlinearity_**, 34 (2021), 6750-6722.([link](https://iopscience.iop.org/article/10.1088/1361-6544/abd529))
+- (with J. Forbey and R. Liu) Front propagation and blocking of reaction-diffusion systems in cylinders, **_Nonlinearity_**, 34 (2021), 6750-6772.([link](https://iopscience.iop.org/article/10.1088/1361-6544/abd529))
 - (with H. Monobe) V-shaped fronts around an obstacle, **_Math. Ann._** 379 (2021), 661-689.([link](https://link.springer.com/article/10.1007/s00208-019-01944-y))
 - Transition fronts in unbounded domains with multiple branches, **_Calc. Var. Part. Differ. Equ._** 59, 160 (2020).([link](https://link.springer.com/article/10.1007/s00526-020-01825-2))
 - (with F. Hamel and W.J. Sheng) On the mean speed of bistable transition fronts in unbounded domains, **_J. Math. Pures Appl._** 136 (2020), 92-157.([link](https://www.sciencedirect.com/science/article/abs/pii/S0021782420300325))
